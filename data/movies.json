@@ -1,0 +1,9 @@
+[
+{
+"title":"Sample Movie",
+"image":"images/posters/sample.jpg",
+"description":"මෙය sample movie එකකි",
+"watch":"https://example.com/watch",
+"download":"https://example.com/download"
+}
+]
