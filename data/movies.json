@@ -1,9 +1,7 @@
-[
 {
-"title":"Sample Movie",
-"image":"images/posters/sample.jpg",
-"description":"මෙය sample movie එකකි",
-"watch":"https://example.com/watch",
-"download":"https://example.com/download"
+"title": "Kung Fu Panda 2 (2011)",
+"image": "images/posters/kungfupanda2.jpg",
+"description": "Action | සිංහල. Po සහ Furious Five චරිත එකතු වෙලා නව විරුද්ධයෙක්ට මුහුණ දෙන animated චිත්‍රපටයක්.",
+"watch": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/view?usp=drivesdk",
+"download": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/view?usp=drivesdk"
 }
-]
