@@ -2,24 +2,71 @@
   {
     "title": "Kung Fu Panda 2 (2011)",
     "image": "https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg",
-
     "imdb": "7.2/10",
     "release_date": "2011 May 26",
     "director": "Jennifer Yuh Nelson",
     "runtime": "1h 30m",
     "genre": "Animation | Action | Adventure",
-
-    "description": "Po දැන් Dragon Warrior ලෙස Valley of Peace ආරක්ෂා කරනවා Furious Five එක්ක. එත් Lord Shen කියන අලුත් විරුද්ධයෙක් චීනය පුරා Kung Fu විනාශ කරන්න භයානක ආයුධයක් භාවිතා කරන්න හදනවා. Shen නවතා Kung Fu ආරක්ෂා කරන්න Po තමන්ගේ අතීතය ගැන සත්‍යය හොයන්න යනවා. ඒ ගමනේදි තමන්ගේ ජීවිතයේ සැඟවුණු රහස් හෙළි වෙන අතර, Po තමන්ගේ සැබෑ ශක්තිය හඳුනාගන්නවා. Friendship, courage, identity කියන themes එක්ක emotional සහ action පිරි කතාවක්.",
-
+    "description": "Po දැන් Dragon Warrior ලෙස Valley of Peace ආරක්ෂා කරන අතර Furious Five එක්ක එකතු වෙයි. Lord Shen කියන නව විරුද්ධයෙක් Kung Fu විනාශ කරන්න උත්සාහ කරන අතර, Po තමන්ගේ අතීතය හොයමින් Shen නවතා Kung Fu ආරක්ෂා කරන කතාව. ඔහුගේ ගමනේදී අලුත් මිතුරන් හමුවෙනවා, challenges හමුවේ ඔහුගේ inner strength සහ courage විකසනය වෙනවා. Emotional සහ action එකතු වූ, family-friendly, Sinhala dubbing එකේ epic animation එකක්.",
     "players": [
-      {
-        "name": "Player 1",
-        "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
-      },
-      {
-        "name": "Player 2",
-        "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
-      }
+      { "name": "Player 1", "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview" },
+      { "name": "Player 2", "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview" }
+    ]
+  },
+  {
+    "title": "Ratatouille (2007)",
+    "image": "https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg",
+    "imdb": "8.0/10",
+    "release_date": "2007 Jun 29",
+    "director": "Brad Bird",
+    "runtime": "1h 51m",
+    "genre": "Animation | Comedy | Family",
+    "description": "Remy යනු උගත් rat රටාවක් ඇති, ගොඩනැගිල්ලේ chefs ලෝකයට aspiring chef එකක්. Paris හි ප්‍රසිද්ධ restaurant එකක් තුළ ඔහු තම culinary dreams පුළුවන් කරනවා. Linguini සහ ඔහුගේ team එක්ක Remy create කරන dishes, challenges සහ humor, friendship, determination හා creativity එක්ක සිනමාගාරය ආදරය කරනවා. Sinhala dubbing එකේත් මුළු family එකට fun සහ inspiration පිරෙන animation movie එකක්.",
+    "players": [
+      { "name": "Player 1", "link": "https://drive.google.com/file/d/1RnELa1HMU_B90srWoTE1woZCQRGAFI4n/preview" },
+      { "name": "Player 2", "link": "https://drive.google.com/file/d/1RnELa1HMU_B90srWoTE1woZCQRGAFI4n/preview" }
+    ]
+  },
+  {
+    "title": "Soorya (2025)",
+    "image": "https://i.ibb.co/yx7RvfK/RD393437343037303731353740732e77686174736170702e6e6574-177842.jpg",
+    "imdb": "6.8/10",
+    "release_date": "2025 Jan 15",
+    "director": "Kasun Perera",
+    "runtime": "2h 05m",
+    "genre": "Action | Sinhala",
+    "description": "Soorya චිත්‍රපටය, තරුණ නිළියන් සහ නළුන්ගේ dynamic performance එකක්. Thriller සහ action පිරි storyline එකක්, තරුණ යුවළක් තම ජීවිතයට බාධා වන බලවත් විරුද්ධයන්ට එරෙහිව උත්සාහ කරන කතා පදනමක්. Sinhala dubbing එකේ intense fight scenes, romantic subplot සහ emotional moments එක්ක, 2025 release එකේ standout movie එකක්.",
+    "players": [
+      { "name": "Player 1", "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv?hash=AgAD5h" },
+      { "name": "Player 2", "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv?hash=AgAD5h" }
+    ]
+  },
+  {
+    "title": "Jack And The Giant Slayer (2013)",
+    "image": "https://i.ibb.co/6J81Yfvs/RD393437353638333237343640732e77686174736170702e6e6574-566677.jpg",
+    "imdb": "6.1/10",
+    "release_date": "2013 Feb 1",
+    "director": "Bryan Singer",
+    "runtime": "1h 50m",
+    "genre": "Adventure | Fantasy | Action",
+    "description": "Jack, a humble miner, finds a magical bean that grows into a giant beanstalk leading to a realm of giants. Adventure, bravery, and cunning help Jack confront the mighty Giant and save his village. Sinhala dubbing එකේ family-friendly fantasy film එකක්, visual effects සහ action sequences බහුලයි.",
+    "players": [
+      { "name": "Player 1", "link": "https://drive.google.com/file/d/1DnUKRh6I7s6_vWGQrE5R_iYkjzyFTWFB/preview" },
+      { "name": "Player 2", "link": "https://drive.google.com/file/d/1DnUKRh6I7s6_vWGQrE5R_iYkjzyFTWFB/preview" }
+    ]
+  },
+  {
+    "title": "Jungle Cruise (2021)",
+    "image": "https://i.ibb.co/JWBvyc5X/RD393437343037303731353740732e77686174736170702e6e6574-308706.jpg",
+    "imdb": "6.7/10",
+    "release_date": "2021 Jul 30",
+    "director": "Jaume Collet-Serra",
+    "runtime": "2h 07m",
+    "genre": "Adventure | Action | Comedy",
+    "description": "Jungle Cruise, Dr. Lily Houghton සහ Frank Wolff එක්ක Amazon rainforest එකේ adventure එකක්. Treasure hunting, jungle challenges සහ villain encounters සමඟ thrilling ride එකක්. Sinhala dubbing එකේ entertaining family adventure movie එකක්, fun, action, සහ romance scenes සමඟ.",
+    "players": [
+      { "name": "Player 1", "link": "https://drive.google.com/file/d/1DqOfe5-WiFNkCmkmu1UBMRNKENAVEKf2/preview" },
+      { "name": "Player 2", "link": "https://drive.google.com/file/d/1DqOfe5-WiFNkCmkmu1UBMRNKENAVEKf2/preview" }
     ]
   }
 ]
