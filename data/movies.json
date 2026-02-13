@@ -2,8 +2,24 @@
   {
     "title": "Kung Fu Panda 2 (2011)",
     "image": "https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg",
-    "description": "Action | සිංහල. Po Dragon Warrior ලෙස ජීවිතය ගත කරන අතර Furious Five එක්ක Valley of Peace ආරක්ෂා කරනවා. Lord Shen කියන නව විරුද්ධයෙක් Kung Fu විනාශ කරන්න උත්සාහ කරනවා. Po තමන්ගේ අතීතය හොයමින් Shen නවතා Kung Fu ආරක්ෂා කරන්න උත්සාහ කරන කතාන්දරයක්.",
-    "watch": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/view?usp=drivesdk",
-    "download": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/view?usp=drivesdk"
+
+    "imdb": "7.2/10",
+    "release_date": "2011 May 26",
+    "director": "Jennifer Yuh Nelson",
+    "runtime": "1h 30m",
+    "genre": "Animation | Action | Adventure",
+
+    "description": "Po දැන් Dragon Warrior ලෙස Valley of Peace ආරක්ෂා කරනවා Furious Five එක්ක. එත් Lord Shen කියන අලුත් විරුද්ධයෙක් චීනය පුරා Kung Fu විනාශ කරන්න භයානක ආයුධයක් භාවිතා කරන්න හදනවා. Shen නවතා Kung Fu ආරක්ෂා කරන්න Po තමන්ගේ අතීතය ගැන සත්‍යය හොයන්න යනවා. ඒ ගමනේදි තමන්ගේ ජීවිතයේ සැඟවුණු රහස් හෙළි වෙන අතර, Po තමන්ගේ සැබෑ ශක්තිය හඳුනාගන්නවා. Friendship, courage, identity කියන themes එක්ක emotional සහ action පිරි කතාවක්.",
+
+    "players": [
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
+      }
+    ]
   }
 ]
