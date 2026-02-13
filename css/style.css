@@ -1,0 +1,93 @@
+body{
+margin:0;
+font-family:Arial;
+background:#111;
+color:white;
+}
+
+/* Header */
+header{
+display:flex;
+align-items:center;
+padding:15px;
+background:black;
+}
+
+.menu-btn{
+font-size:25px;
+cursor:pointer;
+margin-right:20px;
+}
+
+/* Sidebar */
+#sidebar{
+position:fixed;
+left:-250px;
+top:0;
+width:250px;
+height:100%;
+background:black;
+transition:0.3s;
+padding-top:60px;
+}
+
+#sidebar a{
+display:block;
+padding:15px;
+color:white;
+text-decoration:none;
+}
+
+#sidebar a:hover{
+background:#333;
+}
+
+/* Movies Grid */
+.container{
+padding:20px;
+}
+
+.movies-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:15px;
+}
+
+.movie-card{
+background:#222;
+border-radius:8px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s;
+}
+
+.movie-card:hover{
+transform:scale(1.05);
+}
+
+.movie-card img{
+width:100%;
+}
+
+.movie-card h4{
+padding:10px;
+}
+
+/* Buttons */
+.btn{
+display:inline-block;
+padding:12px 20px;
+background:red;
+color:white;
+text-decoration:none;
+margin:10px 5px;
+border-radius:6px;
+}
+
+/* Footer */
+footer{
+text-align:center;
+padding:20px;
+background:black;
+margin-top:30px;
+}
