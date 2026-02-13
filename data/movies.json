@@ -642,7 +642,6 @@
       {"name": "Player 2","link":"https://drive.google.com/open?id=1KVFQVHniKtr1bjT0El5WTiZoQiDq64xw&authuser=0"}
     ]
   },
-  {[
   {
     "title": "Rio 1",
     "image": "https://i.ibb.co/JwGNGk7r/RD393437353638333237343640732e77686174736170702e6e6574-498412.jpg",
@@ -775,3 +774,96 @@
     ]
   }
 ]
+[
+  {
+    "title": "Home Alone 2",
+    "image": "https://i.ibb.co/RTnFFVBv/RD393437353638333237343640732e77686174736170702e6e6574-536933.jpg",
+    "imdb": "6.8/10",
+    "release_date": "1992 Nov 20",
+    "director": "Chris Columbus",
+    "runtime": "2h 1m",
+    "genre": "Action | Comedy | Family",
+    "description": "Home Alone 2 – Kevin, New York city එකේ holiday vacation එකේ burglars වලට clever traps, fun, adventure moments Sinhala dubbing viewers-friendly style එකෙන් experience කරනවා.",
+    "players": [
+      {"name": "Player 1","link":"https://drive.google.com/open?id=1HdujfW1zjb04lx-JVu2qMdCXq8eCoi5f&authuser=0"}
+    ]
+  },
+  {
+    "title": "Journey 1",
+    "image": "https://i.ibb.co/hRRdtvgF/RD393437353638333237343640732e77686174736170702e6e6574-509161.jpg",
+    "imdb": "6.2/10",
+    "release_date": "2008 Feb 8",
+    "director": "Eric Brevig",
+    "runtime": "1h 42m",
+    "genre": "Action | Adventure | Family",
+    "description": "Journey 1 – teen protagonist එක, magical hidden world එකට යනවා. Sinhala dubbing එකෙන් fun, adventure, friendship, courage moments viewers-friendly style එකෙන් අත්විඳිය හැක.",
+    "players": [
+      {"name": "Player 1","link":"https://drive.google.com/open?id=1bl5vZtORTmo9N-LLY5WbVHkb6CpKKeSJ&authuser=0"}
+    ]
+  },
+  {
+    "title": "Journey 2",
+    "image": "https://i.ibb.co/kgyt0LrN/RD393437353638333237343640732e77686174736170702e6e6574-324359.jpg",
+    "imdb": "5.8/10",
+    "release_date": "2012 Feb 10",
+    "director": "Brad Peyton",
+    "runtime": "1h 34m",
+    "genre": "Action | Adventure | Family",
+    "description": "Journey 2 – grandson, step-grandfather සමඟ secret island එකට adventure එකක්. Sinhala dubbing viewers-friendly style එකෙන් fun, action, friendship, courage moments අත්විඳිය හැක.",
+    "players": [
+      {"name": "Player 1","link":"https://drive.google.com/open?id=1SykzlrmEgmPAn3kskuQaOoVQN8T-nboH&authuser=0"}
+    ]
+  },
+  {
+    "title": "Raya And The Last Dragon",
+    "image": "https://i.ibb.co/yn6grbtq/RD393437353638333237343640732e77686174736170702e6e6574-193775.jpg",
+    "imdb": "7.4/10",
+    "release_date": "2021 Mar 5",
+    "director": "Don Hall, Carlos López Estrada",
+    "runtime": "1h 47m",
+    "genre": "Action | Adventure | Fantasy",
+    "description": "Raya And The Last Dragon – Raya, dragon Sisu සමඟ Kumandra land එක save කරන්න journey එකකට යනවා. Sinhala dubbing viewers-friendly style එකෙන් action, friendship, courage, fantasy moments අත්විඳිය හැක.",
+    "players": [
+      {"name": "Player 1","link":"https://drive.google.com/file/d/1-hFZWfuIA4rkuWV1tH5YPwx2FQ_cCGJ2/view?usp=drive"}
+    ]
+  },
+  {
+    "title": "Nezha",
+    "image": "https://i.ibb.co/wN4vJ0QS/RD393437353638333237343640732e77686174736170702e6e6574-359328.jpg",
+    "imdb": "7.3/10",
+    "release_date": "2019 Jul 26",
+    "director": "Jiaozi",
+    "runtime": "1h 51m",
+    "genre": "Action | Animation | Fantasy",
+    "description": "Nezha – young hero, magical powers, destiny and family challenges සමඟ battle කරනවා. Sinhala dubbing viewers-friendly style එකෙන් action, courage, fantasy moments experience කරන්න පුළුවන්.",
+    "players": [
+      {"name": "Player 1","link":"https://drive.google.com/file/d/1C9WW1VV6nfmwu4WQAlUfE8FXcOLHShLy/view?usp=drivesdk"}
+    ]
+  },
+  {
+    "title": "Scooby Doo",
+    "image": "https://i.ibb.co/pBHpWTKB/RD393437353638333237343640732e77686174736170702e6e6574-776073.jpg",
+    "imdb": "6.4/10",
+    "release_date": "2002 Jun 14",
+    "director": "Raja Gosnell",
+    "runtime": "1h 34m",
+    "genre": "Action | Adventure | Comedy",
+    "description": "Scooby Doo – Mystery solving team, haunted locations, villains. Sinhala dubbing viewers-friendly style එකෙන් fun, action, friendship, adventure moments experience කරන්න පුළුවන්.",
+    "players": [
+      {"name": "Player 1","link":"https://drive.google.com/open?id=1m3ZRoR6pzk-vB4BQJbeiUX4YJ7YIHnmV&authuser=0"}
+    ]
+  },
+  {
+    "title": "The Lion King",
+    "image": "https://i.ibb.co/HLfXMdbS/RD393437353638333237343640732e77686174736170702e6e6574-728315.jpg",
+    "imdb": "8.5/10",
+    "release_date": "2019 Jul 19",
+    "director": "Jon Favreau",
+    "runtime": "1h 58m",
+    "genre": "Action | Adventure | Animation",
+    "description": "The Lion King – Simba, Pride Rock, family legacy, villains and courage adventure. Sinhala dubbing viewers-friendly style එකෙන් fun, emotional, action moments experience කරන්න පුළුවන්.",
+    "players": [
+      {"name": "Player 1","link":"https://drive.google.com/open?id=16by-uhsUIGTSYDNCpK6rYjP2iQIdSTFL&authuser=0"}
+    ]
+  },
+  {
