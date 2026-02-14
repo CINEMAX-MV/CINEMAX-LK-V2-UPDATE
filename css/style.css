@@ -171,3 +171,19 @@ footer{
     0%{background-position:0%;}
     100%{background-position:100%;}
 }
+
+/* Close Button */
+.close-btn{
+    position:absolute;
+    top:15px;
+    left:15px;
+    font-size:22px;
+    cursor:pointer;
+    color:white;
+    transition:0.3s;
+}
+
+.close-btn:hover{
+    color:#00a8ff;
+    transform:scale(1.2);
+}
