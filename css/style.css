@@ -233,35 +233,3 @@ footer{
     letter-spacing:1px;
 }
 
-.latest-wrapper {
-    position: relative;
-    width: 100%;
-    padding: 10px 20px;
-}
-
-.latest-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #00bfff;
-}
-
-.search-input {
-    position: absolute;
-    right: 20px;      /* 🔥 මේක තමයි right side එකට දාන්නේ */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 280px;
-    padding: 8px 15px;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-}
-
-@media (max-width: 600px) {
-    .search-input {
-        position: static;
-        transform: none;
-        margin-top: 10px;
-        width: 100%;
-    }
-}
