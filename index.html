@@ -1,41 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cinemax.lk</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinemax.lk</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Sinhala Font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhhala:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
-    <h2>Cinemax.lk</h2>
-  </header>
+<!-- ===== HEADER ===== -->
+<header class="top-header">
 
-  <!-- Sidebar -->
-  <div id="sidebar">
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+  <div class="logo-area">
+      <h1 class="logo-sinhala">සිනෙමැක්ස්</h1>
+      <h2 class="logo-eng">Downloads</h2>
+      <p class="logo-sub">Torrents | Direct</p>
+  </div>
+
+</header>
+
+<div class="glow-line"></div>
+
+<!-- ===== SIDEBAR ===== -->
+<div id="sidebar" class="sidebar">
     <a href="index.html">Home</a>
     <a href="#">Dashboard</a>
     <a href="#">Contact</a>
     <a href="#">DMCA</a>
-  </div>
+</div>
 
-  <!-- Main Movies Section -->
-  <section class="container">
-    <h2>Movies</h2>
+<!-- ===== MOVIE SECTION ===== -->
+<section class="container">
+    <h2 class="section-title">Latest Movies</h2>
     <div id="movieList" class="movies-grid"></div>
-  </section>
+</section>
 
-  
-  <!-- Footer -->
-  <footer>
-    © 2026 Cinemax Movies | You can watch and download Sinhala movies & cartoons.
-  </footer>
+<!-- ===== FOOTER ===== -->
+<footer>
+  © 2026 Cinemax Movies | Watch & Download Sinhala Movies & Cartoons
+</footer>
 
-  <!-- Scripts -->
-  <script src="js/main.js"></script>
+<!-- Scripts -->
+<script src="js/main.js"></script>
+
+<script>
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
