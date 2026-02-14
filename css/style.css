@@ -118,3 +118,29 @@ footer{
     font-size:14px;
     color:#bbb;
 }
+/* ===== SCROLLING ANNOUNCEMENT ===== */
+.announcement{
+    width:100%;
+    overflow:hidden;
+    background:#000;
+    padding:10px 0;
+}
+
+.announcement-text{
+    display:inline-block;
+    white-space:nowrap;
+    padding-left:100%;
+    animation:scrollText 15s linear infinite;
+    font-size:16px;
+    color:#00a8ff;
+    text-shadow:0 0 8px #00a8ff;
+}
+
+@keyframes scrollText{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+}
