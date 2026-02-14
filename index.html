@@ -4,42 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cinemax.lk</title>
-
 <link rel="stylesheet" href="css/style.css">
-
-<!-- Sinhala Font -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhhala:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- ===== HEADER ===== -->
-<header class="cinema-header">
+<header class="hero-header">
 
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <div class="logo-box">
+    <div class="logo-container">
+        <!-- Replace with your uploaded 3D Cinemax image -->
+        <img src="https://i.ibb.co/RG3YFQDz/Rashmika-Ofc.jpg" alt="Cinemax 3D Logo">
+    </div>
 
-        <!-- Stylized Sinhala -->
-        <div class="logo-main">
-            <span class="icon-left"><i class="fa-solid fa-film"></i></span>
-            <h1 class="logo-text">
-                <span class="big-letter">සි</span>නෙමැක්ස්
-            </h1>
-            <span class="icon-right"><i class="fa-solid fa-compact-disc"></i></span>
-        </div>
-
-        <!-- Downloads text -->
-        <h2 class="downloads-text">Downloads</h2>
-        <p class="sub-text">Torrents | Direct</p>
-
+    <!-- Sub Text (same as original image layout) -->
+    <div class="logo-subtext">
+        <h2>Downloads</h2>
+        <p>Torrents | Direct</p>
     </div>
 
 </header>
 
-<div class="glow-line"></div>
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Neon Glow Line -->
 <div class="glow-line"></div>
 
 <!-- ===== SIDEBAR ===== -->
@@ -50,23 +37,22 @@
     <a href="#">DMCA</a>
 </div>
 
-<!-- ===== MOVIE SECTION ===== -->
+<!-- ===== MOVIE GRID ===== -->
 <section class="container">
-    <h2 class="section-title">Latest Movies</h2>
+    <h2>Latest Movies</h2>
     <div id="movieList" class="movies-grid"></div>
 </section>
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  © 2026 Cinemax Movies | Watch & Download Sinhala Movies & Cartoons
+© 2026 Cinemax Downloads | Watch & Download Sinhala Movies & Cartoons
 </footer>
 
-<!-- Scripts -->
 <script src="js/main.js"></script>
 
 <script>
 function toggleMenu() {
-  document.getElementById("sidebar").classList.toggle("active");
+    document.getElementById("sidebar").classList.toggle("active");
 }
 </script>
 
