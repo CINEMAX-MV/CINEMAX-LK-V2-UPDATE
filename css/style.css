@@ -1,3 +1,4 @@
+/* ===== BODY ===== */
 body{
     margin:0;
     background:#000;
@@ -35,24 +36,6 @@ body{
 
 .logo-container img:hover{
     transform:scale(1.03);
-}
-
-/* Subtext below logo */
-.logo-subtext{
-    margin-top:15px;
-}
-
-.logo-subtext h2{
-    font-size:50px;
-    color:#fff;
-    text-shadow:0 0 10px #00a8ff, 0 0 40px #00a8ff;
-    margin:0;
-}
-
-.logo-subtext p{
-    font-size:14px;
-    color:#bbb;
-    margin-top:5px;
 }
 
 /* Neon Glow Line */
@@ -93,14 +76,20 @@ body{
     left:0;
 }
 
-/* ===== MOVIES GRID ===== */
+/* ===== MOVIE GRID ===== */
 .container{
     padding:20px;
 }
 
-h2{
-    text-align:center;
-    margin-bottom:20px;
+/* Latest Movies heading */
+.container h2 {
+    text-align: left; /* Left aligned */
+    font-size: 36px;
+    color: #00a8ff; /* neon blue */
+    text-shadow: 0 0 5px #00a8ff, 0 0 20px #00a8ff; /* glow */
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: 'Arial', sans-serif;
 }
 
 /* Movie Grid */
@@ -134,7 +123,7 @@ h2{
     border-radius:5px;
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 footer{
     text-align:center;
     padding:20px;
