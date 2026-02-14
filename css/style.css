@@ -22,6 +22,16 @@ body{
     cursor:pointer;
 }
 
+/* Logo Image */
+.logo-container img{
+    width:90%;
+    max-width:600px;
+    display:block;
+    margin:0 auto;
+    border-radius:10px; /* rounding kept */
+    box-shadow: none;   /* removed border/glow */
+    transition:0.4s;
+}
 
 .logo-container img:hover{
     transform:scale(1.03);
@@ -107,12 +117,12 @@ h2{
     overflow:hidden;
     transition:0.4s;
     cursor:pointer;
-    box-shadow:0 0 8px rgba(0,168,255,0.2); /* subtle shadow instead of border */
+    box-shadow:0 0 8px rgba(0,168,255,0.2); /* subtle shadow only */
 }
 
 .movie-card:hover{
     transform:scale(1.05);
-    box-shadow:0 0 20px rgba(0,168,255,0.6); /* hover glow effect */
+    box-shadow:0 0 20px rgba(0,168,255,0.6); /* hover glow */
 }
 
 /* Movie Image */
@@ -120,7 +130,7 @@ h2{
     width:100%;
     height:auto;
     display:block;
-    object-fit:cover; /* maintain full rectangle */
+    object-fit:cover;
     border-radius:5px;
 }
 
