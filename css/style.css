@@ -88,29 +88,39 @@ body{
     padding:20px;
 }
 
-.section-title{
+h2{
     text-align:center;
     margin-bottom:20px;
 }
 
+/* Movie Grid */
 .movies-grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
     gap:15px;
 }
 
+/* Movie Card */
 .movie-card{
     background:#111;
     border-radius:8px;
     overflow:hidden;
-    border:1px solid #00a8ff;
+    border:2px solid rgba(0,168,255,0.5); /* subtle translucent blue */
     transition:0.3s;
     cursor:pointer;
 }
 
 .movie-card:hover{
     transform:scale(1.05);
-    box-shadow:0 0 15px #00a8ff;
+    box-shadow:0 0 15px rgba(0,168,255,0.7);
+}
+
+.movie-card img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:cover; /* full rectangular poster display */
+    border-radius:5px;
 }
 
 /* Footer */
