@@ -1,16 +1,16 @@
 body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#111;
-color:white;
+    margin:0;
+    background:#000;
+    font-family:Arial, sans-serif;
+    color:white;
 }
 
-/* ===== CINEMA HEADER ===== */
-.cinema-header{
-    background:#000;
-    padding:60px 20px 40px 20px;
+/* ===== HEADER ===== */
+.hero-header{
     text-align:center;
+    padding:40px 20px 20px 20px;
     position:relative;
+    background:#000;
 }
 
 /* Menu button */
@@ -22,151 +22,101 @@ color:white;
     cursor:pointer;
 }
 
-/* Logo container */
-.logo-box{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+/* Logo Image */
+.logo-container img{
+    width:90%;
+    max-width:600px;
+    display:block;
+    margin:0 auto;
 }
 
-/* Main logo row */
-.logo-main{
-    display:flex;
-    align-items:center;
-    gap:15px;
+/* Subtext below logo */
+.logo-subtext{
+    margin-top:15px;
 }
 
-/* Big artistic first letter */
-.big-letter{
-    font-size:70px;
-    font-weight:bold;
-    color:#ff0000;
-    text-shadow:
-        0 0 10px #ff0000,
-        0 0 30px #ff0000,
-        0 0 60px #ff0000;
-}
-
-/* Full Sinhala text */
-.logo-text{
-    font-size:45px;
-    margin:0;
-    color:#ff4d4d;
-    text-shadow:
-        0 0 10px #ff0000,
-        0 0 25px #ff0000;
-}
-
-/* Movie icons */
-.icon-left i,
-.icon-right i{
-    font-size:40px;
-    color:#ff0000;
-    text-shadow:0 0 20px #ff0000;
-}
-
-/* Downloads text */
-.downloads-text{
-    font-size:55px;
-    margin:10px 0 0 0;
+.logo-subtext h2{
+    font-size:50px;
     color:#fff;
-    text-shadow:
-        0 0 10px #ff0000,
-        0 0 40px #ff0000;
+    text-shadow:0 0 10px #00a8ff, 0 0 40px #00a8ff;
+    margin:0;
 }
 
-/* Subtitle */
-.sub-text{
+.logo-subtext p{
     font-size:14px;
     color:#bbb;
     margin-top:5px;
 }
 
-/* Red Glow Line */
+/* Neon Glow Line */
 .glow-line{
     height:4px;
-    background:#ff0000;
-    box-shadow:0 0 25px #ff0000;
+    background:#00a8ff;
+    box-shadow:0 0 25px #00a8ff;
 }
 
 /* ===== SIDEBAR ===== */
-#sidebar{
-position:fixed;
-left:-250px;
-top:0;
-width:250px;
-height:100%;
-background:black;
-transition:0.3s;
-padding-top:80px;
-z-index:1000;
+.sidebar{
+    position:fixed;
+    left:-250px;
+    top:0;
+    width:250px;
+    height:100%;
+    background:#111;
+    transition:0.3s;
+    padding-top:80px;
 }
 
-#sidebar a{
-display:block;
-padding:15px;
-color:white;
-text-decoration:none;
-border-bottom:1px solid #222;
+.sidebar a{
+    display:block;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+    border-bottom:1px solid #222;
 }
 
-#sidebar a:hover{
-background:#ff0000;
+.sidebar a:hover{
+    background:#00a8ff;
 }
 
-#sidebar.active{
-left:0;
+.sidebar.active{
+    left:0;
 }
 
 /* ===== MOVIES GRID ===== */
 .container{
-padding:20px;
+    padding:20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:20px;
 }
 
 .movies-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-gap:15px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:15px;
 }
 
 .movie-card{
-background:#222;
-border-radius:8px;
-overflow:hidden;
-cursor:pointer;
-transition:0.3s;
-border:1px solid #ff0000;
+    background:#111;
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid #00a8ff;
+    transition:0.3s;
+    cursor:pointer;
 }
 
 .movie-card:hover{
-transform:scale(1.05);
-box-shadow:0 0 15px #ff0000;
+    transform:scale(1.05);
+    box-shadow:0 0 15px #00a8ff;
 }
 
-.movie-card img{
-width:100%;
-}
-
-.movie-card h4{
-padding:10px;
-}
-
-/* ===== BUTTONS ===== */
-.btn{
-display:inline-block;
-padding:12px 20px;
-background:red;
-color:white;
-text-decoration:none;
-margin:10px 5px;
-border-radius:6px;
-}
-
-/* ===== FOOTER ===== */
+/* Footer */
 footer{
-text-align:center;
-padding:20px;
-background:black;
-margin-top:30px;
-font-size:14px;
+    text-align:center;
+    padding:20px;
+    background:#111;
+    margin-top:30px;
 }
