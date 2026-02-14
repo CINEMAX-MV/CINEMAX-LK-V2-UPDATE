@@ -22,16 +22,6 @@ body{
     cursor:pointer;
 }
 
-/* Logo Image */
-.logo-container img{
-    width:90%;
-    max-width:600px;
-    display:block;
-    margin:0 auto;
-    border-radius:10px; /* slight rounding for 3D logo */
-    box-shadow:0 0 30px #00a8ff; /* subtle glow around logo */
-    transition:0.4s;
-}
 
 .logo-container img:hover{
     transform:scale(1.03);
