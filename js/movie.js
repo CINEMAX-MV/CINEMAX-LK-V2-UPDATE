@@ -33,7 +33,9 @@ fetch("data/movies.json")
 
 // Player load function
 function loadPlayer(link){
+  // Force /preview in case someone put /view
+  let embedLink = link.replace("/view", "/preview");
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${link}" width="100%" height="400" allowfullscreen></iframe>
+    <iframe src="${embedLink}" width="100%" height="400" allowfullscreen></iframe>
   `;
 }
