@@ -246,7 +246,7 @@ footer{
 
 /* 🔥 මේ line එක තමා main trick එක */
 .search-input {
-    margin-left: auto;   /* ← මේක දාන්නම ඕනේ */
+    margin-right: auto;   /* ← මේක දාන්නම ඕනේ */
     width: 280px;
     padding: 8px 15px;
     border-radius: 20px;
