@@ -21,32 +21,38 @@ fetch("data/movies.json")
       `;
     }
 
-    // Movie details
+    // Movie details with better layout
     document.getElementById("movieDetails").innerHTML = `
-      <h2>${movie.title}</h2>
-      <img src="${movie.image}" width="300" alt="${movie.title}">
-      <p>▫🎞 <strong>IMDb:</strong> ${movie.imdb}</p>
-      <p>▫📅 <strong>Release Date:</strong> ${movie.release_date}</p>
-      <p>▫🕵️‍♂️ <strong>Director:</strong> ${movie.director}</p>
-      <p>▫⏳ <strong>Runtime:</strong> ${movie.runtime}</p>
-      <p>▫🎭 <strong>Genre:</strong> ${movie.genre}</p>
-      <p>📝 <strong>Description:</strong> ${movie.description}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start;">
+        <div style="flex:1 1 300px; max-width:400px;">
+          <img src="${movie.image}" alt="${movie.title}" style="width:100%; border-radius:10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+        </div>
+        <div style="flex:2 1 400px;">
+          <h2 style="margin-top:0; font-size:2em; color:#333;">${movie.title}</h2>
+          <p>▫🎞 <strong>IMDb:</strong> ${movie.imdb}</p>
+          <p>▫📅 <strong>Release Date:</strong> ${movie.release_date}</p>
+          <p>▫🕵️‍♂️ <strong>Director:</strong> ${movie.director}</p>
+          <p>▫⏳ <strong>Runtime:</strong> ${movie.runtime}</p>
+          <p>▫🎭 <strong>Genre:</strong> ${movie.genre}</p>
+          <p style="text-align:justify; line-height:1.5; color:#555;">📝 <strong>Description:</strong> ${movie.description}</p>
 
-      <div id="players">${playersHTML}</div>
-      <div id="videoPlayer"></div>
+          <div id="players" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">${playersHTML}</div>
+        </div>
+      </div>
+
+      <div id="videoPlayer" style="margin-top:30px;"></div>
     `;
   });
 
 // Load player function
 function loadPlayer(link){
-  // Force /preview for iframe
   let embedLink = link.replace("/view", "/preview");
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="400" allowfullscreen></iframe>
+    <iframe src="${embedLink}" width="100%" height="500" style="border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.3);" allowfullscreen></iframe>
   `;
 }
 
-// Download function (open Player 1 link in new tab)
+// Download function
 function downloadMovie(link){
   let downloadLink = link.replace("/preview", "/view"); // normal Google Drive view/download link
   window.open(downloadLink, "_blank");
