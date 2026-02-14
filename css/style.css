@@ -233,37 +233,23 @@ footer{
     letter-spacing:1px;
 }
 
-.latest-header {
+.latest-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
 }
 
-.latest-header h2 {
+.latest-title {
+    font-size: 24px;
+    font-weight: bold;
     color: #00bfff;
-    margin: 0;
 }
 
-.search-box {
-    display: flex;
-    align-items: center;
-}
-
-.search-box input {
-    width: 280px;   /* ← මෙතන width එක change කරලා ඔයාගේ සුදු ඉරේ size එකට match කරගන්න */
-    padding: 8px 12px;
-    border-radius: 20px;
-    border: 1px solid #00bfff;
-    outline: none;
-}
-
-.search-box button {
-    margin-left: 5px;
+.search-input {
+    width: 260px;   /* ← මේක සුදු ඉරේ දිගට match කරගන්න */
     padding: 8px 15px;
     border-radius: 20px;
     border: none;
-    background: #00bfff;
-    color: white;
-    cursor: pointer;
+    outline: none;
 }
