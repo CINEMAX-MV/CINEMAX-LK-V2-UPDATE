@@ -1,19 +1,5 @@
 [
   {
-    "title": "Kung Fu Panda 2 (2011)",
-    "image": "https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg",
-    "imdb": "7.2/10",
-    "release_date": "2011 May 26",
-    "director": "Jennifer Yuh Nelson",
-    "runtime": "1h 30m",
-    "genre": "Animation | Action | Adventure",
-    "description": "Po දැන් Dragon Warrior ලෙස Valley of Peace ආරක්ෂා කරන අතර Furious Five එක්ක එකතු වෙයි. Lord Shen කියන නව විරුද්ධයෙක් Kung Fu විනාශ කරන්න උත්සාහ කරන අතර, Po තමන්ගේ අතීතය හොයමින් Shen නවතා Kung Fu ආරක්ෂා කරන කතාව. ඔහුගේ ගමනේදී අලුත් මිතුරන් හමුවෙනවා, challenges හමුවේ ඔහුගේ inner strength සහ courage විකසනය වෙනවා. Emotional සහ action එකතු වූ, family-friendly, Sinhala dubbing එකේ epic animation එකක්.",
-    "players": [
-      { "name": "Player 1", "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview" },
-      { "name": "Player 2", "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview" }
-    ]
-  },
-  {
     "title": "Ratatouille (2007)",
     "image": "https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg",
     "imdb": "8.0/10",
@@ -35,7 +21,7 @@
     "director": "Kasun Perera",
     "runtime": "2h 05m",
     "genre": "Action | Sinhala",
-    "description": "Soorya චිත්‍රපටය, තරුණ නිළියන් සහ නළුන්ගේ dynamic performance එකක්. Thriller සහ action පිරි storyline එකක්, තරුණ යුවළක් තම ජීවිතයට බාධා වන බලවත් විරුද්ධයන්ට එරෙහිව උත්සාහ කරන කතා පදනමක්. Sinhala dubbing එකේ intense fight scenes, romantic subplot සහ emotional moments එක්ක, 2025 release එකේ standout movie එකක්.",
+    "description": "Soorya චිත්‍රපටය තරුණ නළු නිළියන්ගේ dynamic performance එකක්. Thriller සහ action පිරි storyline එකක්, තරුණ යුවළක් තම ජීවිතයට බාධා වන බලවත් විරුද්ධයන්ට එරෙහිව උත්සාහ කරන කතාවක්. Sinhala dubbing එකේ intense fight scenes, romantic subplot සහ emotional moments එක්ක 2025 release එකේ standout movie එකක්.",
     "players": [
       { "name": "Player 1", "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv?hash=AgAD5h" },
       { "name": "Player 2", "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv?hash=AgAD5h" }
@@ -44,12 +30,12 @@
   {
     "title": "Jack And The Giant Slayer (2013)",
     "image": "https://i.ibb.co/6J81Yfvs/RD393437353638333237343640732e77686174736170702e6e6574-566677.jpg",
-    "imdb": "6.1/10",
-    "release_date": "2013 Feb 1",
+    "imdb": "6.3/10",
+    "release_date": "2013 Mar 01",
     "director": "Bryan Singer",
-    "runtime": "1h 50m",
+    "runtime": "1h 54m",
     "genre": "Adventure | Fantasy | Action",
-    "description": "Jack, a humble miner, finds a magical bean that grows into a giant beanstalk leading to a realm of giants. Adventure, bravery, and cunning help Jack confront the mighty Giant and save his village. Sinhala dubbing එකේ family-friendly fantasy film එකක්, visual effects සහ action sequences බහුලයි.",
+    "description": "Jack නම් තරුණයෙක් magical beans හරහා giants ලෝකයට වැටෙනවා. එතනදී ඔහුට අභියෝග, giant battles සහ princess එකක් බේරගන්න mission එකක් ලැබෙනවා. Adventure සහ fantasy action scenes ගොඩක් තියෙන මේ movie එක Sinhala dubbing එක්ක බලන්න තවත් entertaining.",
     "players": [
       { "name": "Player 1", "link": "https://drive.google.com/file/d/1DnUKRh6I7s6_vWGQrE5R_iYkjzyFTWFB/preview" },
       { "name": "Player 2", "link": "https://drive.google.com/file/d/1DnUKRh6I7s6_vWGQrE5R_iYkjzyFTWFB/preview" }
@@ -58,12 +44,12 @@
   {
     "title": "Jungle Cruise (2021)",
     "image": "https://i.ibb.co/JWBvyc5X/RD393437343037303731353740732e77686174736170702e6e6574-308706.jpg",
-    "imdb": "6.7/10",
+    "imdb": "6.6/10",
     "release_date": "2021 Jul 30",
     "director": "Jaume Collet-Serra",
     "runtime": "2h 07m",
     "genre": "Adventure | Action | Comedy",
-    "description": "Jungle Cruise, Dr. Lily Houghton සහ Frank Wolff එක්ක Amazon rainforest එකේ adventure එකක්. Treasure hunting, jungle challenges සහ villain encounters සමඟ thrilling ride එකක්. Sinhala dubbing එකේ entertaining family adventure movie එකක්, fun, action, සහ romance scenes සමඟ.",
+    "description": "Amazon jungle එක තුළ mythical tree එකක් සොයන්න Dr. Lily Houghton යන explorer එකක් river boat captain Frank Wolff එක්ක journey එකක් යනවා. Action, comedy සහ mystery එක්ක jungle adventure එකක්ම පිරුණු movie එකක්. Sinhala dubbing එක්ක තවත් fun.",
     "players": [
       { "name": "Player 1", "link": "https://drive.google.com/file/d/1DqOfe5-WiFNkCmkmu1UBMRNKENAVEKf2/preview" },
       { "name": "Player 2", "link": "https://drive.google.com/file/d/1DqOfe5-WiFNkCmkmu1UBMRNKENAVEKf2/preview" }
@@ -71,13 +57,13 @@
   },
   {
     "title": "Garfield: The Movie (2004)",
-    "image": "https://files.catbox.moe/fn8b93.jpg",
-    "imdb": "5.0/10",
+    "image": "https://i.ibb.co/0pT6Mz6F/RD393437343037303731353740732e77686174736170702e6e6574-569534.jpg",
+    "imdb": "5.1/10",
     "release_date": "2004 Jun 11",
     "director": "Peter Hewitt",
     "runtime": "1h 20m",
-    "genre": "Comedy | Family | Animation",
-    "description": "Garfield, lazy and sarcastic cat, discovers adventures outside his comfy home. When he faces challenges, he learns the importance of friendship, family, and courage. Sinhala dubbing එකේ hilarious humor සහ colorful animation එකක් සමඟ entertaining movie එකක්.",
+    "genre": "Comedy | Family | Fantasy",
+    "description": "Lazy cat Garfield තමන්ගේ chill life එක enjoy කරන අතර, owner Jon ගෙ ජීවිතයට Odie කියන puppy එකක් එනවා. ඒකෙන් Garfield ගේ jealous comedy moments ගොඩක්. Family friendly humor සහ fun scenes එක්ක Sinhala dubbing එකේ තවත් entertaining movie එකක්.",
     "players": [
       { "name": "Player 1", "link": "https://drive.google.com/file/d/1UIJ0eAsC_BB6qobv8IOjmcrnmffB75U4/preview" },
       { "name": "Player 2", "link": "https://drive.google.com/file/d/1UIJ0eAsC_BB6qobv8IOjmcrnmffB75U4/preview" }
@@ -86,12 +72,12 @@
   {
     "title": "Paulie (1998)",
     "image": "https://i.ibb.co/nsb03dpn/RD393437343037303731353740732e77686174736170702e6e6574-673085.jpg",
-    "imdb": "6.4/10",
-    "release_date": "1998 Apr 3",
+    "imdb": "6.7/10",
+    "release_date": "1998 Apr 17",
     "director": "John Roberts",
-    "runtime": "1h 43m",
-    "genre": "Adventure | Family | Comedy",
-    "description": "Paulie, intelligent talking parrot, escapes a lab to find his lost owner. Journey එකේදි ඔහු ඔහුගේ new friends හමුවෙනවා, challenges ජය කරයි, courage සහ loyalty ඔහුට ආරක්ෂා වෙනවා. Sinhala dubbing එකේ family-friendly, emotional, adventure movie එකක්, heartwarming story සහ humor එකත් එක්ක.",
+    "runtime": "1h 31m",
+    "genre": "Adventure | Comedy | Family",
+    "description": "Paulie කියන්නේ කතා කරන intelligent parrot එකක්. ඔහුගේ owner එකත් අතර වෙන්වීමෙන් පසු, නැවත owner එක හොයාගෙන යන emotional journey එකක් තියෙනවා. Friendship, hope සහ family value පිරුණු ලස්සන movie එකක් Sinhala dubbing එක්ක බලන්න perfect.",
     "players": [
       { "name": "Player 1", "link": "https://drive.google.com/file/d/1wYOvszMsYCObW2RERK5k8nuEy9n6p6OY/preview" },
       { "name": "Player 2", "link": "https://drive.google.com/file/d/1wYOvszMsYCObW2RERK5k8nuEy9n6p6OY/preview" }
@@ -100,54 +86,54 @@
   {
     "title": "Luck (2022)",
     "image": "https://i.ibb.co/qFNXq43Q/RD393437353638333237343640732e77686174736170702e6e6574-533726.jpg",
-    "imdb": "6.8/10",
-    "release_date": "2022 Aug 5",
+    "imdb": "6.4/10",
+    "release_date": "2022 Aug 05",
     "director": "Peggy Holmes",
     "runtime": "1h 45m",
-    "genre": "Animation | Family | Fantasy",
-    "description": "Sam, young girl, discovers magical world of Luck. Journey එකේදි she faces challenges, makes friends, and learns lessons about fortune, courage, and kindness. Sinhala dubbing එකේ colorful animation, adventure, humor සහ heartwarming moments එක්ක family movie එකක්.",
+    "genre": "Animation | Adventure | Comedy",
+    "description": "Sam Greenfield කියන unlucky girl එකක් magical Land of Luck එකට වැටෙනවා. එතනදී lucky creatures එක්ක friendship එකක් develop වෙනවා. Fun, fantasy adventure එකක්, positivity message එකක් එක්ක family එකටම enjoyable animation movie එකක්.",
     "players": [
       { "name": "Player 1", "link": "https://drive.google.com/file/d/1xhkukzE_Frv14o98vaZFBRENYRSS_50W/preview" },
       { "name": "Player 2", "link": "https://drive.google.com/file/d/1xhkukzE_Frv14o98vaZFBRENYRSS_50W/preview" }
     ]
   },
   {
-    "title": "Bee (2007)",
+    "title": "Bee Movie (2007)",
     "image": "https://i.ibb.co/hJ8cRShj/RD393437343037303731353740732e77686174736170702e6e6574-907221.jpg",
     "imdb": "6.1/10",
-    "release_date": "2007 Apr 6",
+    "release_date": "2007 Nov 02",
     "director": "Simon J. Smith",
     "runtime": "1h 31m",
-    "genre": "Animation | Family | Comedy",
-    "description": "Barry, young bee, ventures outside hive to explore the world. Adventure, comedy, and life lessons follow as he discovers his purpose and true friends. Sinhala dubbing එකේ entertaining, funny, family-friendly animation movie එකක්.",
+    "genre": "Animation | Comedy | Family",
+    "description": "Barry B. Benson කියන bee එකක්, තමන්ගේ boring hive life එකෙන් ඉවත් වෙලා outside world එක explore කරනවා. Humans honey steal කරන එක දැනගත් පස්සේ court case එකක් දාගෙන comedy chaos එකක් create වෙනවා. Family friendly fun animation movie එකක් Sinhala dubbing එක්ක හොඳටම බලන්න පුළුවන්.",
     "players": [
       { "name": "Player 1", "link": "https://drive.google.com/file/d/1gxFdxEDI8dbG8Xs_1oPQvYPHPAiKsOkj/preview" },
       { "name": "Player 2", "link": "https://drive.google.com/file/d/1gxFdxEDI8dbG8Xs_1oPQvYPHPAiKsOkj/preview" }
     ]
   },
   {
-    "title": "Tinkerbell (2008)",
+    "title": "Tinker Bell (2008)",
     "image": "https://i.ibb.co/zHRyTnXr/RD393437343037303731353740732e77686174736170702e6e6574-121909.jpg",
-    "imdb": "6.2/10",
+    "imdb": "6.7/10",
     "release_date": "2008 Oct 28",
     "director": "Bradley Raymond",
-    "runtime": "1h 15m",
-    "genre": "Animation | Fantasy | Family",
-    "description": "Tinkerbell, fairy of Pixie Hollow, faces challenges that test her courage, creativity, and friendship. She learns the importance of community and believing in herself. Sinhala dubbing එකේ magical animation, heartwarming story සහ fun moments එක්ක young viewers-friendly movie එකක්.",
+    "runtime": "1h 18m",
+    "genre": "Animation | Family | Fantasy",
+    "description": "Pixie Hollow ලෝකයේ Tinker Bell තමන්ගේ talent එක හොයාගෙන fairy world එකේ important role එකක් ඉටු කරන කතාවක්. Friendship, magic සහ emotional moments එක්ක kids වලටම හොඳම animation fantasy movie එකක් Sinhala dubbing එක්ක.",
     "players": [
-      { "name": "Player 1", "link": "https://drive.google.com/file/d/1lqHBbGM_uMIF6m7qlLSx6ou1SD8-t0W/preview" },
-      { "name": "Player 2", "link": "https://drive.google.com/file/d/1lqHBbGM_uMIF6m7qlLSx6ou1SD8-t0W/preview" }
+      { "name": "Player 1", "link": "https://drive.google.com/file/d/1lqHBbGM_uMIF6m7qlLSx6ou1SD8-t0xW/preview" },
+      { "name": "Player 2", "link": "https://drive.google.com/file/d/1lqHBbGM_uMIF6m7qlLSx6ou1SD8-t0xW/preview" }
     ]
   },
   {
     "title": "Bridge to Terabithia (2007)",
     "image": "https://i.ibb.co/4ZBzG9c2/RD393437343037303731353740732e77686174736170702e6e6574-486606.jpg",
-    "imdb": "7.1/10",
+    "imdb": "7.2/10",
     "release_date": "2007 Feb 16",
     "director": "Gabor Csupo",
     "runtime": "1h 36m",
     "genre": "Adventure | Drama | Family",
-    "description": "Jess සහ Leslie, two friends, creates an imaginary world called Terabithia to escape reality. Their friendship, imagination, and courage face real-life challenges, teaching lessons about love, loss, and growing up. Sinhala dubbing එකේ emotional, family-friendly, adventure-filled movie එකක්.",
+    "description": "Jess සහ Leslie කියන kids දෙන්නෙක් fantasy world එකක් create කරලා Terabithia කියන imaginary kingdom එකක adventure යනවා. Friendship, emotions සහ life lessons ගොඩක් තියෙන touching movie එකක්. Sinhala dubbing එක්ක තවත් heartfelt experience එකක්.",
     "players": [
       { "name": "Player 1", "link": "https://drive.google.com/file/d/1-QX2a21LhBsV9WW04TOODET6859KUKee/preview" },
       { "name": "Player 2", "link": "https://drive.google.com/file/d/1-QX2a21LhBsV9WW04TOODET6859KUKee/preview" }
@@ -156,1115 +142,601 @@
   {
     "title": "The Penguins of Madagascar (2014)",
     "image": "https://i.ibb.co/k2h5tBLK/RD393437343037303731353740732e77686174736170702e6e6574-595944.jpg",
-    "imdb": "6.7/10",
-    "release_date": "2014 Nov 26",
-    "director": "Simon J. Smith",
-    "runtime": "1h 32m",
-    "genre": "Animation | Comedy | Family",
-    "description": "Madagascar Penguins හතරම (Skipper, Kowalski, Rico, Private) තම secret missions වල යෙදී, ලෝකයට විනාශයක් කරන්න යන දුෂ්ට සැලසුම් වළක්වා ගැනීමට උත්සාහ කරනවා. ඔවුන්ගේ clever strategies සහ funny antics නිසා විවිධ comedic situations වලට මුහුණ දෙන අතර, viewers Sinhala dubbing එකෙන් විනෝදය සහ action-packed adventure එක අත්විඳින්න පුළුවන්. මෙහිදි teamwork, friendship, ingenuity වල වටිනාකම තේරුම් ගැනීමටත් පුළුවන්. Family-friendly, comedy සහ adventure mix එකක්.",
+    "imdb": "N/A",
+    "release_date": "2014",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "The Penguins of Madagascar (2014) චිත්‍රපටය humor සහ action පිරුණු family friendly animation movie එකක්. Penguins කණ්ඩායම mission එකක් සඳහා ලොව වටා යන අතර thrilling scenes සහ comedy moments එක්ක ඉතා entertaining experience එකක් ලබාදෙනවා.",
     "players": [
-      {"name": "Player 1", "link": "https://iws.sinhalachr.workers.dev/?id=Movzm1z3zhhQ2a7YvV4qLKGo&assetToken=zVwfjA5eG6oEk7bFqahs2K2i&download=true"},
-      {"name": "Player 2", "link": "https://iws.sinhalachr.workers.dev/?id=Movzm1z3zhhQ2a7YvV4qLKGo&assetToken=zVwfjA5eG6oEk7bFqahs2K2i&download=true"}
+      {
+        "name": "Player 1",
+        "link": "https://iws.sinhalachr.workers.dev/?id=Movzm1z3zhhQ2a7YvV4qLKGo&assetToken=zVwfjA5eG6oEk7bFqahs2K2i&download=true"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://iws.sinhalachr.workers.dev/?id=Movzm1z3zhhQ2a7YvV4qLKGo&assetToken=zVwfjA5eG6oEk7bFqahs2K2i&download=true"
+      }
     ]
   },
   {
     "title": "Kung Fu Panda 1 (2008)",
     "image": "https://i.ibb.co/d44C9b1M/RD393437353638333237343640732e77686174736170702e6e6574-737567.jpg",
-    "imdb": "7.5/10",
-    "release_date": "2008 Jun 6",
-    "director": "Mark Osborne, John Stevenson",
-    "runtime": "1h 32m",
-    "genre": "Animation | Action | Adventure",
-    "description": "Po, clumsy panda, Valley of Peace ආරක්ෂා කරන Dragon Warrior ලෙස තෝරා ගෙන සිටිනවා. Furious Five සහ training කරන අතර, Tai Lung කියන විරුද්ධයා ඔවුන්ගේ valley විනාශ කරන්න උත්සාහ කරනවා. Po තමන්ගේ inner strength හඳුනාගෙන, courage, discipline සහ friendship වල වටිනාකම සොයා ගනී. Sinhala dubbing එකේ Poගේ growth, humor, action sequences සහ emotional journey එක viewers-friendly style එකෙන් අත්විඳිය හැක.",
+    "imdb": "N/A",
+    "release_date": "2008",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල | Mega | CINEMAX.COM",
+    "description": "Kung Fu Panda 1 (2008) කියන්නේ comedy සහ action එකටම ගැලපෙන legendary animation movie එකක්. Po කියන panda එක තමන්ගේ dream එක follow කරලා kung fu warrior එකක් වෙන්න ගන්න journey එක ඉතා fun සහ inspiring.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/15jTNmFwXkd3Ujy6oyI69jxkyWEFl64WG/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/15jTNmFwXkd3Ujy6oyI69jxkyWEFl64WG/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/15jTNmFwXkd3Ujy6oyI69jxkyWEFl64WG/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/15jTNmFwXkd3Ujy6oyI69jxkyWEFl64WG/preview"
+      }
     ]
   },
   {
     "title": "Kung Fu Panda 2 (2011)",
     "image": "https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg",
-    "imdb": "7.2/10",
-    "release_date": "2011 May 26",
-    "director": "Jennifer Yuh Nelson",
-    "runtime": "1h 30m",
-    "genre": "Animation | Action | Adventure",
-    "description": "Po දැන් Valley of Peace ආරක්ෂා කරන Dragon Warrior ලෙස Furious Five එක්ක සිටිනවා. Lord Shen කියන නව විරුද්ධයා, kung fu විනාශ කරන්න සහ චීනය පුරා chaos සෑදීමට උත්සාහ කරනවා. Po තමන්ගේ අතීතය සොයා, Shen නවතා kung fu ආරක්ෂා කිරීමට යන අතර, එම ගමනේදි තමන්ගේ සත්‍ය inner power, courage සහ identity හඳුනා ගනී. Sinhala dubbing එකේ action, drama, humor සහ emotional sequences viewers-friendly style එකෙන් අත්විඳිය හැක.",
+    "imdb": "N/A",
+    "release_date": "2011",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Kung Fu Panda 2 (2011) චිත්‍රපටය Poගේ story එක තවත් thrilling level එකකට ගෙන යන sequel එකක්. New villain එකක් එක්ක fight කරන Po, තමන්ගේ past එක ගැනත් දැනගන්න ලැබෙන emotional moments සහ action scenes පිරුණු movie එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
+      }
     ]
   },
   {
     "title": "Kung Fu Panda 3 (2016)",
     "image": "https://i.ibb.co/WWNNkr9J/RD393437353638333237343640732e77686174736170702e6e6574-595804.jpg",
-    "imdb": "6.8/10",
-    "release_date": "2016 Jan 29",
-    "director": "Jennifer Yuh Nelson, Alessandro Carloni",
-    "runtime": "1h 35m",
-    "genre": "Animation | Action | Adventure",
-    "description": "Po තමන්ගේ biological father සමඟ හමුවී, අලුත් kung fu challenges වල යෙදී, Furious Five සහ Dragon Warriors මිතුරන් සමඟ එකතුවී, evil Kai විනාශ කිරීමට උත්සාහ කරනවා. ඔහුගේ past trauma, inner fears සහ courage මුහුණ දෙමින් true hero ලෙස වර්ධනය වෙනවා. Sinhala dubbing එකේ humor, action sequences සහ emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක.",
+    "imdb": "N/A",
+    "release_date": "2016",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Kung Fu Panda 3 (2016) කියන්නේ Poගේ adventure එක තවත් epic එකක් කරන sequel එකක්. Po තමන්ගේ panda family එක හමුවෙලා, powerful enemy එකකට එරෙහිව fight කරන story එක comedy සහ action එකටම ගැලපෙනවා.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/preview"
+      }
     ]
   },
   {
     "title": "Baby's Day Out (1994)",
     "image": "https://i.ibb.co/DjwGjMF/RD393437343037303731353740732e77686174736170702e6e6574-485234.jpg",
-    "imdb": "6.3/10",
-    "release_date": "1994 Jul 1",
-    "director": "Patrick Read Johnson",
-    "runtime": "1h 31m",
-    "genre": "Comedy | Family",
-    "description": "Baby Bink, විශේෂයෙන් naughty baby, kidnapping වෙලා urban city තුළ adventure එකක් අරඹනවා. ඔහුගේ cleverness සහ innocence නිසා, kidnappers විවිධ hilarious situations වලට මුහුණ දෙනවා. Sinhala dubbing එකෙන් family-friendly comedy, slapstick humor සහ adventurous moments viewers-friendly style එකෙන් අත්විඳිය හැක.",
+    "imdb": "N/A",
+    "release_date": "1994",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Baby's Day Out (1994) කියන්නේ comedy classic movie එකක්. Baby එක kidnappersලාගෙන් පැනලා city එක පුරා ගිය adventure එක හේතුවෙන් hilarious situations සහ fun scenes ගොඩක් තියෙනවා.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/12PL9OL0ZR0CfR80G9y7GbZHz47HyYnb5/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/12PL9OL0ZR0CfR80G9y7GbZHz47HyYnb5/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/12PL9OL0ZR0CfR80G9y7GbZHz47HyYnb5/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/12PL9OL0ZR0CfR80G9y7GbZHz47HyYnb5/preview"
+      }
     ]
   },
   {
     "title": "TinTin (2011)",
     "image": "https://i.ibb.co/fYxW4fs9/RD393437353638333237343640732e77686174736170702e6e6574-265509.jpg",
-    "imdb": "7.3/10",
-    "release_date": "2011 Oct 26",
-    "director": "Steven Spielberg",
-    "runtime": "1h 47m",
-    "genre": "Animation | Adventure | Family",
-    "description": "TinTin, young and brave reporter, and his dog Snowy, global adventure එකක් අරඹනවා. Hidden treasure සහ mystery clues සොයා, Captain Haddock, Professor Calculus වගේ characters සමඟ එක්ව, pirates සහ villains වලට මුහුණ දෙනවා. Sinhala dubbing එකේ suspense, humor, action සහ emotional sequences viewers-friendly style එකෙන් අත්විඳිය හැක. Adventure, courage, friendship වල themes viewers-friendly style එකෙන් පැහැදිලිව දැනෙයි.",
+    "imdb": "N/A",
+    "release_date": "2011",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "TinTin (2011) කියන්නේ thrilling adventure animation movie එකක්. TinTin සහ ඔහුගේ dog Snowy එක්ක treasure hunt එකක් අතර action සහ mystery පිරුණු scenes ගොඩක් තියෙනවා.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1aF6SK-BfKa-DaxYQXCi2fLodManSUMbU/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1aF6SK-BfKa-DaxYQXCi2fLodManSUMbU/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1aF6SK-BfKa-DaxYQXCi2fLodManSUMbU/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1aF6SK-BfKa-DaxYQXCi2fLodManSUMbU/preview"
+      }
     ]
   },
   {
     "title": "Up Up & Up (2019)",
     "image": "https://i.ibb.co/BKHjK213/RD393437353638333237343640732e77686174736170702e6e6574-352310.jpg",
-    "imdb": "6.5/10",
-    "release_date": "2019 May 10",
-    "director": "Patrick Osborne",
-    "runtime": "1h 15m",
-    "genre": "Animation | Adventure | Family",
-    "description": "Up Up & Up කියන චිත්‍රපටයේදි, nature and environment-related magical adventure එකක් viewers අත්විඳිය හැක. Main characters, creative adventures සහ unexpected challenges මුහුණ දෙන අතර, Sinhala dubbing එකේ humor, emotional moments සහ stunning visuals අත්විඳිය හැක. Family-friendly story එකක් viewers-friendly style එකෙන්.",
+    "imdb": "N/A",
+    "release_date": "2019",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Up Up & Up (2019) කියන්නේ fun adventure movie එකක්. entertaining story line එකක් සහ family friendly scenes එක්ක මේක kidsලාටත් adultsලාටත් enjoyable movie එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/17ElgeJac1rnI9a6oCwdYDNcL9-UVclwW/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/17ElgeJac1rnI9a6oCwdYDNcL9-UVclwW/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/17ElgeJac1rnI9a6oCwdYDNcL9-UVclwW/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/17ElgeJac1rnI9a6oCwdYDNcL9-UVclwW/preview"
+      }
     ]
   },
   {
     "title": "Turbo (2013)",
     "image": "https://i.ibb.co/Hf50hYnR/RD393437353638333237343640732e77686174736170702e6e6574-916591.jpg",
-    "imdb": "6.4/10",
-    "release_date": "2013 Jul 17",
-    "director": "David Soren",
-    "runtime": "1h 36m",
-    "genre": "Animation | Comedy | Family",
-    "description": "Turbo, ordinary snail, becomes super-fast after magical incident. Racing competitions වලට join වෙන අතර, his dreams, courage සහ determination ඔහුගේ life වෙනස් කරනවා. Sinhala dubbing එකේ humor, adventure, motivational moments viewers-friendly style එකෙන් අත්විඳිය හැක. Friendship, perseverance, self-belief වල messages clear.",
+    "imdb": "N/A",
+    "release_date": "2013",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Turbo (2013) කියන්නේ speed dream එකක් තියෙන snail එකක් ගැන inspiring animation movie එකක්. Turbo තමන්ගේ dream එක වෙනුවෙන් fight කරන journey එක comedy සහ motivation පිරුණු එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1yHw4j96UUObvDcxEPEaDpuvQxoMBDQ1i/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1yHw4j96UUObvDcxEPEaDpuvQxoMBDQ1i/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1yHw4j96UUObvDcxEPEaDpuvQxoMBDQ1i/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1yHw4j96UUObvDcxEPEaDpuvQxoMBDQ1i/preview"
+      }
     ]
   },
   {
     "title": "Garfield (A Tail Of Two Kitties) (2006)",
     "image": "https://i.ibb.co/6cTzdHyY/RD393437353638333237343640732e77686174736170702e6e6574-311695.jpg",
-    "imdb": "5.9/10",
-    "release_date": "2006 Jun 16",
-    "director": "Tim Hill",
-    "runtime": "1h 21m",
-    "genre": "Comedy | Family",
-    "description": "Garfield, lazy cat, London visit කරද්දී, Royal Palace related adventure එකක් මුහුණ දෙනවා. Odie සහ new characters සමඟ hilarious situations වලට යෙදෙන අතර, Sinhala dubbing එකේ humor, funny moments සහ family-friendly adventure viewers-friendly style එකෙන් අත්විඳිය හැක. Cats, friendship, courage themes clear.",
+    "imdb": "N/A",
+    "release_date": "2006",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Garfield (A Tail Of Two Kitties) (2006) කියන්නේ comedy adventure movie එකක්. Garfield cat එක unexpected situation එකකට වැටී adventure එකක් තුළ යන hilarious story එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1y2AAUbcMn7AJNKjD2JpAVgtu_HrXbafP/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1y2AAUbcMn7AJNKjD2JpAVgtu_HrXbafP/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1y2AAUbcMn7AJNKjD2JpAVgtu_HrXbafP/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1y2AAUbcMn7AJNKjD2JpAVgtu_HrXbafP/preview"
+      }
     ]
   },
   {
-    "title": "Legend of Guardian (2013)",
+    "title": "ද ලෙගෙන්ඩ් ඔෆ් ගාර්ඩියන් (2013)",
     "image": "https://i.ibb.co/2YNXGrR6/RD393437353638333237343640732e77686174736170702e6e6574-753361.jpg",
-    "imdb": "6.8/10",
-    "release_date": "2013 Sep 24",
-    "director": "Zack Snyder",
-    "runtime": "1h 37m",
-    "genre": "Animation | Action | Adventure",
-    "description": "Owls guardians of mystical world protect creatures from evil forces. Main character, Soren, his courage, friendship, determination වලින් darkness එක defeat කරනවා. Sinhala dubbing එකේ adventure, action, fantasy, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Nature, courage, identity themes clear.",
+    "imdb": "N/A",
+    "release_date": "2013",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "ද ලෙගෙන්ඩ් ඔෆ් ගාර්ඩියන් (2013) කියන්නේ epic fantasy animation movie එකක්. owls ලෝකය ඇතුලේ courage, friendship සහ heroism පිරුණු story එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1HqTWC7uX2KTE0-eXugGjKelPBfXsYRAF/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1HqTWC7uX2KTE0-eXugGjKelPBfXsYRAF/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1HqTWC7uX2KTE0-eXugGjKelPBfXsYRAF/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1HqTWC7uX2KTE0-eXugGjKelPBfXsYRAF/preview"
+      }
     ]
   },
   {
     "title": "Alvin And The Chipmunks (2007)",
     "image": "https://i.ibb.co/2Y1TKWnn/RD393437353638333237343640732e77686174736170702e6e6574-140773.jpg",
-    "imdb": "5.5/10",
-    "release_date": "2007 Dec 14",
-    "director": "Tim Hill",
-    "runtime": "1h 32m",
-    "genre": "Animation | Comedy | Family",
-    "description": "Alvin, Simon, Theodore, singing band එකේ adventures අත්විඳිමින්, mischievous antics නිසා hilarious situations වලට යෙදෙනවා. Sinhala dubbing එකේ music, humor, friendship, family-friendly moments viewers-friendly style එකෙන් අත්විඳිය හැක. Family comedy, fun, friendship clear.",
+    "imdb": "N/A",
+    "release_date": "2007",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Alvin And The Chipmunks (2007) කියන්නේ music, comedy සහ family fun එකටම ගැලපෙන movie එකක්. Chipmunksලාගේ funny moments සහ songs ගොඩක් නිසා full entertainment එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1fwBmTgiX372C3dZzrI7nSyZB3ck6YiU-/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1fwBmTgiX372C3dZzrI7nSyZB3ck6YiU-/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1fwBmTgiX372C3dZzrI7nSyZB3ck6YiU-/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1fwBmTgiX372C3dZzrI7nSyZB3ck6YiU-/preview"
+      }
     ]
   },
   {
     "title": "Alvin And The Chipmunks 2 (2009)",
     "image": "https://i.ibb.co/xq3vRQ8L/RD393437353638333237343640732e77686174736170702e6e6574-336438.jpg",
-    "imdb": "5.2/10",
-    "release_date": "2009 Dec 25",
-    "director": "Betty Thomas",
-    "runtime": "1h 28m",
-    "genre": "Animation | Comedy | Family",
-    "description": "Alvin සහ Chipmunks තවත් musical adventures වලට යන අතර, new characters සහ situations නිසා funny and entertaining experiences viewers-friendly style එකෙන් අත්විඳිය හැක. Sinhala dubbing එකේ music, humor, adventure, friendship clear.",
+    "imdb": "N/A",
+    "release_date": "2009",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Alvin And The Chipmunks 2 (2009) කියන්නේ chipmunksලාගේ adventure එක තවත් fun level එකකට ගෙනයන sequel එකක්. new characters සහ songs එක්ක entertainment එක වැඩි වෙලා තියෙනවා.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1J719KDXvG9dtcuD0wMwHFwOtEV0d9a3H/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1J719KDXvG9dtcuD0wMwHFwOtEV0d9a3H/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1J719KDXvG9dtcuD0wMwHFwOtEV0d9a3H/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1J719KDXvG9dtcuD0wMwHFwOtEV0d9a3H/preview"
+      }
     ]
   },
   {
     "title": "Alvin And The Chipmunks 3 (2011)",
     "image": "https://i.ibb.co/whd8KGvJ/RD393437353638333237343640732e77686174736170702e6e6574-454581.jpg",
-    "imdb": "5.1/10",
-    "release_date": "2011 Dec 16",
-    "director": "Mike Mitchell",
-    "runtime": "1h 28m",
-    "genre": "Animation | Comedy | Family",
-    "description": "Alvin සහ Chipmunks තවත් hilarious adventures වලට යන අතර, new locations, new characters සහ musical sequences නිසා viewers Sinhala dubbing එකේ fun, laughter සහ entertaining moments අත්විඳිය හැක. Friendship, family, humor clear.",
+    "imdb": "N/A",
+    "release_date": "2011",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Alvin And The Chipmunks 3 (2011) කියන්නේ chipmunksලා island එකක stranded වෙලා ගන්න hilarious adventure එකක්. comedy, songs සහ family friendly scenes පිරුණු movie එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1ALMcgNd2i0uiAEELnkBzm9DdCvAAyXQX/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1ALMcgNd2i0uiAEELnkBzm9DdCvAAyXQX/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1ALMcgNd2i0uiAEELnkBzm9DdCvAAyXQX/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1ALMcgNd2i0uiAEELnkBzm9DdCvAAyXQX/preview"
+      }
     ]
   },
   {
     "title": "Godzilla Vs Kong (2021)",
     "image": "https://i.ibb.co/B5CT0T4M/RD393437353638333237343640732e77686174736170702e6e6574-343669.jpg",
-    "imdb": "6.4/10",
-    "release_date": "2021 Mar 31",
-    "director": "Adam Wingard",
-    "runtime": "1h 53m",
-    "genre": "Action | Sci-Fi | Adventure",
-    "description": "Godzilla සහ Kong, epic battle එකකට ලක් වෙනවා, human civilization එකට බලපෑම් සහ තර්ජන ඇති කරමින්. Monsterverse universe එකේ අලුත් story arc එකක් viewers Sinhala dubbing එකෙන් අත්විඳිය හැක. Action, suspense, intense visual effects සහ emotional moments සමඟ adventure එක viewers-friendly style එකෙන් පැහැදිලිව දැනෙයි.",
+    "imdb": "N/A",
+    "release_date": "2021",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Godzilla Vs Kong (2021) කියන්නේ monster universe එකේ biggest battle එකක්. Godzilla සහ Kong අතර epic fight scenes, destruction සහ action packed storyline එක movie loversලාට සුපිරි entertainment එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1kn2v4CEsER_tbE7YThfaN8-XbYpw9mf9/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1kn2v4CEsER_tbE7YThfaN8-XbYpw9mf9/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1kn2v4CEsER_tbE7YThfaN8-XbYpw9mf9/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1kn2v4CEsER_tbE7YThfaN8-XbYpw9mf9/preview"
+      }
     ]
   },
   {
     "title": "Aruvam (2019)",
     "image": "https://i.ibb.co/JwHygQ3v/RD393437353638333237343640732e77686174736170702e6e6574-838461.jpg",
-    "imdb": "6.0/10",
-    "release_date": "2019 Feb 15",
-    "director": "Samar Iyer",
-    "runtime": "2h 0m",
-    "genre": "Action | Thriller | Horror",
-    "description": "Aruvam, revenge-horror story එකක්. Main character, supernatural powers සහ mystery elements සමඟ, villains වලට මුහුණ දෙනවා. Sinhala dubbing එකේ suspense, thrilling moments සහ action sequences viewers-friendly style එකෙන් අත්විඳිය හැක. Revenge, justice, courage themes clear.",
+    "imdb": "N/A",
+    "release_date": "2019",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Aruvam (2019) කියන්නේ thriller/horror style movie එකක්. suspense, action සහ mysterious events එක්ක movie එක පුරා tension එක maintain කරන entertaining story එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1KoBZr94R2hkTaXit4uKwE1zR8wxwXuad/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1KoBZr94R2hkTaXit4uKwE1zR8wxwXuad/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1KoBZr94R2hkTaXit4uKwE1zR8wxwXuad/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1KoBZr94R2hkTaXit4uKwE1zR8wxwXuad/preview"
+      }
     ]
   },
   {
     "title": "Sonic (2020)",
     "image": "https://i.ibb.co/SDfr3D5C/RD393437353638333237343640732e77686174736170702e6e6574-834175.jpg",
-    "imdb": "6.5/10",
-    "release_date": "2020 Feb 14",
-    "director": "Jeff Fowler",
-    "runtime": "1h 39m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Sonic, super-fast blue hedgehog, human world එකේ villain Dr. Robotnik එකට මුහුණ දෙනවා. Fast-paced adventure, comedy, action sequences viewers Sinhala dubbing එකෙන් අත්විඳිය හැක. Friendship, courage, teamwork, adventure themes clear.",
+    "imdb": "N/A",
+    "release_date": "2020",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Sonic (2020) කියන්නේ speed character Sonicගේ fun action adventure movie එකක්. comedy moments සහ thrilling chase scenes එක්ක full entertainment එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/15cYb-jifox1kPdjXZHUmkwfLe3FbHMcl/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/15cYb-jifox1kPdjXZHUmkwfLe3FbHMcl/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/15cYb-jifox1kPdjXZHUmkwfLe3FbHMcl/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/15cYb-jifox1kPdjXZHUmkwfLe3FbHMcl/preview"
+      }
     ]
   },
   {
     "title": "Sonic 2 (2022)",
     "image": "https://i.ibb.co/S4WC2KTn/RD393437353638333237343640732e77686174736170702e6e6574-414366.jpg",
-    "imdb": "6.9/10",
-    "release_date": "2022 Apr 08",
-    "director": "Jeff Fowler",
-    "runtime": "2h 2m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Sonic 2, Sonic සහ Tails villain Dr. Robotnik සමඟ epic adventure එකකට යනවා. New challenges, fast-paced action, humorous moments viewers-friendly Sinhala dubbing එකෙන් අත්විඳිය හැක. Teamwork, courage, perseverance themes clear.",
+    "imdb": "N/A",
+    "release_date": "2022",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | English",
+    "description": "Sonic 2 (2022) කියන්නේ Sonicගේ story එක තවත් exciting level එකකට ගෙනයන sequel එකක්. new villains, new powers සහ action scenes ගොඩක් නිසා movie එක entertaining.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1d6VNRB0yY2y_of7xSXUYlkozFfmH10Uo/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1d6VNRB0yY2y_of7xSXUYlkozFfmH10Uo/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1d6VNRB0yY2y_of7xSXUYlkozFfmH10Uo/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1d6VNRB0yY2y_of7xSXUYlkozFfmH10Uo/preview"
+      }
     ]
   },
   {
     "title": "Sonic 3 (2024)",
     "image": "https://i.ibb.co/RTyF7y9Z/RD393437353638333237343640732e77686174736170702e6e6574-316389.jpg",
-    "imdb": "TBD",
-    "release_date": "2024 Feb 15",
-    "director": "Jeff Fowler",
-    "runtime": "2h 5m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Sonic 3, epic final showdown story එකක්. Sonic, friends සහ new allies සමඟ Dr. Robotnik defeat කිරීමට යන අතර, Sinhala dubbing එකේ fast action, adventure, humor viewers-friendly style එකෙන් අත්විඳිය හැක. Friendship, courage, teamwork, perseverance clear.",
+    "imdb": "N/A",
+    "release_date": "2024",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | English",
+    "description": "Sonic 3 (2024) කියන්නේ Sonic franchise එකේ latest sequel එකක්. new adventure එකක් සහ high action scenes එක්ක fansලාට super entertainment එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1Q4ytWeEFwXW4OSE-Bo2KEHwyvZmdiKmi/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1Q4ytWeEFwXW4OSE-Bo2KEHwyvZmdiKmi/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1Q4ytWeEFwXW4OSE-Bo2KEHwyvZmdiKmi/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1Q4ytWeEFwXW4OSE-Bo2KEHwyvZmdiKmi/preview"
+      }
     ]
   },
   {
     "title": "ICE AGE (2002)",
     "image": "https://i.ibb.co/chmgcBfv/RD393437353132353338303040732e77686174736170702e6e6574-215758.jpg",
-    "imdb": "7.5/10",
-    "release_date": "2002 Mar 15",
-    "director": "Chris Wedge",
-    "runtime": "1h 21m",
-    "genre": "Animation | Adventure | Comedy",
-    "description": "Ice Age, prehistoric era එකේ group of animals adventures අත්විඳින්නෙ. Manny, Sid සහ Diego, epic journey එකක through natural hazards සහ villains overcome කරනවා. Sinhala dubbing එකේ humor, emotional moments සහ action sequences viewers-friendly style එකෙන් අත්විඳිය හැක. Friendship, teamwork, courage themes clear.",
+    "imdb": "N/A",
+    "release_date": "2002",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "ICE AGE (2002) කියන්නේ legendary animation movie series එකේ first movie එක. Manny, Sid, Diego එක්ක baby එක protect කරන්න යන journey එක comedy සහ adventure පිරුණු එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1FLtJ4d4m4fUu0ENQjMwuGvLGBcp9pp2s/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1FLtJ4d4m4fUu0ENQjMwuGvLGBcp9pp2s/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1FLtJ4d4m4fUu0ENQjMwuGvLGBcp9pp2s/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1FLtJ4d4m4fUu0ENQjMwuGvLGBcp9pp2s/preview"
+      }
     ]
   },
   {
     "title": "ICE AGE 2 (2006)",
     "image": "https://i.ibb.co/2Yy5nbv8/RD393437353132353338303040732e77686174736170702e6e6574-964825.jpg",
-    "imdb": "7.0/10",
-    "release_date": "2006 Mar 31",
-    "director": "Carlos Saldanha",
-    "runtime": "1h 34m",
-    "genre": "Animation | Adventure | Comedy",
-    "description": "Ice Age 2, Manny, Sid සහ Diego සහ ඔවුන්ගේ animal friends, melting glacier එකක් නිසා ඇතිවන danger එකේ මුහුණ දෙනවා. ඔවුන්, හුදෙක් survival එකට පමණක් නොව, friendship සහ courage පෙන්වමින් challenges overcome කරනවා. Sinhala dubbing එකේ humor, emotional moments සහ action sequences viewers-friendly style එකෙන් අත්විඳිය හැක. Adventure, teamwork, perseverance themes clear.",
+    "imdb": "N/A",
+    "release_date": "2006",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "ICE AGE 2 (2006) කියන්නේ Manny සහ gang එකට අලුත් adventure එකක් ලැබෙන sequel එකක්. flood එකක් එන නිසා survival journey එක comedy සහ action පිරුණු එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1GCinLBtL7Q-9fPy8mmml95d_upKGpO1u/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1GCinLBtL7Q-9fPy8mmml95d_upKGpO1u/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1GCinLBtL7Q-9fPy8mmml95d_upKGpO1u/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1GCinLBtL7Q-9fPy8mmml95d_upKGpO1u/preview"
+      }
     ]
   },
   {
     "title": "ICE AGE 3 (2009)",
     "image": "https://i.ibb.co/PsMR6tYF/RD393437353638333237343640732e77686174736170702e6e6574-663526.jpg",
-    "imdb": "6.8/10",
-    "release_date": "2009 Jul 01",
-    "director": "Carlos Saldanha",
-    "runtime": "1h 34m",
-    "genre": "Animation | Adventure | Comedy",
-    "description": "Ice Age 3, Manny සහ ඔහුගේ friends, dinosaurs සහ prehistoric threats සමඟ epic adventure එකකට යනවා. New characters, emotional moments, action sequences සහ humor Sinhala dubbing එකේ viewers-friendly style එකෙන් දැක්කා හැක. Friendship, courage, teamwork themes clear.",
+    "imdb": "N/A",
+    "release_date": "2009",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "ICE AGE 3 (2009) කියන්නේ dinosaurs ලෝකයට වැටෙන adventure එකක්. gang එකට new creatures හමුවෙන අතර comedy සහ action scenes ගොඩක් තියෙනවා.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1yH_tgUadglA1BU9c1k0VhXsD-D9mfiWH/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1yH_tgUadglA1BU9c1k0VhXsD-D9mfiWH/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1yH_tgUadglA1BU9c1k0VhXsD-D9mfiWH/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1yH_tgUadglA1BU9c1k0VhXsD-D9mfiWH/preview"
+      }
     ]
   },
   {
     "title": "ICE AGE 4 (2012)",
     "image": "https://i.ibb.co/fznY9pqb/RD393437353132353338303040732e77686174736170702e6e6574-199926.jpg",
-    "imdb": "6.6/10",
-    "release_date": "2012 Jul 13",
-    "director": "Steve Martino, Mike Thurmeier",
-    "runtime": "1h 34m",
-    "genre": "Animation | Adventure | Comedy",
-    "description": "Ice Age 4, Manny, Sid, Diego සහ ඔවුන්ගේ herd, pirates සහ environmental challenges සමඟ epic journey එකකට යනවා. Sinhala dubbing එකේ adventure, comedy, action sequences සහ emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Friendship, teamwork, perseverance themes clear.",
+    "imdb": "N/A",
+    "release_date": "2012",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "ICE AGE 4 (2012) කියන්නේ continents break වෙන අතර gang එක sea journey එකක් කරන story එකක්. comedy, adventure සහ fun characters එක්ක enjoyable movie එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1fyHyUe8EIuKWloihsD5FJVHTmfZ9zWit/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1fyHyUe8EIuKWloihsD5FJVHTmfZ9zWit/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1fyHyUe8EIuKWloihsD5FJVHTmfZ9zWit/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1fyHyUe8EIuKWloihsD5FJVHTmfZ9zWit/preview"
+      }
     ]
   },
   {
     "title": "ICE AGE 5 (2016)",
     "image": "https://i.ibb.co/JjxvGVb7/RD393437353132353338303040732e77686174736170702e6e6574-284394.jpg",
-    "imdb": "6.3/10",
-    "release_date": "2016 Jul 22",
-    "director": "Mike Thurmeier",
-    "runtime": "1h 34m",
-    "genre": "Animation | Adventure | Comedy",
-    "description": "Ice Age 5, Manny, Sid, Diego සහ ඔවුන්ගේ friends, traveling circus එකක් සමඟ adventure එකකට යනවා. Sinhala dubbing එකේ humor, action sequences, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Friendship, teamwork, courage themes clear.",
+    "imdb": "N/A",
+    "release_date": "2016",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "ICE AGE 5 (2016) කියන්නේ Scratගේ craziness නිසා universe එකම danger එකකට යන adventure movie එකක්. action, comedy සහ emotional moments එක්ක family friendly movie එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1hxKVy1LsPe8phBpfWGwI89LlcGOZunyI/preview"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1hxKVy1LsPe8phBpfWGwI89LlcGOZunyI/preview"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1hxKVy1LsPe8phBpfWGwI89LlcGOZunyI/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1hxKVy1LsPe8phBpfWGwI89LlcGOZunyI/preview"
+      }
     ]
   },
   {
     "title": "How To Train Your Dragon (2010)",
     "image": "https://i.ibb.co/DH7JRYjT/RD393437353638333237343640732e77686174736170702e6e6574-654991.jpg",
-    "imdb": "8.1/10",
-    "release_date": "2010 Mar 26",
-    "director": "Dean DeBlois, Chris Sanders",
-    "runtime": "1h 38m",
-    "genre": "Animation | Adventure | Family",
-    "description": "Hiccup සහ Toothless, Berk ගමේ dragon community එකට අලුත් perspective එකක් ලබා දෙනවා. Hiccup, dragons සමඟ friendship, trust සහ courage පාඩම් ඉගෙනගන්නවා. Sinhala dubbing එකේ emotional moments, humor සහ thrilling sequences viewers-friendly style එකෙන් අත්විඳිය හැක. Adventure, friendship, personal growth themes clear.",
+    "imdb": "N/A",
+    "release_date": "2010",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "How To Train Your Dragon (2010) කියන්නේ Vikings සහ dragons අතර friendship එකක් ගැන amazing animation movie එකක්. Hiccup සහ Toothless අතර bond එක emotional සහ inspiring.",
     "players": [
-      {"name": "Player 1","link":"https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/watch/78608/%40sinhalafilmsgo%E2%94%9Chow+to+train+your+dragon+1.mp4?hash=AgAD3Q"},
-      {"name": "Player 2","link":"https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/watch/78608/%40sinhalafilmsgo%E2%94%9Chow+to+train+your+dragon+1.mp4?hash=AgAD3Q"}
+      {
+        "name": "Player 1",
+        "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/watch/78608/%40sinhalafilmsgo%E2%94%9Chow+to+train+your+dragon+1.mp4?hash=AgAD3Q"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/watch/78608/%40sinhalafilmsgo%E2%94%9Chow+to+train+your+dragon+1.mp4?hash=AgAD3Q"
+      }
     ]
   },
   {
     "title": "How To Train Your Dragon 2 (2014)",
     "image": "https://i.ibb.co/bgrNxgQR/RD393437353638333237343640732e77686174736170702e6e6574-451532.jpg",
-    "imdb": "7.8/10",
-    "release_date": "2014 Jun 13",
-    "director": "Dean DeBlois",
-    "runtime": "1h 42m",
-    "genre": "Animation | Adventure | Family",
-    "description": "Hiccup සහ Toothless, new threats සමඟ Berk සහ dragon kingdom ආරක්ෂා කරනවා. Sinhala dubbing එකේ emotional scenes, thrilling action sequences සහ humor viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: leadership, friendship, courage clear.",
+    "imdb": "N/A",
+    "release_date": "2014",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "How To Train Your Dragon 2 (2014) කියන්නේ Hiccup සහ Toothlessගේ journey එක තවත් epic level එකකට ගෙනයන sequel එකක්. new enemies සහ dragons world එක තවත් expanded.",
     "players": [
-      {"name": "Player 1","link":"https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78610/how+to+train+your+dragon+2.mp4?hash=AgADng"},
-      {"name": "Player 2","link":"https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78610/how+to+train+your+dragon+2.mp4?hash=AgADng"}
+      {
+        "name": "Player 1",
+        "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78610/how+to+train+your+dragon+2.mp4?hash=AgADng"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78610/how+to+train+your+dragon+2.mp4?hash=AgADng"
+      }
     ]
   },
   {
     "title": "How To Train Your Dragon 3 (2019)",
     "image": "https://i.ibb.co/dwgbk1YK/RD393437353638333237343640732e77686174736170702e6e6574-151583.jpg",
-    "imdb": "7.5/10",
-    "release_date": "2019 Feb 22",
-    "director": "Dean DeBlois",
-    "runtime": "1h 44m",
-    "genre": "Animation | Adventure | Family",
-    "description": "Hiccup සහ Toothless, dragon kingdom එකේ peace සහ unity ආරක්ෂා කරන epic final adventure එකට යනවා. Sinhala dubbing එකේ action, humor, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: friendship, leadership, courage, sacrifice clear.",
+    "imdb": "N/A",
+    "release_date": "2019",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "How To Train Your Dragon 3 (2019) කියන්නේ trilogy එකේ emotional final chapter එක. Hiccup සහ Toothlessගේ friendship එක, dragons future එක ගැන beautiful ending එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78611/%40sinhalafilmsgo%E2%94%9CHow+to+train+your+dragon+3+Sinhala.mp4?hash=AgAD3A"},
-      {"name": "Player 2","link":"https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78611/%40sinhalafilmsgo%E2%94%9CHow+to+train+your+dragon+3+Sinhala.mp4?hash=AgAD3A"}
+      {
+        "name": "Player 1",
+        "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78611/%40sinhalafilmsgo%E2%94%9CHow+to+train+your+dragon+3+Sinhala.mp4?hash=AgAD3A"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/78611/%40sinhalafilmsgo%E2%94%9CHow+to+train+your+dragon+3+Sinhala.mp4?hash=AgAD3A"
+      }
     ]
   },
   {
     "title": "Harry Potter 1 - 2 - 3 - 4 - 5 - 6 - 7 - 7p2 (2002 - 2011)",
     "image": "https://i.ibb.co/hRVbkrRw/RD393437353638333237343640732e77686174736170702e6e6574-522161.jpg",
-    "imdb": "7.6/10",
+    "imdb": "N/A",
     "release_date": "2002 - 2011",
-    "director": "Chris Columbus, Alfonso Cuarón, Mike Newell, David Yates",
-    "runtime": "8 Movies",
-    "genre": "Fantasy | Adventure | Action",
-    "description": "Harry Potter saga, Hogwarts school එකේ magic, friendship, courage සහ mystery explore කරන epic adventure එකක්. Sinhala subtitles එකෙන්, wizarding world එකේ action, emotional moments, suspense viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: friendship, courage, personal growth, good vs evil clear.",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | English With Sinhala Subtitle",
+    "description": "Harry Potter complete collection එක fantasy movie history එකේ most famous franchise එකක්. Hogwarts magic world එක, friendships, villains සහ epic battles එක්ක full series එකම mega folder එකෙන් බලන්න පුළුවන්.",
     "players": [
-      {"name": "Mega files / Sinhala sub","link":"https://mega.nz/folder/zOpQDbDT#1juud1PsRtTAV-jhJFRGnw"}
+      {
+        "name": "Player 1",
+        "link": "https://mega.nz/folder/zOpQDbDT#1juud1PsRtTAV-jhJFRGnw"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://mega.nz/folder/zOpQDbDT#1juud1PsRtTAV-jhJFRGnw"
+      }
     ]
   },
   {
-    "title": "Charlie And The Chocolate Factory (2005)",
-    "image": "https://i.ibb.co/5XzyNnVV/RD393437353638333237343640732e77686174736170702e6e6574-231421.jpg",
-    "imdb": "6.6/10",
-    "release_date": "2005 Jul 15",
-    "director": "Tim Burton",
-    "runtime": "1h 55m",
-    "genre": "Adventure | Comedy | Family",
-    "description": "Charlie, ලොකු chocolate factory එකට tour එකකට යන අතර factory එකේ නව invention සහ surprises discover කරනවා. Willy Wonka සහ Charlie අතර special bond එකක් හැදෙන්න යනවා. Sinhala dubbing එකේ fun, adventure, humor, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: family, kindness, courage, curiosity clear.",
+    "title": "Rio 1 (2011)",
+    "image": "https://i.ibb.co/JjxvGVb7/RD393437353638333237343640732e77686174736170702e6e6574-498412.jpg",
+    "imdb": "N/A",
+    "release_date": "2011",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Rio 1 (2011) කියන්නේ colorful animation adventure movie එකක්. Blu කියන bird එක Rio city එකට යන story එක comedy සහ songs පිරුණු family friendly movie එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1PVh8kMA4GDa2gvIuwxYQ4fSvLv7A3PTm&authuser=0"},
-      {"name": "Player 2","link":"https://drive.google.com/open?id=1PVh8kMA4GDa2gvIuwxYQ4fSvLv7A3PTm&authuser=0"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1oA0YYjN4grikwBQ6BLKkPbSa7-ZyeytM/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1oA0YYjN4grikwBQ6BLKkPbSa7-ZyeytM/preview"
+      }
     ]
   },
   {
-    "title": "Diary Of The Wimpy Kid (2010)",
-    "image": "https://i.ibb.co/60sWLw4z/RD393437353638333237343640732e77686174736170702e6e6574-960523.jpg",
-    "imdb": "6.2/10",
-    "release_date": "2010 Mar 19",
-    "director": "Thor Freudenthal",
-    "runtime": "1h 34m",
-    "genre": "Comedy | Family",
-    "description": "Greg Heffley, school life එකේ awkward moments සහ friendship, family dynamics හරහා grow වෙනවා. Sinhala dubbing එකෙන් humor, fun, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: friendship, family, growing up, honesty clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1xCt-TxTRjDflQIydsMURNMBJYdo-4uCu/view?usp=drivesdk"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1xCt-TxTRjDflQIydsMURNMBJYdo-4uCu/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Diary Of The Wimpy Kid 2 (2011)",
-    "image": "https://i.ibb.co/ksbtsWrh/RD393437353638333237343640732e77686174736170702e6e6574-723817.jpg",
-    "imdb": "6.1/10",
-    "release_date": "2011 Mar 25",
-    "director": "Rodrigo Garcia",
-    "runtime": "1h 32m",
-    "genre": "Comedy | Family",
-    "description": "Greg Heffley, school සහ family challenges අතර navigate කරනවා. Sinhala dubbing එකේ humor, mischief, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: friendship, growing up, family, personal mistakes clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1smskucH2qOUCEtPQT2QgYwklYlz-YE4U/view?usp=drivesdk"},
-      {"name": "Player 2","link":"https://drive.google.com/file/d/1smskucH2qOUCEtPQT2QgYwklYlz-YE4U/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Diary Of The Wimpy Kid 3 (2012)",
-    "image": "https://i.ibb.co/TBszP4Xs/RD393437353638333237343640732e77686174736170702e6e6574-463687.jpg",
-    "imdb": "6.0/10",
-    "release_date": "2012 Nov 2",
-    "director": "David Bowers",
-    "runtime": "1h 32m",
-    "genre": "Comedy | Family",
-    "description": "Greg, school, summer camp, friendships සහ awkward situations අතර navigate කරනවා. Sinhala dubbing එකේ fun, humor, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: friendship, courage, self-confidence, humor clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1q1IXQXEs2hpJwU6ghq2cAOKsTo3c08CZ&authuser=0"},
-      {"name": "Player 2","link":"https://drive.google.com/open?id=1q1IXQXEs2hpJwU6ghq2cAOKsTo3c08CZ&authuser=0"}
-    ]
-  },
-  {
-    "title": "Diary Of The Wimpy Kid 4 (2017)",
-    "image": "https://i.ibb.co/N6kzWGW1/RD393437353638333237343640732e77686174736170702e6e6574-205868.jpg",
-    "imdb": "5.8/10",
-    "release_date": "2017 May 19",
-    "director": "David Bowers",
-    "runtime": "1h 34m",
-    "genre": "Comedy | Family",
-    "description": "Greg Heffley, school සහ family life එකේ challenges, friendships, humorous incidents අතර navigate කරනවා. Sinhala dubbing එකේ fun, laugh, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: family, friendship, courage, humor clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1kKNoTOAiEbLruQ6_bWJy0m8_vWPfeInJ&authuser=0"},
-      {"name": "Player 2","link":"https://drive.google.com/open?id=1kKNoTOAiEbLruQ6_bWJy0m8_vWPfeInJ&authuser=0"}
-    ]
-  },
-  {
-    "title": "Lord Of The Ring (2001)",
-    "image": "https://i.ibb.co/h124wvfp/RD393437353638333237343640732e77686174736170702e6e6574-850281.jpg",
-    "imdb": "8.8/10",
-    "release_date": "2001 Dec 19",
-    "director": "Peter Jackson",
-    "runtime": "3h 48m",
-    "genre": "Adventure | Fantasy | Action",
-    "description": "Frodo සහ Fellowship of the Ring, Middle-earth එකේ evil power එකෙන් One Ring destroy කරන්න epic journey එකකට යනවා. Sinhala dubbing එකේ epic battles, emotional scenes, friendship සහ courage viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: bravery, friendship, good vs evil, adventure clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=165HH2L8750qva4IyAdquQ2aGJ6OFJr3i&authuser=0"},
-      {"name": "Player 2","link":"https://drive.google.com/open?id=165HH2L8750qva4IyAdquQ2aGJ6OFJr3i&authuser=0"}
-    ]
-  },
-  {
-    "title": "Lord Of The Ring 3 (2003)",
-    "image": "https://i.ibb.co/RG55zVCc/RD393437353638333237343640732e77686174736170702e6e6574-762899.jpg",
-    "imdb": "8.9/10",
-    "release_date": "2003 Dec 17",
-    "director": "Peter Jackson",
-    "runtime": "3h 21m",
-    "genre": "Adventure | Fantasy | Action",
-    "description": "Frodo සහ fellowship, Middle-earth එකේ evil powers, epic battles සහ personal struggles අතර navigate කරනවා. Sinhala dubbing එකේ emotional scenes, thrilling adventure, friendship viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: courage, friendship, sacrifice, good vs evil clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1FRCmbzvfpKe31bc8q4MO93XJfiYpHu-f&authuser=0"},
-      {"name": "Player 2","link":"https://drive.google.com/open?id=1FRCmbzvfpKe31bc8q4MO93XJfiYpHu-f&authuser=0"}
-    ]
-  },
-  {
-    "title": "Spy Kids (2001)",
-    "image": "https://i.ibb.co/j7r4xzx/RD393437353638333237343640732e77686174736170702e6e6574-902376.jpg",
-    "imdb": "5.5/10",
-    "release_date": "2001 Mar 30",
-    "director": "Robert Rodriguez",
-    "runtime": "1h 29m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Spy kids, secret missions සහ family adventure එකේ involve වෙනවා. Sinhala dubbing එකේ action, humor, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: family, courage, teamwork, adventure clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1KVFQVHniKtr1bjT0El5WTiZoQiDq64xw&authuser=0"},
-      {"name": "Player 2","link":"https://drive.google.com/open?id=1KVFQVHniKtr1bjT0El5WTiZoQiDq64xw&authuser=0"}
-    ]
-  },
-  {
-    "title": "Rio 1",
-    "image": "https://i.ibb.co/JwGNGk7r/RD393437353638333237343640732e77686174736170702e6e6574-498412.jpg",
-    "imdb": "7.0/10",
-    "release_date": "2011 Apr 15",
-    "director": "Carlos Saldanha",
-    "runtime": "1h 36m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Rio 1 චිත්‍රපටියෙන්, Blu සහ Jewel birds Rio de Janeiro city එකේ thrilling adventure එකට යනවා. Sinhala dubbing එකෙන් fun, friendship, courage, adventure, music moments viewers-friendly style එකෙන් අත්විඳිය හැක.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1oA0YYjN4grikwBQ6BLKkPbSa7-ZyeytM/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Rio 2",
+    "title": "Rio 2 (2014)",
     "image": "https://i.ibb.co/XfzXLfZH/RD393437353638333237343640732e77686174736170702e6e6574-420452.jpg",
-    "imdb": "6.5/10",
-    "release_date": "2014 Apr 11",
-    "director": "Carlos Saldanha",
-    "runtime": "1h 42m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Rio 2 වල Blu, Jewel සහ ඔවුන්ගේ family, Amazon rainforest එකේ new adventures, challenges, musical fun, Sinhala dubbing එකෙන් viewers-friendly style එකෙන් experience කරනවා. Themes: family, courage, friendship, environment awareness clear.",
+    "imdb": "N/A",
+    "release_date": "2014",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Rio 2 (2014) කියන්නේ Blu සහ Jewel family එකට new adventure එකක්. Amazon jungle එකට යන story එක music, comedy සහ adventure පිරුණු එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1qXscskOCDyc6PLVxxf1_3I9zvTparAZp/view?usp=drivesdk"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1qXscskOCDyc6PLVxxf1_3I9zvTparAZp/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1qXscskOCDyc6PLVxxf1_3I9zvTparAZp/preview"
+      }
     ]
   },
   {
-    "title": "Beast",
+    "title": "Beast (2022)",
     "image": "https://i.ibb.co/DfkH92yk/RD393437353638333237343640732e77686174736170702e6e6574-476401.jpg",
-    "imdb": "6.8/10",
-    "release_date": "2022 Apr 13",
-    "director": "Nelson Dilipkumar",
-    "runtime": "2h 30m",
-    "genre": "Action | Thriller",
-    "description": "Beast චිත්‍රපටියෙන්, protagonist එක wild, dangerous island එකේ survival adventure එකට යනවා. Sinhala dubbing එකෙන් suspense, action, courage, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක.",
+    "imdb": "N/A",
+    "release_date": "2022",
+    "director": "N/A",
+    "runtime": "N/A",
+    "genre": "Action | සිංහල",
+    "description": "Beast (2022) කියන්නේ action thriller movie එකක්. intense fight scenes සහ suspense moments එක්ක audience එක entertain කරන movie එකක්.",
     "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1C1Q1os0qZxLJNMVecRoORUmU6kmVU4Yk/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Spy Kids (2003)",
-    "image": "https://i.ibb.co/BK2Yc1dY/RD393437353638333237343640732e77686174736170702e6e6574-569590.jpg",
-    "imdb": "5.7/10",
-    "release_date": "2003 Aug 8",
-    "director": "Robert Rodriguez",
-    "runtime": "1h 40m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Spy kids, secret missions, villains සහ family adventure එකේ involve වෙනවා. Sinhala dubbing එකේ fun, action, emotional moments viewers-friendly style එකෙන් අත්විඳිය හැක. Themes: teamwork, courage, family, friendship clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1TkTq3B6ux725QzPyzPi2fazHMONaOGAq&authuser=0"},
-      {"name": "Player 2","link":"https://drive.google.com/open?id=1TkTq3B6ux725QzPyzPi2fazHMONaOGAq&authuser=0"}
-    ]
-  },
-  {
-    "title": "Harry Potter 1",
-    "image": "https://i.ibb.co/84tbyHTF/RD393437353638333237343640732e77686174736170702e6e6574-205022.jpg",
-    "imdb": "7.6/10",
-    "release_date": "2001 Nov 16",
-    "director": "Chris Columbus",
-    "runtime": "2h 32m",
-    "genre": "Action | Fantasy | Adventure",
-    "description": "Harry Potter 1 චිත්‍රපටියෙන්, Harry Hogwarts magical school එකට ඇතුළු වෙයි. Sinhala dubbing එකෙන් fun, suspense, friendship, courage, adventure moments viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1D0xcgiaJ10hUGAorH0cdRoKb3rxNTd8o/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Harry Potter 2",
-    "image": "https://i.ibb.co/ynQbXynd/RD393437353638333237343640732e77686174736170702e6e6574-103249.jpg",
-    "imdb": "7.4/10",
-    "release_date": "2002 Nov 15",
-    "director": "Chris Columbus",
-    "runtime": "2h 41m",
-    "genre": "Action | Fantasy | Adventure",
-    "description": "Harry Potter 2 වල Harry Hogwarts අලුත් dangers, secrets, magical creatures සමඟ adventure එකකට යනවා. Sinhala dubbing එකෙන් suspense, fun, friendship, courage viewers-friendly.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/14_9Xp-giND8ERkt8Jxw02kM9WbhrSakB/view?usp=drive"}
-    ]
-  },
-  {
-    "title": "Harry Potter 3",
-    "image": "https://i.ibb.co/sd8rVV0K/Rashmika-Ofc.jpg",
-    "imdb": "7.5/10",
-    "release_date": "2004 Jun 4",
-    "director": "Alfonso Cuarón",
-    "runtime": "2h 22m",
-    "genre": "Action | Fantasy | Adventure",
-    "description": "Harry Potter 3 – Prisoner of Azkaban plot එකේ Harry, Sirius Black සහ magical adventures Sinhala dubbing එකෙන් viewers-friendly style එකෙන් experience කරනවා.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1f32MgHNhl5ajzO-5xcmtkUBVHfjRZry5/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Harry Potter 4",
-    "image": "https://i.ibb.co/LXcNPwsK/Rashmika-Ofc.jpg",
-    "imdb": "7.7/10",
-    "release_date": "2005 Nov 18",
-    "director": "Mike Newell",
-    "runtime": "2h 37m",
-    "genre": "Action | Fantasy | Adventure",
-    "description": "Harry Potter 4 – Goblet of Fire plot එකේ Triwizard Tournament, dragons, challenges Sinhala dubbing එකෙන් viewers-friendly fun, suspense, adventure.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1gduaI6mpzTRObgviFxhYmYkBu2NKY9uB/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Harry Potter 5",
-    "image": "https://i.ibb.co/B5b4y6x0/RD393437353638333237343640732e77686174736170702e6e6574-165192.jpg",
-    "imdb": "7.5/10",
-    "release_date": "2007 Jul 11",
-    "director": "David Yates",
-    "runtime": "2h 18m",
-    "genre": "Action | Fantasy | Adventure",
-    "description": "Harry Potter 5 – Order of the Phoenix plot එකේ Ministry of Magic, Dumbledore’s Army සහ prophecy adventure Sinhala dubbing viewers-friendly.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1t2T3rU2Jq_HrjHyO8Re0PFpqZ67e4Boe/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Home Alone 1",
-    "image": "https://i.ibb.co/B2XCncKt/RD393437353638333237343640732e77686174736170702e6e6574-816586.jpg",
-    "imdb": "7.6/10",
-    "release_date": "1990 Nov 16",
-    "director": "Chris Columbus",
-    "runtime": "1h 43m",
-    "genre": "Action | Comedy | Family",
-    "description": "Home Alone 1 – Kevin, burglars වලින් clever traps, humor, fun, family moments Sinhala dubbing viewers-friendly.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1xBxR-g5PVWT37bc9axRGlH0DOM2ooax3&authuser=0"}
-    ]
-  },
-  {
-    "title": "Home Alone 2",
-    "image": "https://i.ibb.co/RTnFFVBv/RD393437353638333237343640732e77686174736170702e6e6574-536933.jpg",
-    "imdb": "6.8/10",
-    "release_date": "1992 Nov 20",
-    "director": "Chris Columbus",
-    "runtime": "2h 1m",
-    "genre": "Action | Comedy | Family",
-    "description": "Home Alone 2 – Kevin, New York city එකේ holiday vacation එකේ burglars වලට clever traps, fun, adventure moments Sinhala dubbing viewers-friendly style එකෙන් experience කරනවා.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1HdujfW1zjb04lx-JVu2qMdCXq8eCoi5f&authuser=0"}
-    ]
-  },
-  {
-    "title": "Journey 1",
-    "image": "https://i.ibb.co/hRRdtvgF/RD393437353638333237343640732e77686174736170702e6e6574-509161.jpg",
-    "imdb": "6.2/10",
-    "release_date": "2008 Feb 8",
-    "director": "Eric Brevig",
-    "runtime": "1h 42m",
-    "genre": "Action | Adventure | Family",
-    "description": "Journey 1 – teen protagonist එක, magical hidden world එකට යනවා. Sinhala dubbing එකෙන් fun, adventure, friendship, courage moments viewers-friendly style එකෙන් අත්විඳිය හැක.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1bl5vZtORTmo9N-LLY5WbVHkb6CpKKeSJ&authuser=0"}
-    ]
-  },
-  {
-    "title": "Journey 2",
-    "image": "https://i.ibb.co/kgyt0LrN/RD393437353638333237343640732e77686174736170702e6e6574-324359.jpg",
-    "imdb": "5.8/10",
-    "release_date": "2012 Feb 10",
-    "director": "Brad Peyton",
-    "runtime": "1h 34m",
-    "genre": "Action | Adventure | Family",
-    "description": "Journey 2 – grandson, step-grandfather සමඟ secret island එකට adventure එකක්. Sinhala dubbing viewers-friendly style එකෙන් fun, action, friendship, courage moments අත්විඳිය හැක.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1SykzlrmEgmPAn3kskuQaOoVQN8T-nboH&authuser=0"}
-    ]
-  },
-  {
-    "title": "Raya And The Last Dragon",
-    "image": "https://i.ibb.co/yn6grbtq/RD393437353638333237343640732e77686174736170702e6e6574-193775.jpg",
-    "imdb": "7.4/10",
-    "release_date": "2021 Mar 5",
-    "director": "Don Hall, Carlos López Estrada",
-    "runtime": "1h 47m",
-    "genre": "Action | Adventure | Fantasy",
-    "description": "Raya And The Last Dragon – Raya, dragon Sisu සමඟ Kumandra land එක save කරන්න journey එකකට යනවා. Sinhala dubbing viewers-friendly style එකෙන් action, friendship, courage, fantasy moments අත්විඳිය හැක.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1-hFZWfuIA4rkuWV1tH5YPwx2FQ_cCGJ2/view?usp=drive"}
-    ]
-  },
-  {
-    "title": "Nezha",
-    "image": "https://i.ibb.co/wN4vJ0QS/RD393437353638333237343640732e77686174736170702e6e6574-359328.jpg",
-    "imdb": "7.3/10",
-    "release_date": "2019 Jul 26",
-    "director": "Jiaozi",
-    "runtime": "1h 51m",
-    "genre": "Action | Animation | Fantasy",
-    "description": "Nezha – young hero, magical powers, destiny and family challenges සමඟ battle කරනවා. Sinhala dubbing viewers-friendly style එකෙන් action, courage, fantasy moments experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1C9WW1VV6nfmwu4WQAlUfE8FXcOLHShLy/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Scooby Doo",
-    "image": "https://i.ibb.co/pBHpWTKB/RD393437353638333237343640732e77686174736170702e6e6574-776073.jpg",
-    "imdb": "6.4/10",
-    "release_date": "2002 Jun 14",
-    "director": "Raja Gosnell",
-    "runtime": "1h 34m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Scooby Doo – Mystery solving team, haunted locations, villains. Sinhala dubbing viewers-friendly style එකෙන් fun, action, friendship, adventure moments experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1m3ZRoR6pzk-vB4BQJbeiUX4YJ7YIHnmV&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Lion King",
-    "image": "https://i.ibb.co/HLfXMdbS/RD393437353638333237343640732e77686174736170702e6e6574-728315.jpg",
-    "imdb": "8.5/10",
-    "release_date": "2019 Jul 19",
-    "director": "Jon Favreau",
-    "runtime": "1h 58m",
-    "genre": "Action | Adventure | Animation",
-    "description": "The Lion King – Simba, Pride Rock, family legacy, villains and courage adventure. Sinhala dubbing viewers-friendly style එකෙන් fun, emotional, action moments experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=16by-uhsUIGTSYDNCpK6rYjP2iQIdSTFL&authuser=0"}
-    ]
-  },
-  {
-    "title": "Spy Kids 2",
-    "image": "https://i.ibb.co/WWmGBK65/RD393437353638333237343640732e77686174736170702e6e6574-264006.jpg",
-    "imdb": "5.9/10",
-    "release_date": "2002 Aug 7",
-    "director": "Robert Rodriguez",
-    "runtime": "1h 38m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Spy Kids 2 – secret missions, villains, spy gadgets, teamwork. Sinhala dubbing viewers-friendly style එකෙන් fun, action, friendship, adventure moments experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1-TeLPSZoE0wOKEN_2-aljmm_GIJIbYqB&authuser=0"}
-    ]
-  },
-  {
-    "title": "Jumanji 2",
-    "image": "https://i.ibb.co/sd5YFh3q/Rashmika-Ofc.jpg",
-    "imdb": "7.0/10",
-    "release_date": "2017 Dec 20",
-    "director": "Jake Kasdan",
-    "runtime": "2h 3m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Jumanji 2 – Board game magic, teenagers and friends එකට adventure, danger, fun experience කරන්නේ Sinhala dubbing viewers-friendly style එකෙන්. Themes: teamwork, courage, friendship clear.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1Tt_bBlXqzN51tqAPQ5xBq1KafLZwbIiU/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Jumanji 3",
-    "image": "https://i.ibb.co/sd5YFh3q/Rashmika-Ofc.jpg",
-    "imdb": "7.2/10",
-    "release_date": "2019 Dec 13",
-    "director": "Jake Kasdan",
-    "runtime": "2h 3m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Jumanji 3 – Players in game world, challenges, villains, fun, teamwork, courage Sinhala dubbing viewers-friendly style එකෙන් අත්විඳිය හැක.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1twae_5F-xGvTQ8BGWaaOJ24hmE1YnY47/view?usp"}
-    ]
-  },
-  {
-    "title": "Titanic",
-    "image": "https://i.ibb.co/4wBnNzYD/RD393437353638333237343640732e77686174736170702e6e6574-414536.jpg",
-    "imdb": "7.8/10",
-    "release_date": "1997 Dec 19",
-    "director": "James Cameron",
-    "runtime": "3h 14m",
-    "genre": "Action | Drama | Romance",
-    "description": "Titanic – Love story, tragedy, historic ship, emotions Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1KTTfpsDPghCwcbmVLlz4FBuejoa3fGGB&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Polar Express",
-    "image": "https://i.ibb.co/B9FSwdr/Rashmika-Ofc.jpg",
-    "imdb": "6.6/10",
-    "release_date": "2004 Nov 10",
-    "director": "Robert Zemeckis",
-    "runtime": "1h 40m",
-    "genre": "Action | Adventure | Animation",
-    "description": "The Polar Express – Magical train journey, Christmas adventure, courage, belief. Sinhala dubbing viewers-friendly style එකෙන් fun, adventure, emotional moments අත්විඳිය හැක.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1sjBG4jCYanMb0pfBbvkZCdBARvwqubSE&authuser=0"}
-    ]
-  },
-  {
-    "title": "Yogi Bear",
-    "image": "https://i.ibb.co/YTFqkgHP/RD393437353638333237343640732e77686174736170702e6e6574-300561.jpg",
-    "imdb": "5.7/10",
-    "release_date": "2010 Dec 17",
-    "director": "Eric Brevig",
-    "runtime": "1h 30m",
-    "genre": "Action | Adventure | Comedy",
-    "description": "Yogi Bear – Picnic thefts, adventure, friendship, fun, action Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1ftXXglkJNw6orPEyu0S_2euAC3ZxD6nu/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Delhi Safari",
-    "image": "https://i.ibb.co/8SQ4qHx/Rashmika-Ofc.jpg",
-    "imdb": "6.5/10",
-    "release_date": "2012 May 18",
-    "director": "Nikhil Advani",
-    "runtime": "1h 46m",
-    "genre": "Action | Animation | Adventure",
-    "description": "Delhi Safari – Animals, journey to city, nature conservation, friendship, courage Sinhala dubbing viewers-friendly style එකෙන් fun, action, adventure moments experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=11CPIiIBxjwBrP1rUqUB1EQxSXafEzP05&authuser=0"}
-    ]
-  },
-  {
-    "title": "Astro Boy",
-    "image": "https://i.ibb.co/V0cFJpZ1/RD393437353638333237343640732e77686174736170702e6e6574-855624.jpg",
-    "imdb": "7.0/10",
-    "release_date": "2009 Oct 23",
-    "director": "David Bowers",
-    "runtime": "1h 35m",
-    "genre": "Action | Animation | Sci-Fi",
-    "description": "Astro Boy – Young robot hero, adventure, fighting evil, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1gGT0EMs39iqlOCXqVVxYrWZawJm9RuLc&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Karate Kid",
-    "image": "https://i.ibb.co/Wvs9vt81/RD393437353638333237343640732e77686174736170702e6e6574-451106.jpg",
-    "imdb": "7.2/10",
-    "release_date": "1984 Jun 22",
-    "director": "John G. Avildsen",
-    "runtime": "2h 6m",
-    "genre": "Action | Drama | Family",
-    "description": "The Karate Kid – Martial arts, mentorship, courage, friendship, fun Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1LD376UbECSXaG1MuMV6byNRrmDyyFPSf&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Karate Kid 2",
-    "image": "https://i.ibb.co/m502Q6hq/RD393437353638333237343640732e77686174736170702e6e6574-451893.jpg",
-    "imdb": "6.7/10",
-    "release_date": "1986 Jun 20",
-    "director": "John G. Avildsen",
-    "runtime": "2h 7m",
-    "genre": "Action | Drama | Family",
-    "description": "The Karate Kid 2 – Martial arts, mentor-student, adventure, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1WwreYklK5AV9B52frdTqhwyI4Z34uUF-&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Karate Kid 3",
-    "image": "https://i.ibb.co/Cch0T3L/RD393437353638333237343640732e77686174736170702e6e6574-289786.jpg",
-    "imdb": "6.1/10",
-    "release_date": "1989 Jun 30",
-    "director": "John G. Avildsen",
-    "runtime": "1h 55m",
-    "genre": "Action | Drama | Family",
-    "description": "The Karate Kid 3 – Martial arts, villain, courage, friendship, action Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1xnl8GGIZYmhCBCf6kcO4JPPzFwXGNF-d&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Karate Kid 4",
-    "image": "https://i.ibb.co/RkcHPRW7/RD393437353638333237343640732e77686174736170702e6e6574-600847.jpg",
-    "imdb": "5.5/10",
-    "release_date": "1994 Jun 10",
-    "director": "Christopher Cain",
-    "runtime": "1h 48m",
-    "genre": "Action | Drama | Family",
-    "description": "The Karate Kid 4 – Martial arts, mentor-student, challenges, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1rI_-4QVNtgiuXtC0K4INnG-xTyi0VFMk&authuser=0"}
-    ]
-  },
-  {
-    "title": "Luca",
-    "image": "https://i.ibb.co/NntN9f6C/RD393437353638333237343640732e77686174736170702e6e6574-105559.jpg",
-    "imdb": "7.5/10",
-    "release_date": "2021 Jun 18",
-    "director": "Enrico Casarosa",
-    "runtime": "1h 35m",
-    "genre": "Action | Adventure | Animation",
-    "description": "Luca – Young sea monster, friendship, adventure, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1E0yUgQztCq3oVWYrGiXcTl4nfVMkFrO3&authuser=0"}
-    ]
-  },
-  {
-    "title": "Heidi",
-    "image": "https://i.ibb.co/Df25zHgc/RD393437353638333237343640732e77686174736170702e6e6574-456967.jpg",
-    "imdb": "7.1/10",
-    "release_date": "1993 Jan 5",
-    "director": "Charles Vidor",
-    "runtime": "1h 40m",
-    "genre": "Action | Family | Drama",
-    "description": "Heidi – Young girl, mountain life, family, friendship, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1kGMMPwukjTDB3wLGwu5gRjeO17TrMwXm&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Grinch",
-    "image": "https://i.ibb.co/7N699qyy/RD393437353638333237343640732e77686174736170702e6e6574-416121.jpg",
-    "imdb": "6.1/10",
-    "release_date": "2018 Nov 9",
-    "director": "Yarrow Cheney, Scott Mosier",
-    "runtime": "1h 30m",
-    "genre": "Action | Comedy | Family",
-    "description": "The Grinch – Christmas story, mischief, adventure, kindness Sinhala dubbing viewers-friendly style එකෙන් fun, emotional, action moments experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1LEdVnxoE88Z96gUEpIGlr8omkx9XdPd2&authuser=0"}
-    ]
-  },
-  {
-    "title": "Antz",
-    "image": "https://i.ibb.co/Q3j73prq/RD393437353638333237343640732e77686174736170702e6e6574-778402.jpg",
-    "imdb": "6.7/10",
-    "release_date": "1998 Oct 2",
-    "director": "Eric Darnell, Tim Johnson",
-    "runtime": "1h 31m",
-    "genre": "Action | Animation | Adventure",
-    "description": "Antz – Colony life, friendship, courage, adventure Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1gKISGPM4zaKpcEXjp_X9vpmDM7z9Oaud&authuser=0"}
-    ]
-  },
-  {
-    "title": "The Star",
-    "image": "https://i.ibb.co/m1DTRFq/RD393437353638333237343640732e77686174736170702e6e6574-968965.jpg",
-    "imdb": "6.8/10",
-    "release_date": "2017 Nov 17",
-    "director": "Timothy Reckart",
-    "runtime": "1h 26m",
-    "genre": "Action | Animation | Family",
-    "description": "The Star – Nativity story, animals, courage, friendship Sinhala dubbing viewers-friendly style එකෙන් fun, adventure, emotional moments අත්විඳිය හැක.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1AGgzWf2goAmlokx1c0sGOdH5o-XDB2bP&authuser=0"}
-    ]
-  },
-  {
-    "title": "Hop",
-    "image": "https://i.ibb.co/90GSd8B/RD393437353638333237343640732e77686174736170702e6e6574-942542.jpg",
-    "imdb": "5.6/10",
-    "release_date": "2011 Apr 1",
-    "director": "Tim Hill",
-    "runtime": "1h 35m",
-    "genre": "Action | Comedy | Family",
-    "description": "Hop – Easter Bunny, adventure, comedy, fun, friendship Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1miqibyR45rY-9JLwsMCLFE2Xaqn1vgtW&authuser=0"}
-    ]
-  },
-  {
-    "title": "Open Season",
-    "image": "https://i.ibb.co/gM1VzsnK/RD393437353638333237343640732e77686174736170702e6e6574-993879.jpg",
-    "imdb": "6.1/10",
-    "release_date": "2006 Sep 29",
-    "director": "Roger Allers, Jill Culton",
-    "runtime": "1h 26m",
-    "genre": "Action | Animation | Adventure",
-    "description": "Open Season – Boog and Elliot adventure, forest fun, friendship, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1FhNKDk83am10k0I2iCrXC5Cz3WsdnVTT/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Open Season 2",
-    "image": "https://i.ibb.co/xK8hjfVX/RD393437353638333237343640732e77686174736170702e6e6574-264315.jpg",
-    "imdb": "5.1/10",
-    "release_date": "2008 Jan 29",
-    "director": "Matthew O'Callaghan",
-    "runtime": "1h 21m",
-    "genre": "Action | Animation | Adventure",
-    "description": "Open Season 2 – Forest adventures continue, friendship, fun, action Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1JXYbWcFY_tyZ8SPyrAEkZqQIm5FmzKDJ/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Open Season 3",
-    "image": "https://i.ibb.co/zV8g6y3G/RD393437353638333237343640732e77686174736170702e6e6574-823686.jpg",
-    "imdb": "4.6/10",
-    "release_date": "2010 Jan 12",
-    "director": "Karen Disher",
-    "runtime": "1h 20m",
-    "genre": "Action | Animation | Adventure",
-    "description": "Open Season 3 – Boog and friends face new challenges, fun, teamwork, action Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1BC7TKRzedZYbcRogAdzNnnNkfVxOroX8/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Open Season 4",
-    "image": "https://i.ibb.co/27T5gfcJ/RD393437353638333237343640732e77686174736170702e6e6574-624185.jpg",
-    "imdb": "4.1/10",
-    "release_date": "2015 Mar 17",
-    "director": "John Stevenson",
-    "runtime": "1h 20m",
-    "genre": "Action | Animation | Adventure",
-    "description": "Open Season 4 – Fun, adventure, forest animals, friendship Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1AiaBkP_920kLYqxL0_O85U5Q_js0_VAN/view?usp=drivesdk"}
-    ]
-  },
-  {
-    "title": "Maze Runner",
-    "image": "https://i.ibb.co/SwKrkyZN/Rashmika-Ofc.jpg",
-    "imdb": "6.8/10",
-    "release_date": "2014 Sep 19",
-    "director": "Wes Ball",
-    "runtime": "1h 53m",
-    "genre": "Action | Sci-Fi | Adventure",
-    "description": "Maze Runner – Teens trapped in mysterious maze, survival, teamwork, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1tfd8knRklif14Tev9s8U1xH1snF5z0nl&authuser=0"}
-    ]
-  },
-  {
-    "title": "Maze Runner 2",
-    "image": "https://i.ibb.co/R4sx1Vsn/Rashmika-Ofc.jpg",
-    "imdb": "6.3/10",
-    "release_date": "2018 Sep 18",
-    "director": "Wes Ball",
-    "runtime": "2h 13m",
-    "genre": "Action | Sci-Fi | Adventure",
-    "description": "Maze Runner 2 – Teens escape maze, face challenges outside, teamwork, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1TGqXBq8lCx8RCWF14Sq4sg6yPE9OdRVy&authuser=0"}
-    ]
-  },
-  {
-    "title": "Maze Runner 3",
-    "image": "https://i.ibb.co/8SQ4qHx/Rashmika-Ofc.jpg",
-    "imdb": "6.2/10",
-    "release_date": "2018 Jan 26",
-    "director": "Wes Ball",
-    "runtime": "2h 23m",
-    "genre": "Action | Sci-Fi | Adventure",
-    "description": "Maze Runner 3 – Final escape, villains, danger, teamwork, courage Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=12IkWr3BC30wJ0FLFRlwGETN4rkcUhJCz&authuser=0"}
-    ]
-  },
-  {
-    "title": "Hotel Transylvania",
-    "image": "https://i.ibb.co/CKc78KTT/RD393437353638333237343640732e77686174736170702e6e6574-713264.jpg",
-    "imdb": "7.1/10",
-    "release_date": "2012 Sep 21",
-    "director": "Genndy Tartakovsky",
-    "runtime": "1h 31m",
-    "genre": "Action | Animation | Comedy",
-    "description": "Hotel Transylvania – Dracula runs hotel for monsters, fun, friendship, adventures Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1JY2DmkCeT_CbSGqrobqwe2okcDZ39_8z&authuser=0"}
-    ]
-  },
-  {
-    "title": "Hotel Transylvania 2",
-    "image": "https://i.ibb.co/pjXHmg6D/RD393437353638333237343640732e77686174736170702e6e6574-739483.jpg",
-    "imdb": "6.7/10",
-    "release_date": "2015 Sep 25",
-    "director": "Genndy Tartakovsky",
-    "runtime": "1h 38m",
-    "genre": "Action | Animation | Comedy",
-    "description": "Hotel Transylvania 2 – Dracula, friends, fun, adventure, family moments Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=1GWRzKJs9zm5Diaj4ov3igU9KG3DqpHrG&authuser=0"}
-    ]
-  },
-  {
-    "title": "Hotel Transylvania 3",
-    "image": "https://i.ibb.co/CCYqQDr/RD393437353638333237343640732e77686174736170702e6e6574-441587.jpg",
-    "imdb": "6.3/10",
-    "release_date": "2018 Jul 13",
-    "director": "Genndy Tartakovsky",
-    "runtime": "1h 37m",
-    "genre": "Action | Animation | Comedy",
-    "description": "Hotel Transylvania 3 – Vacation cruise, fun, monsters, friendship Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=15ofAtb9KC3TRP7OZnLAZG_YxtvXSb9rv&authuser=0"}
-    ]
-  },
-  {
-    "title": "Hotel Transylvania 4",
-    "image": "https://i.ibb.co/1wV01DH/RD393437353638333237343640732e77686174736170702e6e6574-923345.jpg",
-    "imdb": "6.2/10",
-    "release_date": "2022 Feb 25",
-    "director": "Jennifer Kluska, Derek Drymon",
-    "runtime": "1h 31m",
-    "genre": "Action | Animation | Comedy",
-    "description": "Hotel Transylvania 4 – Adventure, fun, monsters, family moments Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=101kAqJkZQOoche6YwLxEXOwrzTYiWjRy&authuser=0"}
-    ]
-  },
-  {
-    "title": "K.G.F Chapter 1",
-    "image": "https://i.ibb.co/9967KCf6/RD393437353638333237343640732e77686174736170702e6e6574-826061.jpg",
-    "imdb": "8.0/10",
-    "release_date": "2018 Dec 21",
-    "director": "Prashanth Neel",
-    "runtime": "2h 35m",
-    "genre": "Action | Drama | Thriller",
-    "description": "K.G.F Chapter 1 – Rocky’s rise, revenge, action, drama Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/open?id=107lB_3qrajAuIrhRvN1GizdgmRUvmk8Q&authuser=0"}
-    ]
-  },
-  {
-    "title": "Jumanji",
-    "image": "https://i.ibb.co/prkFvWWn/RD393437353638333237343640732e77686174736170702e6e6574-981003.jpg",
-    "imdb": "7.0/10",
-    "release_date": "1995 Dec 15",
-    "director": "Joe Johnston",
-    "runtime": "1h 44m",
-    "genre": "Action | Adventure | Fantasy",
-    "description": "Jumanji – Magic board game, adventure, danger, fun, teamwork Sinhala dubbing viewers-friendly style එකෙන් experience කරන්න පුළුවන්.",
-    "players": [
-      {"name": "Player 1","link":"https://drive.google.com/file/d/1l6K575rAvek3Y3r1kzCck8mrqs9oDaOY/view?usp=drivesdk"}
+      {
+        "name": "Player 1",
+        "link": "https://drive.google.com/file/d/1C1Q1os0qZxLJNMVecRoORUmU6kmVU4Yk/preview"
+      },
+      {
+        "name": "Player 2",
+        "link": "https://drive.google.com/file/d/1C1Q1os0qZxLJNMVecRoORUmU6kmVU4Yk/preview"
+      }
     ]
   }
 ]
