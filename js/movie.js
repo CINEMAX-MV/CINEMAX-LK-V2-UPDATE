@@ -20,7 +20,7 @@ fetch("data/movies.json")
       `;
     }
 
-    // Movie details layout with image on top
+    // Movie details layout with fancy title + bold headings
     document.getElementById("movieDetails").innerHTML = `
       <div style="max-width:900px; margin:0 auto; padding:20px; font-family: 'Poppins', sans-serif;">
         
@@ -31,7 +31,15 @@ fetch("data/movies.json")
 
         <!-- Movie Info -->
         <div style="margin-top:25px; color:#333; line-height:1.6;">
-          <h2 style="font-size:2.2em; margin-bottom:15px;">${movie.title}</h2>
+          <h2 style="
+            font-size:2.6em; 
+            margin-bottom:20px; 
+            background: linear-gradient(90deg, #ff8c00, #ff2a68);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+          ">${movie.title}</h2>
+
           <p>▫🎞 <strong>IMDb:</strong> ${movie.imdb}</p>
           <p>▫📅 <strong>Release Date:</strong> ${movie.release_date}</p>
           <p>▫🕵️‍♂️ <strong>Director:</strong> ${movie.director}</p>
