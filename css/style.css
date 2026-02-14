@@ -187,3 +187,48 @@ footer{
     color:#00a8ff;
     transform:scale(1.2);
 }
+
+/* ===== PAGINATION CONTROLS ===== */
+.pagination-controls{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin-top:40px;
+}
+
+/* Buttons */
+.pagination-controls button{
+    padding:10px 22px;
+    font-size:15px;
+    font-weight:bold;
+    border-radius:30px;
+    border:none;
+    cursor:pointer;
+    transition:0.3s;
+    
+    background:linear-gradient(45deg,#00a8ff,#0066ff);
+    color:white;
+    box-shadow:0 0 10px rgba(0,168,255,0.6);
+}
+
+/* Hover Effect */
+.pagination-controls button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,168,255,0.9);
+}
+
+/* Disabled Style */
+.pagination-controls button:disabled{
+    background:#222;
+    box-shadow:none;
+    cursor:not-allowed;
+    opacity:0.5;
+}
+
+/* Page Info Text */
+#pageInfo{
+    font-weight:bold;
+    font-size:16px;
+    letter-spacing:1px;
+}
