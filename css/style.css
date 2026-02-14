@@ -28,6 +28,13 @@ body{
     max-width:600px;
     display:block;
     margin:0 auto;
+    border-radius:10px; /* slight rounding for 3D logo */
+    box-shadow:0 0 30px #00a8ff; /* subtle glow around logo */
+    transition:0.4s;
+}
+
+.logo-container img:hover{
+    transform:scale(1.03);
 }
 
 /* Subtext below logo */
@@ -53,6 +60,7 @@ body{
     height:4px;
     background:#00a8ff;
     box-shadow:0 0 25px #00a8ff;
+    margin-bottom:20px;
 }
 
 /* ===== SIDEBAR ===== */
@@ -65,6 +73,7 @@ body{
     background:#111;
     transition:0.3s;
     padding-top:80px;
+    z-index:999;
 }
 
 .sidebar a{
@@ -73,6 +82,7 @@ body{
     color:white;
     text-decoration:none;
     border-bottom:1px solid #222;
+    transition:0.3s;
 }
 
 .sidebar a:hover{
@@ -97,7 +107,7 @@ h2{
 .movies-grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-    gap:15px;
+    gap:20px;
 }
 
 /* Movie Card */
@@ -105,21 +115,22 @@ h2{
     background:#111;
     border-radius:8px;
     overflow:hidden;
-    border:2px solid rgba(0,168,255,0.5); /* subtle translucent blue */
-    transition:0.3s;
+    transition:0.4s;
     cursor:pointer;
+    box-shadow:0 0 8px rgba(0,168,255,0.2); /* subtle shadow instead of border */
 }
 
 .movie-card:hover{
     transform:scale(1.05);
-    box-shadow:0 0 15px rgba(0,168,255,0.7);
+    box-shadow:0 0 20px rgba(0,168,255,0.6); /* hover glow effect */
 }
 
+/* Movie Image */
 .movie-card img{
     width:100%;
     height:auto;
     display:block;
-    object-fit:cover; /* full rectangular poster display */
+    object-fit:cover; /* maintain full rectangle */
     border-radius:5px;
 }
 
@@ -129,4 +140,6 @@ footer{
     padding:20px;
     background:#111;
     margin-top:30px;
+    font-size:14px;
+    color:#bbb;
 }
