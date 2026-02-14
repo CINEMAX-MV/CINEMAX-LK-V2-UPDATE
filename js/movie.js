@@ -10,17 +10,46 @@ fetch("data/movies.json")
     let playersHTML = "";
     movie.players.forEach(player => {
       playersHTML += `
-        <button class="btn" onclick="loadPlayer('${player.link}')">${player.name}</button>
+        <button class="btn" onclick="loadPlayer('${player.link}')"
+          style="
+            padding:10px 18px;
+            border:none;
+            border-radius:6px;
+            background:#ff8c00;
+            color:white;
+            cursor:pointer;
+            font-weight:bold;
+            box-shadow:0 4px 8px rgba(0,0,0,0.2);
+            transition:0.3s;
+          "
+          onmouseover="this.style.background='#ff2a68';"
+          onmouseout="this.style.background='#ff8c00';"
+        >${player.name}</button>
       `;
     });
 
+    // Add download button using Player 1 link
     if(movie.players.length > 0){
       playersHTML += `
-        <button class="btn download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>
+        <button class="btn download" onclick="downloadMovie('${movie.players[0].link}')"
+          style="
+            padding:10px 18px;
+            border:none;
+            border-radius:6px;
+            background:#4caf50;
+            color:white;
+            cursor:pointer;
+            font-weight:bold;
+            box-shadow:0 4px 8px rgba(0,0,0,0.2);
+            transition:0.3s;
+          "
+          onmouseover="this.style.background='#45a049';"
+          onmouseout="this.style.background='#4caf50';"
+        >Download</button>
       `;
     }
 
-    // Movie details layout with fancy title + bold headings
+    // Movie details layout
     document.getElementById("movieDetails").innerHTML = `
       <div style="max-width:900px; margin:0 auto; padding:20px; font-family: 'Poppins', sans-serif;">
         
@@ -30,7 +59,7 @@ fetch("data/movies.json")
         </div>
 
         <!-- Movie Info -->
-        <div style="margin-top:25px; color:#333; line-height:1.6;">
+        <div style="margin-top:25px; line-height:1.6;">
           <h2 style="
             font-size:2.6em; 
             margin-bottom:20px; 
@@ -40,13 +69,13 @@ fetch("data/movies.json")
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
           ">${movie.title}</h2>
 
-          <p>▫🎞 <strong>IMDb:</strong> ${movie.imdb}</p>
-          <p>▫📅 <strong>Release Date:</strong> ${movie.release_date}</p>
-          <p>▫🕵️‍♂️ <strong>Director:</strong> ${movie.director}</p>
-          <p>▫⏳ <strong>Runtime:</strong> ${movie.runtime}</p>
-          <p>▫🎭 <strong>Genre:</strong> ${movie.genre}</p>
-          <p style="text-align:justify; margin-top:15px; font-size:1.05em; color:#555;">
-            📝 <strong>Description:</strong> ${movie.description}
+          <p>▫🎞 <strong style="color:white;">IMDb:</strong> <span style="color:#ccc;">${movie.imdb}</span></p>
+          <p>▫📅 <strong style="color:white;">Release Date:</strong> <span style="color:#ccc;">${movie.release_date}</span></p>
+          <p>▫🕵️‍♂️ <strong style="color:white;">Director:</strong> <span style="color:#ccc;">${movie.director}</span></p>
+          <p>▫⏳ <strong style="color:white;">Runtime:</strong> <span style="color:#ccc;">${movie.runtime}</span></p>
+          <p>▫🎭 <strong style="color:white;">Genre:</strong> <span style="color:#ccc;">${movie.genre}</span></p>
+          <p style="text-align:justify; margin-top:15px; font-size:1.05em; color:#eee;">
+            📝 <strong style="color:white;">Description:</strong> ${movie.description}
           </p>
         </div>
 
@@ -63,14 +92,14 @@ fetch("data/movies.json")
 
 // Load player function
 function loadPlayer(link){
-  let embedLink = link.replace("/view", "/preview");
+  let embedLink = link.replace("/view", "/preview"); // Force /preview for iframe
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="550" style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);" allowfullscreen></iframe>
+    <iframe src="${embedLink}" width="100%" height="400" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>
   `;
 }
 
-// Download function
+// Download function (open Player 1 link in new tab)
 function downloadMovie(link){
-  let downloadLink = link.replace("/preview", "/view");
+  let downloadLink = link.replace("/preview", "/view"); // normal Google Drive view/download link
   window.open(downloadLink, "_blank");
 }
