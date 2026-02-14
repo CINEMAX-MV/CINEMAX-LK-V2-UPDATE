@@ -14,33 +14,42 @@ fetch("data/movies.json")
       `;
     });
 
-    // Add download button using Player 1 link
     if(movie.players.length > 0){
       playersHTML += `
         <button class="btn download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>
       `;
     }
 
-    // Movie details with better layout
+    // Movie details layout with image on top
     document.getElementById("movieDetails").innerHTML = `
-      <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start;">
-        <div style="flex:1 1 300px; max-width:400px;">
-          <img src="${movie.image}" alt="${movie.title}" style="width:100%; border-radius:10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+      <div style="max-width:900px; margin:0 auto; padding:20px; font-family: 'Poppins', sans-serif;">
+        
+        <!-- Movie Image -->
+        <div style="width:100%; text-align:center;">
+          <img src="${movie.image}" alt="${movie.title}" style="width:80%; max-width:500px; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);">
         </div>
-        <div style="flex:2 1 400px;">
-          <h2 style="margin-top:0; font-size:2em; color:#333;">${movie.title}</h2>
+
+        <!-- Movie Info -->
+        <div style="margin-top:25px; color:#333; line-height:1.6;">
+          <h2 style="font-size:2.2em; margin-bottom:15px;">${movie.title}</h2>
           <p>▫🎞 <strong>IMDb:</strong> ${movie.imdb}</p>
           <p>▫📅 <strong>Release Date:</strong> ${movie.release_date}</p>
           <p>▫🕵️‍♂️ <strong>Director:</strong> ${movie.director}</p>
           <p>▫⏳ <strong>Runtime:</strong> ${movie.runtime}</p>
           <p>▫🎭 <strong>Genre:</strong> ${movie.genre}</p>
-          <p style="text-align:justify; line-height:1.5; color:#555;">📝 <strong>Description:</strong> ${movie.description}</p>
-
-          <div id="players" style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">${playersHTML}</div>
+          <p style="text-align:justify; margin-top:15px; font-size:1.05em; color:#555;">
+            📝 <strong>Description:</strong> ${movie.description}
+          </p>
         </div>
-      </div>
 
-      <div id="videoPlayer" style="margin-top:30px;"></div>
+        <!-- Player Buttons -->
+        <div id="players" style="margin-top:25px; display:flex; flex-wrap:wrap; gap:12px;">
+          ${playersHTML}
+        </div>
+
+        <!-- Video Player -->
+        <div id="videoPlayer" style="margin-top:30px;"></div>
+      </div>
     `;
   });
 
@@ -48,12 +57,12 @@ fetch("data/movies.json")
 function loadPlayer(link){
   let embedLink = link.replace("/view", "/preview");
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="500" style="border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.3);" allowfullscreen></iframe>
+    <iframe src="${embedLink}" width="100%" height="550" style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);" allowfullscreen></iframe>
   `;
 }
 
 // Download function
 function downloadMovie(link){
-  let downloadLink = link.replace("/preview", "/view"); // normal Google Drive view/download link
+  let downloadLink = link.replace("/preview", "/view");
   window.open(downloadLink, "_blank");
 }
