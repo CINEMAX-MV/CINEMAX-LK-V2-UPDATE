@@ -1,25 +1,63 @@
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial, sans-serif;
 background:#111;
 color:white;
 }
 
-/* Header */
+/* ===== HEADER ===== */
 header{
 display:flex;
 align-items:center;
-padding:15px;
+justify-content:center;
+padding:30px 15px;
 background:black;
+position:relative;
+flex-direction:column;
+text-align:center;
 }
 
+/* Menu Button */
 .menu-btn{
-font-size:25px;
+position:absolute;
+left:15px;
+top:25px;
+font-size:26px;
 cursor:pointer;
-margin-right:20px;
 }
 
-/* Sidebar */
+/* Cinemax Logo */
+.logo-sinhala{
+font-size:40px;
+margin:0;
+color:#ff2a2a;
+text-shadow:
+0 0 5px #ff0000,
+0 0 20px #ff0000,
+0 0 40px #ff0000;
+}
+
+.logo-eng{
+font-size:50px;
+margin:5px 0;
+text-shadow:
+0 0 10px #ff0000,
+0 0 30px #ff0000;
+}
+
+.logo-sub{
+font-size:14px;
+color:#bbb;
+}
+
+/* Red Glow Line */
+.glow-line{
+height:4px;
+background:#ff0000;
+box-shadow:0 0 25px #ff0000;
+}
+
+/* ===== SIDEBAR ===== */
 #sidebar{
 position:fixed;
 left:-250px;
@@ -28,7 +66,8 @@ width:250px;
 height:100%;
 background:black;
 transition:0.3s;
-padding-top:60px;
+padding-top:80px;
+z-index:1000;
 }
 
 #sidebar a{
@@ -36,13 +75,18 @@ display:block;
 padding:15px;
 color:white;
 text-decoration:none;
+border-bottom:1px solid #222;
 }
 
 #sidebar a:hover{
-background:#333;
+background:#ff0000;
 }
 
-/* Movies Grid */
+#sidebar.active{
+left:0;
+}
+
+/* ===== MOVIES GRID ===== */
 .container{
 padding:20px;
 }
@@ -59,10 +103,12 @@ border-radius:8px;
 overflow:hidden;
 cursor:pointer;
 transition:0.3s;
+border:1px solid #ff0000;
 }
 
 .movie-card:hover{
 transform:scale(1.05);
+box-shadow:0 0 15px #ff0000;
 }
 
 .movie-card img{
@@ -73,7 +119,7 @@ width:100%;
 padding:10px;
 }
 
-/* Buttons */
+/* ===== BUTTONS ===== */
 .btn{
 display:inline-block;
 padding:12px 20px;
@@ -84,12 +130,11 @@ margin:10px 5px;
 border-radius:6px;
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 footer{
 text-align:center;
 padding:20px;
 background:black;
 margin-top:30px;
+font-size:14px;
 }
-
-
