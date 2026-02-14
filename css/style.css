@@ -14,7 +14,6 @@ body{
     background:#000;
 }
 
-/* Menu button */
 .menu-btn{
     position:absolute;
     left:20px;
@@ -23,14 +22,13 @@ body{
     cursor:pointer;
 }
 
-/* Logo Image */
+/* Logo */
 .logo-container img{
     width:90%;
     max-width:600px;
     display:block;
     margin:0 auto;
-    border-radius:10px; /* slight rounding */
-    box-shadow: none;   /* removed border/glow */
+    border-radius:10px;
     transition:0.4s;
 }
 
@@ -38,12 +36,11 @@ body{
     transform:scale(1.03);
 }
 
-/* Neon Glow Line under logo */
-.glow-line{
-    height:4px;
+/* Top Blue Line */
+.top-blue-line{
+    height:5px;
     background:#00a8ff;
     box-shadow:0 0 25px #00a8ff;
-    margin-bottom:20px;
 }
 
 /* ===== SIDEBAR ===== */
@@ -65,7 +62,6 @@ body{
     color:white;
     text-decoration:none;
     border-bottom:1px solid #222;
-    transition:0.3s;
 }
 
 .sidebar a:hover{
@@ -76,52 +72,58 @@ body{
     left:0;
 }
 
-/* ===== MOVIE GRID ===== */
+/* ===== MOVIE SECTION ===== */
 .container{
     padding:20px;
 }
 
-/* Latest Movies heading */
-.container .section-title {
-    text-align: left; /* left aligned */
-    font-size: 36px;
-    color: #00a8ff; /* neon blue */
-    text-shadow: 0 0 5px #00a8ff, 0 0 20px #00a8ff; /* glow */
-    margin: 0 0 10px 0; /* reduce gap to glow line */
-    padding-top:5px; /* slightly higher */
-    font-weight: 700;
-    font-family: 'Arial', sans-serif;
+/* Double Blue Line Title */
+.double-line-title{
+    text-align:center;
+    margin:30px 0;
 }
 
-/* Movie Grid */
+.double-line-title h2{
+    margin:15px 0;
+    font-size:28px;
+    color:#00a8ff;
+    letter-spacing:2px;
+    text-shadow:0 0 10px #00a8ff;
+}
+
+/* Blue Lines */
+.blue-line{
+    height:4px;
+    width:100%;
+    background:#00a8ff;
+    box-shadow:0 0 20px #00a8ff;
+}
+
+/* ===== MOVIE GRID ===== */
 .movies-grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
     gap:20px;
 }
 
-/* Movie Card */
 .movie-card{
     background:#111;
     border-radius:8px;
     overflow:hidden;
     transition:0.4s;
     cursor:pointer;
-    box-shadow:0 0 8px rgba(0,168,255,0.2); /* subtle shadow */
+    box-shadow:0 0 8px rgba(0,168,255,0.2);
 }
 
 .movie-card:hover{
     transform:scale(1.05);
-    box-shadow:0 0 20px rgba(0,168,255,0.6); /* hover glow */
+    box-shadow:0 0 20px rgba(0,168,255,0.6);
 }
 
-/* Movie Image */
 .movie-card img{
     width:100%;
-    height:auto;
     display:block;
-    object-fit:cover; /* full rectangle display */
-    border-radius:5px;
+    object-fit:cover;
 }
 
 /* ===== FOOTER ===== */
