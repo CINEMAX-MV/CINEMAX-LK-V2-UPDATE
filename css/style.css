@@ -29,7 +29,7 @@ body{
     max-width:600px;
     display:block;
     margin:0 auto;
-    border-radius:10px; /* rounding kept */
+    border-radius:10px; /* slight rounding */
     box-shadow: none;   /* removed border/glow */
     transition:0.4s;
 }
@@ -38,7 +38,7 @@ body{
     transform:scale(1.03);
 }
 
-/* Neon Glow Line */
+/* Neon Glow Line under logo */
 .glow-line{
     height:4px;
     background:#00a8ff;
@@ -82,12 +82,13 @@ body{
 }
 
 /* Latest Movies heading */
-.container h2 {
-    text-align: left; /* Left aligned */
+.container .section-title {
+    text-align: left; /* left aligned */
     font-size: 36px;
     color: #00a8ff; /* neon blue */
     text-shadow: 0 0 5px #00a8ff, 0 0 20px #00a8ff; /* glow */
-    margin-bottom: 20px;
+    margin: 0 0 10px 0; /* reduce gap to glow line */
+    padding-top:5px; /* slightly higher */
     font-weight: 700;
     font-family: 'Arial', sans-serif;
 }
@@ -106,7 +107,7 @@ body{
     overflow:hidden;
     transition:0.4s;
     cursor:pointer;
-    box-shadow:0 0 8px rgba(0,168,255,0.2); /* subtle shadow only */
+    box-shadow:0 0 8px rgba(0,168,255,0.2); /* subtle shadow */
 }
 
 .movie-card:hover{
@@ -119,7 +120,7 @@ body{
     width:100%;
     height:auto;
     display:block;
-    object-fit:cover;
+    object-fit:cover; /* full rectangle display */
     border-radius:5px;
 }
 
