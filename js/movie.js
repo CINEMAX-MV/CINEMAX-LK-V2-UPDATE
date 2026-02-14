@@ -1,13 +1,12 @@
-let params = new URLSearchParams(window.location.search);
-let movieId = params.get("id");
-
 fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
+    let params = new URLSearchParams(window.location.search);
+    let movieId = params.get("id");
 
     let movie = data[movieId];
 
-    // Players buttons
+    // Players buttons + download
     let playersHTML = "";
     movie.players.forEach(player => {
       playersHTML += `
@@ -15,7 +14,14 @@ fetch("data/movies.json")
       `;
     });
 
-    // Movie details + new fields
+    // Add download button using Player 1 link
+    if(movie.players.length > 0){
+      playersHTML += `
+        <button class="btn download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>
+      `;
+    }
+
+    // Movie details
     document.getElementById("movieDetails").innerHTML = `
       <h2>${movie.title}</h2>
       <img src="${movie.image}" width="300" alt="${movie.title}">
@@ -31,11 +37,17 @@ fetch("data/movies.json")
     `;
   });
 
-// Player load function
+// Load player function
 function loadPlayer(link){
-  // Force /preview in case someone put /view
+  // Force /preview for iframe
   let embedLink = link.replace("/view", "/preview");
   document.getElementById("videoPlayer").innerHTML = `
     <iframe src="${embedLink}" width="100%" height="400" allowfullscreen></iframe>
   `;
+}
+
+// Download function (open Player 1 link in new tab)
+function downloadMovie(link){
+  let downloadLink = link.replace("/preview", "/view"); // normal Google Drive view/download link
+  window.open(downloadLink, "_blank");
 }
