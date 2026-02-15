@@ -233,3 +233,15 @@ footer{
     letter-spacing:1px;
 }
 
+.sidebar-search {
+    padding: 15px;
+}
+
+.sidebar-input {
+    width: 100%;              /* 🔥 Sidebar width එකටම match වෙන්න */
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;   /* Important */
+}
