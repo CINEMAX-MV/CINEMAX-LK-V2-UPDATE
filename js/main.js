@@ -159,3 +159,36 @@ function loadLast10Slider(){
         });
     });
 }
+/* ===== SEARCH FUNCTION ===== */
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.getElementById("searchInput");
+
+    if(searchInput){
+        searchInput.addEventListener("input", function(){
+            const searchValue = this.value.toLowerCase();
+
+            const filteredMovies = moviesData.filter(movie =>
+                movie.title.toLowerCase().includes(searchValue)
+            );
+
+            displaySearchResults(filteredMovies);
+        });
+    }
+});
+
+/* ===== Display Search Results ===== */
+function displaySearchResults(filteredMovies){
+    const movieList = document.getElementById("movieList");
+    movieList.innerHTML = "";
+
+    filteredMovies.forEach(movie => {
+        const realId = moviesData.indexOf(movie);
+
+        movieList.innerHTML += `
+            <div class="movie-card" onclick="openMovie(${realId})">
+                <img src="${movie.image}" alt="${movie.title}">
+                <h4>${movie.title}</h4>
+            </div>
+        `;
+    });
+}
