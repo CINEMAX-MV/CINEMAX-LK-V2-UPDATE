@@ -69,35 +69,3 @@ function updateButtons(){
     if(nextBtn) nextBtn.disabled = currentPage === totalPages;
 }
 
-fetch("data/movies.json")
-  .then(res => res.json())
-  .then(data => {
-
-    const slider = document.getElementById("movieSlider");
-    const dotsContainer = document.getElementById("sliderDots");
-
-    // last 10 movies (newest first)
-    const lastMovies = data.slice(-10).reverse();
-
-    lastMovies.forEach((movie, index) => {
-
-      // Slider card
-      const slide = document.createElement("div");
-      slide.className = "slide";
-
-      slide.innerHTML = `
-        <a href="movie.html?id=${data.length - 1 - index}">
-          <img src="${movie.image}" alt="${movie.title}">
-          <div class="slide-title">${movie.title}</div>
-        </a>
-      `;
-
-      slider.appendChild(slide);
-
-      // dots
-      const dot = document.createElement("span");
-      dot.className = "dot";
-      dotsContainer.appendChild(dot);
-    });
-
-  });
