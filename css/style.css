@@ -336,24 +336,71 @@ footer{
 }
 
 .social-section {
+    position: relative;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 30px 0;
-    background: #0f0f0f;
+    gap: 30px;
+    padding: 60px 0;
+    background: linear-gradient(135deg,#0a0a0a,#141414);
+    overflow: hidden;
 }
 
+/* Animated Background Glow */
+.social-section::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,0,80,0.15), transparent 70%);
+    animation: moveGlow 8s linear infinite;
+}
+
+@keyframes moveGlow {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(50%, 50%) rotate(360deg); }
+}
+
+/* Base Style */
 .social {
-    width: 65px;
-    height: 65px;
+    position: relative;
+    width: 75px;
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
-    font-size: 28px;
-    color: white;
-    transition: 0.3s ease;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #fff;
     text-decoration: none;
+    backdrop-filter: blur(12px);
+    transition: 0.4s ease;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.7),
+        inset 0 0 10px rgba(255,255,255,0.05);
+    overflow: hidden;
+}
+
+/* Ripple Effect */
+.social::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.social:active::after {
+    transform: scale(1);
+    opacity: 0;
+}
+
+/* Hover Lift */
+.social:hover {
+    transform: translateY(-15px) scale(1.15);
 }
 
 /* Individual Colors */
@@ -367,8 +414,40 @@ footer{
     background: #25D366; 
 }
 
-/* Hover Effect */
-.social:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+/* Neon Pulse Glow */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 15px currentColor; }
+    50% { box-shadow: 0 0 35px currentColor; }
+    100% { box-shadow: 0 0 15px currentColor; }
+}
+
+.facebook:hover { animation: pulseGlow 1.5s infinite; }
+.twitter:hover { animation: pulseGlow 1.5s infinite; }
+.youtube:hover { animation: pulseGlow 1.5s infinite; }
+.instagram:hover { animation: pulseGlow 1.5s infinite; }
+.whatsapp:hover { animation: pulseGlow 1.5s infinite; }
+
+/* Floating Idle Animation */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+.social {
+    animation: float 4s ease-in-out infinite;
+}
+
+.social:nth-child(2) { animation-delay: 0.5s; }
+.social:nth-child(3) { animation-delay: 1s; }
+.social:nth-child(4) { animation-delay: 1.5s; }
+.social:nth-child(5) { animation-delay: 2s; }
+
+/* Mobile */
+@media(max-width:600px){
+    .social {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
 }
