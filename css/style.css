@@ -451,3 +451,23 @@ footer{
 #problemsForm button:hover {
     background-color: #003f7f; /* darker blue on hover */
 }
+
+.latest-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(90deg, #1e3c72, #2a5298, #1e3c72); /* dark blue to medium blue */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s infinite linear;
+}
+
+/* Optional shimmer effect */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
