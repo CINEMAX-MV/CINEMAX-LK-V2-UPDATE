@@ -68,3 +68,56 @@ function updateButtons(){
     if(prevBtn) prevBtn.disabled = currentPage === 1;
     if(nextBtn) nextBtn.disabled = currentPage === totalPages;
 }
+
+fetch("data/movies.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const slider = document.getElementById("movieSlider");
+    const dotsContainer = document.getElementById("sliderDots");
+
+    // Last 10 Movies (අන්තිමට add කරපු 10)
+    const lastMovies = data.slice(-10).reverse();
+
+    slider.innerHTML = "";
+    dotsContainer.innerHTML = "";
+
+    lastMovies.forEach((movie, index) => {
+      const slide = document.createElement("div");
+      slide.className = "slide";
+      slide.innerHTML = `
+        <img src="${movie.image}" alt="${movie.title}">
+        <div class="slide-info">
+          <h3>${movie.title}</h3>
+          <p>${movie.release || ""}</p>
+        </div>
+      `;
+      slider.appendChild(slide);
+
+      // dots
+      const dot = document.createElement("span");
+      dot.className = "dot";
+      if (index === 0) dot.classList.add("active");
+      dotsContainer.appendChild(dot);
+    });
+
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(index) {
+      slider.style.transform = `translateX(-${index * 100}%)`;
+
+      dots.forEach(d => d.classList.remove("active"));
+      if (dots[index]) dots[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      currentIndex++;
+      if (currentIndex >= slides.length) currentIndex = 0;
+      showSlide(currentIndex);
+    }
+
+    // Auto play every 4 seconds
+    setInterval(nextSlide, 4000);
+  });
