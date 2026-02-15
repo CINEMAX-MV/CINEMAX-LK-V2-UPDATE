@@ -1,105 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Details</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#0f0f0f;
+  font-family:'Poppins',sans-serif;
+  color:white;
+}
+
+/* HERO */
+.hero{
+  height:320px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,#0f0f0f 20%,transparent 80%);
+}
+
+.play-btn{
+  position:relative;
+  z-index:2;
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.2);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.play-btn:hover{
+  background:#ff2a68;
+}
+
+/* CARD */
+.card{
+  margin:-60px 15px 20px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(15px);
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+.top{
+  display:flex;
+  gap:20px;
+}
+
+.poster{
+  width:140px;
+  border-radius:15px;
+}
+
+.info h1{
+  margin:0;
+  font-size:22px;
+}
+
+.meta{
+  font-size:13px;
+  color:#bbb;
+  margin-top:5px;
+}
+
+.rating{
+  margin-top:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.rating span{
+  background:#1db954;
+  padding:6px 10px;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+/* BUTTONS */
+.sources{
+  margin-top:20px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.btn{
+  padding:10px 18px;
+  border:none;
+  border-radius:10px;
+  background:#1db954;
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#17a74a;
+}
+
+/* DESCRIPTION */
+.description{
+  margin-top:20px;
+  color:#ccc;
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* PLAYER */
+#videoPlayer{
+  margin-top:25px;
+}
+
+#videoPlayer iframe{
+  width:100%;
+  height:400px;
+  border:none;
+  border-radius:15px;
+}
+
+@media(max-width:600px){
+  .top{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="movieDetails"></div>
+
+<script>
 fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
+
     let params = new URLSearchParams(window.location.search);
     let movieId = params.get("id");
-
     let movie = data[movieId];
 
-    // Players buttons + download
     let playersHTML = "";
+
     movie.players.forEach(player => {
       playersHTML += `
-        <button class="btn" onclick="loadPlayer('${player.link}')"
-          style="
-            padding:10px 18px;
-            border:none;
-            border-radius:6px;
-            background:#ff8c00;
-            color:white;
-            cursor:pointer;
-            font-weight:bold;
-            box-shadow:0 4px 8px rgba(0,0,0,0.2);
-            transition:0.3s;
-          "
-          onmouseover="this.style.background='#ff2a68';"
-          onmouseout="this.style.background='#ff8c00';"
-        >${player.name}</button>
+        <button class="btn" onclick="loadPlayer('${player.link}')">
+          ${player.name}
+        </button>
       `;
     });
 
-    // Add download button using Player 1 link
     if(movie.players.length > 0){
       playersHTML += `
-        <button class="btn download" onclick="downloadMovie('${movie.players[0].link}')"
-          style="
-            padding:10px 18px;
-            border:none;
-            border-radius:6px;
-            background:#4caf50;
-            color:white;
-            cursor:pointer;
-            font-weight:bold;
-            box-shadow:0 4px 8px rgba(0,0,0,0.2);
-            transition:0.3s;
-          "
-          onmouseover="this.style.background='#45a049';"
-          onmouseout="this.style.background='#4caf50';"
-        >Download</button>
+        <button class="btn" onclick="downloadMovie('${movie.players[0].link}')">
+          Download
+        </button>
       `;
     }
 
-    // Movie details layout
     document.getElementById("movieDetails").innerHTML = `
-      <div style="max-width:900px; margin:0 auto; padding:20px; font-family: 'Poppins', sans-serif;">
-        
-        <!-- Movie Image -->
-        <div style="width:100%; text-align:center;">
-          <img src="${movie.image}" alt="${movie.title}" style="width:80%; max-width:500px; border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);">
+
+      <div class="hero" style="background-image:url('${movie.image}')">
+        <div class="play-btn" onclick="loadPlayer('${movie.players[0]?.link || ""}')">
+          ▶
+        </div>
+      </div>
+
+      <div class="card">
+
+        <div class="top">
+          <img src="${movie.image}" class="poster">
+
+          <div class="info">
+            <h1>${movie.title}</h1>
+            <div class="meta">${movie.release_date} • ${movie.runtime}</div>
+            <div class="meta">${movie.genre}</div>
+
+            <div class="rating">
+              <span>${movie.imdb}</span>
+              IMDb Rating
+            </div>
+          </div>
         </div>
 
-        <!-- Movie Info -->
-        <div style="margin-top:25px; line-height:1.6;">
-          <h2 style="
-            font-size:2.6em; 
-            margin-bottom:20px; 
-            background: linear-gradient(90deg, #ff8c00, #ff2a68);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-          ">${movie.title}</h2>
-
-          <p>▫🎞 <strong style="color:white;">IMDb:</strong> <span style="color:#ccc;">${movie.imdb}</span></p>
-          <p>▫📅 <strong style="color:white;">Release Date:</strong> <span style="color:#ccc;">${movie.release_date}</span></p>
-          <p>▫🕵️‍♂️ <strong style="color:white;">Director:</strong> <span style="color:#ccc;">${movie.director}</span></p>
-          <p>▫⏳ <strong style="color:white;">Runtime:</strong> <span style="color:#ccc;">${movie.runtime}</span></p>
-          <p>▫🎭 <strong style="color:white;">Genre:</strong> <span style="color:#ccc;">${movie.genre}</span></p>
-          <p style="text-align:justify; margin-top:15px; font-size:1.05em; color:#eee;">
-            📝 <strong style="color:white;">Description:</strong> ${movie.description}
-          </p>
-        </div>
-
-        <!-- Player Buttons -->
-        <div id="players" style="margin-top:25px; display:flex; flex-wrap:wrap; gap:12px;">
+        <div class="sources">
           ${playersHTML}
         </div>
 
-        <!-- Video Player -->
-        <div id="videoPlayer" style="margin-top:30px;"></div>
+        <div class="description">
+          ${movie.description}
+        </div>
+
+        <div id="videoPlayer"></div>
+
       </div>
     `;
   });
 
-// Load player function
 function loadPlayer(link){
-  let embedLink = link.replace("/view", "/preview"); // Force /preview for iframe
+  let embedLink = link.replace("/view", "/preview");
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="400" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>
+    <iframe src="${embedLink}" allowfullscreen></iframe>
   `;
 }
 
-// Download function (open Player 1 link in new tab)
 function downloadMovie(link){
-  let downloadLink = link.replace("/preview", "/view"); // normal Google Drive view/download link
+  let downloadLink = link.replace("/preview", "/view");
   window.open(downloadLink, "_blank");
 }
+</script>
+
+</body>
+</html>
