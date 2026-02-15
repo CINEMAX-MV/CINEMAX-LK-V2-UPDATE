@@ -312,6 +312,28 @@ footer{
 .dot.active {
   background: white;
 }
+.footer{
+    text-align:center;
+    padding:12px;
+    font-size:14px;
+    background:#000;
+    color:#aaa;
+}
+
+/* 2026 highlight */
+.year{
+    background: linear-gradient(45deg,#ff2a2a,#ff7b00);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-weight:700;
+}
+
+/* Sinhala Movies & Cartoons highlight */
+.highlight{
+    color:#00e0ff;
+    font-weight:600;
+    text-shadow:0 0 8px rgba(0,224,255,0.6);
+}
 
 .social-section {
     display: flex;
