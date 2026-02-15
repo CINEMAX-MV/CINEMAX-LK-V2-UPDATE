@@ -452,3 +452,25 @@ footer{
     background-color: #003f7f; /* darker blue on hover */
 }
 
+.latest-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left; /* left corner */
+    background: linear-gradient(90deg, #1e3c72, #2a5298, #1e3c72);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: blueShift 3s infinite linear;
+}
+
+@keyframes blueShift {
+    0% {
+        background-position: 0% 0;
+    }
+    50% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: 0% 0;
+    }
+}
