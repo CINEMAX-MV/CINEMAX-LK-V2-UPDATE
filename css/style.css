@@ -417,13 +417,14 @@ footer{
 
 /* Sidebar compact form fit */
 #problemsForm input,
-#problemsForm textarea,
-#problemsForm button {
+#problemsForm textarea {
     width: calc(100% - 10px); /* sidebar width accommodate */
-    margin: 3px 5px;          /* small side margin */
+    margin: 3px 5px;
     padding: 6px;
     border-radius: 4px;
-    border: none;
+    border: 1px solid #555; /* subtle border for visibility */
+    background-color: transparent; /* no white background */
+    color: #fff; /* text visible on dark sidebar */
     font-size: 13px;
     outline: none;
     box-sizing: border-box;
@@ -431,18 +432,20 @@ footer{
 
 #problemsForm textarea {
     resize: vertical;
-    height: 50px; /* compact height */
+    height: 50px;
 }
 
 #problemsForm button {
-    background: #00b894;
+    background-color: #0056b3; /* strong blue */
     color: #fff;
     font-weight: bold;
     cursor: pointer;
     padding: 6px;
     font-size: 13px;
+    border: none;
+    border-radius: 4px;
 }
 
 #problemsForm button:hover {
-    background: #019875;
+    background-color: #003f7f; /* darker blue on hover */
 }
