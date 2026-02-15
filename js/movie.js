@@ -1,3 +1,5 @@
+const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your API Key
+
 fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
@@ -15,21 +17,12 @@ fetch("data/movies.json")
     let playersHTML = "";
     if(movie.players && movie.players.length > 0){
       movie.players.forEach(player => {
-        playersHTML += `
-          <button class="btn btn-player" onclick="loadPlayer('${player.link}')">
-            ${player.name}
-          </button>
-        `;
+        playersHTML += `<button class="btn btn-player" onclick="loadPlayer('${player.link}')">${player.name}</button>`;
       });
-
-      playersHTML += `
-        <button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">
-          Download
-        </button>
-      `;
+      playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
     }
 
-    // Social media share buttons
+    // Social media share
     let currentURL = encodeURIComponent(window.location.href);
     let socialHTML = `
       <div style="margin-top:20px; display:flex; gap:12px;">
@@ -45,96 +38,100 @@ fetch("data/movies.json")
       </div>
     `;
 
-    // Trailer embed
-    let trailerURL = movie.trailer ? `https://www.youtube.com/embed/${movie.trailer}?autoplay=0&rel=0` : "";
+    // Get Trailer ID from YouTube API
+    getTrailer(movie.title).then(trailerId => {
+      let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
-    document.getElementById("movieDetails").innerHTML = `
-      <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
+      document.getElementById("movieDetails").innerHTML = `
+        <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
-        <!-- BIG TRAILER -->
-        <div style="text-align:center;">
-          ${ trailerURL ? `
-            <iframe src="${trailerURL}" width="100%" height="500" allowfullscreen
-              style="border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:none;">
-            </iframe>
-          ` : `
-            <img src="${movie.image}" 
-                 style="width:100%;max-height:500px;object-fit:cover;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);">
-          `}
-        </div>
+          <!-- TRAILER -->
+          <div style="width:100%; text-align:center; margin-bottom:20px;">
+            ${ trailerURL ? `
+              <iframe 
+                src="${trailerURL}" 
+                width="100%" 
+                height="450" 
+                allowfullscreen 
+                style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);">
+              </iframe>
+            ` : `
+              <img src="${movie.image}" 
+                   style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">
+            `}
+          </div>
 
-        <!-- DESCRIPTION -->
-        <div style="margin-top:25px;">
-          <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);
-          -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-            ${movie.title}
-          </h2>
-          <p style="font-size:1.1em;line-height:1.8;color:#ddd;">
-            ${movie.description}
-          </p>
-        </div>
+          <!-- DESCRIPTION -->
+          <div style="margin-top:20px;">
+            <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+              ${movie.title}
+            </h2>
+            <p style="font-size:1.1em;line-height:1.8;color:#ddd;">
+              ${movie.description}
+            </p>
+          </div>
 
-        <!-- SMALL POSTER + RATING + DETAILS -->
-        <div style="display:flex;gap:25px;margin-top:40px;flex-wrap:wrap;">
+          <!-- SMALL POSTER + RATING + DETAILS -->
+          <div style="display:flex;gap:25px;margin-top:30px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:250px;">
+              <img src="${movie.image}" 
+                   style="width:100%;max-width:250px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);">
+              <div style="margin-top:10px;font-size:1.2em;">
+                <strong>IMDb:</strong> 
+                <span style="color:#ffcc00;">${getStars(movie.imdb)}</span>
+                <span style="color:#aaa;">(${movie.imdb}/10)</span>
+              </div>
+            </div>
 
-          <div style="flex:1;min-width:250px;">
-            <img src="${movie.image}" 
-                 style="width:100%;max-width:250px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);">
-            <div style="margin-top:15px;font-size:1.2em;">
-              <strong>IMDb:</strong> 
-              <span style="color:#ffcc00;">${getStars(movie.imdb)}</span>
-              <span style="color:#aaa;">(${movie.imdb}/10)</span>
+            <div style="flex:2;min-width:300px;line-height:1.8;">
+              <p>📅 <strong>Release Date:</strong> ${movie.release_date}</p>
+              <p>🎬 <strong>Director:</strong> ${movie.director}</p>
+              <p>⏳ <strong>Runtime:</strong> ${movie.runtime}</p>
+              <p>🎭 <strong>Genre:</strong> ${movie.genre}</p>
             </div>
           </div>
 
-          <div style="flex:2;min-width:300px;line-height:1.8;">
-            <p>📅 <strong>Release Date:</strong> ${movie.release_date}</p>
-            <p>🎬 <strong>Director:</strong> ${movie.director}</p>
-            <p>⏳ <strong>Runtime:</strong> ${movie.runtime}</p>
-            <p>🎭 <strong>Genre:</strong> ${movie.genre}</p>
+          <!-- PLAYERS -->
+          <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;">
+            ${playersHTML}
           </div>
 
+          <!-- SOCIAL SHARE -->
+          ${socialHTML}
+
+          <!-- VIDEO PLAYER -->
+          <div id="videoPlayer" style="margin-top:20px;"></div>
         </div>
 
-        <!-- PLAYERS -->
-        <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;">
-          ${playersHTML}
-        </div>
+        <style>
+          .btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            background:linear-gradient(45deg,#ff8c00,#ff2a68);
+            color:white;
+            cursor:pointer;
+            font-weight:bold;
+            transition:0.3s;
+          }
+          .btn:hover{
+            transform:scale(1.05);
+          }
+          .btn-download{
+            background:linear-gradient(45deg,#4caf50,#2e7d32);
+          }
+        </style>
+      `;
+    });
 
-        <!-- SOCIAL SHARE -->
-        ${socialHTML}
-
-        <!-- VIDEO PLAYER -->
-        <div id="videoPlayer" style="margin-top:30px;"></div>
-
-      </div>
-
-      <style>
-        .btn{
-          padding:10px 20px;
-          border:none;
-          border-radius:8px;
-          background:linear-gradient(45deg,#ff8c00,#ff2a68);
-          color:white;
-          cursor:pointer;
-          font-weight:bold;
-          transition:0.3s;
-        }
-        .btn:hover{
-          transform:scale(1.05);
-        }
-        .btn-download{
-          background:linear-gradient(45deg,#4caf50,#2e7d32);
-        }
-      </style>
-    `;
   });
 
 // Load player
 function loadPlayer(link){
-  let embedLink = link.replace("/view", "/preview");
+  let embedLink = link.replace("/view","/preview");
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="450" allowfullscreen
+    <iframe src="${embedLink}" width="100%" height="450" allowfullscreen 
       style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;">
     </iframe>
   `;
@@ -142,8 +139,8 @@ function loadPlayer(link){
 
 // Download
 function downloadMovie(link){
-  let downloadLink = link.replace("/preview", "/view");
-  window.open(downloadLink, "_blank");
+  let downloadLink = link.replace("/preview","/view");
+  window.open(downloadLink,"_blank");
 }
 
 // IMDb stars
@@ -152,10 +149,26 @@ function getStars(rating){
   let fullStars = Math.floor(rating / 2);
   let halfStar = (rating % 2) >= 1 ? true : false;
   let emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-
   let stars = "";
   for(let i=0;i<fullStars;i++) stars += "⭐";
   if(halfStar) stars += "✨";
   for(let i=0;i<emptyStars;i++) stars += "☆";
   return stars;
+}
+
+// YouTube Search API
+function getTrailer(movieName){
+  let query = encodeURIComponent(movieName + " trailer");
+  let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${API_KEY}`;
+
+  return fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      if(data.items && data.items.length > 0){
+        return data.items[0].id.videoId;
+      } else {
+        return "";
+      }
+    })
+    .catch(() => "");
 }
