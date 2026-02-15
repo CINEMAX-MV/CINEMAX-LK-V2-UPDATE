@@ -130,57 +130,5 @@ function toggleMenu() {
 }
 </script>
 
-</body>
-  <!-- ---------------- JS ---------------- -->
-    <script>
-        // Toggle Problems form
-        function toggleProblems(){
-            const form = document.getElementById('problemsForm');
-            if(form.style.display === "block"){
-                form.style.display = "none";
-            } else {
-                form.style.display = "block";
-            }
-        }
-
-        // Send Problems info via WhatsApp
-        function sendProblem(){
-            const name = document.getElementById('pName').value.trim();
-            const user = document.getElementById('pUser').value.trim();
-            const email = document.getElementById('pEmail').value.trim();
-            const number = document.getElementById('pNumber').value.trim();
-            const problem = document.getElementById('pProblem').value.trim();
-
-            if(!name || !user || !email || !number || !problem){
-                alert("Please fill all fields!");
-                return;
-            }
-
-            const message = `Name: ${name}\nUser: ${user}\nEmail: ${email}\nNumber: ${number}\nProblem: ${problem}`;
-            const whatsappNumber = "94740707157"; // ඔබගේ WhatsApp number
-            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-            window.open(whatsappURL, "_blank");
-
-            // Clear form
-            document.getElementById('pName').value = "";
-            document.getElementById('pUser').value = "";
-            document.getElementById('pEmail').value = "";
-            document.getElementById('pNumber').value = "";
-            document.getElementById('pProblem').value = "";
-        }
-
-        // Optional: sidebar toggle function
-        function toggleMenu(){
-            const sidebar = document.getElementById('mySidebar');
-            if(sidebar.style.left === "0px"){
-                sidebar.style.left = "-250px";
-            } else {
-                sidebar.style.left = "0px";
-            }
-        }
-    </script>
-
-</body>
-    
+</body> 
 </html>
