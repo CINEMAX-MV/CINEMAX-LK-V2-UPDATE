@@ -11,20 +11,30 @@ fetch("data/movies.json")
       return;
     }
 
-    // ⭐ IMDb stars convert
     function getStars(rating){
-      let fullStars = Math.floor(rating / 2);
-      let stars = "";
-      for(let i=0;i<5;i++){
-        if(i < fullStars){
-          stars += "⭐";
-        } else {
-          stars += "☆";
-        }
-      }
-      return stars;
-    }
+  rating = parseFloat(rating); // string -> number
 
+  let fullStars = Math.floor(rating / 2);
+  let halfStar = (rating % 2) >= 1 ? true : false;
+  let emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  let stars = "";
+
+  for(let i=0; i<fullStars; i++){
+    stars += "⭐";
+  }
+
+  if(halfStar){
+    stars += "✨"; // half star look
+  }
+
+  for(let i=0; i<emptyStars; i++){
+    stars += "☆";
+  }
+
+  return stars;
+}
+    
     // Players
     let playersHTML = "";
     movie.players.forEach(player => {
