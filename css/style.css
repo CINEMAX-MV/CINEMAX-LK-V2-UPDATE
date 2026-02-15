@@ -456,21 +456,15 @@ footer{
     font-size: 24px;
     font-weight: bold;
     text-align: left; /* left corner */
-    background: linear-gradient(90deg, #1e3c72, #2a5298, #1e3c72);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 100%;
-    animation: blueShift 3s infinite linear;
+    color: #1e3c72; /* starting dark blue */
+    animation: blueFade 3s infinite;
 }
 
-@keyframes blueShift {
-    0% {
-        background-position: 0% 0;
-    }
-    50% {
-        background-position: 100% 0;
-    }
-    100% {
-        background-position: 0% 0;
-    }
+/* Keyframes for smooth blue shades */
+@keyframes blueFade {
+    0%   { color: #1e3c72; }  /* dark blue */
+    25%  { color: #2a5298; }  /* medium blue */
+    50%  { color: #3a70c0; }  /* lighter blue */
+    75%  { color: #2a5298; }  /* medium blue */
+    100% { color: #1e3c72; }  /* back to dark blue */
 }
