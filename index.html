@@ -83,25 +83,18 @@
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
-  const searchInput = document.getElementById("searchInput");
-  const movieContainer = document.getElementById("movieContainer");
+function displayMovies(movieArray) {
+  const container = document.getElementById("movieContainer");
+  container.innerHTML = "";
 
-  searchInput.addEventListener("input", function () {
-    const value = this.value.toLowerCase();
-
-    document.querySelectorAll(".movie-card").forEach(card => {
-      const title = card
-        .querySelector(".movie-title")
-        .textContent.toLowerCase();
-
-      // filter logic
-      if (title.includes(value)) {
-        card.style.display = "";   // show
-      } else {
-        card.style.display = "none"; // hide
-      }
-    });
+  movieArray.forEach(movie => {
+    container.innerHTML += `
+      <div class="movie-card">
+        <h3 class="movie-title">${movie.title}</h3>
+      </div>
+    `;
   });
+}
 </script>
 </body>
 </html>
