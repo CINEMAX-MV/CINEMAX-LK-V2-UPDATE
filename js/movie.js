@@ -172,3 +172,60 @@ function getTrailer(movieName){
     })
     .catch(() => "");
 }
+
+<!-- COMMENTS SECTION -->
+<div id="commentsSection" style="margin-top:50px; max-width:800px; margin:auto;">
+  <h3 style="color:white; margin-bottom:15px;">💬 User Comments</h3>
+
+  <!-- Input -->
+  <div style="margin-bottom:20px; display:flex; flex-direction:column; gap:10px;">
+    <input id="commentName" type="text" placeholder="Your Name" style="padding:10px; border-radius:6px; border:none; width:100%;">
+    <textarea id="commentText" placeholder="Write your comment..." rows="4" style="padding:10px; border-radius:6px; border:none; width:100%;"></textarea>
+    <button onclick="addComment()" style="width:150px; padding:10px; border:none; border-radius:6px; background:#ff8c00; color:white; font-weight:bold; cursor:pointer;">Submit</button>
+  </div>
+
+  <!-- Comments List -->
+  <div id="commentsList" style="display:flex; flex-direction:column; gap:15px;"></div>
+</div>
+
+<script>
+// movieId unique for each movie page
+const movieId = new URLSearchParams(window.location.search).get("id");
+
+// Load comments
+function loadComments() {
+  let comments = JSON.parse(localStorage.getItem("comments_" + movieId) || "[]");
+  let html = "";
+  comments.forEach(c => {
+    html += `
+      <div style="background: rgba(255,255,255,0.05); padding:12px; border-radius:8px;">
+        <p style="margin:0; font-weight:bold; color:#ffcc00;">${c.name} 
+          <span style="font-weight:normal; color:#aaa; font-size:0.85em;">(${c.time})</span>
+        </p>
+        <p style="margin:5px 0 0 0; color:#ddd;">${c.text}</p>
+      </div>
+    `;
+  });
+  document.getElementById("commentsList").innerHTML = html;
+}
+
+// Add new comment
+function addComment() {
+  const name = document.getElementById("commentName").value.trim();
+  const text = document.getElementById("commentText").value.trim();
+  if(!name || !text){
+    alert("Please enter your name and comment!");
+    return;
+  }
+  const time = new Date().toLocaleString();
+  let comments = JSON.parse(localStorage.getItem("comments_" + movieId) || "[]");
+  comments.push({name, text, time});
+  localStorage.setItem("comments_" + movieId, JSON.stringify(comments));
+  document.getElementById("commentName").value = "";
+  document.getElementById("commentText").value = "";
+  loadComments();
+}
+
+// Load existing comments on page load
+loadComments();
+</script>
