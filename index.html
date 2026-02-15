@@ -6,6 +6,7 @@
 <title>Cinemax.lk</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <!-- ===== HEADER ===== -->
@@ -19,24 +20,31 @@
 
 </header>
 
-<!-- Top Blue Line (already under logo) -->
+<!-- Top Blue Line -->
 <div class="blue-line"></div>
 
 <!-- LATEST MOVIES TITLE -->
 <div class="latest-wrapper">
     <div class="latest-title">LATEST MOVIES</div>
 </div>
-    <div id="movieContainer"></div>
+
+<!-- ===== LAST 10 MOVIES SLIDER ===== -->
+<section class="slider-section">
+  <div class="slider" id="movieSlider"></div>
+  <div class="slider-dots" id="sliderDots"></div>
+</section>
 
 <!-- Bottom Blue Line -->
 <div class="blue-line"></div>
 
 <!-- ===== SIDEBAR ===== -->
 <div id="sidebar" class="sidebar">
+
     <div class="sidebar-search">
-    <input type="text" placeholder="Search movies..." class="sidebar-input">
-</div>
-      <!-- Close Button -->
+        <input type="text" placeholder="Search movies..." class="sidebar-input">
+    </div>
+
+    <!-- Close Button -->
     <div class="close-btn" onclick="toggleMenu()">✕</div>
     
     <a href="index.html">✦ Home</a>
@@ -45,23 +53,22 @@
     <a href="dmca.html">✦ DMCA</a>
 </div>
 
-<!-- ===== MOVIE GRID ===== -->
+<!-- ===== MOVIE GRID SECTION ===== -->
 <section class="container">
+
+    <!-- Ticker -->
     <div class="ticker">
-    <div class="ticker-track">
-        <span>
-            සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-        </span>
-        <span>
-            සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-        </span>
+        <div class="ticker-track">
+            <span>
+                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
+            </span>
+            <span>
+                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
+            </span>
+        </div>
     </div>
-</div>
-    <div id="movieList" class="movies-grid">
-</section>   
 
-    <section class="container">
-
+    <!-- Movie Grid -->
     <div id="movieList" class="movies-grid"></div>
 
     <!-- Pagination Controls -->
@@ -72,17 +79,21 @@
     </div>
 
 </section>
+
 <!-- ===== FOOTER ===== -->
 <footer>
 © 2026 Cinemax Downloads | Watch & Download Sinhala Movies & Cartoons
 </footer>
 
+<!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
 
+<!-- ===== SIDEBAR TOGGLE ===== -->
 <script>
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
 </script>
+
 </body>
 </html>
