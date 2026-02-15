@@ -11,35 +11,11 @@ fetch("data/movies.json")
       return;
     }
 
-    function getStars(rating){
-  rating = parseFloat(rating); // string -> number
-
-  let fullStars = Math.floor(rating / 2);
-  let halfStar = (rating % 2) >= 1 ? true : false;
-  let emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-
-  let stars = "";
-
-  for(let i=0; i<fullStars; i++){
-    stars += "⭐";
-  }
-
-  if(halfStar){
-    stars += "✨"; // half star look
-  }
-
-  for(let i=0; i<emptyStars; i++){
-    stars += "☆";
-  }
-
-  return stars;
-}
-    
-    // Players
+    // Players buttons
     let playersHTML = "";
     movie.players.forEach(player => {
       playersHTML += `
-        <button class="btn" onclick="loadPlayer('${player.link}')">
+        <button class="btn btn-player" onclick="loadPlayer('${player.link}')">
           ${player.name}
         </button>
       `;
@@ -47,19 +23,44 @@ fetch("data/movies.json")
 
     if(movie.players.length > 0){
       playersHTML += `
-        <button class="btn download" onclick="downloadMovie('${movie.players[0].link}')">
+        <button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">
           Download
         </button>
       `;
     }
 
+    // Social media share buttons (example: Facebook, WhatsApp, Twitter)
+    let currentURL = window.location.href;
+    let socialHTML = `
+      <div style="margin-top:20px; display:flex; gap:12px;">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
+        </a>
+        <a href="https://wa.me/?text=${currentURL}" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
+        </a>
+      </div>
+    `;
+
+    // YouTube Trailer Embed URL (assuming movie.trailer has YouTube ID)
+    let trailerURL = movie.trailer ? `https://www.youtube.com/embed/${movie.trailer}` : "";
+
     document.getElementById("movieDetails").innerHTML = `
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
-        <!-- BIG POSTER -->
+        <!-- TRAILER -->
         <div style="text-align:center;">
-          <img src="${movie.image}" 
-               style="width:100%;max-height:600px;object-fit:cover;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+          ${ trailerURL ? `
+            <iframe src="${trailerURL}" width="100%" height="500" allowfullscreen
+              style="border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);border:none;">
+            </iframe>
+          ` : `
+            <img src="${movie.image}" 
+                 style="width:100%;max-height:500px;object-fit:cover;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.5);">
+          `}
         </div>
 
         <!-- DESCRIPTION -->
@@ -84,9 +85,7 @@ fetch("data/movies.json")
             
             <div style="margin-top:15px;font-size:1.2em;">
               <strong>IMDb:</strong> 
-              <span style="color:#ffcc00;">
-                ${getStars(movie.imdb)} 
-              </span>
+              <span style="color:#ffcc00;">${getStars(movie.imdb)}</span>
               <span style="color:#aaa;">(${movie.imdb}/10)</span>
             </div>
           </div>
@@ -105,6 +104,9 @@ fetch("data/movies.json")
         <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;">
           ${playersHTML}
         </div>
+
+        <!-- SOCIAL SHARE -->
+        ${socialHTML}
 
         <!-- VIDEO PLAYER -->
         <div id="videoPlayer" style="margin-top:30px;"></div>
@@ -125,7 +127,7 @@ fetch("data/movies.json")
         .btn:hover{
           transform:scale(1.05);
         }
-        .download{
+        .btn-download{
           background:linear-gradient(45deg,#4caf50,#2e7d32);
         }
       </style>
@@ -146,4 +148,18 @@ function loadPlayer(link){
 function downloadMovie(link){
   let downloadLink = link.replace("/preview", "/view");
   window.open(downloadLink, "_blank");
+}
+
+// IMDb stars
+function getStars(rating){
+  rating = parseFloat(rating);
+  let fullStars = Math.floor(rating / 2);
+  let halfStar = (rating % 2) >= 1 ? true : false;
+  let emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  let stars = "";
+  for(let i=0;i<fullStars;i++) stars += "⭐";
+  if(halfStar) stars += "✨";
+  for(let i=0;i<emptyStars;i++) stars += "☆";
+  return stars;
 }
