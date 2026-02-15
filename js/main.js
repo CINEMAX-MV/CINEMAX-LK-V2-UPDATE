@@ -13,13 +13,21 @@ fetch("data/movies.json")
 .then(res => res.json())
 .then(data => {
     moviesData = data;
+
+    // Load Last 10 Slider
+    loadLast10Slider();
+
+    // Load Movie Grid
     displayMovies();
     updateButtons();
 });
 
+
 /* ===== Display Movies Function ===== */
 function displayMovies(){
     const movieList = document.getElementById("movieList");
+    if(!movieList) return;
+
     movieList.innerHTML = "";
 
     const start = (currentPage - 1) * moviesPerPage;
@@ -69,3 +77,85 @@ function updateButtons(){
     if(nextBtn) nextBtn.disabled = currentPage === totalPages;
 }
 
+
+/* =====================================================
+   LAST 10 MOVIES SLIDER (AUTO PLAY + CLICK OPEN FIXED)
+===================================================== */
+function loadLast10Slider(){
+
+    const slider = document.getElementById("movieSlider");
+    const dotsContainer = document.getElementById("sliderDots");
+
+    if(!slider || !dotsContainer) return;
+
+    // Last 10 movies (newest)
+    const lastMovies = moviesData.slice(-10).reverse();
+
+    slider.innerHTML = "";
+    dotsContainer.innerHTML = "";
+
+    lastMovies.forEach((movie, index) => {
+
+        // Correct ID in moviesData
+        const realId = moviesData.length - 1 - index;
+
+        const slide = document.createElement("div");
+        slide.className = "slide";
+
+        // ✅ CLICK FIX (always works)
+        slide.onclick = () => {
+            window.location.href = `movie.html?id=${realId}`;
+        };
+
+        slide.innerHTML = `
+            <img src="${movie.image}" alt="${movie.title}">
+            <div class="slide-info">
+                <h3>${movie.title}</h3>
+                <p>${movie.release_date || ""}</p>
+            </div>
+        `;
+
+        slider.appendChild(slide);
+
+        // Dots
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        if(index === 0) dot.classList.add("active");
+        dotsContainer.appendChild(dot);
+    });
+
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(index){
+        slider.style.transform = `translateX(-${index * 100}%)`;
+
+        dots.forEach(d => d.classList.remove("active"));
+        if(dots[index]) dots[index].classList.add("active");
+    }
+
+    function nextSlide(){
+        currentIndex++;
+        if(currentIndex >= slides.length) currentIndex = 0;
+        showSlide(currentIndex);
+    }
+
+    // Auto play
+    let sliderInterval = setInterval(nextSlide, 4000);
+
+    // Pause on hover
+    slider.addEventListener("mouseenter", () => clearInterval(sliderInterval));
+    slider.addEventListener("mouseleave", () => {
+        sliderInterval = setInterval(nextSlide, 4000);
+    });
+
+    // Dot click
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", (e) => {
+            e.stopPropagation();
+            currentIndex = index;
+            showSlide(currentIndex);
+        });
+    });
+}
