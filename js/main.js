@@ -216,7 +216,7 @@ function sendProblem(){
         return;
     }
 
-    const message = `Name: ${name}\nUser: ${user}\nEmail: ${email}\nNumber: ${number}\nProblem: ${problem}`;
+    const message = `🙋 Name: ${name}\n🙇‍♀️ User: ${user}\n🕊️ Email: ${email}\n🔰 Number: ${number}\n🔆 Problem: ${problem}`;
     const whatsappNumber = "94740707157"; // Replace with your WhatsApp number
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
