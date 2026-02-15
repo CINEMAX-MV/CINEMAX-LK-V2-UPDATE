@@ -40,9 +40,9 @@
 <!-- ===== SIDEBAR ===== -->
 <div id="sidebar" class="sidebar">
 
-<div class="sidebar-search">
-    <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
-</div>
+    <div class="sidebar-search">
+        <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
+    </div>
 
     <!-- Close Button -->
     <div class="close-btn" onclick="toggleMenu()">✕</div>
@@ -51,7 +51,18 @@
     <a href="#">✦ Dashboard</a>
     <a href="contact.html">✦ Contact</a>
     <a href="dmca.html">✦ DMCA</a>
+    <!-- New Problems Link -->
+    <a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
 
+    <!-- Problems Form -->
+    <div id="problemsForm" style="display:none; margin-top:10px; padding:10px; background:#222; border-radius:6px;">
+        <input type="text" id="pName" placeholder="Name" required>
+        <input type="text" id="pUser" placeholder="User" required>
+        <input type="email" id="pEmail" placeholder="Email" required>
+        <input type="text" id="pNumber" placeholder="Number" required>
+        <textarea id="pProblem" placeholder="Describe your problem..." rows="3" required></textarea>
+        <button onclick="sendProblem()">Send</button>
+    </div>
 </div>
 
 <!-- ===== MOVIE GRID SECTION ===== -->
