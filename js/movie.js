@@ -173,7 +173,7 @@ function getTrailer(movieName){
     .catch(() => "");
 }
 
-<!-- COMMENTS SECTION -->
+//<!-- COMMENTS SECTION -->
 <div id="commentsSection" style="margin-top:50px; max-width:800px; margin:auto;">
   <h3 style="color:white; margin-bottom:15px;">💬 User Comments</h3>
 
