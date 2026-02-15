@@ -312,3 +312,39 @@ footer{
 .dot.active {
   background: white;
 }
+
+.social-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0;
+    background: #0f0f0f;
+}
+
+.social {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 28px;
+    color: white;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+/* Individual Colors */
+.facebook { background: #3b5998; }
+.twitter { background: #1da1f2; }
+.youtube { background: #ff0000; }
+.instagram { 
+    background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+}
+.linkedin { background: #0077b5; }
+
+/* Hover Effect */
+.social:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+}
