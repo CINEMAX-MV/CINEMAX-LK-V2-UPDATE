@@ -414,21 +414,22 @@ footer{
         font-size: 18px;
     }
 }
-/* Problems Form Styling */
+
 #problemsForm input,
 #problemsForm textarea,
 #problemsForm button {
     width: 100%;
-    margin: 5px 0;
-    padding: 8px;
+    margin: 3px 0;
+    padding: 6px;
     border-radius: 4px;
     border: none;
-    font-size: 14px;
+    font-size: 13px;
     outline: none;
 }
 
 #problemsForm textarea {
     resize: vertical;
+    height: 50px; /* compact height */
 }
 
 #problemsForm button {
@@ -436,6 +437,8 @@ footer{
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    padding: 6px;
+    font-size: 13px;
 }
 
 #problemsForm button:hover {
