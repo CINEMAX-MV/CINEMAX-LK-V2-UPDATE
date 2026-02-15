@@ -414,38 +414,3 @@ footer{
         font-size: 18px;
     }
 }
-
-/* Sidebar adjustments */
-.sidebar input, .sidebar textarea, .sidebar button {
-    width: 90%;
-    margin: 5px 5%;
-    padding: 6px;
-    border-radius: 4px;
-    border: none;
-    font-size: 14px;
-    outline: none;
-}
-
-.sidebar textarea {
-    resize: vertical;
-}
-
-.sidebar button {
-    background-color: #00b894;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 8px;
-}
-
-.sidebar button:hover {
-    background-color: #019875;
-}
-
-/* Optional: Problems form container */
-#problemsForm {
-    background: #222;
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 10px;
-}
