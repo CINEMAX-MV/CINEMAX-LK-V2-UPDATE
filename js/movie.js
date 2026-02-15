@@ -13,15 +13,15 @@ fetch("data/movies.json")
 
     // Players buttons
     let playersHTML = "";
-    movie.players.forEach(player => {
-      playersHTML += `
-        <button class="btn btn-player" onclick="loadPlayer('${player.link}')">
-          ${player.name}
-        </button>
-      `;
-    });
+    if(movie.players && movie.players.length > 0){
+      movie.players.forEach(player => {
+        playersHTML += `
+          <button class="btn btn-player" onclick="loadPlayer('${player.link}')">
+            ${player.name}
+          </button>
+        `;
+      });
 
-    if(movie.players.length > 0){
       playersHTML += `
         <button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">
           Download
@@ -29,29 +29,29 @@ fetch("data/movies.json")
       `;
     }
 
-    // Social media share buttons (example: Facebook, WhatsApp, Twitter)
-    let currentURL = window.location.href;
+    // Social media share buttons
+    let currentURL = encodeURIComponent(window.location.href);
     let socialHTML = `
       <div style="margin-top:20px; display:flex; gap:12px;">
         <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
+          <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
         </a>
         <a href="https://wa.me/?text=${currentURL}" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
+          <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Share on WhatsApp">
         </a>
         <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
+          <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
         </a>
       </div>
     `;
 
-    // YouTube Trailer Embed URL (assuming movie.trailer has YouTube ID)
-    let trailerURL = movie.trailer ? `https://www.youtube.com/embed/${movie.trailer}` : "";
+    // Trailer embed
+    let trailerURL = movie.trailer ? `https://www.youtube.com/embed/${movie.trailer}?autoplay=0&rel=0` : "";
 
     document.getElementById("movieDetails").innerHTML = `
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
-        <!-- TRAILER -->
+        <!-- BIG TRAILER -->
         <div style="text-align:center;">
           ${ trailerURL ? `
             <iframe src="${trailerURL}" width="100%" height="500" allowfullscreen
@@ -69,7 +69,6 @@ fetch("data/movies.json")
           -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
             ${movie.title}
           </h2>
-
           <p style="font-size:1.1em;line-height:1.8;color:#ddd;">
             ${movie.description}
           </p>
@@ -78,11 +77,9 @@ fetch("data/movies.json")
         <!-- SMALL POSTER + RATING + DETAILS -->
         <div style="display:flex;gap:25px;margin-top:40px;flex-wrap:wrap;">
 
-          <!-- Small Poster + IMDb -->
           <div style="flex:1;min-width:250px;">
             <img src="${movie.image}" 
                  style="width:100%;max-width:250px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);">
-            
             <div style="margin-top:15px;font-size:1.2em;">
               <strong>IMDb:</strong> 
               <span style="color:#ffcc00;">${getStars(movie.imdb)}</span>
@@ -90,7 +87,6 @@ fetch("data/movies.json")
             </div>
           </div>
 
-          <!-- Other Details -->
           <div style="flex:2;min-width:300px;line-height:1.8;">
             <p>📅 <strong>Release Date:</strong> ${movie.release_date}</p>
             <p>🎬 <strong>Director:</strong> ${movie.director}</p>
