@@ -415,16 +415,18 @@ footer{
     }
 }
 
+/* Sidebar compact form fit */
 #problemsForm input,
 #problemsForm textarea,
 #problemsForm button {
-    width: 100%;
-    margin: 3px 0;
+    width: calc(100% - 10px); /* sidebar width accommodate */
+    margin: 3px 5px;          /* small side margin */
     padding: 6px;
     border-radius: 4px;
     border: none;
     font-size: 13px;
     outline: none;
+    box-sizing: border-box;
 }
 
 #problemsForm textarea {
