@@ -1,7 +1,4 @@
-
-
-<script>
-const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your YouTube API Key
+const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your API Key
 
 fetch("data/movies.json")
   .then(res => res.json())
@@ -41,7 +38,7 @@ fetch("data/movies.json")
       </div>
     `;
 
-    // Get Trailer
+    // Get Trailer ID from YouTube API
     getTrailer(movie.title).then(trailerId => {
       let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
@@ -105,17 +102,6 @@ fetch("data/movies.json")
 
           <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
-
-          <!-- COMMENTS SECTION -->
-          <div id="commentsSection" style="margin-top:50px;">
-            <h3 style="color:white; margin-bottom:15px;">💬 User Comments</h3>
-            <div style="margin-bottom:20px; display:flex; flex-direction:column; gap:10px;">
-              <input id="commentName" type="text" placeholder="Your Name" style="padding:10px; border-radius:6px; border:none; width:100%;">
-              <textarea id="commentText" placeholder="Write your comment..." rows="4" style="padding:10px; border-radius:6px; border:none; width:100%;"></textarea>
-              <button onclick="addComment()" style="width:150px; padding:10px; border:none; border-radius:6px; background:#ff8c00; color:white; font-weight:bold; cursor:pointer;">Submit</button>
-            </div>
-            <div id="commentsList" style="display:flex; flex-direction:column; gap:15px;"></div>
-          </div>
         </div>
 
         <style>
@@ -137,9 +123,6 @@ fetch("data/movies.json")
           }
         </style>
       `;
-      
-      // Load movie comments
-      loadComments();
     });
 
   });
@@ -189,41 +172,3 @@ function getTrailer(movieName){
     })
     .catch(() => "");
 }
-
-// ------------------ COMMENTS -----------------------
-const movieId = new URLSearchParams(window.location.search).get("id");
-
-function loadComments() {
-  let comments = JSON.parse(localStorage.getItem("comments_" + movieId) || "[]");
-  let html = "";
-  comments.forEach(c => {
-    html += `
-      <div style="background: rgba(255,255,255,0.05); padding:12px; border-radius:8px;">
-        <p style="margin:0; font-weight:bold; color:#ffcc00;">${c.name} <span style="font-weight:normal; color:#aaa; font-size:0.85em;">(${c.time})</span></p>
-        <p style="margin:5px 0 0 0; color:#ddd;">${c.text}</p>
-      </div>
-    `;
-  });
-  document.getElementById("commentsList").innerHTML = html;
-}
-
-function addComment() {
-  const name = document.getElementById("commentName").value.trim();
-  const text = document.getElementById("commentText").value.trim();
-  if(!name || !text){
-    alert("Please enter your name and comment!");
-    return;
-  }
-  const date = new Date();
-  const time = date.toLocaleString();
-
-  let comments = JSON.parse(localStorage.getItem("comments_" + movieId) || "[]");
-  comments.push({name, text, time});
-  localStorage.setItem("comments_" + movieId, JSON.stringify(comments));
-
-  document.getElementById("commentName").value = "";
-  document.getElementById("commentText").value = "";
-
-  loadComments();
-}
-</script>
