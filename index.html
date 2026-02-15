@@ -51,116 +51,116 @@
     <a href="#">✦ Dashboard</a>
     <a href="contact.html">✦ Contact</a>
     <a href="dmca.html">✦ DMCA</a>
-
-    <!-- Inform Problems Slider Form -->
+   <!-- Slider Inform Problems -->
 <style>
 /* Container */
-#inform-problems-container {
+#inform-problems-slider {
     position: fixed;
-    right: 0;
+    right: -320px; /* hidden initially */
     top: 50%;
     transform: translateY(-50%);
-    z-index: 9999;
     width: 300px;
     background-color: #111;
     color: #fff;
     border-radius: 8px 0 0 8px;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    font-family: Arial, sans-serif;
+    z-index: 9999;
 }
 
-/* Slider Button */
-#inform-problems-header {
+/* Slider Header */
+#inform-problems-slider-header {
     background-color: #00b894;
-    cursor: pointer;
     padding: 12px;
+    font-weight: bold;
     font-size: 18px;
     text-align: center;
-    font-weight: bold;
+    cursor: pointer;
 }
 
-/* Form */
-#inform-problems-form {
-    display: none;
+/* Form inside slider */
+#inform-problems-slider-form {
+    display: flex;
+    flex-direction: column;
     padding: 12px;
 }
 
-#inform-problems-form input, 
-#inform-problems-form textarea {
+#inform-problems-slider-form input,
+#inform-problems-slider-form textarea,
+#inform-problems-slider-form button {
     width: 100%;
-    padding: 8px;
     margin: 6px 0;
     border-radius: 4px;
     border: none;
+    padding: 8px;
+    font-size: 14px;
     outline: none;
 }
 
-#inform-problems-form textarea {
+#inform-problems-slider-form textarea {
     resize: vertical;
 }
 
-#inform-problems-form button {
+#inform-problems-slider-form button {
     background-color: #00b894;
     color: #fff;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 4px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
 }
 
-#inform-problems-form button:hover {
+#inform-problems-slider-form button:hover {
     background-color: #019875;
 }
 </style>
 
-<div id="inform-problems-container">
-    <div id="inform-problems-header">INFORM PROBLEMS</div>
-    <div id="inform-problems-form">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="text" id="first-name" placeholder="First Name" required>
-        <input type="text" id="last-name" placeholder="Last Name" required>
-        <textarea id="problem" placeholder="Describe your problem..." rows="4" required></textarea>
-        <button id="send-problem">Send</button>
+<div id="inform-problems-slider">
+    <div id="inform-problems-slider-header">INFORM PROBLEMS</div>
+    <div id="inform-problems-slider-form">
+        <input type="text" id="slider-username" placeholder="Username" required>
+        <input type="text" id="slider-first-name" placeholder="First Name" required>
+        <input type="text" id="slider-last-name" placeholder="Last Name" required>
+        <textarea id="slider-problem" placeholder="Describe your problem..." rows="4" required></textarea>
+        <button id="slider-send">Send</button>
     </div>
 </div>
 
 <script>
-// Toggle form
-document.getElementById('inform-problems-header').addEventListener('click', function() {
-    let form = document.getElementById('inform-problems-form');
-    if(form.style.display === 'block') {
-        form.style.display = 'none';
+// Slide toggle
+const slider = document.getElementById('inform-problems-slider');
+const header = document.getElementById('inform-problems-slider-header');
+
+header.addEventListener('click', () => {
+    if(slider.style.right === '0px'){
+        slider.style.right = '-320px';
     } else {
-        form.style.display = 'block';
+        slider.style.right = '0px';
     }
 });
 
 // Send WhatsApp message
-document.getElementById('send-problem').addEventListener('click', function() {
-    let username = document.getElementById('username').value.trim();
-    let firstName = document.getElementById('first-name').value.trim();
-    let lastName = document.getElementById('last-name').value.trim();
-    let problem = document.getElementById('problem').value.trim();
+document.getElementById('slider-send').addEventListener('click', function() {
+    const username = document.getElementById('slider-username').value.trim();
+    const firstName = document.getElementById('slider-first-name').value.trim();
+    const lastName = document.getElementById('slider-last-name').value.trim();
+    const problem = document.getElementById('slider-problem').value.trim();
 
     if(!username || !firstName || !lastName || !problem){
         alert("Please fill all fields!");
         return;
     }
 
-    let message = `Username: ${username}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nProblem: ${problem}`;
-    let whatsappNumber = "94740707157"; // Replace with your WhatsApp number
-    let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const message = `Username: ${username}\nFirst Name: ${firstName}\nLast Name: ${lastName}\nProblem: ${problem}`;
+    const whatsappNumber = "94740707157"; // ඔයාගේ WhatsApp number
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappURL, "_blank");
 
-    // Optional: clear form
-    document.getElementById('username').value = "";
-    document.getElementById('first-name').value = "";
-    document.getElementById('last-name').value = "";
-    document.getElementById('problem').value = "";
+    // Clear form
+    document.getElementById('slider-username').value = "";
+    document.getElementById('slider-first-name').value = "";
+    document.getElementById('slider-last-name').value = "";
+    document.getElementById('slider-problem').value = "";
 });
 </script>
 </div>
