@@ -456,15 +456,20 @@ footer{
     font-size: 24px;
     font-weight: bold;
     text-align: left; /* left corner */
-    color: #1e3c72; /* starting dark blue */
-    animation: blueFade 3s infinite;
+    color: red; /* starting color */
+    animation: rainbowText 5s infinite;
 }
 
-/* Keyframes for smooth blue shades */
-@keyframes blueFade {
-    0%   { color: #1e3c72; }  /* dark blue */
-    25%  { color: #2a5298; }  /* medium blue */
-    50%  { color: #3a70c0; }  /* lighter blue */
-    75%  { color: #2a5298; }  /* medium blue */
-    100% { color: #1e3c72; }  /* back to dark blue */
+@keyframes rainbowText {
+    0%   { color: #ff0000; } /* red */
+    10%  { color: #ff7f00; } /* orange */
+    20%  { color: #ffff00; } /* yellow */
+    30%  { color: #00ff00; } /* green */
+    40%  { color: #0000ff; } /* blue */
+    50%  { color: #4b0082; } /* indigo */
+    60%  { color: #8b00ff; } /* violet */
+    70%  { color: #ff0000; } /* back to red */
+    80%  { color: #00ff00; } /* green */
+    90%  { color: #0000ff; } /* blue */
+    100% { color: #ff0000; } /* red */
 }
