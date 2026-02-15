@@ -1,4 +1,4 @@
-<div id="movieDetails"></div>
+
 
 <script>
 const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your YouTube API Key
