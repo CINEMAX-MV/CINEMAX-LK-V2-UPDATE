@@ -303,16 +303,21 @@ function getStars(rating){
   return stars;
 }
 
-// ===============================
-// 🎥 GET YOUTUBE TRAILER
-// ===============================
+// YouTube Search API
 function getTrailer(movieName){
-  let query = encodeURIComponent(movieName+" trailer");
+  let query = encodeURIComponent(movieName + " trailer");
   let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${API_KEY}`;
+
   return fetch(url)
-    .then(res=>res.json())
-    .then(data => data.items && data.items.length>0 ? data.items[0].id.videoId:"")
-    .catch(()=> "");
+    .then(res => res.json())
+    .then(data => {
+      if(data.items && data.items.length > 0){
+        return data.items[0].id.videoId;
+      } else {
+        return "";
+      }
+    })
+    .catch(() => "");
 }
 
 // ===============================
@@ -322,4 +327,4 @@ function goAdPage(link){
   let params = new URLSearchParams(window.location.search);
   let movieId = params.get("id");
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
-}
+                }
