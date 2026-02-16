@@ -175,3 +175,6 @@ function getTrailer(movieName){
     .catch(() => "");
 }
 
+function goAdPage(link){
+  window.location.href = "adpage.html?movie=" + encodeURIComponent(link);
+}
