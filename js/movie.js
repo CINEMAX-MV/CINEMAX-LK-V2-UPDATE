@@ -156,71 +156,76 @@ fetch("data/movies.json")
              🎨 INLINE CSS
         =============================== -->
         <style>
-          .btn{
-            padding:10px 20px;
-            border:none;
-            border-radius:8px;
-            background:linear-gradient(45deg,#ff8c00,#ff2a68);
-            color:white;
-            cursor:pointer;
-            font-weight:bold;
-            transition:0.3s;
-          }
-          .btn:hover{transform:scale(1.05);}
-          .btn-download{background:linear-gradient(45deg,#4caf50,#2e7d32);}
+.comment-section {
+  margin-top:30px;
+  padding:20px;
+  background:#111;
+  border-radius:12px;
+  max-width:500px;
+}
 
-          /* ===== STYLISH COMMENT SECTION ===== */
-          .comment-section{
-            margin-top:30px;
-            padding:15px;
-            background:#111;
-            border-radius:10px;
-          }
-          .comment-section h3{
-            color:#fff;
-            font-size:1.2em;
-            margin-bottom:10px;
-          }
-          .comment-section label{
-            display:block;
-            margin-bottom:2px;
-            color:#fff;
-            font-weight:bold;
-            font-size:0.85em;
-          }
-          .comment-section textarea,
-          .comment-section input{
-            width:100%;
-            padding:8px;
-            background:#1a1a1a;
-            border:1px solid #333;
-            border-radius:6px;
-            color:white;
-            margin-bottom:8px;
-            font-size:0.9em;
-            font-weight:bold; /* all letters equally bold */
-          }
-          .comment-section button{
-            padding:6px 15px;
-            border:none;
-            border-radius:15px;
-            background:linear-gradient(45deg,#ff0040,#ff2a68);
-            color:white;
-            cursor:pointer;
-            font-size:0.9em;
-            float:left; /* left side corner */
-          }
-          .comment-section button:hover{
-            transform:scale(1.05);
-          }
-          .successMsg{
-            display:none;
-            margin-top:6px;
-            color:#00ff99;
-            font-size:0.85em;
-          }
-        </style>
-      `;
+.comment-section h3{
+  color:#fff;
+  font-size:1.3em;
+  margin-bottom:10px;
+  text-align:left;
+}
+
+.input-group {
+  margin-bottom:5mm; /* spacing between fields */
+}
+
+.comment-section label{
+  display:block;
+  margin-bottom:2px;
+  color:#fff;
+  font-weight:bold;
+  font-size:0.85em;
+}
+
+.comment-section input,
+.comment-section textarea{
+  width:100%;
+  padding:8px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:6px;
+  color:white;
+  font-size:0.9em;
+  font-weight:bold; /* letters bold */
+  box-sizing:border-box;
+}
+
+.comment-section textarea{
+  resize:none;
+  height:100px; /* compact comment box */
+}
+
+.comment-section button{
+  padding:6px 15px;
+  border:none;
+  border-radius:15px;
+  background:linear-gradient(45deg,#ff0040,#ff2a68);
+  color:white;
+  cursor:pointer;
+  font-size:0.9em;
+  float:left; /* left side corner */
+  margin-top:5px;
+}
+
+.comment-section button:hover{
+  transform:scale(1.05);
+}
+
+.successMsg{
+  display:none;
+  margin-top:6px;
+  color:#00ff99;
+  font-size:0.85em;
+}
+</style>
+
+`;
 
       // ===============================
       // 📩 SEND COMMENT
