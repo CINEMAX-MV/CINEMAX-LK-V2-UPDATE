@@ -12,15 +12,17 @@ fetch("data/movies.json")
       document.getElementById("movieDetails").innerHTML = "<h2 style='color:white;text-align:center'>Movie Not Found</h2>";
       return;
     }
-
+    
     // Players buttons
-    let playersHTML = "";
-    if(movie.players && movie.players.length > 0){
-      movie.players.forEach(player => {
-        playersHTML += `<button class="btn btn-player" onclick="loadPlayer('${player.link}')">${player.name}</button>`;
-      });
-      playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
-    }
+let playersHTML = "";
+if(movie.players && movie.players.length > 0){
+
+  movie.players.forEach(player => {
+    playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
+  });
+
+  playersHTML += `<button class="btn btn-download" onclick="goAdPage('${movie.players[0].link}')">Download</button>`;
+}
 
     // Social media share
     let currentURL = encodeURIComponent(window.location.href);
