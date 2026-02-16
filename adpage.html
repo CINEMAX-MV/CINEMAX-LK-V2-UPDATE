@@ -67,7 +67,10 @@
 
 <script>
   const urlParams = new URLSearchParams(window.location.search);
-  const moviePage = urlParams.get("movie");
+
+  // ✅ get movie id + player link
+  const movieId = urlParams.get("id");
+  const playLink = urlParams.get("play");
 
   let timeLeft = 5;
   const countText = document.getElementById("count");
@@ -84,8 +87,11 @@
   }, 1000);
 
   btn.onclick = () => {
-    if(moviePage){
-      window.location.href = moviePage;
+    if(movieId && playLink){
+
+      // ✅ Redirect back to movie page with autoplay link
+      window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
+
     } else {
       alert("Movie link not found!");
     }
