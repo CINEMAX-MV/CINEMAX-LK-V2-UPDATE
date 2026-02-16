@@ -55,7 +55,7 @@
 
   <div class="box">
     <h2>Loading Movie...</h2>
-    <p>Please wait <span id="count">5</span> seconds</p>
+    <p>Please wait <span id="count">7</span> seconds</p>
 
     <div class="ad-box">
       <h3>Advertisement</h3>
@@ -89,8 +89,8 @@
 
   btn.onclick = () => {
     if(movieId && playLink){
-      // Open 1xBet site in new tab
-      window.open("https://www.1xbet.com", "_blank");
+      // Open imdb site in new tab
+      window.open("https://m.imdb.com/", "_blank");
 
       // Redirect to movie autoplay in current tab
       window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
