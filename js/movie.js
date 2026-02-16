@@ -238,18 +238,23 @@ fetch("data/movies.json")
       // ===============================
       // 📩 SEND COMMENT
       // ===============================
-      document.querySelector(".commentForm").addEventListener("submit", function(e){
-        e.preventDefault();
-        const formData = new FormData(this);
+      const form = document.querySelector(".commentForm");
+      const successMsg = document.querySelector(".successMsg");
+      const submitBtn = form.querySelector("button[type='submit']");
 
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        submitBtn.style.display = "none"; // hide post button
+
+        const formData = new FormData(this);
         fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
           method: "POST",
           body: formData
         })
         .then(res => res.json())
         .then(() => {
-          document.querySelector(".successMsg").style.display = "block";
-          this.reset();
+          successMsg.style.display = "block"; // show success
+          form.reset();
         });
       });
 
