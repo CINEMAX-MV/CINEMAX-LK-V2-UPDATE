@@ -126,16 +126,22 @@ fetch("data/movies.json")
           <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
-          
+          <!-- PREMIUM COMMENT SECTION -->
           <div class="comment-section">
             <h3>Comments</h3>
             <form class="commentForm">
-              <label>Name:</label>
-              <input type="text" name="name" placeholder="Display Name" required>
-              <label>Email:</label>
-              <input type="email" name="email" placeholder="Email Address" required>
-              <label>Comment:</label>
-              <textarea name="message" placeholder="Write a comment..." required></textarea>
+              <div class="input-group">
+                <label>Name:</label>
+                <input type="text" name="name" placeholder="Display Name" required>
+              </div>
+              <div class="input-group">
+                <label>Email:</label>
+                <input type="email" name="email" placeholder="Email Address" required>
+              </div>
+              <div class="input-group">
+                <label>Comment:</label>
+                <textarea name="message" placeholder="Write a comment..." required></textarea>
+              </div>
 
               <input type="hidden" name="movie" value="${movie.title}">
               <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
@@ -150,78 +156,102 @@ fetch("data/movies.json")
 
         </div>
 
-        
         <style>
-.comment-section {
-  margin-top:30px;
-  padding:20px;
-  background:#111;
-  border-radius:12px;
-  max-width:500px;
-}
+        /* ========================== */
+        /* PLAYER BUTTON STYLES */
+        /* ========================== */
+        .btn {
+          padding:10px 18px;
+          border:none;
+          border-radius:8px;
+          background:linear-gradient(45deg,#ff8c00,#ff2a68);
+          color:white;
+          cursor:pointer;
+          font-weight:bold;
+          transition:0.3s;
+        }
+        .btn:hover{ transform:scale(1.05); }
+        .btn-download{
+          background:linear-gradient(45deg,#4caf50,#2e7d32);
+        }
 
-.comment-section h3{
-  color:#fff;
-  font-size:1.3em;
-  margin-bottom:10px;
-  text-align:left;
-}
-
-.input-group {
-  margin-bottom:5mm; /* spacing between fields */
-}
-
-.comment-section label{
-  display:block;
-  margin-bottom:2px;
-  color:#fff;
-  font-weight:bold;
-  font-size:0.85em;
-}
-
-.comment-section input,
-.comment-section textarea{
-  width:100%;
-  padding:8px;
-  background:#1a1a1a;
-  border:1px solid #333;
-  border-radius:6px;
-  color:white;
-  font-size:0.9em;
-  font-weight:bold; /* letters bold */
-  box-sizing:border-box;
-}
-
-.comment-section textarea{
-  resize:none;
-  height:100px; /* compact comment box */
-}
-
-.comment-section button{
-  padding:6px 15px;
-  border:none;
-  border-radius:15px;
-  background:linear-gradient(45deg,#ff0040,#ff2a68);
-  color:white;
-  cursor:pointer;
-  font-size:0.9em;
-  float:left; /* left side corner */
-  margin-top:5px;
-}
-
-.comment-section button:hover{
-  transform:scale(1.05);
-}
-
-.successMsg{
-  display:none;
-  margin-top:6px;
-  color:#00ff99;
-  font-size:0.85em;
-}
-</style>
-
-`;
+        /* ========================== */
+        /* ULTRA PREMIUM COMMENT SECTION */
+        /* ========================== */
+        .comment-section {
+          margin-top:30px;
+          padding:25px;
+          background:#111;
+          border-radius:15px;
+          max-width:600px;
+          box-shadow:0 10px 35px rgba(0,0,0,0.6);
+        }
+        .comment-section h3{
+          color:#fff;
+          font-size:1.4em;
+          margin-bottom:12px;
+          text-align:left;
+          border-bottom:1px solid #333;
+          padding-bottom:5px;
+        }
+        .input-group{
+          margin-bottom:5mm;
+        }
+        .comment-section label{
+          display:block;
+          margin-bottom:3px;
+          color:#fff;
+          font-weight:bold;
+          font-size:0.9em;
+        }
+        .comment-section input,
+        .comment-section textarea{
+          width:100%;
+          padding:10px;
+          background:#1a1a1a;
+          border:1px solid #333;
+          border-radius:8px;
+          color:white;
+          font-size:0.95em;
+          font-weight:bold;
+          box-sizing:border-box;
+          transition:0.3s;
+        }
+        .comment-section input:focus,
+        .comment-section textarea:focus{
+          border-color:#ff2a68;
+          outline:none;
+          box-shadow:0 0 8px #ff2a68;
+        }
+        .comment-section textarea{
+          resize:none;
+          height:120px;
+        }
+        .comment-section button{
+          padding:7px 18px;
+          border:none;
+          border-radius:20px;
+          background:linear-gradient(45deg,#ff0040,#ff2a68);
+          color:white;
+          cursor:pointer;
+          font-size:0.95em;
+          float:left;
+          margin-top:5px;
+          box-shadow:0 4px 15px rgba(255,0,70,0.4);
+          transition:0.3s;
+        }
+        .comment-section button:hover{
+          transform:scale(1.05);
+          box-shadow:0 6px 20px rgba(255,0,70,0.6);
+        }
+        .successMsg{
+          display:none;
+          margin-top:6px;
+          color:#00ff99;
+          font-size:0.9em;
+        }
+        </style>
+      `;
 
       // ===============================
       // 📩 SEND COMMENT
@@ -250,7 +280,6 @@ fetch("data/movies.json")
     });
 
   });
-
 
 // ===============================
 // ⬇ LOAD PLAYER
