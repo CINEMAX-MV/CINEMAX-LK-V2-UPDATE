@@ -14,17 +14,17 @@ fetch("data/movies.json")
       return;
     }
 
-    // Players buttons
-    let playersHTML = "";
-    if(movie.players && movie.players.length > 0){
+// Players buttons
+let playersHTML = "";
+if(movie.players && movie.players.length > 0){
 
-      movie.players.forEach(player => {
-        playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
-      });
+  movie.players.forEach(player => {
+    playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
+  });
 
-      playersHTML += `<button class="btn btn-download" onclick="goAdPage('${movie.players[0].link}')">Download</button>`;
-    }
-
+  // ✅ Download direct (No adpage)
+  playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
+}
     // Social media share
     let currentURL = encodeURIComponent(window.location.href);
     let socialHTML = `
