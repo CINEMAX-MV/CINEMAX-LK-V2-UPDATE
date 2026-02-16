@@ -126,9 +126,7 @@ fetch("data/movies.json")
           <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
-          <!-- ===============================
-               💬 COMMENT SECTION (STYLISH)
-          =============================== -->
+          
           <div class="comment-section">
             <h3>Comments</h3>
             <form class="commentForm">
@@ -152,9 +150,7 @@ fetch("data/movies.json")
 
         </div>
 
-        <!-- ===============================
-             🎨 INLINE CSS
-        =============================== -->
+        
         <style>
 .comment-section {
   margin-top:30px;
