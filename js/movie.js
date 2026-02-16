@@ -1,19 +1,26 @@
 // ===============================
 // 🔐 YOUTUBE API KEY
 // ===============================
-const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ";
+const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your API Key
 
 // ===============================
-// 📂 LOAD MOVIE DATA
+// 📂 LOAD MOVIE DATA FROM JSON
 // ===============================
 fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
 
-    const params = new URLSearchParams(window.location.search);
-    const movieId = params.get("id");
-    const movie = data[movieId];
+    // ===============================
+    // 🎯 GET MOVIE ID FROM URL
+    // ===============================
+    let params = new URLSearchParams(window.location.search);
+    let movieId = params.get("id");
 
+    let movie = data[movieId];
+
+    // ===============================
+    // ❌ IF MOVIE NOT FOUND
+    // ===============================
     if(!movie){
       document.getElementById("movieDetails").innerHTML =
         "<h2 style='color:white;text-align:center'>Movie Not Found</h2>";
@@ -21,20 +28,27 @@ fetch("data/movies.json")
     }
 
     // ===============================
-    // 🎯 PLAYER BUTTONS
+    // ▶ CREATE PLAYER BUTTONS
     // ===============================
     let playersHTML = "";
     if(movie.players && movie.players.length > 0){
       movie.players.forEach(player => {
         playersHTML += `<button class="btn btn-player" onclick="loadPlayer('${player.link}')">${player.name}</button>`;
       });
+
+      // ✅ Download direct (No adpage)
       playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
     }
 
     // ===============================
-    // 🌐 SOCIAL SHARE
+    // 🔗 ENCODE FULL URL FOR WHATSAPP
     // ===============================
-    let shareURL = encodeURIComponent(`https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`);
+    let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
+    shareURL = encodeURIComponent(shareURL);
+
+    // ===============================
+    // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
+    // ===============================
     let currentURL = encodeURIComponent(window.location.href);
     let socialHTML = `
       <div style="margin-top:20px; display:flex; gap:12px;">
@@ -51,28 +65,38 @@ fetch("data/movies.json")
     `;
 
     // ===============================
-    // 🎥 GET TRAILER
+    // 🎥 GET TRAILER FROM YOUTUBE
     // ===============================
     getTrailer(movie.title).then(trailerId => {
-      const trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
+      let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
+      // ===============================
+      // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
+      // ===============================
       document.getElementById("movieDetails").innerHTML = `
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
-          <!-- TRAILER -->
+          <!-- TRAILER / BIG SCREEN -->
           <div id="trailerContainer" style="width:100%; text-align:center; margin-bottom:20px;">
-            ${trailerURL ? `<iframe id="bigTrailer" src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>` 
-            : `<img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">`}
+            ${ trailerURL ? `
+              <iframe src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>
+            ` : `
+              <img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">
+            `}
           </div>
 
           <!-- DESCRIPTION -->
           <div style="margin-top:20px;">
             <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);
-            -webkit-background-clip:text;-webkit-text-fill-color:transparent;">${movie.title}</h2>
-            <p style="font-size:1.1em;line-height:1.8;color:#ddd;">${movie.description}</p>
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+              ${movie.title}
+            </h2>
+            <p style="font-size:1.1em;line-height:1.8;color:#ddd;">
+              ${movie.description}
+            </p>
           </div>
 
-          <!-- DETAILS -->
+          <!-- SMALL POSTER + RATING + DETAILS -->
           <div style="display:flex;gap:25px;margin-top:30px;flex-wrap:wrap;">
             <div style="flex:1;min-width:250px;">
               <img src="${movie.image}" style="width:100%;max-width:250px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);">
@@ -82,6 +106,7 @@ fetch("data/movies.json")
                 <span style="color:#aaa;">(${movie.imdb}/10)</span>
               </div>
             </div>
+
             <div style="flex:2;min-width:300px;line-height:1.8;">
               <p>📅 <strong>Release Date:</strong> ${movie.release_date}</p>
               <p>🎬 <strong>Director:</strong> ${movie.director}</p>
@@ -128,99 +153,173 @@ fetch("data/movies.json")
             </form>
             <p class="successMsg">✅ Comment sent successfully!</p>
           </div>
+
         </div>
 
+        <!-- =============================== -->
+        <!-- 💎 STYLES -->
+        <!-- =============================== -->
         <style>
-          .btn{padding:10px 20px;border:none;border-radius:8px;background:linear-gradient(45deg,#ff8c00,#ff2a68);color:white;cursor:pointer;font-weight:bold;transition:0.3s;}
+          .btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            background:linear-gradient(45deg,#ff8c00,#ff2a68);
+            color:white;
+            cursor:pointer;
+            font-weight:bold;
+            transition:0.3s;
+          }
           .btn:hover{transform:scale(1.05);}
           .btn-download{background:linear-gradient(45deg,#4caf50,#2e7d32);}
 
-          .comment-section{margin-top:30px;padding:20px;background:#111;border-radius:12px;max-width:500px;}
-          .comment-section.hidden{display:none !important;}
-          .comment-section h3{color:#fff;font-size:1.3em;margin-bottom:10px;text-align:left;}
-          .input-group{margin-bottom:5mm;}
-          .comment-section label{display:block;margin-bottom:2px;color:#fff;font-weight:bold;font-size:0.85em;}
-          .comment-section input,.comment-section textarea{width:100%;padding:8px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:white;font-size:0.9em;font-weight:bold;box-sizing:border-box;}
-          .comment-section textarea{resize:none;height:100px;}
-          .comment-section button{padding:6px 15px;border:none;border-radius:15px;background:linear-gradient(45deg,#ff0040,#ff2a68);color:white;cursor:pointer;font-size:0.9em;float:left;margin-top:5px;}
-          .comment-section button:hover{transform:scale(1.05);}
-          .successMsg{display:none;margin-top:6px;color:#00ff99;font-size:0.85em;}
+          .comment-section{
+            margin-top:30px;
+            padding:20px;
+            background:#111;
+            border-radius:12px;
+            max-width:500px;
+          }
+          .comment-section.hidden{ display:none !important; }
+          .comment-section h3{
+            color:#fff;
+            font-size:1.3em;
+            margin-bottom:10px;
+            text-align:left;
+          }
+          .input-group{ margin-bottom:5mm; }
+          .comment-section label{
+            display:block;
+            margin-bottom:2px;
+            color:#fff;
+            font-weight:bold;
+            font-size:0.85em;
+          }
+          .comment-section input,
+          .comment-section textarea{
+            width:100%;
+            padding:8px;
+            background:#1a1a1a;
+            border:1px solid #333;
+            border-radius:6px;
+            color:white;
+            font-size:0.9em;
+            font-weight:bold;
+            box-sizing:border-box;
+          }
+          .comment-section textarea{
+            resize:none;
+            height:100px;
+          }
+          .comment-section button{
+            padding:6px 15px;
+            border:none;
+            border-radius:15px;
+            background:linear-gradient(45deg,#ff0040,#ff2a68);
+            color:white;
+            cursor:pointer;
+            font-size:0.9em;
+            float:left;
+            margin-top:5px;
+          }
+          .comment-section button:hover{ transform:scale(1.05); }
+          .successMsg{
+            display:none;
+            margin-top:6px;
+            color:#00ff99;
+            font-size:0.85em;
+          }
         </style>
       `;
 
       // ===============================
-      // COMMENT FORM
+      // 📩 SEND COMMENT
       // ===============================
       const form = document.querySelector(".commentForm");
       const successMsg = document.querySelector(".successMsg");
       const submitBtn = form.querySelector("button[type='submit']");
+
       form.addEventListener("submit", function(e){
         e.preventDefault();
-        submitBtn.style.display = "none";
+        submitBtn.style.display = "none"; // hide post button
 
         const formData = new FormData(this);
-        fetch("https://formsubmit.co/ajax/boyae399@gmail.com", { method:"POST", body:formData })
-          .then(res=>res.json())
-          .then(() => {
-            successMsg.style.display = "block";
-            form.reset();
-          });
+        fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
+          method: "POST",
+          body: formData
+        })
+        .then(res => res.json())
+        .then(() => {
+          successMsg.style.display = "block"; // show success
+          form.reset();
+        });
       });
 
-      // ===============================
-      // AUTO PLAY AFTER RETURN FROM ADPAGE
-      // ===============================
+      // ✅ AUTO PLAY AFTER RETURN FROM ADPAGE
       let autoPlayLink = params.get("autoplay");
-      if(autoPlayLink) loadPlayer(autoPlayLink);
+      if(autoPlayLink){
+        loadPlayer(autoPlayLink);
+      }
+
+    });
+
   });
 
 // ===============================
-// ⬇ LOAD PLAYER + HIDE COMMENT
+// ⬇ LOAD PLAYER
+// ===============================
 function loadPlayer(link){
-  const embedLink = link.replace("/view","/preview");
-  document.querySelector(".comment-section").classList.add("hidden");
+  let embedLink = link.replace("/view","/preview");
+
+  // Hide comment section when video plays
+  const commentDiv = document.querySelector(".comment-section");
+  if(commentDiv) commentDiv.classList.add("hidden");
+
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="450" allowfullscreen 
-      style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;">
-    </iframe>
+    <iframe src="${embedLink}" width="100%" height="450" allowfullscreen style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;"></iframe>
   `;
 }
 
 // ===============================
-// ⬇ DOWNLOAD
+// ⬇ DOWNLOAD MOVIE
+// ===============================
 function downloadMovie(link){
-  window.open(link.replace("/preview","/view"),"_blank");
+  let downloadLink = link.replace("/preview","/view");
+  window.open(downloadLink,"_blank");
 }
 
 // ===============================
-// ⭐ IMDb STARS
+// ⭐ GET STARS FOR IMDB
+// ===============================
 function getStars(rating){
   rating = parseFloat(rating);
-  let full = Math.floor(rating/2);
-  let half = (rating%2)>=1 ? true : false;
-  let empty = 5-full-(half?1:0);
+  let fullStars = Math.floor(rating/2);
+  let halfStar = (rating%2)>=1 ? true:false;
+  let emptyStars = 5 - fullStars - (halfStar?1:0);
   let stars="";
-  for(let i=0;i<full;i++) stars+="⭐";
-  if(half) stars+="✨";
-  for(let i=0;i<empty;i++) stars+="☆";
+  for(let i=0;i<fullStars;i++) stars+="⭐";
+  if(halfStar) stars+="✨";
+  for(let i=0;i<emptyStars;i++) stars+="☆";
   return stars;
 }
 
 // ===============================
 // 🎥 GET YOUTUBE TRAILER
+// ===============================
 function getTrailer(movieName){
-  const query = encodeURIComponent(movieName+" trailer");
-  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${API_KEY}`;
+  let query = encodeURIComponent(movieName+" trailer");
+  let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${API_KEY}`;
   return fetch(url)
     .then(res=>res.json())
-    .then(data=>data.items && data.items.length>0 ? data.items[0].id.videoId : "")
+    .then(data => data.items && data.items.length>0 ? data.items[0].id.videoId:"")
     .catch(()=> "");
 }
 
 // ===============================
 // 🔁 REDIRECT TO AD PAGE
+// ===============================
 function goAdPage(link){
-  const params = new URLSearchParams(window.location.search);
-  const movieId = params.get("id");
+  let params = new URLSearchParams(window.location.search);
+  let movieId = params.get("id");
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
