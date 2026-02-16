@@ -58,16 +58,18 @@
     <p>Please wait <span id="count">5</span> seconds</p>
 
     <div class="ad-box">
-  <h3>Advertisement</h3>
-  <img src="https://via.placeholder.com/300x250?text=Your+Ad+Here" alt="Demo Ad" style="width:100%;border-radius:10px;">
-</div>
+      <h3>Advertisement</h3>
+      <!-- Demo Playable Ad (Propeller) -->
+      <script data-cfasync="false" type="text/javascript" src="//demo.propellerads.com/demo-auto-ad.js"></script>
+    </div>
+
     <button id="continueBtn">Continue to Movie</button>
   </div>
 
 <script>
   const urlParams = new URLSearchParams(window.location.search);
 
-  // ✅ get movie id + player link
+  // Get movie id + player link
   const movieId = urlParams.get("id");
   const playLink = urlParams.get("play");
 
@@ -87,10 +89,8 @@
 
   btn.onclick = () => {
     if(movieId && playLink){
-
-      // ✅ Redirect back to movie page with autoplay link
+      // Redirect back to movie page with autoplay
       window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
-
     } else {
       alert("Movie link not found!");
     }
