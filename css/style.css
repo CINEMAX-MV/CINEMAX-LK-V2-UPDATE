@@ -473,76 +473,7 @@ footer{
     90%  { color: #0000ff; } /* blue */
     100% { color: #ff0000; } /* red */
 }
-/* ==========================
-   CINEMAX DESKTOP VERSION CSS
-   ONLY FOR PC / LAPTOP
-   Mobile view එකට කිසිම effect එකක් නෑ
-========================== */
 
-@media (min-width: 992px) {
-
-  body {
-    background: #0b0b0f;
-    color: white;
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
-  }
-
-  /* ===== MAIN SITE WIDTH CONTROL ===== */
-  .container,
-  .main,
-  main,
-  .wrapper,
-  .content,
-  section {
-    max-width: 1300px;
-    margin: auto;
-  }
-
-  /* ===== HEADER / NAVBAR FIX ===== */
-  header {
-    background: rgba(15, 15, 20, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 14px 0;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
-
-  nav .logo {
-    font-size: 22px;
-    font-weight: 700;
-    color: #ff2a2a;
-    letter-spacing: 1px;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 22px;
-    list-style: none;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav ul li a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: 0.3s ease;
-  }
-
-  nav ul li a:hover {
-    color: white;
   }
 
   /* ===== HERO SECTION (HOME TOP) ===== */
@@ -570,26 +501,134 @@ footer{
     line-height: 1.1;
   }
 
+/* ===========================================
+   CINEMAX - DESKTOP / PC VERSION CSS
+   Mobile view එකට කිසිම effect එකක් නෑ
+   Works only above 992px
+=========================================== */
+
+@media (min-width: 992px) {
+
+  /* ===== BASIC RESET ===== */
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #0b0b0f;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* ===== WEBSITE WIDTH CONTROL ===== */
+  .container,
+  .main,
+  main,
+  .wrapper,
+  .content,
+  section {
+    max-width: 1350px;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* ===== HEADER / NAVBAR ===== */
+  header {
+    background: rgba(15, 15, 20, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  nav .logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ff2a2a;
+    letter-spacing: 1px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 22px;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: #ffffff;
+  }
+
+  /* ===== HERO / BANNER ===== */
+  .hero,
+  .banner,
+  .home-banner {
+    width: 100%;
+    height: 420px;
+    border-radius: 22px;
+    margin: 20px auto;
+    background: linear-gradient(120deg, rgba(255,0,0,0.35), rgba(0,0,0,0.9));
+    display: flex;
+    align-items: center;
+    padding: 35px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+    overflow: hidden;
+  }
+
+  .hero h1,
+  .banner h1,
+  .home-banner h1 {
+    font-size: 52px;
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.1;
+  }
+
   .hero p,
   .banner p,
   .home-banner p {
     font-size: 15px;
-    margin-top: 10px;
-    max-width: 550px;
+    margin-top: 12px;
+    max-width: 600px;
     color: rgba(255,255,255,0.75);
+    line-height: 1.6;
   }
 
-  /* ===== SECTION TITLE STYLE ===== */
-  h2, .section-title {
+  /* ===== SECTION TITLES ===== */
+  h2,
+  .section-title {
     font-size: 20px;
     margin: 20px 0 15px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.5px;
-    padding-left: 5px;
+    padding-left: 10px;
     border-left: 4px solid #ff2a2a;
   }
 
-  /* ===== MOVIE GRID PERFECT FOR PC ===== */
+  /* ===== MOVIES GRID (PC Perfect) ===== */
   .movie-container,
   .movies-container,
   .movies-grid,
@@ -599,10 +638,10 @@ footer{
     display: grid !important;
     grid-template-columns: repeat(6, 1fr);
     gap: 18px;
-    padding: 10px 15px 25px;
+    padding: 10px 0 25px;
   }
 
-  /* ===== MOVIE CARD PREMIUM DESIGN ===== */
+  /* ===== MOVIE CARD PREMIUM STYLE ===== */
   .movie-card,
   .card,
   .movie-box,
@@ -611,44 +650,48 @@ footer{
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 18px;
     overflow: hidden;
-    transition: 0.3s ease;
-    position: relative;
+    transition: 0.35s ease;
     cursor: pointer;
+    position: relative;
   }
 
   .movie-card:hover,
   .card:hover,
   .movie-box:hover,
   .movie-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.55);
-    border: 1px solid rgba(255,42,42,0.45);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,42,42,0.55);
   }
 
-  /* ===== MOVIE IMAGE ===== */
+  /* ===== MOVIE POSTER (FULL IMAGE NO CROP) ===== */
   .movie-card img,
   .card img,
   .movie-box img,
   .movie-item img {
     width: 100%;
-    height: 270px;
-    object-fit: cover;
+    height: 290px;
+    object-fit: contain; /* FULL poster visible */
+    background: #000;
     display: block;
+    padding: 8px;
   }
 
-  /* ===== MOVIE INFO ===== */
+  /* ===== MOVIE TITLE ===== */
   .movie-card h3,
   .card h3,
   .movie-box h3,
   .movie-item h3 {
     font-size: 14px;
-    font-weight: 600;
-    padding: 10px 12px;
+    font-weight: 700;
+    padding: 10px 12px 6px;
     margin: 0;
     color: white;
     line-height: 1.3;
+    text-align: center;
   }
 
+  /* ===== MOVIE DETAILS TEXT ===== */
   .movie-card p,
   .card p,
   .movie-box p,
@@ -656,24 +699,25 @@ footer{
     font-size: 12px;
     padding: 0 12px 12px;
     margin: 0;
+    text-align: center;
     color: rgba(255,255,255,0.6);
   }
 
-  /* ===== PAGINATION BEAUTIFUL PC STYLE ===== */
+  /* ===== PAGINATION PC STYLE ===== */
   #pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin: 20px 0 40px;
+    margin: 25px 0 45px;
   }
 
   #pagination button {
-    padding: 10px 18px;
-    border-radius: 12px;
+    padding: 10px 20px;
+    border-radius: 14px;
     border: none;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     background: rgba(255,255,255,0.06);
     color: white;
@@ -682,6 +726,27 @@ footer{
 
   #pagination button:hover {
     background: #ff2a2a;
+    transform: translateY(-2px);
+  }
+
+  /* ===== SEARCH BOX PC FIX ===== */
+  input[type="text"],
+  input[type="search"] {
+    width: 450px;
+    max-width: 100%;
+    padding: 12px 15px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    outline: none;
+    background: rgba(255,255,255,0.04);
+    color: white;
+    font-size: 14px;
+  }
+
+  /* ===== BUTTONS STYLE ===== */
+  button {
+    border-radius: 14px;
+    font-weight: 700;
   }
 
   /* ===== FOOTER ===== */
