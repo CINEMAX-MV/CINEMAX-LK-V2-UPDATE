@@ -127,9 +127,7 @@ fetch("data/movies.json")
           <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
-          <!-- ===============================
-     💬 COMMENT SECTION (COMPACT VERSION)
-=============================== -->
+          
 <div class="comment-section">
   <h3>Comments</h3>
   <form class="commentForm">
@@ -143,7 +141,7 @@ fetch("data/movies.json")
     <input type="text" name="_honey" style="display:none">
     <button type="submit">Post</button>
   </form>
-  <p class="successMsg">✅ Comment sent!</p>
+  <p class="successMsg">✅ Comment sent successfully!</p>
 </div>
 
 <style>
