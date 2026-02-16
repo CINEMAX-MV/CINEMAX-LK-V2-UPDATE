@@ -127,22 +127,27 @@ fetch("data/movies.json")
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
           <!-- ===============================
-               💬 COMMENT SECTION (COMPACT)
+               💬 COMMENT SECTION (STYLISH)
           =============================== -->
           <div class="comment-section">
             <h3>Comments</h3>
             <form class="commentForm">
-              <textarea name="message" placeholder="Write a comment..." required></textarea>
+              <label>Name:</label>
               <input type="text" name="name" placeholder="Display Name" required>
+              <label>Email:</label>
               <input type="email" name="email" placeholder="Email Address" required>
+              <label>Comment:</label>
+              <textarea name="message" placeholder="Write a comment..." required></textarea>
+
               <input type="hidden" name="movie" value="${movie.title}">
               <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="box">
               <input type="text" name="_honey" style="display:none">
-              <button type="submit">Post</button>
+
+              <button type="submit">Post comment</button>
             </form>
-            <p class="successMsg">✅ Comment sent!</p>
+            <p class="successMsg">✅ Comment sent successfully!</p>
           </div>
 
         </div>
@@ -164,7 +169,7 @@ fetch("data/movies.json")
           .btn:hover{transform:scale(1.05);}
           .btn-download{background:linear-gradient(45deg,#4caf50,#2e7d32);}
 
-          /* ===== COMPACT COMMENT SECTION ===== */
+          /* ===== STYLISH COMMENT SECTION ===== */
           .comment-section{
             margin-top:30px;
             padding:15px;
@@ -176,6 +181,13 @@ fetch("data/movies.json")
             font-size:1.2em;
             margin-bottom:10px;
           }
+          .comment-section label{
+            display:block;
+            margin-bottom:2px;
+            color:#fff;
+            font-weight:bold;
+            font-size:0.85em;
+          }
           .comment-section textarea,
           .comment-section input{
             width:100%;
@@ -186,6 +198,7 @@ fetch("data/movies.json")
             color:white;
             margin-bottom:8px;
             font-size:0.9em;
+            font-weight:bold; /* all letters equally bold */
           }
           .comment-section button{
             padding:6px 15px;
@@ -195,7 +208,7 @@ fetch("data/movies.json")
             color:white;
             cursor:pointer;
             font-size:0.9em;
-            float:right;
+            float:left; /* left side corner */
           }
           .comment-section button:hover{
             transform:scale(1.05);
