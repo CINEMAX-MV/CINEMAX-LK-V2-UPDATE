@@ -24,27 +24,33 @@ if(movie.players && movie.players.length > 0){
 
   // ✅ Download direct (No adpage)
   playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
-}
-    // Social media share
-    let shareURL = encodeURIComponent(
-  `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${movie.title}&image=${movie.image}`
-);
+}// Properly encode each param for WhatsApp OG preview
+let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
 
+// Encode full URL for WhatsApp
+shareURL = encodeURIComponent(shareURL);
+
+// Facebook / Twitter use current page
 let currentURL = encodeURIComponent(window.location.href);
 
 let socialHTML = `
 <div style="margin-top:20px; display:flex; gap:12px;">
+
+  <!-- Facebook Share -->
   <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
+    <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
   </a>
 
+  <!-- WhatsApp Share -->
   <a href="https://wa.me/?text=${shareURL}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Share on WhatsApp">
   </a>
 
+  <!-- Twitter Share -->
   <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
+    <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
   </a>
+
 </div>
 `;
 
