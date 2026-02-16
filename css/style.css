@@ -474,3 +474,91 @@ footer{
     100% { color: #ff0000; } /* red */
 }
 
+/* ==============================
+   DESKTOP / PC VIEW FIX ONLY
+   (Mobile view එකට කිසිම බලපෑමක් නෑ)
+================================= */
+@media (min-width: 992px) {
+
+  body {
+    background: #0b0b0b;
+  }
+
+  /* Site width control */
+  .container, 
+  .main-container,
+  .wrapper,
+  .content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Movies grid responsive for PC */
+  .movies-grid,
+  .movie-grid,
+  .movie-container,
+  .cards,
+  .movie-list {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  /* Movie card design fix */
+  .movie-card,
+  .card,
+  .movie-box {
+    background: #111;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+
+  .movie-card:hover,
+  .card:hover,
+  .movie-box:hover {
+    transform: translateY(-6px);
+  }
+
+  /* Movie poster size fix */
+  .movie-card img,
+  .card img,
+  .movie-box img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Title text clean */
+  .movie-card h3,
+  .card h3,
+  .movie-box h3 {
+    font-size: 15px;
+    padding: 10px;
+    color: white;
+    font-weight: 600;
+  }
+
+  /* Fix navbar layout */
+  nav ul,
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  /* Header spacing */
+  header {
+    padding: 15px 0;
+  }
+
+  /* Section padding */
+  section {
+    padding: 20px 0;
+  }
+
+}
