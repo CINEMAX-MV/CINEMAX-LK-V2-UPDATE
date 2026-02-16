@@ -128,103 +128,91 @@ fetch("data/movies.json")
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
           <!-- ===============================
-               💬 COMMENT SECTION
-          =============================== -->
-          <div class="comment-section">
-            <h2>Comments</h2>
-            <form class="commentForm">
-              <textarea name="message" placeholder="Write a comment..." required></textarea>
-              <input type="text" name="name" placeholder="Display Name" required>
-              <input type="email" name="email" placeholder="Email Address" required>
-              <input type="hidden" name="movie" value="${movie.title}">
-              <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="box">
-              <input type="text" name="_honey" style="display:none">
-              <button type="submit">Post comment</button>
-            </form>
-            <p class="successMsg">✅ Comment sent successfully!</p>
-          </div>
+     💬 COMMENT SECTION (COMPACT VERSION)
+=============================== -->
+<div class="comment-section">
+  <h3>Comments</h3>
+  <form class="commentForm">
+    <textarea name="message" placeholder="Write a comment..." required></textarea>
+    <input type="text" name="name" placeholder="Display Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="hidden" name="movie" value="${movie.title}">
+    <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="text" name="_honey" style="display:none">
+    <button type="submit">Post</button>
+  </form>
+  <p class="successMsg">✅ Comment sent!</p>
+</div>
 
-        </div>
+<style>
+.comment-section{
+  margin-top:30px;
+  padding:15px;
+  background:#111;
+  border-radius:10px;
+}
 
-        <!-- ===============================
-             🎨 INLINE CSS FOR BUTTONS & COMMENTS
-        =============================== -->
-        <style>
-          .btn{
-            padding:10px 20px;
-            border:none;
-            border-radius:8px;
-            background:linear-gradient(45deg,#ff8c00,#ff2a68);
-            color:white;
-            cursor:pointer;
-            font-weight:bold;
-            transition:0.3s;
-          }
-          .btn:hover{transform:scale(1.05);}
-          .btn-download{background:linear-gradient(45deg,#4caf50,#2e7d32);}
+.comment-section h3{
+  color:#fff;
+  font-size:1.2em;
+  margin-bottom:10px;
+}
 
-          .comment-section{
-            margin-top:40px;
-            padding:20px;
-            background:#111;
-            border-radius:12px;
-          }
-          .comment-section textarea,
-          .comment-section input{
-            width:100%;
-            padding:10px;
-            background:#1a1a1a;
-            border:1px solid #333;
-            border-radius:8px;
-            color:white;
-            margin-bottom:10px;
-          }
-          .comment-section button{
-            padding:10px 20px;
-            border:none;
-            border-radius:8px;
-            background:linear-gradient(45deg,#ff0040,#ff2a68);
-            color:white;
-            cursor:pointer;
-          }
-          .successMsg{
-            display:none;
-            margin-top:10px;
-            color:#00ff99;
-          }
-        </style>
-      `;
+.comment-section textarea,
+.comment-section input{
+  width:100%;
+  padding:8px;
+  background:#1a1a1a;
+  border:1px solid #333;
+  border-radius:6px;
+  color:white;
+  margin-bottom:8px;
+  font-size:0.9em;
+}
 
-      // ===============================
-      // 📩 SEND COMMENT TO EMAIL
-      // ===============================
-      document.querySelector(".commentForm").addEventListener("submit", function(e){
-        e.preventDefault();
-        const formData = new FormData(this);
+.comment-section button{
+  padding:6px 15px;
+  border:none;
+  border-radius:15px;
+  background:linear-gradient(45deg,#ff0040,#ff2a68);
+  color:white;
+  cursor:pointer;
+  font-size:0.9em;
+  float:right;
+}
 
-        fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
-          method: "POST",
-          body: formData
-        })
-        .then(res => res.json())
-        .then(() => {
-          document.querySelector(".successMsg").style.display = "block";
-          this.reset();
-        });
-      });
+.comment-section button:hover{
+  transform:scale(1.05);
+}
 
-      // ✅ AUTO PLAY AFTER RETURN FROM ADPAGE
-      let autoPlayLink = params.get("autoplay");
-      if(autoPlayLink){
-        loadPlayer(autoPlayLink);
-      }
+.successMsg{
+  display:none;
+  margin-top:6px;
+  color:#00ff99;
+  font-size:0.85em;
+}
+</style>
 
-    });
+<script>
+// SEND COMMENT
+document.querySelector(".commentForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const formData = new FormData(this);
 
+  fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.json())
+  .then(() => {
+    document.querySelector(".successMsg").style.display = "block";
+    this.reset();
   });
-
+});
+</script>
+     
 
 // ===============================
 // ⬇ LOAD PLAYER
