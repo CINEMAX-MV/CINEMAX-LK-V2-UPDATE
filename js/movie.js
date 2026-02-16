@@ -3,7 +3,6 @@
 // ===============================
 const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your API Key
 
-
 // ===============================
 // 📂 LOAD MOVIE DATA FROM JSON
 // ===============================
@@ -66,13 +65,13 @@ fetch("data/movies.json")
     `;
 
     // ===============================
-    // 🎬 GET TRAILER FROM YOUTUBE
+    // 🎥 GET TRAILER FROM YOUTUBE
     // ===============================
     getTrailer(movie.title).then(trailerId => {
       let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
       // ===============================
-      // 🖼 RENDER MOVIE DETAILS
+      // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
@@ -127,90 +126,117 @@ fetch("data/movies.json")
           <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
-          
-<div class="comment-section">
-  <h3>Comments</h3>
-  <form class="commentForm">
-    <textarea name="message" placeholder="Write a comment..." required></textarea>
-    <input type="text" name="name" placeholder="Display Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <input type="hidden" name="movie" value="${movie.title}">
-    <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="box">
-    <input type="text" name="_honey" style="display:none">
-    <button type="submit">Post</button>
-  </form>
-  <p class="successMsg">✅ Comment sent successfully!</p>
-</div>
+          <!-- ===============================
+               💬 COMMENT SECTION (COMPACT)
+          =============================== -->
+          <div class="comment-section">
+            <h3>Comments</h3>
+            <form class="commentForm">
+              <textarea name="message" placeholder="Write a comment..." required></textarea>
+              <input type="text" name="name" placeholder="Display Name" required>
+              <input type="email" name="email" placeholder="Email Address" required>
+              <input type="hidden" name="movie" value="${movie.title}">
+              <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="box">
+              <input type="text" name="_honey" style="display:none">
+              <button type="submit">Post</button>
+            </form>
+            <p class="successMsg">✅ Comment sent!</p>
+          </div>
 
-<style>
-.comment-section{
-  margin-top:30px;
-  padding:15px;
-  background:#111;
-  border-radius:10px;
-}
+        </div>
 
-.comment-section h3{
-  color:#fff;
-  font-size:1.2em;
-  margin-bottom:10px;
-}
+        <!-- ===============================
+             🎨 INLINE CSS
+        =============================== -->
+        <style>
+          .btn{
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            background:linear-gradient(45deg,#ff8c00,#ff2a68);
+            color:white;
+            cursor:pointer;
+            font-weight:bold;
+            transition:0.3s;
+          }
+          .btn:hover{transform:scale(1.05);}
+          .btn-download{background:linear-gradient(45deg,#4caf50,#2e7d32);}
 
-.comment-section textarea,
-.comment-section input{
-  width:100%;
-  padding:8px;
-  background:#1a1a1a;
-  border:1px solid #333;
-  border-radius:6px;
-  color:white;
-  margin-bottom:8px;
-  font-size:0.9em;
-}
+          /* ===== COMPACT COMMENT SECTION ===== */
+          .comment-section{
+            margin-top:30px;
+            padding:15px;
+            background:#111;
+            border-radius:10px;
+          }
+          .comment-section h3{
+            color:#fff;
+            font-size:1.2em;
+            margin-bottom:10px;
+          }
+          .comment-section textarea,
+          .comment-section input{
+            width:100%;
+            padding:8px;
+            background:#1a1a1a;
+            border:1px solid #333;
+            border-radius:6px;
+            color:white;
+            margin-bottom:8px;
+            font-size:0.9em;
+          }
+          .comment-section button{
+            padding:6px 15px;
+            border:none;
+            border-radius:15px;
+            background:linear-gradient(45deg,#ff0040,#ff2a68);
+            color:white;
+            cursor:pointer;
+            font-size:0.9em;
+            float:right;
+          }
+          .comment-section button:hover{
+            transform:scale(1.05);
+          }
+          .successMsg{
+            display:none;
+            margin-top:6px;
+            color:#00ff99;
+            font-size:0.85em;
+          }
+        </style>
+      `;
 
-.comment-section button{
-  padding:6px 15px;
-  border:none;
-  border-radius:15px;
-  background:linear-gradient(45deg,#ff0040,#ff2a68);
-  color:white;
-  cursor:pointer;
-  font-size:0.9em;
-  float:right;
-}
+      // ===============================
+      // 📩 SEND COMMENT
+      // ===============================
+      document.querySelector(".commentForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        const formData = new FormData(this);
 
-.comment-section button:hover{
-  transform:scale(1.05);
-}
+        fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
+          method: "POST",
+          body: formData
+        })
+        .then(res => res.json())
+        .then(() => {
+          document.querySelector(".successMsg").style.display = "block";
+          this.reset();
+        });
+      });
 
-.successMsg{
-  display:none;
-  margin-top:6px;
-  color:#00ff99;
-  font-size:0.85em;
-}
-</style>
+      // ✅ AUTO PLAY AFTER RETURN FROM ADPAGE
+      let autoPlayLink = params.get("autoplay");
+      if(autoPlayLink){
+        loadPlayer(autoPlayLink);
+      }
 
-<script>
-// SEND COMMENT
-document.querySelector(".commentForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const formData = new FormData(this);
+    });
 
-  fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.json())
-  .then(() => {
-    document.querySelector(".successMsg").style.display = "block";
-    this.reset();
   });
-});
-</script>
-     
+
 
 // ===============================
 // ⬇ LOAD PLAYER
