@@ -3,6 +3,7 @@ const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your API Key
 fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
+
     let params = new URLSearchParams(window.location.search);
     let movieId = params.get("id");
 
@@ -12,17 +13,17 @@ fetch("data/movies.json")
       document.getElementById("movieDetails").innerHTML = "<h2 style='color:white;text-align:center'>Movie Not Found</h2>";
       return;
     }
-    
+
     // Players buttons
-let playersHTML = "";
-if(movie.players && movie.players.length > 0){
+    let playersHTML = "";
+    if(movie.players && movie.players.length > 0){
 
-  movie.players.forEach(player => {
-    playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
-  });
+      movie.players.forEach(player => {
+        playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
+      });
 
-  playersHTML += `<button class="btn btn-download" onclick="goAdPage('${movie.players[0].link}')">Download</button>`;
-}
+      playersHTML += `<button class="btn btn-download" onclick="goAdPage('${movie.players[0].link}')">Download</button>`;
+    }
 
     // Social media share
     let currentURL = encodeURIComponent(window.location.href);
@@ -125,9 +126,17 @@ if(movie.players && movie.players.length > 0){
           }
         </style>
       `;
+
+      // ✅ AUTO PLAY AFTER RETURN FROM ADPAGE
+      let autoPlayLink = params.get("autoplay");
+      if(autoPlayLink){
+        loadPlayer(autoPlayLink);
+      }
+
     });
 
   });
+
 
 // Load player
 function loadPlayer(link){
@@ -139,11 +148,13 @@ function loadPlayer(link){
   `;
 }
 
+
 // Download
 function downloadMovie(link){
   let downloadLink = link.replace("/preview","/view");
   window.open(downloadLink,"_blank");
 }
+
 
 // IMDb stars
 function getStars(rating){
@@ -157,6 +168,7 @@ function getStars(rating){
   for(let i=0;i<emptyStars;i++) stars += "☆";
   return stars;
 }
+
 
 // YouTube Search API
 function getTrailer(movieName){
@@ -175,6 +187,11 @@ function getTrailer(movieName){
     .catch(() => "");
 }
 
+
+// ✅ Redirect to adpage.html with movie id + selected player link
 function goAdPage(link){
-  window.location.href = "adpage.html?movie=" + encodeURIComponent(link);
+  let params = new URLSearchParams(window.location.search);
+  let movieId = params.get("id");
+
+  window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
