@@ -1,18 +1,18 @@
 // ===============================
 // 🔐 YOUTUBE API KEY
 // ===============================
-const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ"; // Your API Key
+const API_KEY = "AIzaSyAvdxsDafd2PzYeSZORv6JKRvXxg2m4NxQ";
 
 // ===============================
-// 📂 LOAD MOVIE DATA FROM JSON
+// 📂 LOAD MOVIE DATA
 // ===============================
 fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
 
-    let params = new URLSearchParams(window.location.search);
-    let movieId = params.get("id");
-    let movie = data[movieId];
+    const params = new URLSearchParams(window.location.search);
+    const movieId = params.get("id");
+    const movie = data[movieId];
 
     if(!movie){
       document.getElementById("movieDetails").innerHTML =
@@ -21,25 +21,21 @@ fetch("data/movies.json")
     }
 
     // ===============================
-    // ▶ CREATE PLAYER BUTTONS
+    // 🎯 PLAYER BUTTONS
     // ===============================
     let playersHTML = "";
     if(movie.players && movie.players.length > 0){
       movie.players.forEach(player => {
         playersHTML += `<button class="btn btn-player" onclick="loadPlayer('${player.link}')">${player.name}</button>`;
       });
-      // Download button
       playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
     }
 
     // ===============================
-    // 🔗 ENCODE URL FOR SOCIAL SHARE
+    // 🌐 SOCIAL SHARE
     // ===============================
-    let shareURL = encodeURIComponent(
-      `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`
-    );
+    let shareURL = encodeURIComponent(`https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`);
     let currentURL = encodeURIComponent(window.location.href);
-
     let socialHTML = `
       <div style="margin-top:20px; display:flex; gap:12px;">
         <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
@@ -58,30 +54,22 @@ fetch("data/movies.json")
     // 🎥 GET TRAILER
     // ===============================
     getTrailer(movie.title).then(trailerId => {
-      let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
+      const trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
       document.getElementById("movieDetails").innerHTML = `
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER -->
           <div id="trailerContainer" style="width:100%; text-align:center; margin-bottom:20px;">
-            ${ trailerURL ? `
-              <iframe id="bigTrailer" src="${trailerURL}" width="100%" height="450" allowfullscreen 
-              style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>
-            ` : `
-              <img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">
-            `}
+            ${trailerURL ? `<iframe id="bigTrailer" src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>` 
+            : `<img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">`}
           </div>
 
           <!-- DESCRIPTION -->
           <div style="margin-top:20px;">
             <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);
-            -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-              ${movie.title}
-            </h2>
-            <p style="font-size:1.1em;line-height:1.8;color:#ddd;">
-              ${movie.description}
-            </p>
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;">${movie.title}</h2>
+            <p style="font-size:1.1em;line-height:1.8;color:#ddd;">${movie.description}</p>
           </div>
 
           <!-- DETAILS -->
@@ -142,7 +130,6 @@ fetch("data/movies.json")
           </div>
         </div>
 
-        <!-- =============================== -->
         <style>
           .btn{padding:10px 20px;border:none;border-radius:8px;background:linear-gradient(45deg,#ff8c00,#ff2a68);color:white;cursor:pointer;font-weight:bold;transition:0.3s;}
           .btn:hover{transform:scale(1.05);}
@@ -162,7 +149,7 @@ fetch("data/movies.json")
       `;
 
       // ===============================
-      // SEND COMMENT
+      // COMMENT FORM
       // ===============================
       const form = document.querySelector(".commentForm");
       const successMsg = document.querySelector(".successMsg");
@@ -184,41 +171,56 @@ fetch("data/movies.json")
       // AUTO PLAY AFTER RETURN FROM ADPAGE
       // ===============================
       let autoPlayLink = params.get("autoplay");
-      if(autoPlayLink){
-        loadPlayer(autoPlayLink);
-      }
-    });
-
+      if(autoPlayLink) loadPlayer(autoPlayLink);
   });
 
 // ===============================
-// ⬇ LOAD PLAYER (HIDE COMMENT)
+// ⬇ LOAD PLAYER + HIDE COMMENT
 function loadPlayer(link){
-  let embedLink = link.replace("/view","/preview");
+  const embedLink = link.replace("/view","/preview");
   document.querySelector(".comment-section").classList.add("hidden");
   document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="450" allowfullscreen style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;"></iframe>
+    <iframe src="${embedLink}" width="100%" height="450" allowfullscreen 
+      style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;">
+    </iframe>
   `;
 }
 
 // ===============================
-// ⬇ DOWNLOAD MOVIE
+// ⬇ DOWNLOAD
 function downloadMovie(link){
   window.open(link.replace("/preview","/view"),"_blank");
 }
 
 // ===============================
-// ⭐ GET STARS
+// ⭐ IMDb STARS
 function getStars(rating){
-  rating=parseFloat(rating);
-  let full=Math.floor(rating/2),half=(rating%2)>=1?true:false,empty=5-full-(half?1:0),str="";
-  for(let i=0;i<full;i++)str+="⭐";if(half)str+="✨";for(let i=0;i<empty;i++)str+="☆";return str;
+  rating = parseFloat(rating);
+  let full = Math.floor(rating/2);
+  let half = (rating%2)>=1 ? true : false;
+  let empty = 5-full-(half?1:0);
+  let stars="";
+  for(let i=0;i<full;i++) stars+="⭐";
+  if(half) stars+="✨";
+  for(let i=0;i<empty;i++) stars+="☆";
+  return stars;
 }
 
 // ===============================
 // 🎥 GET YOUTUBE TRAILER
 function getTrailer(movieName){
-  let query = encodeURIComponent(movieName+" trailer");
-  let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${API_KEY}`;
-  return fetch(url).then(res=>res.json()).then(data=>data.items&&data.items.length>0?data.items[0].id.videoId:"").catch(()=> "");
+  const query = encodeURIComponent(movieName+" trailer");
+  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=1&q=${query}&key=${API_KEY}`;
+  return fetch(url)
+    .then(res=>res.json())
+    .then(data=>data.items && data.items.length>0 ? data.items[0].id.videoId : "")
+    .catch(()=> "");
+}
+
+// ===============================
+// 🔁 REDIRECT TO AD PAGE
+function goAdPage(link){
+  const params = new URLSearchParams(window.location.search);
+  const movieId = params.get("id");
+  window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
