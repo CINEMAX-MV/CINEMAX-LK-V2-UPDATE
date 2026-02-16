@@ -173,17 +173,3 @@ function getTrailer(movieName){
     .catch(() => "");
 }
 
-<!-- COMMENTS SECTION -->
-<div id="commentsSection" style="margin-top:50px; max-width:800px; margin:auto;">
-  <h3 style="color:white; margin-bottom:15px;">💬 User Comments</h3>
-
-  <!-- Input -->
-  <div style="margin-bottom:20px; display:flex; flex-direction:column; gap:10px;">
-    <input id="commentName" type="text" placeholder="Your Name" style="padding:10px; border-radius:6px; border:none; width:100%;">
-    <textarea id="commentText" placeholder="Write your comment..." rows="4" style="padding:10px; border-radius:6px; border:none; width:100%;"></textarea>
-    <button onclick="addComment()" style="width:150px; padding:10px; border:none; border-radius:6px; background:#ff8c00; color:white; font-weight:bold; cursor:pointer;">Submit</button>
-  </div>
-
-  <!-- Comments List -->
-  <div id="commentsList" style="display:flex; flex-direction:column; gap:15px;"></div>
-</div>
