@@ -89,7 +89,10 @@
 
   btn.onclick = () => {
     if(movieId && playLink){
-      // Redirect back to movie page with autoplay
+      // Open 1xBet site in new tab
+      window.open("https://www.1xbet.com", "_blank");
+
+      // Redirect to movie autoplay in current tab
       window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
     } else {
       alert("Movie link not found!");
