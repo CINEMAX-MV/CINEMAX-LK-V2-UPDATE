@@ -140,15 +140,13 @@ fetch("data/movies.json")
               </div>
               <div class="input-group">
                 <label>Comment:</label>
-                <textarea name="message" placeholder="Write a comment..." required></textarea>
-              </div>
+                <textarea name="Comment" placeholder="Write a comment..." required></textarea>
 
               <input type="hidden" name="movie" value="${movie.title}">
               <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
               <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="box">
+              <input type="hidden" name="_template" value="table">
               <input type="text" name="_honey" style="display:none">
-
               <button type="submit">Post comment</button>
             </form>
             <p class="successMsg">✅ Comment sent successfully!</p>
