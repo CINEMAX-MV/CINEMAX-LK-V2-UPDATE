@@ -79,42 +79,58 @@ const timer = setInterval(() => {
   }
 }, 1000);
 
-// Track steps in sessionStorage
+// Track step in sessionStorage
 let step = sessionStorage.getItem("adStep") || "1";
 
 function updateButtonText() {
-  if(step === "1") btn.innerText = "Continue 1";
-  else if(step === "2") btn.innerText = "Continue 2";
+  if(step === "1") btn.innerText = "Continue to IMDb";
+  else if(step === "2") btn.innerText = "Continue to WhatsApp Channel";
+}
+
+// Auto detect if user came back from IMDb tab
+function detectFocus() {
+  window.addEventListener("focus", () => {
+    if(step === "2") {
+      btn.style.display = "inline-block";
+    }
+  });
 }
 
 updateButtonText();
+detectFocus();
 
 btn.onclick = () => {
   if(step === "1"){
     // Step 1: open IMDb
     sessionStorage.setItem("adStep", "2");
+    step = "2";
+    updateButtonText();
     window.open(imdbLink, "_blank");
+    btn.style.display = "none"; // hide until user comes back
   } else if(step === "2"){
     // Step 2: open WhatsApp + redirect to movie autoplay
     sessionStorage.setItem("adStep", "3");
+    btn.style.display = "none";
     window.open(whatsappLink, "_blank");
 
     setTimeout(() => {
       window.location.href = `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
     }, 1000);
-  } else if(step === "3"){
-    // fallback
-    window.location.href = `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
   }
 };
 
-// If user refreshes after step 1
+// If user refreshes after step 1, keep Continue 2 hidden until focus back
 window.onload = () => {
   step = sessionStorage.getItem("adStep") || "1";
   updateButtonText();
+
+  if(step === "2") {
+    // User refresh or back from IMDb
+    btn.style.display = "inline-block";
+  }
 };
 
-// Optional: clear step after finished
+// Clear step after movie starts
 window.onbeforeunload = () => {
   if(step === "3") sessionStorage.removeItem("adStep");
 };
