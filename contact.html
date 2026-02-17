@@ -32,6 +32,78 @@ body{
   100%{background-position:0% 50%}
 }
 
+/* ===== CINEMAX LOADING SCREEN (ADDED) ===== */
+
+#cinemax-loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+.loader-logo{
+  font-size:50px;
+  font-weight:700;
+  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:glowLoader 1.5s infinite alternate;
+}
+
+.loader-bar{
+  width:250px;
+  height:4px;
+  background:#222;
+  margin-top:25px;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.loader-bar span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  animation:loading 2.5s forwards;
+}
+
+@keyframes glowLoader{
+  from{ text-shadow:0 0 10px #ff004c; }
+  to{ text-shadow:0 0 25px #ff7b00; }
+}
+
+@keyframes loading{
+  to{ width:100%; }
+}
+
+/* ===== CLOSE BUTTON (ADDED) ===== */
+
+.close-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  font-size:20px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  padding:8px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  z-index:10000;
+  transition:0.3s;
+}
+
+.close-btn:hover{
+  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  box-shadow:0 0 15px #ff004c;
+}
+
+/* ===== ORIGINAL CSS BELOW (UNCHANGED) ===== */
+
 /* HEADER */
 
 header{
@@ -245,6 +317,17 @@ footer{
 
 <body>
 
+<!-- ===== LOADING SCREEN (ADDED) ===== -->
+<div id="cinemax-loader">
+  <div class="loader-logo">CINEMAX</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<!-- ===== CLOSE BUTTON (ADDED) ===== -->
+<div class="close-btn" onclick="goHome()">
+  <i class="fa-solid fa-xmark"></i>
+</div>
+
 <header>
   <div class="toggle-btn" onclick="toggleMode()">
     <i class="fa-solid fa-circle-half-stroke"></i>
@@ -352,6 +435,18 @@ function typeEffect(){
 }
 
 window.onload = typeEffect;
+
+/* ===== LOADER SCRIPT (ADDED) ===== */
+window.addEventListener("load", function(){
+  setTimeout(function(){
+    document.getElementById("cinemax-loader").style.display="none";
+  },2500);
+});
+
+/* ===== CLOSE BUTTON FUNCTION (ADDED) ===== */
+function goHome(){
+  window.location.href="index.html";
+}
 
 </script>
 
