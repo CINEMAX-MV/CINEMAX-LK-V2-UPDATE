@@ -90,7 +90,7 @@ fetch("data/movies.json")
           <div style="margin-top:20px;">
             <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);
             -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
-              ${movie.title}
+              ${movie.title} ${getPremiumBadge(movie.premium)}
             </h2>
             <p style="font-size:1.1em;line-height:1.8;color:#ddd;">
               ${movie.description}
