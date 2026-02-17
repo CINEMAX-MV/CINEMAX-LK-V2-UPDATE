@@ -1,7 +1,7 @@
 // ===============================
 // 🔐 YOUTUBE API KEY
 // ===============================
-const API_KEY = "AIzaSyDbrWat2Z6PeJbJUSCmG2PJXeZM92xL8jI"; // Your API Key
+const API_KEY = "AIzaSyBPPhDhVem-bSzZjGIlysFfnAax9bKQ2aM"; // Your API Key
 
 // ===============================
 // 📂 LOAD MOVIE DATA FROM JSON
