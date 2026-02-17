@@ -315,11 +315,13 @@ function getTrailer(movieName){
     .catch(()=> "");
 }
 
+
 // ===============================
-// 🔁 REDIRECT TO AD PAGE
+// 🔁 REDIRECT TO AD PAGE (FIXED)
 // ===============================
 function goAdPage(link){
   let params = new URLSearchParams(window.location.search);
   let movieId = params.get("id");
-  window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
+  // redirect with autoplay query for after ad
+  window.location.href = "adpage.html?id=" + movieId + "&autoplay=" + encodeURIComponent(link);
 }
