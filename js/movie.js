@@ -188,12 +188,25 @@ function getTrailer(movieName){
     .catch(()=> "");
 }
 
+// ▶ CREATE PLAYER BUTTONS (FIXED FOR AD)
+let playersHTML = "";
+if(movie.players && movie.players.length > 0){
+  movie.players.forEach(player => {
+    // ❌ OLD: loadPlayer('${player.link}')
+    // ✅ NEW: redirect to ad page first
+    playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
+  });
+
+  // ✅ Download direct (No adpage)
+  playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
+}
+
 // ===============================
 // 🔁 REDIRECT TO AD PAGE (FIXED)
 // ===============================
 function goAdPage(link){
   let params = new URLSearchParams(window.location.search);
   let movieId = params.get("id");
-  // redirect with autoplay query for after ad
+  // autoplay query ensures film loads after ad
   window.location.href = "adpage.html?id=" + movieId + "&autoplay=" + encodeURIComponent(link);
 }
