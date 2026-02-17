@@ -36,12 +36,12 @@ fetch("data/movies.json")
       movie.players.forEach(player => {
         playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
-      
-// ===============================
-// ✅ DOWNLOAD BUTTON (PREMIUM CHECK)
-// ===============================
-      playersHTML += `<button class="btn btn-download" onclick='handlePremiumDownload(${JSON.stringify(movie)}, "${movie.players[0].link}")'>Download</button>`;========================
-      }
+
+      // ✅ Download direct (No adpage)
+      playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
+    }
+
+    // ===============================
     // 🔗 ENCODE FULL URL FOR WHATSAPP
     // ===============================
     let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
@@ -156,29 +156,6 @@ fetch("data/movies.json")
           </div>
 
         </div>
-
-  <!-- =============================== -->
-  <!-- ⚠ ANNOUNCEMENT MESSAGE -->
-  <!-- =============================== -->
-  <div class="announcement">
-    ⚠️ වෙබ් අඩවියේ නඩත්තු කටයුත්තක් හේතුවෙන් ඔබගේ ප්‍රකාශ මා හට නොලැබෙන බව කරුණාවෙන් සලකන්න
-  </div>
-</div>
-
-<!-- =============================== -->
-<!-- ANNOUNCEMENT STYLES -->
-<!-- =============================== -->
-<style>
-.announcement {
-  margin-top: 15px;
-  padding: 12px;
-  background: #222;
-  border-left: 4px solid #ff8c00;
-  color: #ffcc00;
-  font-size: 0.95em;
-  border-radius: 6px;
-}
-</style>
 
         <!-- =============================== -->
         <!-- 💎 STYLES -->
