@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CINEMAX | Contact</title>
+<title>CINEMAX Contact</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -18,14 +18,20 @@
 }
 
 body{
-  background:#0f0f0f;
-  color:#fff;
+  background:#0d0d0d;
+  color:white;
   overflow-x:hidden;
+  transition:0.4s;
 }
 
-/* ================= LOADING SCREEN ================= */
+/* LIGHT MODE */
+body.light-mode{
+  background:#f5f5f5;
+  color:#111;
+}
 
-#loader{
+/* ===== LOADING SCREEN ===== */
+#cinemax-loader{
   position:fixed;
   width:100%;
   height:100%;
@@ -37,22 +43,22 @@ body{
   z-index:9999;
 }
 
-.loader-text{
-  font-size:40px;
+.loader-logo{
+  font-size:45px;
   font-weight:700;
   background:linear-gradient(90deg,#ff004c,#ff7b00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:glow 1.5s infinite alternate;
+  animation:glowLoader 1.5s infinite alternate;
 }
 
 .loader-bar{
-  width:200px;
+  width:220px;
   height:4px;
   background:#222;
   margin-top:20px;
-  overflow:hidden;
   border-radius:10px;
+  overflow:hidden;
 }
 
 .loader-bar span{
@@ -60,80 +66,84 @@ body{
   height:100%;
   width:0%;
   background:linear-gradient(90deg,#ff004c,#ff7b00);
-  animation:load 2.5s forwards;
+  animation:loading 2.5s forwards;
 }
 
-@keyframes glow{
+@keyframes glowLoader{
   from{ text-shadow:0 0 10px #ff004c; }
   to{ text-shadow:0 0 25px #ff7b00; }
 }
 
-@keyframes load{
+@keyframes loading{
   to{ width:100%; }
 }
 
-/* ================= SIDEBAR ================= */
-
-.menu-btn{
+/* ===== CLOSE BUTTON ===== */
+.close-btn{
   position:fixed;
   top:20px;
   left:20px;
-  font-size:22px;
+  font-size:20px;
   cursor:pointer;
-  z-index:1001;
+  background:#1a1a1a;
+  padding:8px 12px;
+  border-radius:8px;
+  z-index:1000;
+  transition:0.3s;
 }
 
+.close-btn:hover{
+  background:#ff004c;
+}
+
+/* ===== SIDEBAR ===== */
 .sidebar{
   position:fixed;
-  left:-260px;
+  right:-250px;
   top:0;
-  width:260px;
+  width:250px;
   height:100%;
-  background:linear-gradient(180deg,#111,#1a1a1a);
+  background:#111;
   padding-top:80px;
   transition:0.4s;
-  z-index:1000;
-}
-
-.sidebar.active{
-  left:0;
+  z-index:999;
 }
 
 .sidebar a{
   display:block;
   padding:15px 25px;
-  color:#aaa;
+  color:white;
   text-decoration:none;
   transition:0.3s;
 }
 
 .sidebar a:hover{
   background:#ff004c;
-  color:#fff;
-  padding-left:35px;
 }
 
-.overlay{
+.sidebar.active{
+  right:0;
+}
+
+.menu-btn{
   position:fixed;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.6);
-  display:none;
-  z-index:999;
+  right:20px;
+  top:20px;
+  font-size:22px;
+  cursor:pointer;
+  z-index:1000;
 }
 
-.overlay.active{
-  display:block;
-}
-
-/* ================= HEADER ================= */
-
+/* ===== HEADER ===== */
 header{
-  padding:100px 20px 40px 20px;
+  padding:120px 20px 40px;
+  text-align:left;
+  max-width:1100px;
+  margin:auto;
 }
 
 .typewriter{
-  font-size:36px;
+  font-size:38px;
   font-weight:700;
   min-height:50px;
 }
@@ -142,187 +152,154 @@ header{
   border-right:3px solid #ff004c;
   padding-right:5px;
   animation:blink 0.7s infinite;
-  background:linear-gradient(90deg,#ff004c,#ff7b00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
 }
 
 @keyframes blink{
-  50%{ border-color:transparent; }
+  0%{border-color:#ff004c;}
+  50%{border-color:transparent;}
+  100%{border-color:#ff004c;}
 }
 
-.sub-text{
-  color:#aaa;
-  margin-top:10px;
-}
-
-/* ================= CONTENT ================= */
-
-.container{
-  max-width:1200px;
+/* ===== CONTACT CARDS ===== */
+.admins{
+  max-width:1100px;
   margin:auto;
-  padding:40px 20px;
-}
-
-.team{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:25px;
+  padding:40px 20px 80px;
 }
 
 .card{
   background:#1a1a1a;
   padding:25px;
-  border-radius:18px;
+  border-radius:15px;
   text-align:center;
-  transition:0.3s;
+  transition:0.4s;
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 15px 30px rgba(255,0,76,0.4);
+  transform:translateY(-10px);
+  box-shadow:0 0 20px rgba(255,0,76,0.4);
 }
 
-.card img{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  border:3px solid #ff004c;
+body.light-mode .card{
+  background:white;
+  color:#111;
+}
+
+.card i{
+  font-size:35px;
   margin-bottom:15px;
-  object-fit:cover;
+  color:#ff004c;
 }
 
-.card span{
-  color:#ff7b00;
-  font-size:13px;
-}
-
-.contact-form{
-  margin-top:60px;
-  background:#151515;
-  padding:30px;
-  border-radius:18px;
-}
-
-.contact-form input,
-.contact-form textarea{
-  width:100%;
-  padding:10px;
-  margin-bottom:12px;
-  border:none;
-  border-radius:8px;
-  background:#222;
-  color:#fff;
-}
-
-.contact-form button{
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:25px;
-  background:linear-gradient(90deg,#ff004c,#ff7b00);
-  color:#fff;
-  font-weight:600;
+/* DARK MODE BUTTON */
+.toggle-btn{
+  position:fixed;
+  top:20px;
+  left:80px;
+  font-size:20px;
   cursor:pointer;
-}
-
-footer{
-  margin-top:60px;
-  background:#111;
-  padding:40px;
-  text-align:center;
-  color:#777;
+  z-index:1000;
 }
 
 </style>
 </head>
-
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-text">CINEMAX</div>
+<!-- LOADING SCREEN -->
+<div id="cinemax-loader">
+  <div class="loader-logo">CINEMAX</div>
   <div class="loader-bar"><span></span></div>
 </div>
 
-<!-- MENU -->
-<div class="menu-btn" onclick="openMenu()">
+<!-- CLOSE BUTTON -->
+<div class="close-btn" onclick="goHome()">
+  <i class="fa-solid fa-xmark"></i>
+</div>
+
+<!-- DARK MODE -->
+<div class="toggle-btn" onclick="toggleMode()">
+  <i class="fa-solid fa-circle-half-stroke"></i>
+</div>
+
+<!-- MENU BUTTON -->
+<div class="menu-btn" onclick="toggleSidebar()">
   <i class="fa-solid fa-bars"></i>
 </div>
 
+<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-  <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-  <a href="#"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-  <a href="#"><i class="fa-solid fa-scale-balanced"></i> DMCA</a>
-  <a href="#"><i class="fa-solid fa-circle-exclamation"></i> Problems</a>
+  <a href="index.html">Home</a>
+  <a href="#">Dashboard</a>
+  <a href="#">DMCA</a>
+  <a href="#">Problems</a>
 </div>
 
-<div class="overlay" id="overlay" onclick="closeMenu()"></div>
-
+<!-- HEADER -->
 <header>
-  <h1 class="typewriter"><span id="typing-text"></span></h1>
-  <p class="sub-text">Meet The Core Team Behind CINEMAX</p>
+  <h1 class="typewriter">
+    <span id="typing-text"></span>
+  </h1>
+  <p>Meet The Core Team Behind CINEMAX</p>
 </header>
 
-<div class="container">
-
-  <div class="team">
-    <div class="card">
-      <img src="https://i.ibb.co/Qj391RWm/RD393437353638333237343640732e77686174736170702e6e6574-825959.jpg">
-      <h3>Peksha Rasanjana</h3>
-      <span>Owner</span>
-    </div>
-
-    <div class="card">
-      <img src="https://i.ibb.co/4RpRtj6X/RD393437353638333237343640732e77686174736170702e6e6574-903427.jpg">
-      <h3>Yasiru</h3>
-      <span>Developer</span>
-    </div>
+<!-- ADMINS -->
+<section class="admins">
+  <div class="card">
+    <i class="fa-solid fa-user"></i>
+    <h3>Main Admin</h3>
+    <p>admin@cinemax.com</p>
   </div>
 
-  <div class="contact-form">
-    <h3>Send Message</h3>
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea rows="4" placeholder="Your Message"></textarea>
-    <button>Send Message</button>
+  <div class="card">
+    <i class="fa-solid fa-shield-halved"></i>
+    <h3>Security Admin</h3>
+    <p>security@cinemax.com</p>
   </div>
 
-</div>
-
-<footer>
-  © 2026 CINEMAX Movies • Cinematic Edition
-</footer>
+  <div class="card">
+    <i class="fa-solid fa-headset"></i>
+    <h3>Support Admin</h3>
+    <p>support@cinemax.com</p>
+  </div>
+</section>
 
 <script>
 
 /* LOADER */
-window.addEventListener("load",function(){
+window.addEventListener("load", function(){
   setTimeout(function(){
-    document.getElementById("loader").style.display="none";
+    document.getElementById("cinemax-loader").style.display="none";
   },2500);
 });
 
-/* SIDEBAR */
-function openMenu(){
-  document.getElementById("sidebar").classList.add("active");
-  document.getElementById("overlay").classList.add("active");
+/* HOME */
+function goHome(){
+  window.location.href="index.html";
 }
 
-function closeMenu(){
-  document.getElementById("sidebar").classList.remove("active");
-  document.getElementById("overlay").classList.remove("active");
+/* SIDEBAR */
+function toggleSidebar(){
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* DARK MODE */
+function toggleMode(){
+  document.body.classList.toggle("light-mode");
 }
 
 /* TYPEWRITER */
 const text="CINEMAX MAIN ADMINS";
-let i=0;
+let index=0;
+const speed=100;
 
 function typeEffect(){
-  if(i<text.length){
-    document.getElementById("typing-text").innerHTML+=text.charAt(i);
-    i++;
-    setTimeout(typeEffect,100);
+  if(index<text.length){
+    document.getElementById("typing-text").innerHTML+=text.charAt(index);
+    index++;
+    setTimeout(typeEffect,speed);
   }
 }
 
