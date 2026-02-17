@@ -36,6 +36,7 @@ fetch("data/movies.json")
       movie.players.forEach(player => {
         playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
+      
       // ✅ Download direct (No adpage)
         playersHTML += <button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>;
        }
