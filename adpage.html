@@ -58,14 +58,14 @@
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 
-// Movie link info
+// Movie info
 const movieId = urlParams.get("id");
 const playLink = urlParams.get("play");
 const whatsappLink = "https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
 const imdbLink = "https://m.imdb.com/";
 const movieSite = "movie.html";
 
-// Countdown
+// Countdown timer
 const countText = document.getElementById("count");
 const btn = document.getElementById("continueBtn");
 let timeLeft = 5;
@@ -79,43 +79,45 @@ const timer = setInterval(() => {
   }
 }, 1000);
 
-// Step control
+// Track steps in sessionStorage
 let step = sessionStorage.getItem("adStep") || "1";
 
-function showStepButton() {
-  if(step === "1"){
-    btn.innerText = "Continue to IMDb";
-  } else if(step === "2"){
-    btn.innerText = "Continue to WhatsApp Channel";
-  }
+function updateButtonText() {
+  if(step === "1") btn.innerText = "Continue to IMDb";
+  else if(step === "2") btn.innerText = "Continue to WhatsApp Channel";
 }
 
-showStepButton();
+updateButtonText();
 
 btn.onclick = () => {
   if(step === "1"){
     // Step 1: open IMDb
-    sessionStorage.setItem("adStep", "2"); // Next step = WhatsApp
+    sessionStorage.setItem("adStep", "2");
     window.open(imdbLink, "_blank");
   } else if(step === "2"){
-    // Step 2: open WhatsApp channel + redirect to movie autoplay
-    sessionStorage.setItem("adStep", "3"); // Next = movie
+    // Step 2: open WhatsApp + redirect to movie autoplay
+    sessionStorage.setItem("adStep", "3");
     window.open(whatsappLink, "_blank");
 
-    // Small delay then redirect to movie autoplay
     setTimeout(() => {
       window.location.href = `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
     }, 1000);
   } else if(step === "3"){
-    // fallback: if user refreshes after all steps
+    // fallback
     window.location.href = `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
   }
 };
 
-// Optional: reset adStep if user goes back to original page manually
+// If user refreshes after step 1
+window.onload = () => {
+  step = sessionStorage.getItem("adStep") || "1";
+  updateButtonText();
+};
+
+// Optional: clear step after finished
 window.onbeforeunload = () => {
   if(step === "3") sessionStorage.removeItem("adStep");
-}
+};
 </script>
 
 </body>
