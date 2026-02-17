@@ -1,160 +1,101 @@
+// ===============================
+// COINS SYSTEM FOR CINEMAX LK
+// ===============================
+const COINS_KEY = "cinemax_coins";
+const UNLOCKED_KEY = "cinemax_unlocked";
 
-// ===========================
-// 🪙 DEFAULT COINS (FIRST TIME)
-// ===========================
-if(localStorage.getItem("coins") === null){
-  localStorage.setItem("coins", 2);
+// Initialize coins
+function initCoins() {
+  let coins = parseInt(localStorage.getItem(COINS_KEY));
+  if (isNaN(coins)) {
+    localStorage.setItem(COINS_KEY, "0");
+    coins = 0;
+  }
+  return coins;
 }
 
-// ===========================
-// 🔐 BASIC ANTI CHEAT CHECK
-// ===========================
-function validateCoins(){
-  let coins = parseInt(localStorage.getItem("coins"));
-  if(isNaN(coins) || coins < 0 || coins > 999){
-    localStorage.setItem("coins", 0);
+// Get unlocked movies
+function getUnlockedMovies() {
+  let unlocked = localStorage.getItem(UNLOCKED_KEY);
+  if (!unlocked) return {};
+  try {
+    return JSON.parse(unlocked);
+  } catch {
+    return {};
   }
 }
-validateCoins();
 
-
-// ===========================
-// 🪙 GET COINS
-// ===========================
-function getCoins(){
-  return parseInt(localStorage.getItem("coins")) || 0;
+// Save unlocked movie
+function unlockMovie(title) {
+  const unlocked = getUnlockedMovies();
+  unlocked[title] = new Date().getTime(); // store timestamp
+  localStorage.setItem(UNLOCKED_KEY, JSON.stringify(unlocked));
 }
 
-
-// ===========================
-// 💾 SET COINS
-// ===========================
-function setCoins(value){
-  localStorage.setItem("coins", value);
-  updateCoinUI();
-  coinAnimation();
+// Check if movie is unlocked
+function isPremiumUnlocked(title) {
+  const unlocked = getUnlockedMovies();
+  return unlocked[title] !== undefined;
 }
 
+// Add coins (daily limit 5)
+function claimDailyCoins() {
+  const lastClaim = localStorage.getItem("lastClaimDate");
+  const today = new Date().toDateString();
 
-// ===========================
-// ➕ ADD COINS
-// ===========================
-function addCoins(amount){
-  let coins = getCoins();
-  coins += amount;
-  setCoins(coins);
+  if (lastClaim !== today) {
+    let coins = initCoins();
+    coins += 5; // give 5 coins per day
+    localStorage.setItem(COINS_KEY, coins);
+    localStorage.setItem("lastClaimDate", today);
+    alert(`✅ You received 5 free coins! Current coins: ${coins}`);
+  } else {
+    alert("⚠️ You have already claimed today's free coins.");
+  }
 }
 
-
-// ===========================
-// ➖ USE COIN (Premium Unlock)
-// ===========================
-function useCoin(){
-
-  let coins = getCoins();
-
-  if(coins <= 0){
-    alert("❌ Coins නැත! Coins earn කරන්න.");
+// Spend coin
+function spendCoin() {
+  let coins = initCoins();
+  if (coins <= 0) {
+    alert("❌ You don't have enough coins. Watch ads or claim daily coins!");
     return false;
   }
-
-  // Confirm popup
-  if(!confirm("🪙 1 Coin භාවිතා කරලා Movie unlock කරන්නද?")){
-    return false;
-  }
-
   coins -= 1;
-  setCoins(coins);
+  localStorage.setItem(COINS_KEY, coins);
   return true;
 }
 
+// Get current coins
+function getCoins() {
+  return initCoins();
+}
 
-// ===========================
-// 🎁 DAILY AD REWARD
-// ===========================
-function watchAdReward(){
-
-  let today = new Date().toDateString();
-  let lastWatch = localStorage.getItem("lastAdWatch");
-
-  if(lastWatch === today){
-    alert("✅ අද coins already claim කරලා.");
+// ===============================
+// PREMIUM DOWNLOAD HANDLER
+// ===============================
+function handlePremiumDownload(movie, downloadLink) {
+  if (!movie.premium) {
+    window.open(downloadLink.replace("/preview", "/view"), "_blank");
     return;
   }
 
-  // 👉 Open Ad Page
-  window.open("adpage.html","_blank");
-
-  addCoins(2);
-  localStorage.setItem("lastAdWatch", today);
-
-  alert("🎉 Coins 2ක් ලැබුණා!");
-}
-
-
-// ===========================
-// ⭐ COIN ANIMATION
-// ===========================
-function coinAnimation(){
-
-  let box = document.getElementById("coinBox");
-  if(!box) return;
-
-  box.style.transform = "scale(1.2)";
-  setTimeout(()=>{
-    box.style.transform = "scale(1)";
-  },300);
-}
-
-
-// ===========================
-// 🪙 UPDATE UI
-// ===========================
-function updateCoinUI(){
-
-  let box = document.getElementById("coinBox");
-  if(box){
-    box.innerText = "🪙 Coins: " + getCoins();
+  if (isPremiumUnlocked(movie.title)) {
+    window.open(downloadLink.replace("/preview", "/view"), "_blank");
+    return;
   }
 
+  // Movie is premium & not unlocked
+  const coins = getCoins();
+  const confirmUnlock = confirm(
+    `🎬 This is a PREMIUM movie.\nYou need 1 coin to unlock.\nYour coins: ${coins}\nDo you want to unlock it?`
+  );
+
+  if (confirmUnlock) {
+    if (spendCoin()) {
+      unlockMovie(movie.title);
+      alert(`✅ ${movie.title} unlocked! You can now download it.`);
+      window.open(downloadLink.replace("/preview", "/view"), "_blank");
+    }
+  }
 }
-
-
-// ===========================
-// 🔒 PREMIUM MOVIE CHECK
-// ===========================
-function checkPremium(isPremium){
-
-  if(!isPremium) return true;
-
-  return useCoin();
-}
-
-
-// ===========================
-// 🏷 PREMIUM BADGE HTML
-// ===========================
-function getPremiumBadge(isPremium){
-
-  if(!isPremium) return "";
-
-  return `
-  <span style="
-    background:gold;
-    color:black;
-    padding:4px 8px;
-    border-radius:8px;
-    font-size:12px;
-    margin-left:8px;
-    font-weight:bold;
-  ">
-  ⭐ PREMIUM
-  </span>
-  `;
-}
-
-
-// ===========================
-// 🔄 AUTO LOAD UI
-// ===========================
-document.addEventListener("DOMContentLoaded", updateCoinUI);
