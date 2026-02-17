@@ -147,7 +147,7 @@ fetch("data/movies.json")
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="table">
               <input type="text" name="_honey" style="display:none">
-              <button type="submit">Post comment</button>
+              <button type="Comment send">Post comment</button>
             </form>
             <p class="successMsg">✅ Comment sent successfully!</p>
           </div>
