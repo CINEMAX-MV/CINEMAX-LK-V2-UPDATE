@@ -157,9 +157,7 @@ fetch("data/movies.json")
 
         </div>
 
-// ===============================
-// ⚠ ANNOUNCEMENT MESSAGE
-// ===============================
+
 function showAnnouncement() {
   const announcementHTML = `
     <!-- ANNOUNCEMENT -->
