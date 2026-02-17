@@ -36,11 +36,11 @@ fetch("data/movies.json")
       movie.players.forEach(player => {
         playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
-
-      // ✅ Download button (Premium check)
-        playersHTML += `<button class="btn btn-download" onclick='handlePremiumDownload(${JSON.stringify(movie)}, "${movie.players[0].link}")'>Download</button>`;
-      }
-
+// ===============================
+// ✅ DOWNLOAD BUTTON (PREMIUM CHECK)
+// ===============================
+       playersHTML += `<button class="btn btn-download" onclick='handlePremiumDownload(${JSON.stringify(movie)}, "${movie.players[0].link}")'>Download</button>`;
+     }
     // ===============================
     // 🔗 ENCODE FULL URL FOR WHATSAPP
     // ===============================
