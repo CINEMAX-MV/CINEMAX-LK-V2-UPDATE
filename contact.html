@@ -3,185 +3,357 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CINEMAX | Contact & Credits</title>
+<title>CINEMAX | Contact</title>
 
-<link href="https://files.catbox.moe/mhw2p9.jpg" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #0f0f0f;
-  color: #fff;
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
-header {
-  background: linear-gradient(135deg, #ff004c, #ff7b00);
-  padding: 25px;
-  text-align: center;
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(-45deg,#0f0f0f,#1a1a1a,#111,#1c1c1c);
+  background-size:400% 400%;
+  animation:bgMove 12s ease infinite;
+  color:#fff;
+  transition:0.4s;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: 1px;
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
+/* HEADER */
+
+header{
+  padding:60px 0 40px 0;
+  position:relative;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
+.typewriter{
+  font-size:40px;
+  font-weight:700;
+  text-align:left;
+  max-width:1200px;
+  margin:auto;
+  padding-left:20px;
+  min-height:55px;
 }
 
-.section-title h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
+#typing-text{
+  border-right:3px solid #ff004c;
+  padding-right:5px;
+  animation:blink 0.8s infinite;
+  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.section-title p {
-  color: #aaa;
-  font-size: 14px;
+@keyframes blink{
+  0%{border-color:#ff004c;}
+  50%{border-color:transparent;}
+  100%{border-color:#ff004c;}
 }
 
-.team {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
+.sub-text{
+  max-width:1200px;
+  margin:auto;
+  padding-left:22px;
+  margin-top:10px;
+  color:#aaa;
 }
 
-.card {
-  background: #1b1b1b;
-  border-radius: 18px;
-  padding: 25px;
-  text-align: center;
-  transition: 0.3s;
+.toggle-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  cursor:pointer;
+  font-size:20px;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(255,0,76,0.3);
+/* CONTAINER */
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:60px 20px;
 }
 
-.card img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #ff004c;
-  margin-bottom: 15px;
+/* TEAM */
+
+.team{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
 }
 
-.card h3 {
-  margin: 5px 0;
-  font-size: 18px;
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  transition:0.4s;
+  border:1px solid rgba(255,255,255,0.1);
 }
 
-.card span {
-  font-size: 13px;
-  color: #ff7b00;
+.card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 25px 50px rgba(255,0,76,0.4);
 }
 
-.card p {
-  font-size: 13px;
-  color: #bbb;
-  margin-top: 10px;
+.card img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  border:4px solid #ff004c;
+  margin-bottom:20px;
+  object-fit:cover;
 }
 
-.contact-box {
-  margin-top: 60px;
-  background: #151515;
-  border-radius: 18px;
-  padding: 30px;
-  text-align: center;
+.card h3{
+  margin-bottom:5px;
 }
 
-.contact-box h3 {
-  margin-bottom: 15px;
+.card span{
+  color:#ff7b00;
+  font-size:13px;
 }
 
-.contact-box p {
-  color: #bbb;
-  font-size: 14px;
+.card p{
+  font-size:13px;
+  color:#bbb;
+  margin-top:10px;
 }
 
-footer {
-  margin-top: 60px;
-  padding: 20px;
-  text-align: center;
-  background: #000;
-  font-size: 13px;
-  color: #777;
+/* CONTACT FORM */
+
+.contact-form{
+  margin-top:80px;
+  background:rgba(255,255,255,0.05);
+  padding:40px;
+  border-radius:20px;
+  backdrop-filter:blur(20px);
 }
+
+.contact-form h3{
+  margin-bottom:20px;
+  text-align:center;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border:none;
+  border-radius:10px;
+  background:#1a1a1a;
+  color:#fff;
+  outline:none;
+}
+
+.contact-form button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.contact-form button:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px #ff004c;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:80px;
+  padding:60px 20px 30px;
+  background:#111;
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:40px;
+}
+
+.footer-col h4{
+  margin-bottom:20px;
+  color:#ff004c;
+}
+
+.footer-col a{
+  display:block;
+  color:#aaa;
+  text-decoration:none;
+  margin-bottom:10px;
+  transition:0.3s;
+}
+
+.footer-col a:hover{
+  color:#fff;
+  transform:translateX(5px);
+}
+
+.footer-bottom{
+  margin-top:40px;
+  text-align:center;
+  color:#666;
+  font-size:13px;
+  border-top:1px solid #222;
+  padding-top:20px;
+}
+
+/* LIGHT MODE */
+
+.light-mode{
+  background:#f5f5f5;
+  color:#111;
+}
+
+.light-mode .card,
+.light-mode .contact-form{
+  background:#fff;
+  color:#111;
+}
+
+.light-mode footer{
+  background:#eee;
+  color:#111;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>CINEMAX Movies</h1>
-  <p>Your Ultimate Movie Hub</p>
+  <div class="toggle-btn" onclick="toggleMode()">
+    <i class="fa-solid fa-circle-half-stroke"></i>
+  </div>
+
+  <h1 class="typewriter">
+    <span id="typing-text"></span>
+  </h1>
+
+  <p class="sub-text">Meet The Core Team Behind CINEMAX</p>
 </header>
 
 <div class="container">
 
-  <div class="section-title">
-    <h2>Credits & Team</h2>
-    <p>This project was made possible with the help of these amazing people</p>
-  </div>
-
   <div class="team">
 
-    <!-- Person 1 -->
     <div class="card">
-      <img src="https://i.ibb.co/Qj391RWm/RD393437353638333237343640732e77686174736170702e6e6574-825959.jpg" alt="Owner">
-      <h3>ᴍʀ.ᴘᴇᴋsʜᴀ ʀᴀsᴀɴᴊᴀɴᴀ</h3>
+      <img src="https://i.ibb.co/Qj391RWm/RD393437353638333237343640732e77686174736170702e6e6574-825959.jpg">
+      <h3>Peksha Rasanjana</h3>
       <span>Owner & Founder</span>
-      <p>Creator and main manager of CINEMAX Movies website.</p>
+      <p>Main creator and manager of CINEMAX platform.</p>
     </div>
 
-    <!-- Person 2 -->
     <div class="card">
-      <img src="https://i.ibb.co/4RpRtj6X/RD393437353638333237343640732e77686174736170702e6e6574-903427.jpg" alt="Developer">
-      <h3>ᴍʀ.ʏᴀsɪʀᴜ ᴅᴀsᴀɴᴛʜᴀ</h3>
-      <span>Design & Development</span>
-      <p>Website design, UI improvements and technical support.</p>
+      <img src="https://i.ibb.co/4RpRtj6X/RD393437353638333237343640732e77686174736170702e6e6574-903427.jpg">
+      <h3>Yasiru Dasantha</h3>
+      <span>Design & Developer</span>
+      <p>UI design & full system development.</p>
     </div>
 
-    <!-- Person 3 -->
     <div class="card">
-      <img src="https://files.catbox.moe/22ox7i.jpg" alt="Support">
-      <h3>ᴍʀ.sᴜʟᴀᴋsʜᴀɴᴀ ᴀʙɪᴍᴀɴ</h3>
-      <span>Content & Support</span>
-      <p>Helping with movie details, posters and testing.</p>
+      <img src="https://files.catbox.moe/22ox7i.jpg">
+      <h3>Sulakshana</h3>
+      <span>Content Manager</span>
+      <p>Movie details, posters and testing.</p>
     </div>
 
-    <!-- Person 4 -->
     <div class="card">
-      <img src="https://files.catbox.moe/qgk8of.jpg" alt="Developer">
-      <h3>ᴍʀ.ʜᴀɴsᴀᴋᴀ ᴅɪsᴀɴᴀʏᴀᴋᴀ</h3>
-      <span>Help & Site Disperse</span>
-      <p>Website design, testing and technical support.</p>
+      <img src="https://files.catbox.moe/qgk8of.jpg">
+      <h3>Hansaka</h3>
+      <span>Technical Support</span>
+      <p>System support and maintenance.</p>
     </div>
 
   </div>
 
-  <div class="contact-box">
-    <h3>Contact Information</h3>
-    <p>📞 Tel / WhatsApp : <b>Use the slid'bar ( Problems )</b></p>
-    <p>🌐 Website : cinemaxlk.vercel.app</p>
-    <p>📩 For movie requests & support – contact us anytime</p>
+  <div class="contact-form">
+    <h3>Send Us a Message</h3>
+    <input type="text" placeholder="Your Name">
+    <input type="email" placeholder="Your Email">
+    <textarea rows="4" placeholder="Your Message"></textarea>
+    <button>Send Message</button>
   </div>
 
 </div>
 
 <footer>
-  © 2026 CINEMAX Movies • Powered By Whiteshadow Movie Team
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>CINEMAX</h4>
+      <a href="#">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">TV Series</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">Movie Requests</a>
+      <a href="#">Report Issue</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 CINEMAX Movies • Ultra Pro Edition
+  </div>
 </footer>
+
+<script>
+
+function toggleMode(){
+  document.body.classList.toggle("light-mode");
+}
+
+const text = "CINEMAX MAIN ADMINS";
+let index = 0;
+const speed = 100;
+
+function typeEffect(){
+  if(index < text.length){
+    document.getElementById("typing-text").innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, speed);
+  }
+}
+
+window.onload = typeEffect;
+
+</script>
 
 </body>
 </html>
