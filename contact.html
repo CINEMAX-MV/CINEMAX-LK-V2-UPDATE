@@ -19,16 +19,18 @@
 
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(-45deg,#0f0f0f,#1a1a1a,#111,#1c1c1c);
-  background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
   color:#fff;
   transition:0.4s;
+  background: linear-gradient(-45deg, #0f0f0f, #1a1a1a, #111, #1c1c1c);
+  background-size: 400% 400%;
+  animation: cinematicBG 15s ease infinite;
 }
 
-@keyframes bgMove{
+@keyframes cinematicBG{
   0%{background-position:0% 50%}
+  25%{background-position:50% 50%}
   50%{background-position:100% 50%}
+  75%{background-position:50% 50%}
   100%{background-position:0% 50%}
 }
 
@@ -48,7 +50,7 @@ body{
 .loader-logo{
   font-size:50px;
   font-weight:700;
-  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  background: linear-gradient(90deg,#ff004c,#ff7b00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:glowLoader 1.5s infinite alternate;
@@ -159,7 +161,7 @@ header{
 
 .card{
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(25px);
   padding:30px;
   border-radius:20px;
   text-align:center;
@@ -203,7 +205,7 @@ header{
   background:rgba(255,255,255,0.05);
   padding:40px;
   border-radius:20px;
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(25px);
 }
 
 .contact-form h3{
@@ -245,7 +247,8 @@ header{
 footer{
   margin-top:80px;
   padding:60px 20px 30px;
-  background:#111;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(15px);
 }
 
 .footer-container{
@@ -277,7 +280,7 @@ footer{
 .footer-bottom{
   margin-top:40px;
   text-align:center;
-  color:#666;
+  color:#ccc;
   font-size:13px;
   border-top:1px solid #222;
   padding-top:20px;
@@ -349,14 +352,14 @@ footer{
 
     <div class="card">
       <img src="https://files.catbox.moe/22ox7i.jpg">
-      <h3>Sulakshana</h3>
+      <h3>Sulakshana abiman</h3>
       <span>Content Manager</span>
       <p>Movie details, posters and testing.</p>
     </div>
 
     <div class="card">
       <img src="https://files.catbox.moe/qgk8of.jpg">
-      <h3>Hansaka</h3>
+      <h3>Hansaka dissanayaka</h3>
       <span>Technical Support</span>
       <p>System support and maintenance.</p>
     </div>
