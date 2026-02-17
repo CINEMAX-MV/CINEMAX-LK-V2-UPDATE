@@ -1,104 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Please Wait...</title>
-
-  <style>
-    body {
-      background: #0d0d0d;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px 15px;
-    }
-
-    .box {
-      max-width: 400px;
-      margin: auto;
-      background: #1a1a1a;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.6);
-    }
-
-    .ad-box {
-      margin: 20px 0;
-      padding: 20px;
-      background: #2b2b2b;
-      border-radius: 10px;
-    }
-
-    button {
-      padding: 12px 25px;
-      border: none;
-      border-radius: 10px;
-      background: red;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      display: none;
-    }
-
-    button:hover {
-      background: darkred;
-    }
-
-    h2 {
-      margin-bottom: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Please Wait...</title>
+<style>
+  body {
+    background: #0d0d0d;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px 15px;
+  }
+  .box {
+    max-width: 400px;
+    margin: auto;
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  }
+  .ad-box {
+    margin: 20px 0;
+    padding: 20px;
+    background: #2b2b2b;
+    border-radius: 10px;
+  }
+  button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: red;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+  }
+  button:hover { background: darkred; }
+  h2 { margin-bottom: 10px; }
+</style>
 </head>
-
 <body>
 
-  <div class="box">
-    <h2>Loading Movie...</h2>
-    <p>Please wait <span id="count">5</span> seconds</p>
+<div class="box">
+  <h2>Loading Movie...</h2>
+  <p>Please wait <span id="count">5</span> seconds</p>
 
-    <div class="ad-box">
-      <h3>Advertisement</h3>
-      <!-- Demo Playable Ad (Propeller) -->
-      <script data-cfasync="false" type="text/javascript" src="//demo.propellerads.com/demo-auto-ad.js"></script>
-    </div>
-
-    <button id="continueBtn">Continue to Movie</button>
+  <div class="ad-box">
+    <h3>Advertisement</h3>
+    <!-- Demo Playable Ad -->
+    <script data-cfasync="false" type="text/javascript" src="//demo.propellerads.com/demo-auto-ad.js"></script>
   </div>
 
+  <button id="continueBtn">Continue</button>
+</div>
+
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(window.location.search);
 
-  // Get movie id + player link
-  const movieId = urlParams.get("id");
-  const playLink = urlParams.get("play");
+// Movie link info
+const movieId = urlParams.get("id");
+const playLink = urlParams.get("play");
+const whatsappLink = "https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
+const originalSite = "https://cinemaxlk.vercel.app"; // replace with your original site if needed
 
-  let timeLeft = 5;
-  const countText = document.getElementById("count");
-  const btn = document.getElementById("continueBtn");
+const countText = document.getElementById("count");
+const btn = document.getElementById("continueBtn");
 
-  const timer = setInterval(() => {
-    timeLeft--;
-    countText.innerText = timeLeft;
+let timeLeft = 5;
+const timer = setInterval(() => {
+  timeLeft--;
+  countText.innerText = timeLeft;
+  if(timeLeft <= 0){
+    clearInterval(timer);
+    btn.style.display = "inline-block";
+  }
+}, 1000);
 
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      btn.style.display = "inline-block";
-    }
-  }, 1000);
+// Determine which continue button step
+let step = sessionStorage.getItem("adStep") || "1"; // Step 1 or 2
 
-  btn.onclick = () => {
-    if(movieId && playLink){
-      // Open imdb site in new tab
-      window.open("https://m.imdb.com/", "_blank");
+btn.onclick = () => {
+  if(step === "1"){
+    // Step 1: Open original site
+    sessionStorage.setItem("adStep", "2"); // Next step = WhatsApp
+    window.open(originalSite, "_blank");
+  } else if(step === "2"){
+    // Step 2: Open WhatsApp channel
+    sessionStorage.setItem("adStep", "3"); // Next step = movie autoplay
+    window.open(whatsappLink, "_blank");
 
-      // Redirect to movie autoplay in current tab
+    // Redirect to movie autoplay after short delay
+    setTimeout(() => {
       window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
-    } else {
-      alert("Movie link not found!");
-    }
-  };
-</script>
+    }, 1000);
+  }
+};
 
+// Optional: If user reaches this page after movie played, reset flow
+if(sessionStorage.getItem("adStep") === "3"){
+  btn.innerText = "Go to Movie";
+  btn.style.display = "inline-block";
+  btn.onclick = () => {
+    window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
+  };
+}
+</script>
 </body>
 </html>
