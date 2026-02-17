@@ -156,6 +156,35 @@ fetch("data/movies.json")
           </div>
 
         </div>
+
+// ===============================
+// ⚠ ANNOUNCEMENT MESSAGE
+// ===============================
+function showAnnouncement() {
+  const announcementHTML = `
+    <!-- ANNOUNCEMENT -->
+    <div class="announcement" style="
+      margin-top: 15px;
+      padding: 12px;
+      background: #222;
+      border-left: 4px solid #ff8c00;
+      color: #ffcc00;
+      font-size: 0.95em;
+      border-radius: 6px;
+    ">
+      ⚠️ වෙබ් අඩවියේ නඩත්තු කටයුත්තක් හේතුවෙන් ඔබගේ ප්‍රකාශ මා හට නොලැබෙන බව කරුණාවෙන් සලකන්න
+    </div>
+  `;
+
+  // append to main container, for example below the movieDetails
+  const container = document.getElementById("movieDetails");
+  if (container) {
+    container.insertAdjacentHTML("beforeend", announcementHTML);
+  }
+}
+
+// Call the function on page load
+window.addEventListener("DOMContentLoaded", showAnnouncement);
         
            
         <!-- =============================== -->
