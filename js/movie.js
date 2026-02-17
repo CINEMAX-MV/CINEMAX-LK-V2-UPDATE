@@ -1,7 +1,7 @@
 // ===============================
 // 🔐 YOUTUBE API KEY
 // ===============================
-const API_KEY = "AIzaSyDbrWat2Z6PeJbJUSCmG2PJXeZM92xL8jI"; // Your API Key
+const API_KEY = "AIzaSyDbrWat2Z6PeJbJUSCmG2PJXeZM92xL8jI";
 
 // ===============================
 // 📂 LOAD MOVIE DATA FROM JSON
@@ -10,17 +10,10 @@ fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
 
-    // ===============================
-    // 🎯 GET MOVIE ID FROM URL
-    // ===============================
     let params = new URLSearchParams(window.location.search);
     let movieId = params.get("id");
-
     let movie = data[movieId];
 
-    // ===============================
-    // ❌ IF MOVIE NOT FOUND
-    // ===============================
     if(!movie){
       document.getElementById("movieDetails").innerHTML =
         "<h2 style='color:white;text-align:center'>Movie Not Found</h2>";
@@ -28,27 +21,18 @@ fetch("data/movies.json")
     }
 
     // ===============================
-    // ▶ CREATE PLAYER BUTTONS
+    // ▶ CREATE PLAYER BUTTONS WITH AD REDIRECT
     // ===============================
     let playersHTML = "";
     if(movie.players && movie.players.length > 0){
       movie.players.forEach(player => {
-        playersHTML += `<button class="btn btn-player" onclick="loadPlayer('${player.link}')">${player.name}</button>`;
+        playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
-
-      // ✅ Download direct (No adpage)
       playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
     }
 
-    // ===============================
-    // 🔗 ENCODE FULL URL FOR WHATSAPP
-    // ===============================
     let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
     shareURL = encodeURIComponent(shareURL);
-
-    // ===============================
-    // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
-    // ===============================
     let currentURL = encodeURIComponent(window.location.href);
     let socialHTML = `
       <div style="margin-top:20px; display:flex; gap:12px;">
@@ -64,28 +48,16 @@ fetch("data/movies.json")
       </div>
     `;
 
-    // ===============================
-    // 🎥 GET TRAILER FROM YOUTUBE
-    // ===============================
     getTrailer(movie.title).then(trailerId => {
       let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
-      // ===============================
-      // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
-      // ===============================
       document.getElementById("movieDetails").innerHTML = `
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
-
-          <!-- TRAILER / BIG SCREEN -->
           <div id="trailerContainer" style="width:100%; text-align:center; margin-bottom:20px;">
-            ${ trailerURL ? `
-              <iframe src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>
-            ` : `
-              <img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">
-            `}
+            ${trailerURL ? `<iframe src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>` 
+            : `<img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">`}
           </div>
 
-          <!-- DESCRIPTION -->
           <div style="margin-top:20px;">
             <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);
             -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
@@ -96,7 +68,6 @@ fetch("data/movies.json")
             </p>
           </div>
 
-          <!-- SMALL POSTER + RATING + DETAILS -->
           <div style="display:flex;gap:25px;margin-top:30px;flex-wrap:wrap;">
             <div style="flex:1;min-width:250px;">
               <img src="${movie.image}" style="width:100%;max-width:250px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);">
@@ -106,7 +77,6 @@ fetch("data/movies.json")
                 <span style="color:#aaa;">(${movie.imdb}/10)</span>
               </div>
             </div>
-
             <div style="flex:2;min-width:300px;line-height:1.8;">
               <p>📅 <strong>Release Date:</strong> ${movie.release_date}</p>
               <p>🎬 <strong>Director:</strong> ${movie.director}</p>
@@ -115,133 +85,39 @@ fetch("data/movies.json")
             </div>
           </div>
 
-          <!-- PLAYERS -->
           <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;">
             ${playersHTML}
           </div>
 
-          <!-- SOCIAL SHARE -->
           ${socialHTML}
 
-          <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
-          <!-- COMMENT SECTION -->
           <div class="comment-section">
             <h3>Comments</h3>
             <form class="commentForm">
-              <div class="input-group">
-                <label>Name:</label>
-                <input type="text" name="name" placeholder="Display Name" required>
-              </div>
-              <div class="input-group">
-                <label>Email:</label>
-                <input type="email" name="email" placeholder="Email Address" required>
-              </div>
-              <div class="input-group">
-                <label>Comment:</label>
-                <textarea name="message" placeholder="Write a comment..." required></textarea>
-              </div>
-
+              <div class="input-group"><label>Name:</label><input type="text" name="name" placeholder="Display Name" required></div>
+              <div class="input-group"><label>Email:</label><input type="email" name="email" placeholder="Email Address" required></div>
+              <div class="input-group"><label>Comment:</label><textarea name="message" placeholder="Write a comment..." required></textarea></div>
               <input type="hidden" name="movie" value="${movie.title}">
               <input type="hidden" name="_subject" value="New Movie Comment - Cinemax LK">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="box">
               <input type="text" name="_honey" style="display:none">
-
               <button type="submit">Post comment</button>
             </form>
             <p class="successMsg">✅ Comment sent successfully!</p>
           </div>
-
         </div>
-
-        <!-- =============================== -->
-        <!-- 💎 STYLES -->
-        <!-- =============================== -->
-        <style>
-          .btn{
-            padding:10px 20px;
-            border:none;
-            border-radius:8px;
-            background:linear-gradient(45deg,#ff8c00,#ff2a68);
-            color:white;
-            cursor:pointer;
-            font-weight:bold;
-            transition:0.3s;
-          }
-          .btn:hover{transform:scale(1.05);}
-          .btn-download{background:linear-gradient(45deg,#4caf50,#2e7d32);}
-
-          .comment-section{
-            margin-top:30px;
-            padding:20px;
-            background:#111;
-            border-radius:12px;
-            max-width:500px;
-          }
-          .comment-section.hidden{ display:none !important; }
-          .comment-section h3{
-            color:#fff;
-            font-size:1.3em;
-            margin-bottom:10px;
-            text-align:left;
-          }
-          .input-group{ margin-bottom:5mm; }
-          .comment-section label{
-            display:block;
-            margin-bottom:2px;
-            color:#fff;
-            font-weight:bold;
-            font-size:0.85em;
-          }
-          .comment-section input,
-          .comment-section textarea{
-            width:100%;
-            padding:8px;
-            background:#1a1a1a;
-            border:1px solid #333;
-            border-radius:6px;
-            color:white;
-            font-size:0.9em;
-            font-weight:bold;
-            box-sizing:border-box;
-          }
-          .comment-section textarea{
-            resize:none;
-            height:100px;
-          }
-          .comment-section button{
-            padding:6px 15px;
-            border:none;
-            border-radius:15px;
-            background:linear-gradient(45deg,#ff0040,#ff2a68);
-            color:white;
-            cursor:pointer;
-            font-size:0.9em;
-            float:left;
-            margin-top:5px;
-          }
-          .comment-section button:hover{ transform:scale(1.05); }
-          .successMsg{
-            display:none;
-            margin-top:6px;
-            color:#00ff99;
-            font-size:0.85em;
-          }
-        </style>
       `;
 
-      // ===============================
-      // 📩 SEND COMMENT
-      // ===============================
       const form = document.querySelector(".commentForm");
       const successMsg = document.querySelector(".successMsg");
       const submitBtn = form.querySelector("button[type='submit']");
 
       form.addEventListener("submit", function(e){
         e.preventDefault();
-        submitBtn.style.display = "none"; // hide post button
+        submitBtn.style.display = "none";
 
         const formData = new FormData(this);
         fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
@@ -250,17 +126,16 @@ fetch("data/movies.json")
         })
         .then(res => res.json())
         .then(() => {
-          successMsg.style.display = "block"; // show success
+          successMsg.style.display = "block";
           form.reset();
         });
       });
 
-      // ✅ AUTO PLAY AFTER RETURN FROM ADPAGE
+      // AUTO PLAY AFTER RETURN FROM AD PAGE
       let autoPlayLink = params.get("autoplay");
       if(autoPlayLink){
         loadPlayer(autoPlayLink);
       }
-
     });
 
   });
@@ -270,8 +145,6 @@ fetch("data/movies.json")
 // ===============================
 function loadPlayer(link){
   let embedLink = link.replace("/view","/preview");
-
-  // Hide comment section when video plays
   const commentDiv = document.querySelector(".comment-section");
   if(commentDiv) commentDiv.classList.add("hidden");
 
@@ -314,7 +187,6 @@ function getTrailer(movieName){
     .then(data => data.items && data.items.length>0 ? data.items[0].id.videoId:"")
     .catch(()=> "");
 }
-
 
 // ===============================
 // 🔁 REDIRECT TO AD PAGE (FIXED)
