@@ -32,8 +32,7 @@ body{
   100%{background-position:0% 50%}
 }
 
-/* ===== CINEMAX LOADING SCREEN (ADDED) ===== */
-
+/* ===== CINEMAX LOADING SCREEN ===== */
 #cinemax-loader{
   position:fixed;
   width:100%;
@@ -81,8 +80,7 @@ body{
   to{ width:100%; }
 }
 
-/* ===== CLOSE BUTTON (ADDED) ===== */
-
+/* ===== CLOSE BUTTON ===== */
 .close-btn{
   position:fixed;
   top:20px;
@@ -101,8 +99,6 @@ body{
   background:linear-gradient(90deg,#ff004c,#ff7b00);
   box-shadow:0 0 15px #ff004c;
 }
-
-/* ===== ORIGINAL CSS BELOW (UNCHANGED) ===== */
 
 /* HEADER */
 
@@ -124,16 +120,9 @@ header{
 #typing-text{
   border-right:3px solid #ff004c;
   padding-right:5px;
-  animation:blink 0.8s infinite;
   background:linear-gradient(90deg,#ff004c,#ff7b00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-}
-
-@keyframes blink{
-  0%{border-color:#ff004c;}
-  50%{border-color:transparent;}
-  100%{border-color:#ff004c;}
 }
 
 .sub-text{
@@ -317,13 +306,13 @@ footer{
 
 <body>
 
-<!-- ===== LOADING SCREEN (ADDED) ===== -->
+<!-- CINEMAX LOADER -->
 <div id="cinemax-loader">
   <div class="loader-logo">CINEMAX</div>
   <div class="loader-bar"><span></span></div>
 </div>
 
-<!-- ===== CLOSE BUTTON (ADDED) ===== -->
+<!-- CLOSE BUTTON -->
 <div class="close-btn" onclick="goHome()">
   <i class="fa-solid fa-xmark"></i>
 </div>
@@ -422,9 +411,10 @@ function toggleMode(){
   document.body.classList.toggle("light-mode");
 }
 
+/* TYPEWRITER SLOW AFTER LOADER */
 const text = "CINEMAX MAIN ADMINS";
 let index = 0;
-const speed = 30;
+const speed = 180; // slower typing
 
 function typeEffect(){
   if(index < text.length){
@@ -434,16 +424,15 @@ function typeEffect(){
   }
 }
 
-window.onload = typeEffect;
-
-/* ===== LOADER SCRIPT (ADDED) ===== */
+/* LOADER + START TYPE AFTER HIDE */
 window.addEventListener("load", function(){
   setTimeout(function(){
     document.getElementById("cinemax-loader").style.display="none";
+    typeEffect(); // start typewriter after loader hides
   },2500);
 });
 
-/* ===== CLOSE BUTTON FUNCTION (ADDED) ===== */
+/* CLOSE BUTTON GO HOME */
 function goHome(){
   window.location.href="index.html";
 }
