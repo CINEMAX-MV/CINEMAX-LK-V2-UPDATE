@@ -14,114 +14,182 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  scroll-behavior:smooth;
+  font-family:'Poppins',sans-serif;
 }
 
 body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(-45deg,#0f0f0f,#1a1a1a,#111,#1c1c1c);
-  background-size:400% 400%;
-  animation:bgMove 12s ease infinite;
+  background:#0f0f0f;
   color:#fff;
+  overflow-x:hidden;
+}
+
+/* ================= LOADING SCREEN ================= */
+
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+.loader-text{
+  font-size:40px;
+  font-weight:700;
+  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:glow 1.5s infinite alternate;
+}
+
+.loader-bar{
+  width:200px;
+  height:4px;
+  background:#222;
+  margin-top:20px;
+  overflow:hidden;
+  border-radius:10px;
+}
+
+.loader-bar span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ff004c,#ff7b00);
+  animation:load 2.5s forwards;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 10px #ff004c; }
+  to{ text-shadow:0 0 25px #ff7b00; }
+}
+
+@keyframes load{
+  to{ width:100%; }
+}
+
+/* ================= SIDEBAR ================= */
+
+.menu-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  font-size:22px;
+  cursor:pointer;
+  z-index:1001;
+}
+
+.sidebar{
+  position:fixed;
+  left:-260px;
+  top:0;
+  width:260px;
+  height:100%;
+  background:linear-gradient(180deg,#111,#1a1a1a);
+  padding-top:80px;
   transition:0.4s;
+  z-index:1000;
 }
 
-@keyframes bgMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+.sidebar.active{
+  left:0;
 }
 
-/* HEADER */
+.sidebar a{
+  display:block;
+  padding:15px 25px;
+  color:#aaa;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.sidebar a:hover{
+  background:#ff004c;
+  color:#fff;
+  padding-left:35px;
+}
+
+.overlay{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  z-index:999;
+}
+
+.overlay.active{
+  display:block;
+}
+
+/* ================= HEADER ================= */
 
 header{
-  padding:60px 0 40px 0;
-  position:relative;
+  padding:100px 20px 40px 20px;
 }
 
 .typewriter{
-  font-size:40px;
+  font-size:36px;
   font-weight:700;
-  text-align:left;
-  max-width:1200px;
-  margin:auto;
-  padding-left:20px;
-  min-height:55px;
+  min-height:50px;
 }
 
 #typing-text{
   border-right:3px solid #ff004c;
   padding-right:5px;
-  animation:blink 0.8s infinite;
+  animation:blink 0.7s infinite;
   background:linear-gradient(90deg,#ff004c,#ff7b00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 @keyframes blink{
-  0%{border-color:#ff004c;}
-  50%{border-color:transparent;}
-  100%{border-color:#ff004c;}
+  50%{ border-color:transparent; }
 }
 
 .sub-text{
-  max-width:1200px;
-  margin:auto;
-  padding-left:22px;
-  margin-top:10px;
   color:#aaa;
+  margin-top:10px;
 }
 
-.toggle-btn{
-  position:absolute;
-  top:20px;
-  right:20px;
-  cursor:pointer;
-  font-size:20px;
-}
-
-/* CONTAINER */
+/* ================= CONTENT ================= */
 
 .container{
   max-width:1200px;
   margin:auto;
-  padding:60px 20px;
+  padding:40px 20px;
 }
-
-/* TEAM */
 
 .team{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
 }
 
 .card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(20px);
-  padding:30px;
-  border-radius:20px;
+  background:#1a1a1a;
+  padding:25px;
+  border-radius:18px;
   text-align:center;
-  transition:0.4s;
-  border:1px solid rgba(255,255,255,0.1);
+  transition:0.3s;
 }
 
 .card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 25px 50px rgba(255,0,76,0.4);
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(255,0,76,0.4);
 }
 
 .card img{
-  width:100px;
-  height:100px;
+  width:90px;
+  height:90px;
   border-radius:50%;
-  border:4px solid #ff004c;
-  margin-bottom:20px;
+  border:3px solid #ff004c;
+  margin-bottom:15px;
   object-fit:cover;
-}
-
-.card h3{
-  margin-bottom:5px;
 }
 
 .card span{
@@ -129,115 +197,41 @@ header{
   font-size:13px;
 }
 
-.card p{
-  font-size:13px;
-  color:#bbb;
-  margin-top:10px;
-}
-
-/* CONTACT FORM */
-
 .contact-form{
-  margin-top:80px;
-  background:rgba(255,255,255,0.05);
-  padding:40px;
-  border-radius:20px;
-  backdrop-filter:blur(20px);
-}
-
-.contact-form h3{
-  margin-bottom:20px;
-  text-align:center;
+  margin-top:60px;
+  background:#151515;
+  padding:30px;
+  border-radius:18px;
 }
 
 .contact-form input,
 .contact-form textarea{
   width:100%;
-  padding:12px;
-  margin-bottom:15px;
+  padding:10px;
+  margin-bottom:12px;
   border:none;
-  border-radius:10px;
-  background:#1a1a1a;
+  border-radius:8px;
+  background:#222;
   color:#fff;
-  outline:none;
 }
 
 .contact-form button{
   width:100%;
-  padding:12px;
+  padding:10px;
   border:none;
-  border-radius:30px;
+  border-radius:25px;
   background:linear-gradient(90deg,#ff004c,#ff7b00);
   color:#fff;
   font-weight:600;
   cursor:pointer;
-  transition:0.3s;
 }
-
-.contact-form button:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px #ff004c;
-}
-
-/* FOOTER */
 
 footer{
-  margin-top:80px;
-  padding:60px 20px 30px;
+  margin-top:60px;
   background:#111;
-}
-
-.footer-container{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:40px;
-}
-
-.footer-col h4{
-  margin-bottom:20px;
-  color:#ff004c;
-}
-
-.footer-col a{
-  display:block;
-  color:#aaa;
-  text-decoration:none;
-  margin-bottom:10px;
-  transition:0.3s;
-}
-
-.footer-col a:hover{
-  color:#fff;
-  transform:translateX(5px);
-}
-
-.footer-bottom{
-  margin-top:40px;
+  padding:40px;
   text-align:center;
-  color:#666;
-  font-size:13px;
-  border-top:1px solid #222;
-  padding-top:20px;
-}
-
-/* LIGHT MODE */
-
-.light-mode{
-  background:#f5f5f5;
-  color:#111;
-}
-
-.light-mode .card,
-.light-mode .contact-form{
-  background:#fff;
-  color:#111;
-}
-
-.light-mode footer{
-  background:#eee;
-  color:#111;
+  color:#777;
 }
 
 </style>
@@ -245,54 +239,49 @@ footer{
 
 <body>
 
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-text">CINEMAX</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<!-- MENU -->
+<div class="menu-btn" onclick="openMenu()">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<div class="sidebar" id="sidebar">
+  <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+  <a href="#"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+  <a href="#"><i class="fa-solid fa-scale-balanced"></i> DMCA</a>
+  <a href="#"><i class="fa-solid fa-circle-exclamation"></i> Problems</a>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
 <header>
-  <div class="toggle-btn" onclick="toggleMode()">
-    <i class="fa-solid fa-circle-half-stroke"></i>
-  </div>
-
-  <h1 class="typewriter">
-    <span id="typing-text"></span>
-  </h1>
-
+  <h1 class="typewriter"><span id="typing-text"></span></h1>
   <p class="sub-text">Meet The Core Team Behind CINEMAX</p>
 </header>
 
 <div class="container">
 
   <div class="team">
-
     <div class="card">
       <img src="https://i.ibb.co/Qj391RWm/RD393437353638333237343640732e77686174736170702e6e6574-825959.jpg">
       <h3>Peksha Rasanjana</h3>
-      <span>Owner & Founder</span>
-      <p>Main creator and manager of CINEMAX platform.</p>
+      <span>Owner</span>
     </div>
 
     <div class="card">
       <img src="https://i.ibb.co/4RpRtj6X/RD393437353638333237343640732e77686174736170702e6e6574-903427.jpg">
-      <h3>Yasiru Dasantha</h3>
-      <span>Design & Developer</span>
-      <p>UI design & full system development.</p>
+      <h3>Yasiru</h3>
+      <span>Developer</span>
     </div>
-
-    <div class="card">
-      <img src="https://files.catbox.moe/22ox7i.jpg">
-      <h3>Sulakshana abiman</h3>
-      <span>Content Manager</span>
-      <p>Movie details, posters and testing.</p>
-    </div>
-
-    <div class="card">
-      <img src="https://files.catbox.moe/qgk8of.jpg">
-      <h3>Hansaka dissanayaka</h3>
-      <span>Technical Support</span>
-      <p>System support and maintenance.</p>
-    </div>
-
   </div>
 
   <div class="contact-form">
-    <h3>Send Us a Message</h3>
+    <h3>Send Message</h3>
     <input type="text" placeholder="Your Name">
     <input type="email" placeholder="Your Email">
     <textarea rows="4" placeholder="Your Message"></textarea>
@@ -302,56 +291,42 @@ footer{
 </div>
 
 <footer>
-  <div class="footer-container">
-
-    <div class="footer-col">
-      <h4>CINEMAX</h4>
-      <a href="#">Home</a>
-      <a href="#">Movies</a>
-      <a href="#">TV Series</a>
-      <a href="#">Contact</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Support</h4>
-      <a href="#">Help Center</a>
-      <a href="#">Movie Requests</a>
-      <a href="#">Report Issue</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>Follow Us</h4>
-      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
-      <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
-      <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 CINEMAX Movies • Ultra Pro Edition
-  </div>
+  © 2026 CINEMAX Movies • Cinematic Edition
 </footer>
 
 <script>
 
-function toggleMode(){
-  document.body.classList.toggle("light-mode");
+/* LOADER */
+window.addEventListener("load",function(){
+  setTimeout(function(){
+    document.getElementById("loader").style.display="none";
+  },2500);
+});
+
+/* SIDEBAR */
+function openMenu(){
+  document.getElementById("sidebar").classList.add("active");
+  document.getElementById("overlay").classList.add("active");
 }
 
-const text = "CINEMAX MAIN ADMINS";
-let index = 0;
-const speed = 100;
+function closeMenu(){
+  document.getElementById("sidebar").classList.remove("active");
+  document.getElementById("overlay").classList.remove("active");
+}
+
+/* TYPEWRITER */
+const text="CINEMAX MAIN ADMINS";
+let i=0;
 
 function typeEffect(){
-  if(index < text.length){
-    document.getElementById("typing-text").innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeEffect, speed);
+  if(i<text.length){
+    document.getElementById("typing-text").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeEffect,100);
   }
 }
 
-window.onload = typeEffect;
+window.onload=typeEffect;
 
 </script>
 
