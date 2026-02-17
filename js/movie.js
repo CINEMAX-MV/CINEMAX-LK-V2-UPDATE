@@ -32,8 +32,9 @@ fetch("data/movies.json")
     // ===============================
     let playersHTML = "";
     if(movie.players && movie.players.length > 0){
+      // 🔹 FIX: loadPlayer → goAdPage
       movie.players.forEach(player => {
-        playersHTML += `<button class="btn btn-player" onclick="loadPlayer('${player.link}')">${player.name}</button>`;
+        playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
 
       // ✅ Download direct (No adpage)
@@ -322,4 +323,4 @@ function goAdPage(link){
   let params = new URLSearchParams(window.location.search);
   let movieId = params.get("id");
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
-           }
+}
