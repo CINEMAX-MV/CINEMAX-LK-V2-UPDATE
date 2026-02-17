@@ -62,12 +62,14 @@ const urlParams = new URLSearchParams(window.location.search);
 const movieId = urlParams.get("id");
 const playLink = urlParams.get("play");
 const whatsappLink = "https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
-const originalSite = "https://cinemaxlk.vercel.app"; // replace with your original site if needed
+const imdbLink = "https://m.imdb.com/";
+const movieSite = "movie.html";
 
+// Countdown
 const countText = document.getElementById("count");
 const btn = document.getElementById("continueBtn");
-
 let timeLeft = 5;
+
 const timer = setInterval(() => {
   timeLeft--;
   countText.innerText = timeLeft;
@@ -77,34 +79,44 @@ const timer = setInterval(() => {
   }
 }, 1000);
 
-// Determine which continue button step
-let step = sessionStorage.getItem("adStep") || "1"; // Step 1 or 2
+// Step control
+let step = sessionStorage.getItem("adStep") || "1";
+
+function showStepButton() {
+  if(step === "1"){
+    btn.innerText = "Continue to IMDb";
+  } else if(step === "2"){
+    btn.innerText = "Continue to WhatsApp Channel";
+  }
+}
+
+showStepButton();
 
 btn.onclick = () => {
   if(step === "1"){
-    // Step 1: Open original site
+    // Step 1: open IMDb
     sessionStorage.setItem("adStep", "2"); // Next step = WhatsApp
-    window.open(originalSite, "_blank");
+    window.open(imdbLink, "_blank");
   } else if(step === "2"){
-    // Step 2: Open WhatsApp channel
-    sessionStorage.setItem("adStep", "3"); // Next step = movie autoplay
+    // Step 2: open WhatsApp channel + redirect to movie autoplay
+    sessionStorage.setItem("adStep", "3"); // Next = movie
     window.open(whatsappLink, "_blank");
 
-    // Redirect to movie autoplay after short delay
+    // Small delay then redirect to movie autoplay
     setTimeout(() => {
-      window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
+      window.location.href = `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
     }, 1000);
+  } else if(step === "3"){
+    // fallback: if user refreshes after all steps
+    window.location.href = `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
   }
 };
 
-// Optional: If user reaches this page after movie played, reset flow
-if(sessionStorage.getItem("adStep") === "3"){
-  btn.innerText = "Go to Movie";
-  btn.style.display = "inline-block";
-  btn.onclick = () => {
-    window.location.href = "movie.html?id=" + movieId + "&autoplay=" + encodeURIComponent(playLink);
-  };
+// Optional: reset adStep if user goes back to original page manually
+window.onbeforeunload = () => {
+  if(step === "3") sessionStorage.removeItem("adStep");
 }
 </script>
+
 </body>
 </html>
