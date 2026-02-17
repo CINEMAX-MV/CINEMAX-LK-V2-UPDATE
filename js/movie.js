@@ -37,10 +37,11 @@ fetch("data/movies.json")
         playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
       
-      // ✅ Download direct (No adpage)
-        playersHTML += <button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>;
-       }
-    // ===============================
+// ===============================
+// ✅ DOWNLOAD BUTTON (PREMIUM CHECK)
+// ===============================
+      playersHTML += `<button class="btn btn-download" onclick='handlePremiumDownload(${JSON.stringify(movie)}, "${movie.players[0].link}")'>Download</button>`;========================
+      }
     // 🔗 ENCODE FULL URL FOR WHATSAPP
     // ===============================
     let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
