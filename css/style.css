@@ -763,3 +763,50 @@ footer{
 
 }
 
+/* ===== SLIDER CONTAINER ===== */
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+/* ===== SLIDE WRAPPER ===== */
+.slide-wrapper {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+/* ===== INDIVIDUAL SLIDE ===== */
+.slide {
+    min-width: calc(33.333% - 13px);  /* 3 per row */
+    max-width: calc(33.333% - 13px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+    cursor: pointer;
+    background: #111;
+}
+
+/* ===== SLIDE IMAGE ===== */
+.slide img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* ===== HOVER EFFECT ===== */
+.slide:hover img {
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+    .slide {
+        min-width: calc(33.333% - 13px);
+        max-width: calc(33.333% - 13px);
+    }
+}
