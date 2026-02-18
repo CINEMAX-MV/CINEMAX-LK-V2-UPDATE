@@ -4,21 +4,80 @@
 const API_KEY = "AIzaSyBPPhDhVem-bSzZjGIlysFfnAax9bKQ2aM"; // Your API Key
 
 // ===============================
-// 🪙 COIN SYSTEM INIT
+// 💰 USER COINS SYSTEM
 // ===============================
-if(!localStorage.getItem("coins")){
-  localStorage.setItem("coins", 0);
+const DAILY_COINS = 5;
+const COINS_KEY = "cinemax_user_coins";
+const CLAIM_TIME_KEY = "cinemax_last_claim";
+
+function getCoins() {
+  return parseInt(localStorage.getItem(COINS_KEY)) || 0;
 }
 
-function getCoins(){
-  return parseInt(localStorage.getItem("coins")) || 0;
+function setCoins(amount) {
+  localStorage.setItem(COINS_KEY, amount);
+  updateCoinsUI();
 }
 
-function updateCoinDisplay(){
-  const coinBox = document.getElementById("coinCount");
-  if(coinBox){
-    coinBox.innerText = getCoins();
+function canClaimDaily() {
+  let lastClaim = parseInt(localStorage.getItem(CLAIM_TIME_KEY)) || 0;
+  return Date.now() - lastClaim >= 24 * 60 * 60 * 1000;
+}
+
+function claimDailyCoins() {
+  if (canClaimDaily()) {
+    setCoins(getCoins() + DAILY_COINS);
+    localStorage.setItem(CLAIM_TIME_KEY, Date.now());
+    alert(`✅ You claimed ${DAILY_COINS} coins!`);
+  } else {
+    alert("⏳ You already claimed today. Check the countdown!");
   }
+}
+
+function updateCoinsUI() {
+  let coinDiv = document.getElementById("coinsDisplay");
+  if(!coinDiv){
+    coinDiv = document.createElement("div");
+    coinDiv.id = "coinsDisplay";
+    coinDiv.style.cssText = "position:fixed;top:20px;right:20px;padding:10px 15px;background:#222;color:#fff;border-radius:10px;font-weight:bold;z-index:9999;";
+    document.body.appendChild(coinDiv);
+  }
+  coinDiv.innerHTML = `💰 Coins: ${getCoins()} <button onclick="claimDailyCoins()" style="margin-left:10px;padding:4px 8px;border-radius:6px;background:#ff8c00;border:none;color:#fff;cursor:pointer;">Claim Daily</button> <span id='coinCountdown'></span>`;
+}
+
+// ===============================
+// 🔁 DOWNLOAD LOCK SYSTEM
+// ===============================
+function canDownload(movieId) {
+  const key = "cinemax_download_" + movieId;
+  const unlockTime = parseInt(localStorage.getItem(key)) || 0;
+  return Date.now() >= unlockTime;
+}
+
+function setDownloadLock(movieId, hours = 6) {
+  const key = "cinemax_download_" + movieId;
+  const unlockTime = Date.now() + hours * 60 * 60 * 1000;
+  localStorage.setItem(key, unlockTime);
+}
+
+// Countdown display for download unlock
+function updateDownloadCountdown(movieId) {
+  const key = "cinemax_download_" + movieId;
+  const unlockTime = parseInt(localStorage.getItem(key)) || 0;
+  const countdownEl = document.getElementById("downloadCountdown");
+  if(!countdownEl) return;
+  const interval = setInterval(() => {
+    const remaining = unlockTime - Date.now();
+    if(remaining <= 0){
+      countdownEl.innerText = "";
+      clearInterval(interval);
+      return;
+    }
+    const h = Math.floor(remaining/3600000);
+    const m = Math.floor((remaining%3600000)/60000);
+    const s = Math.floor((remaining%60000)/1000);
+    countdownEl.innerText = `⏳ Download unlocks in ${h}h ${m}m ${s}s`;
+  },1000);
 }
 
 // ===============================
@@ -28,46 +87,30 @@ fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
 
-    // ===============================
-    // 🎯 GET MOVIE ID FROM URL
-    // ===============================
+    // GET MOVIE ID FROM URL
     let params = new URLSearchParams(window.location.search);
     let movieId = params.get("id");
 
     let movie = data[movieId];
 
-    // ===============================
-    // ❌ IF MOVIE NOT FOUND
-    // ===============================
     if(!movie){
       document.getElementById("movieDetails").innerHTML =
         "<h2 style='color:white;text-align:center'>Movie Not Found</h2>";
       return;
     }
 
-    // ===============================
-    // ▶ CREATE PLAYER BUTTONS
-    // ===============================
+    // CREATE PLAYER BUTTONS
     let playersHTML = "";
     if(movie.players && movie.players.length > 0){
-      // 🔹 FIX: loadPlayer → goAdPage
       movie.players.forEach(player => {
         playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
-
-      // ✅ Download with coin system
-      playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
+      playersHTML += `<button class="btn btn-download" onclick="attemptDownload('${movie.players[0].link}','${movieId}')">Download</button> <span id='downloadCountdown' style='margin-left:10px;color:#ffcc00;'></span>`;
     }
 
-    // ===============================
-    // 🔗 ENCODE FULL URL FOR WHATSAPP
-    // ===============================
+    // SOCIAL SHARE
     let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
     shareURL = encodeURIComponent(shareURL);
-
-    // ===============================
-    // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
-    // ===============================
     let currentURL = encodeURIComponent(window.location.href);
     let socialHTML = `
       <div style="margin-top:20px; display:flex; gap:12px;">
@@ -83,36 +126,17 @@ fetch("data/movies.json")
       </div>
     `;
 
-    // ===============================
-    // 🎥 GET TRAILER FROM YOUTUBE
-    // ===============================
     getTrailer(movie.title).then(trailerId => {
       let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
-      // ===============================
-      // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
-      // ===============================
       document.getElementById("movieDetails").innerHTML = `
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
-
-          <!-- COIN DISPLAY -->
-          <div style="text-align:right;font-weight:bold;color:gold;font-size:1.2em;margin-bottom:10px;">
-            🪙 Coins: <span id="coinCount">${getCoins()}</span>
-          </div>
-
-          <!-- TRAILER / BIG SCREEN -->
           <div id="trailerContainer" style="width:100%; text-align:center; margin-bottom:20px;">
-            ${ trailerURL ? `
-              <iframe src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>
-            ` : `
-              <img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">
-            `}
+            ${ trailerURL ? `<iframe src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>` : `<img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">`}
           </div>
 
-          <!-- DESCRIPTION -->
           <div style="margin-top:20px;">
-            <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);
-            -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+            <h2 style="font-size:2.5em;margin-bottom:15px;background:linear-gradient(90deg,#ff8c00,#ff2a68);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
               ${movie.title}
             </h2>
             <p style="font-size:1.1em;line-height:1.8;color:#ddd;">
@@ -120,7 +144,6 @@ fetch("data/movies.json")
             </p>
           </div>
 
-          <!-- SMALL POSTER + RATING + DETAILS -->
           <div style="display:flex;gap:25px;margin-top:30px;flex-wrap:wrap;">
             <div style="flex:1;min-width:250px;">
               <img src="${movie.image}" style="width:100%;max-width:250px;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);">
@@ -139,18 +162,14 @@ fetch("data/movies.json")
             </div>
           </div>
 
-          <!-- PLAYERS -->
           <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px;">
             ${playersHTML}
           </div>
 
-          <!-- SOCIAL SHARE -->
           ${socialHTML}
 
-          <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
 
-          <!-- COMMENT SECTION -->
           <div class="comment-section">
             <h3>Comments</h3>
             <form class="commentForm">
@@ -177,88 +196,14 @@ fetch("data/movies.json")
             </form>
             <p class="successMsg">✅ Comment sent successfully!</p>
           </div>
-
         </div>
-
-        <!-- =============================== -->
-        <!-- 💎 STYLES -->
-        <!-- =============================== -->
-        <style>
-          .btn{
-            padding:10px 20px;
-            border:none;
-            border-radius:8px;
-            background:linear-gradient(45deg,#ff8c00,#ff2a68);
-            color:white;
-            cursor:pointer;
-            font-weight:bold;
-            transition:0.3s;
-          }
-          .btn:hover{transform:scale(1.05);}
-          .btn-download{background:linear-gradient(45deg,#4caf50,#2e7d32);}
-
-          .comment-section{
-            margin-top:30px;
-            padding:20px;
-            background:#111;
-            border-radius:12px;
-            max-width:500px;
-          }
-          .comment-section.hidden{ display:none !important; }
-          .comment-section h3{
-            color:#fff;
-            font-size:1.3em;
-            margin-bottom:10px;
-            text-align:left;
-          }
-          .input-group{ margin-bottom:5mm; }
-          .comment-section label{
-            display:block;
-            margin-bottom:2px;
-            color:#fff;
-            font-weight:bold;
-            font-size:0.85em;
-          }
-          .comment-section input,
-          .comment-section textarea{
-            width:100%;
-            padding:8px;
-            background:#1a1a1a;
-            border:1px solid #333;
-            border-radius:6px;
-            color:white;
-            font-size:0.9em;
-            font-weight:bold;
-            box-sizing:border-box;
-          }
-          .comment-section textarea{
-            resize:none;
-            height:100px;
-          }
-          .comment-section button{
-            padding:6px 15px;
-            border:none;
-            border-radius:15px;
-            background:linear-gradient(45deg,#ff0040,#ff2a68);
-            color:white;
-            cursor:pointer;
-            font-size:0.9em;
-            float:left;
-            margin-top:5px;
-          }
-          .comment-section button:hover{ transform:scale(1.05); }
-          .successMsg{
-            display:none;
-            margin-top:6px;
-            color:#00ff99;
-            font-size:0.85em;
-          }
-        </style>
       `;
 
-      // ===============================
-      // 📩 SEND COMMENT
-      // ===============================
+      // Update coins UI
+      updateCoinsUI();
+      updateDownloadCountdown(movieId);
+
+      // COMMENT FORM
       const form = document.querySelector(".commentForm");
       const successMsg = document.querySelector(".successMsg");
       const submitBtn = form.querySelector("button[type='submit']");
@@ -266,7 +211,6 @@ fetch("data/movies.json")
       form.addEventListener("submit", function(e){
         e.preventDefault();
         submitBtn.style.display = "none";
-
         const formData = new FormData(this);
         fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
           method: "POST",
@@ -279,14 +223,12 @@ fetch("data/movies.json")
         });
       });
 
-      // ✅ AUTO PLAY AFTER RETURN FROM ADPAGE
+      // AUTO PLAY AFTER RETURN FROM ADPAGE
       let autoPlayLink = params.get("autoplay");
       if(autoPlayLink){
         loadPlayer(autoPlayLink);
       }
 
-      // ✅ UPDATE COIN DISPLAY
-      updateCoinDisplay();
     });
   });
 
@@ -297,39 +239,33 @@ function loadPlayer(link){
   let embedLink = link.replace("/view","/preview");
   const commentDiv = document.querySelector(".comment-section");
   if(commentDiv) commentDiv.classList.add("hidden");
-  document.getElementById("videoPlayer").innerHTML = `
-    <iframe src="${embedLink}" width="100%" height="450" allowfullscreen style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;"></iframe>
-  `;
+  document.getElementById("videoPlayer").innerHTML = `<iframe src="${embedLink}" width="100%" height="450" allowfullscreen style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;"></iframe>`;
 }
 
 // ===============================
-// ⬇ DOWNLOAD MOVIE WITH COIN SYSTEM
+// ⬇ DOWNLOAD MOVIE WITH COINS
+// ===============================
+function attemptDownload(link,movieId){
+  if(getCoins() <= 0){
+    alert("❌ You don't have enough coins. Claim daily coins first!");
+    return;
+  }
+  if(!canDownload(movieId)){
+    alert("⏳ Download locked. Wait for countdown or spend coins.");
+  }
+  // Deduct 1 coin to unlock
+  setCoins(getCoins()-1);
+  setDownloadLock(movieId,6);
+  downloadMovie(link);
+  updateDownloadCountdown(movieId);
+}
+
+// ===============================
+// ⬇ DOWNLOAD MOVIE
 // ===============================
 function downloadMovie(link){
-  let coins = getCoins();
-  let unlockData = localStorage.getItem("download_unlock");
-  let now = new Date().getTime();
-
-  if(unlockData && now < parseInt(unlockData)){
-    // Already unlocked
-    window.open(link.replace("/preview","/view"), "_blank");
-    return;
-  }
-
-  if(coins < 1){
-    alert("❌ You need 1 coin to download this movie.\nGo to Coins.html to earn coins!");
-    return;
-  }
-
-  // Confirm use coin
-  if(confirm("🪙 Use 1 coin to unlock downloads for 6 hours?")){
-    coins--;
-    localStorage.setItem("coins", coins);
-    let sixHours = 6*60*60*1000;
-    localStorage.setItem("download_unlock", now + sixHours);
-    updateCoinDisplay();
-    window.open(link.replace("/preview","/view"), "_blank");
-  }
+  let downloadLink = link.replace("/preview","/view");
+  window.open(downloadLink,"_blank");
 }
 
 // ===============================
@@ -338,7 +274,7 @@ function downloadMovie(link){
 function getStars(rating){
   rating = parseFloat(rating);
   let fullStars = Math.floor(rating/2);
-  let halfStar = (rating%2)>=1;
+  let halfStar = (rating%2)>=1 ? true:false;
   let emptyStars = 5 - fullStars - (halfStar?1:0);
   let stars="";
   for(let i=0;i<fullStars;i++) stars+="⭐";
@@ -368,5 +304,20 @@ function goAdPage(link){
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
 
-// ✅ UPDATE COIN DISPLAY ON LOAD
-window.onload = updateCoinDisplay;
+// ===============================
+// ⏱ COIN CLAIM COUNTDOWN
+// ===============================
+setInterval(()=>{
+  let lastClaim = parseInt(localStorage.getItem(CLAIM_TIME_KEY)) || 0;
+  let remaining = 24*60*60*1000 - (Date.now() - lastClaim);
+  const el = document.getElementById("coinCountdown");
+  if(!el) return;
+  if(remaining <= 0){
+    el.innerText = "";
+  } else {
+    const h = Math.floor(remaining/3600000);
+    const m = Math.floor((remaining%3600000)/60000);
+    const s = Math.floor((remaining%60000)/1000);
+    el.innerText = `⏳ Next claim in ${h}h ${m}m ${s}s`;
+  }
+},1000);
