@@ -4,6 +4,24 @@
 const API_KEY = "AIzaSyBPPhDhVem-bSzZjGIlysFfnAax9bKQ2aM"; // Your API Key
 
 // ===============================
+// 🪙 COIN SYSTEM INIT
+// ===============================
+if(!localStorage.getItem("coins")){
+  localStorage.setItem("coins", 0);
+}
+
+function getCoins(){
+  return parseInt(localStorage.getItem("coins")) || 0;
+}
+
+function updateCoinDisplay(){
+  const coinBox = document.getElementById("coinCount");
+  if(coinBox){
+    coinBox.innerText = getCoins();
+  }
+}
+
+// ===============================
 // 📂 LOAD MOVIE DATA FROM JSON
 // ===============================
 fetch("data/movies.json")
@@ -37,10 +55,10 @@ fetch("data/movies.json")
         playersHTML += `<button class="btn btn-player" onclick="goAdPage('${player.link}')">${player.name}</button>`;
       });
 
-      // ✅ Download direct (No adpage)
-      // ✅ Download direct (No adpage)
+      // ✅ Download with coin system
       playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
     }
+
     // ===============================
     // 🔗 ENCODE FULL URL FOR WHATSAPP
     // ===============================
@@ -76,6 +94,11 @@ fetch("data/movies.json")
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
+
+          <!-- COIN DISPLAY -->
+          <div style="text-align:right;font-weight:bold;color:gold;font-size:1.2em;margin-bottom:10px;">
+            🪙 Coins: <span id="coinCount">${getCoins()}</span>
+          </div>
 
           <!-- TRAILER / BIG SCREEN -->
           <div id="trailerContainer" style="width:100%; text-align:center; margin-bottom:20px;">
@@ -242,7 +265,7 @@ fetch("data/movies.json")
 
       form.addEventListener("submit", function(e){
         e.preventDefault();
-        submitBtn.style.display = "none"; // hide post button
+        submitBtn.style.display = "none";
 
         const formData = new FormData(this);
         fetch("https://formsubmit.co/ajax/boyae399@gmail.com", {
@@ -251,7 +274,7 @@ fetch("data/movies.json")
         })
         .then(res => res.json())
         .then(() => {
-          successMsg.style.display = "block"; // show success
+          successMsg.style.display = "block";
           form.reset();
         });
       });
@@ -262,8 +285,9 @@ fetch("data/movies.json")
         loadPlayer(autoPlayLink);
       }
 
+      // ✅ UPDATE COIN DISPLAY
+      updateCoinDisplay();
     });
-
   });
 
 // ===============================
@@ -271,22 +295,41 @@ fetch("data/movies.json")
 // ===============================
 function loadPlayer(link){
   let embedLink = link.replace("/view","/preview");
-
-  // Hide comment section when video plays
   const commentDiv = document.querySelector(".comment-section");
   if(commentDiv) commentDiv.classList.add("hidden");
-
   document.getElementById("videoPlayer").innerHTML = `
     <iframe src="${embedLink}" width="100%" height="450" allowfullscreen style="border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.4);border:none;"></iframe>
   `;
 }
 
 // ===============================
-// ⬇ DOWNLOAD MOVIE
+// ⬇ DOWNLOAD MOVIE WITH COIN SYSTEM
 // ===============================
 function downloadMovie(link){
-  let downloadLink = link.replace("/preview","/view");
-  window.open(downloadLink,"_blank");
+  let coins = getCoins();
+  let unlockData = localStorage.getItem("download_unlock");
+  let now = new Date().getTime();
+
+  if(unlockData && now < parseInt(unlockData)){
+    // Already unlocked
+    window.open(link.replace("/preview","/view"), "_blank");
+    return;
+  }
+
+  if(coins < 1){
+    alert("❌ You need 1 coin to download this movie.\nGo to Coins.html to earn coins!");
+    return;
+  }
+
+  // Confirm use coin
+  if(confirm("🪙 Use 1 coin to unlock downloads for 6 hours?")){
+    coins--;
+    localStorage.setItem("coins", coins);
+    let sixHours = 6*60*60*1000;
+    localStorage.setItem("download_unlock", now + sixHours);
+    updateCoinDisplay();
+    window.open(link.replace("/preview","/view"), "_blank");
+  }
 }
 
 // ===============================
@@ -295,7 +338,7 @@ function downloadMovie(link){
 function getStars(rating){
   rating = parseFloat(rating);
   let fullStars = Math.floor(rating/2);
-  let halfStar = (rating%2)>=1 ? true:false;
+  let halfStar = (rating%2)>=1;
   let emptyStars = 5 - fullStars - (halfStar?1:0);
   let stars="";
   for(let i=0;i<fullStars;i++) stars+="⭐";
@@ -323,4 +366,7 @@ function goAdPage(link){
   let params = new URLSearchParams(window.location.search);
   let movieId = params.get("id");
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
-                }
+}
+
+// ✅ UPDATE COIN DISPLAY ON LOAD
+window.onload = updateCoinDisplay;
