@@ -762,3 +762,26 @@ footer{
   }
 
 }
+
+/* ===== FORCE 3 PER ROW (PC + DESKTOP MODE) ===== */
+
+.movie-container,
+.movies-container,
+.movies-grid,
+.movie-grid,
+.movie-list,
+.cards {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+/* ===== FORCE 4:3 IMAGE RATIO ===== */
+
+.movie-card img,
+.card img,
+.movie-box img,
+.movie-item img {
+    height: auto !important;
+    aspect-ratio: 4/3 !important;
+    object-fit: cover !important;
+    padding: 0 !important;
+}
