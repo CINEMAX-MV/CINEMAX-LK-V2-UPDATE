@@ -145,6 +145,7 @@ fetch("data/movies.json")
       let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
       document.getElementById("movieDetails").innerHTML = `
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
+
           <div id="trailerContainer" style="width:100%; text-align:center; margin-bottom:20px;">
             ${trailerURL? `<iframe src="${trailerURL}" width="100%" height="450" allowfullscreen style="border-radius:12px; box-shadow:0 8px 25px rgba(0,0,0,0.3);"></iframe>` : `<img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">`}
           </div>
@@ -207,7 +208,6 @@ fetch("data/movies.json")
         </div>
       `;
 
-      // UPDATE UI
       updateCoinsUI();
       updateDownloadCountdown(movieId);
 
@@ -219,8 +219,7 @@ fetch("data/movies.json")
         submitBtn.style.display = "none";
         const formData = new FormData(form);
         fetch("https://formsubmit.co/ajax/boyae399@gmail.com",{method:"POST",body:formData})
-        .then(res=>res.json())
-        .then(()=>{successMsg.style.display="block";form.reset();});
+        .then(res=>res.json()).then(()=>{successMsg.style.display="block";form.reset();});
       });
 
       const autoPlayLink = params.get("autoplay");
