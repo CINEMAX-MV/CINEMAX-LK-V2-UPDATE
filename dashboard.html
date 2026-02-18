@@ -11,17 +11,33 @@ body{background:#0b0b0b;color:#fff;line-height:1.4;}
 a{text-decoration:none;color:inherit;}
 
 /* ===== Header ===== */
-header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:#111;position:sticky;top:0;z-index:100;}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:#111;position:sticky;top:0;z-index:100;flex-wrap:wrap;}
 header .logo{font-size:1.8em;font-weight:bold;color:#ff3d3d;letter-spacing:1px;}
 header nav a{margin:0 12px;color:#fff;transition:0.3s;font-weight:bold;}
 header nav a:hover{color:#ff3d3d;}
-.search-bar{position:relative;}
-.search-bar input{padding:6px 12px;border-radius:5px;border:none;outline:none;width:150px;transition:width 0.3s;}
-.search-bar input:focus{width:250px;}
-.search-bar button{position:absolute;top:0;bottom:0;right:0;background:#ff3d3d;border:none;padding:6px 10px;cursor:pointer;border-radius:0 5px 5px 0;color:#fff;font-weight:bold;}
+
+/* ===== Search Bar ===== */
+.search-bar { position: relative; width:200px; transition: width 0.3s ease; margin-top:5px; }
+.search-bar input {
+  width:100%; padding:8px 12px; border-radius:20px; border:none; outline:none;
+  background:#1c1c1c; color:#fff; transition:0.3s;
+}
+.search-bar input::placeholder { color:#aaa; }
+.search-bar input:focus { width:300px; background:#0f0f0f; box-shadow:0 0 10px #ff3d3d; }
+.search-bar button {
+  position:absolute; top:50%; right:5px; transform:translateY(-50%);
+  border:none; background:#ff3d3d; color:#fff; padding:6px 10px; border-radius:50%; cursor:pointer; transition:0.3s;
+}
+.search-bar button:hover{ background:#ff5757; }
+
+/* ===== Autocomplete Suggestions ===== */
+.autocomplete-suggestions { position:absolute; top:105%; left:0; width:100%; background:#1c1c1c;
+  border-radius:0 0 10px 10px; max-height:200px; overflow-y:auto; z-index:150; box-shadow:0 5px 15px rgba(0,0,0,0.5); }
+.autocomplete-suggestions div { padding:8px 12px; cursor:pointer; transition:0.2s; color:#fff; }
+.autocomplete-suggestions div:hover { background:#ff3d3d; color:#000; }
 
 /* ===== Hero Slider ===== */
-.slider{position:relative;overflow:hidden;height:320px;margin-top:10px;border-radius:12px;}
+.slider{position:relative;overflow:hidden;height:320px;margin-top:15px;border-radius:12px;}
 .slide{min-width:100%;height:320px;background-size:cover;background-position:center;transition:0.6s ease-in-out;display:flex;align-items:flex-end;padding:20px;box-shadow:inset 0 0 100px rgba(0,0,0,0.5);}
 .slide h2{color:#fff;font-size:2em;text-shadow:2px 2px 6px rgba(0,0,0,0.7);}
 .slider-buttons{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
@@ -59,11 +75,6 @@ section h2{color:#ff3d3d;font-size:1.5em;margin-bottom:15px;letter-spacing:1px;}
 .btn{display:inline-block;margin-top:10px;padding:10px 16px;background:#00ffd5;color:black;border-radius:6px;font-weight:bold;transition:0.3s;}
 .btn:hover{background:#00e0c0;}
 
-/* ===== Search Autocomplete ===== */
-.autocomplete-suggestions{position:absolute;top:100%;left:0;width:100%;background:#1c1c1c;max-height:200px;overflow-y:auto;border-radius:0 0 5px 5px;z-index:150;}
-.autocomplete-suggestions div{padding:8px;cursor:pointer;transition:0.2s;}
-.autocomplete-suggestions div:hover{background:#ff3d3d;color:#000;}
-
 /* ===== Responsive ===== */
 @media(max-width:700px){
   .card img{height:180px;}
@@ -80,7 +91,7 @@ section h2{color:#ff3d3d;font-size:1.5em;margin-bottom:15px;letter-spacing:1px;}
 <header>
   <div class="logo">CineMax</div>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="home.html">Home</a>
     <a href="#">Movies</a>
     <a href="#">TV Shows</a>
     <a href="#">Genres</a>
@@ -95,7 +106,6 @@ section h2{color:#ff3d3d;font-size:1.5em;margin-bottom:15px;letter-spacing:1px;}
 
 <!-- ===== Hero Slider ===== -->
 <div class="slider" id="slider">
-  <!-- Slides will be generated dynamically -->
   <div class="slider-buttons">
     <button id="prev">❮</button>
     <button id="next">❯</button>
@@ -213,22 +223,25 @@ function showDetails(id){
 function closeModal(){document.getElementById("movieModal").style.display="none";}
 
 // ===== Search Autocomplete =====
-const searchInput=document.getElementById("searchInput");
-const suggestionsDiv=document.getElementById("suggestions");
-searchInput.addEventListener('input',()=>{
-  const query=searchInput.value;
-  if(query.length<2){suggestionsDiv.innerHTML=''; return;}
+const searchInput = document.getElementById("searchInput");
+const suggestionsDiv = document.getElementById("suggestions");
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value;
+  if(query.length < 2){ suggestionsDiv.innerHTML=''; return; }
   fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${query}`)
-  .then(res=>res.json())
-  .then(data=>{
-    suggestionsDiv.innerHTML='';
-    data.results.slice(0,5).forEach(movie=>{
-      const div=document.createElement('div');
-      div.textContent=movie.title;
-      div.onclick=()=>{ showDetails(movie.id); suggestionsDiv.innerHTML=''; searchInput.value=''; };
-      suggestionsDiv.appendChild(div);
+    .then(res=>res.json())
+    .then(data=>{
+      suggestionsDiv.innerHTML='';
+      data.results.slice(0,5).forEach(movie=>{
+        const div=document.createElement('div');
+        div.textContent=movie.title;
+        div.onclick=()=>{ showDetails(movie.id); suggestionsDiv.innerHTML=''; searchInput.value=''; };
+        suggestionsDiv.appendChild(div);
+      });
     });
-  });
+});
+document.addEventListener('click', e=>{
+  if(!searchInput.contains(e.target)) suggestionsDiv.innerHTML='';
 });
 </script>
 </body>
