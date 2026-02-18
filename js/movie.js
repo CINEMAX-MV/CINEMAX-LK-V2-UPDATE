@@ -38,9 +38,34 @@ fetch("data/movies.json")
       });
 
       // ✅ Download direct (No adpage)
-      playersHTML += `<button class="btn btn-download" onclick="downloadMovie('${movie.players[0].link}')">Download</button>`;
-    }
+      function downloadMovie(link){
 
+  let coins = localStorage.getItem("coins") 
+    ? parseInt(localStorage.getItem("coins")) 
+    : 0;
+
+  if(coins < 1){
+    alert("❌ You need 1 coin to download this movie!");
+    return;
+  }
+
+  // Confirm before deducting
+  let confirmUse = confirm("Use 1 coin to download this movie?");
+  if(!confirmUse) return;
+
+  // Deduct coin
+  coins--;
+  localStorage.setItem("coins", coins);
+
+  // Optional: Update coin display if you have one
+  const coinDisplay = document.getElementById("coinCount");
+  if(coinDisplay){
+    coinDisplay.innerText = coins;
+  }
+
+  // Start download
+  window.location.href = link;
+}
     // ===============================
     // 🔗 ENCODE FULL URL FOR WHATSAPP
     // ===============================
