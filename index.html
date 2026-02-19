@@ -5,123 +5,141 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cinemax.lk</title>
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Google reCAPTCHA API -->
+<!-- Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
-  /* Temporary style for human verification overlay */
-  #humanVerification {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: #111;
-    color: #fff;
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index: 9999;
-  }
-  #verifyBtn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+
+/* ===== VERIFICATION OVERLAY ===== */
+#verificationOverlay{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#000428,#004e92);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.verify-box{
+    background:#111;
+    padding:40px;
+    border-radius:15px;
+    text-align:center;
+    width:90%;
+    max-width:400px;
+    box-shadow:0 0 25px rgba(0,0,0,0.7);
+    animation:fadeIn 0.6s ease;
+}
+
+.verify-box h2{
+    color:#00d4ff;
+    margin-bottom:10px;
+}
+
+.verify-box p{
+    color:#ccc;
+    margin-bottom:20px;
+}
+
+.verify-btn{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:#00d4ff;
+    color:#000;
+    font-weight:bold;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.verify-btn:hover{
+    background:#00aacc;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.9);}
+    to{opacity:1; transform:scale(1);}
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- ===== HUMAN VERIFICATION SCREEN ===== -->
-<div id="humanVerification">
-    <h2>Please verify you are human</h2>
-    <div class="g-recaptcha" data-sitekey="6Lcv8nAsAAAAAECDyVxngRpCaer43AGmlQx-5cbj"></div>
-    <button id="verifyBtn">Verify</button>
-</div>
+<!-- ===== HUMAN VERIFICATION OVERLAY ===== -->
+<div id="verificationOverlay">
+    <div class="verify-box">
+        <h2>🔐 Human Verification</h2>
+        <p>Please verify you are not a robot to continue</p>
 
-<!-- ===== MAIN CONTENT (ORIGINAL) ===== -->
-<div id="mainContent">
+        <div class="g-recaptcha" 
+             data-sitekey="YOUR_SITE_KEY_HERE">
+        </div>
+
+        <button class="verify-btn" onclick="verifyUser()">Verify & Enter</button>
+    </div>
+</div>
 
 <!-- ===== HEADER ===== -->
 <header class="hero-header">
-
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
     <div class="logo-container">
         <img src="https://i.ibb.co/5gCt9Lvd/Rashmika-Ofc.jpg" alt="Cinemax 3D Logo">
     </div>
-
 </header>
 
-<!-- Top Blue Line -->
 <div class="blue-line"></div>
 
-<!-- LATEST MOVIES TITLE -->
 <div class="latest-wrapper">
     <div class="latest-title">LATEST MOVIES</div>
 </div>
 
-<!-- ===== LAST 10 MOVIES SLIDER ===== -->
 <section class="slider-section">
   <div class="slider" id="movieSlider"></div>
   <div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- Bottom Blue Line -->
 <div class="blue-line"></div>
 
-<!-- ===== SIDEBAR ===== -->
 <div id="sidebar" class="sidebar">
-
     <div class="sidebar-search">
         <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
     </div>
-
-    <!-- Close Button -->
     <div class="close-btn" onclick="toggleMenu()">✕</div>
-    
     <a href="index.html">✦ Home</a>
     <a href="dashboard.html">✦ Dashboard</a>
     <a href="contact.html">✦ Contact</a>
     <a href="dmca.html">✦ DMCA</a>
-    <!-- Problems Link -->
-<a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
+    <a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
 
-<!-- Compact Problems Form -->
-<div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#222; border-radius:6px;">
-    <input type="text" id="pName" placeholder="Name" required>
-    <input type="text" id="pUser" placeholder="User" required>
-    <input type="email" id="pEmail" placeholder="Email" required>
-    <input type="text" id="pNumber" placeholder="Number" required>
-    <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
-    <button onclick="sendProblem()">Submit ✔️</button>
-</div>
+    <div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#222; border-radius:6px;">
+        <input type="text" id="pName" placeholder="Name" required>
+        <input type="text" id="pUser" placeholder="User" required>
+        <input type="email" id="pEmail" placeholder="Email" required>
+        <input type="text" id="pNumber" placeholder="Number" required>
+        <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
+        <button onclick="sendProblem()">Submit ✔️</button>
+    </div>
 </div>
 
-<!-- ===== MOVIE GRID SECTION ===== -->
 <section class="container">
 
-    <!-- Ticker -->
     <div class="ticker">
         <div class="ticker-track">
             <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
+                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත.
             </span>
             <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
+                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත.
             </span>
         </div>
     </div>
 
-    <!-- Movie Grid -->
     <div id="movieList" class="movies-grid"></div>
 
-    <!-- Pagination Controls -->
     <div class="pagination-controls">
         <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
         <span id="pageInfo"></span>
@@ -129,84 +147,37 @@
     </div>
 
 </section>
-    
-<!-- Social Media Section Start -->
+
 <div class="social-section">
-    <a href="#" class="social facebook" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" class="social twitter" target="_blank">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank">
-        <i class="fab fa-youtube"></i>
-    </a>
-    <a href="#" class="social instagram" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>    
+    <a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-  <!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- ===== FOOTER ===== -->
 <footer>
  © <span class="year">2026</span> Cinemax Downloads | Watch & Download 
   <span class="highlight">Sinhala Movies & Cartoons</span>
 </footer>
 
-</div> <!-- END MAIN CONTENT -->
-
-<!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
 
-<!-- ===== SIDEBAR TOGGLE ===== -->
 <script>
-function toggleMenu() {
+function toggleMenu(){
     document.getElementById("sidebar").classList.toggle("active");
 }
-function toggleProblems() {
-    const form = document.getElementById("problemsForm");
-    form.style.display = form.style.display === "none" ? "block" : "none";
+
+function verifyUser(){
+    var response = grecaptcha.getResponse();
+    if(response.length === 0){
+        alert("⚠ Please complete the reCAPTCHA!");
+    }else{
+        document.getElementById("verificationOverlay").style.display="none";
+    }
 }
-</script>
-
-<!-- ===== reCAPTCHA + verification ===== -->
-<script>
-const verifyBtn = document.getElementById("verifyBtn");
-const humanVerification = document.getElementById("humanVerification");
-const mainContent = document.getElementById("mainContent");
-
-verifyBtn.addEventListener("click", async () => {
-    const token = grecaptcha.getResponse();
-    if(token.length === 0){
-        alert("Please complete the CAPTCHA to verify you are human.");
-        return;
-    }
-
-    // server-side verification
-    try {
-        const res = await fetch("/verify", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"g-recaptcha-response": token})
-        });
-        const data = await res.json();
-        if(data.success){
-            humanVerification.style.display = "none";
-            mainContent.style.display = "block";
-        } else {
-            alert("Verification failed! Try again.");
-            grecaptcha.reset();
-        }
-    } catch(err){
-        alert("Server verification error!");
-        console.error(err);
-    }
-});
 </script>
 
 </body>
