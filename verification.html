@@ -5,110 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Human Verification</title>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 <style>
-/* ===== Reset ===== */
-* {box-sizing:border-box; margin:0; padding:0; font-family:'Poppins',sans-serif;}
-
-/* ===== Background ===== */
-body, html {
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: linear-gradient(135deg, #000428, #004e92);
-}
-
-/* ===== Verification Card ===== */
-.box {
-    background: rgba(17,17,17,0.95);
-    padding: 50px 40px;
-    border-radius: 20px;
-    max-width: 450px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-    animation: fadeIn 0.6s ease forwards;
-}
-
-/* ===== Heading ===== */
-.box h2 {
-    color: #00d4ff;
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-/* ===== Paragraph ===== */
-.box p {
-    color: #ccc;
-    font-size: 16px;
-    margin-bottom: 25px;
-}
-
-/* ===== Input Field ===== */
-.box input[type="text"] {
-    width: 100%;
-    padding: 12px 15px;
-    border-radius: 12px;
-    border: none;
-    margin-top: 15px;
-    font-size: 16px;
-    outline: none;
-    transition: 0.3s;
-}
-
-.box input[type="text"]:focus {
-    box-shadow: 0 0 10px #00d4ff;
-}
-
-/* ===== Verify Button ===== */
-.box button {
-    margin-top: 25px;
-    padding: 14px 30px;
-    border: none;
-    border-radius: 30px;
-    background: #00d4ff;
-    color: #000;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.box button:hover {
-    background: #00aacc;
-    transform: scale(1.05);
-}
-
-/* ===== FadeIn Animation ===== */
-@keyframes fadeIn {
-    from {opacity:0; transform: scale(0.9);}
-    to {opacity:1; transform: scale(1);}
-}
-
-/* ===== Responsive ===== */
-@media (max-width:500px){
-    .box {padding: 40px 25px;}
-    .box h2 {font-size:24px;}
-    .box p {font-size:14px;}
-    .box button {width:100%;}
-}
+body, html {margin:0; padding:0; height:100%; display:flex; justify-content:center; align-items:center; background:#004e92; font-family:Arial;}
+.box {background: rgba(17,17,17,0.95); padding:40px; border-radius:15px; text-align:center; box-shadow:0 0 25px rgba(0,0,0,0.7);}
+button {margin-top:20px; padding:12px 25px; border:none; border-radius:30px; background:#00d4ff; color:#000; font-weight:bold; cursor:pointer;}
 </style>
 </head>
-
 <body>
-
 <div class="box">
   <h2>🔐 Human Verification</h2>
   <p>Please complete the reCAPTCHA to continue</p>
 
-  <!-- Google reCAPTCHA v2 checkbox -->
   <div class="g-recaptcha" data-sitekey="6Ldo_nAsAAAAAPaqNWrlxZ2PVCRKGzmcE4JcZfl4"></div>
-
-  <!-- Optional Name Input -->
-  <input type="text" id="userName" placeholder="Your Name">
-
-  <!-- Verify Button -->
+  <input type="text" id="userName" placeholder="Your Name" style="margin-top:15px; padding:10px; width:90%; border-radius:8px; border:none;">
   <button onclick="verify()">Verify & Enter</button>
 </div>
 
@@ -119,13 +28,12 @@ function verify(){
         alert("⚠ Please complete the reCAPTCHA!");
         return;
     }
-    // Save verification flag + optional user name
+    // Save verification flag and optional user name
     localStorage.setItem("humanVerified","true");
     localStorage.setItem("userName",document.getElementById("userName").value);
     // Redirect to main site
     window.location.href="index.html";
 }
 </script>
-
 </body>
 </html>
