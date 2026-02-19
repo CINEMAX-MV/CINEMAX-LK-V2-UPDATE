@@ -12,6 +12,24 @@
 </head>
 
 <body>
+  <!-- Human Verification Overlay -->
+<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
+    <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7);">
+        <h2>🔐 Human Verification</h2>
+        <p>Please go to <a href="verification.html" style="color:#00d4ff;">Verification Page</a> first!</p>
+    </div>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded',()=>{
+    if(localStorage.getItem("humanVerified")==="true"){
+        document.getElementById("humanVerification").style.display="none";
+        // Optional: personalize page
+        const user = localStorage.getItem("userName");
+        if(user) console.log("Welcome,", user);
+    }
+});
+</script>
 
 <style>
 @keyframes fadeIn{from{opacity:0; transform:scale(0.9);} to{opacity:1; transform:scale(1);}}
