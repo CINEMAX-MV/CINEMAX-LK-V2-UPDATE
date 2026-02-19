@@ -12,18 +12,6 @@
 </head>
 
 <body>
-<!-- ===== HUMAN VERIFICATION OVERLAY ===== -->
-<div id="humanVerification" style="position:fixed; inset:0; background:linear-gradient(135deg,#000428,#004e92); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center;">
-  <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); width:90%; max-width:400px; animation:fadeIn 0.6s ease;">
-    <h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
-    <p style="color:#ccc; margin-bottom:20px;">Please verify you are not a robot to continue</p>
-
-    <!-- Google reCAPTCHA -->
-    <div class="g-recaptcha" data-sitekey="6Lcv8nAsAAAAAECDyVxngRpCaer43AGmlQx-5cbj"></div>
-
-    <button onclick="verifyHuman()" style="margin-top:20px; padding:12px 25px; border:none; border-radius:30px; background:#00d4ff; color:#000; font-weight:bold; cursor:pointer; transition:0.3s;">Verify & Enter</button>
-  </div>
-</div>
 
 <style>
 @keyframes fadeIn{from{opacity:0; transform:scale(0.9);} to{opacity:1; transform:scale(1);}}
