@@ -5,13 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cinemax.lk</title>
 <link rel="stylesheet" href="css/style.css">
-<head>
-  <meta charset="UTF-8">
-  <title>CINEMAX</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- Google reCAPTCHA API -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<style>
+  /* Temporary style for human verification overlay */
+  #humanVerification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #111;
+    color: #fff;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index: 9999;
+  }
+  #verifyBtn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
 </head>
 
 <body>
+
+<!-- ===== HUMAN VERIFICATION SCREEN ===== -->
+<div id="humanVerification">
+    <h2>Please verify you are human</h2>
+    <div class="g-recaptcha" data-sitekey="6Lcv8nAsAAAAAECDyVxngRpCaer43AGmlQx-5cbj"></div>
+    <button id="verifyBtn">Verify</button>
+</div>
+
+<!-- ===== MAIN CONTENT (ORIGINAL) ===== -->
+<div id="mainContent">
 
 <!-- ===== HEADER ===== -->
 <header class="hero-header">
@@ -113,16 +147,18 @@
     <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>    
-</a>
 </div>
 
-<!-- Font Awesome CDN -->
+  <!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <!-- ===== FOOTER ===== -->
 <footer>
  © <span class="year">2026</span> Cinemax Downloads | Watch & Download 
   <span class="highlight">Sinhala Movies & Cartoons</span>
 </footer>
+
+</div> <!-- END MAIN CONTENT -->
 
 <!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
@@ -132,7 +168,46 @@
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
+function toggleProblems() {
+    const form = document.getElementById("problemsForm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+}
 </script>
 
-</body> 
+<!-- ===== reCAPTCHA + verification ===== -->
+<script>
+const verifyBtn = document.getElementById("verifyBtn");
+const humanVerification = document.getElementById("humanVerification");
+const mainContent = document.getElementById("mainContent");
+
+verifyBtn.addEventListener("click", async () => {
+    const token = grecaptcha.getResponse();
+    if(token.length === 0){
+        alert("Please complete the CAPTCHA to verify you are human.");
+        return;
+    }
+
+    // server-side verification
+    try {
+        const res = await fetch("/verify", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({"g-recaptcha-response": token})
+        });
+        const data = await res.json();
+        if(data.success){
+            humanVerification.style.display = "none";
+            mainContent.style.display = "block";
+        } else {
+            alert("Verification failed! Try again.");
+            grecaptcha.reset();
+        }
+    } catch(err){
+        alert("Server verification error!");
+        console.error(err);
+    }
+});
+</script>
+
+</body>
 </html>
