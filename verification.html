@@ -3,21 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Human Verification</title>
+<title>Cinemax.lk</title>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
 body, html {
     margin:0; padding:0;
     height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: linear-gradient(135deg,#000428,#004e92);
     font-family:'Poppins',sans-serif;
 }
 
-.box {
+/* ===== Overlay ===== */
+#humanVerification {
+    position: fixed;
+    inset:0;
+    background: rgba(0,0,0,0.9);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#humanVerification .box {
     background: rgba(17,17,17,0.95);
     padding:50px 40px;
     border-radius:20px;
@@ -28,35 +35,48 @@ body, html {
     animation:fadeIn 0.6s ease forwards;
 }
 
-.box h2 {color:#00d4ff; font-size:28px; margin-bottom:15px;}
-.box p {color:#ccc; font-size:16px; margin-bottom:25px;}
+#humanVerification h2 {color:#00d4ff; font-size:28px; margin-bottom:15px;}
+#humanVerification p {color:#ccc; font-size:16px; margin-bottom:25px;}
 
-.box input[type="text"] {
+#humanVerification input[type="text"] {
     width:100%; padding:12px 15px; border-radius:12px; border:none; margin-top:15px; font-size:16px;
     outline:none; transition:0.3s;
 }
-.box input[type="text"]:focus {box-shadow:0 0 10px #00d4ff;}
+#humanVerification input[type="text"]:focus {box-shadow:0 0 10px #00d4ff;}
 
-.box button {
+#humanVerification button {
     margin-top:25px; padding:14px 30px; border:none; border-radius:30px;
     background:#00d4ff; color:#000; font-weight:bold; font-size:16px; cursor:pointer; transition:0.3s;
 }
-.box button:hover {background:#00aacc; transform:scale(1.05);}
+#humanVerification button:hover {background:#00aacc; transform:scale(1.05);}
 
 @keyframes fadeIn {from{opacity:0; transform:scale(0.9);} to{opacity:1; transform:scale(1);}}
 
-@media(max-width:500px){.box{padding:40px 25px;} .box h2{font-size:24px;} .box p{font-size:14px;} .box button{width:100%;}}
 </style>
 </head>
+
 <body>
 
-<div class="box">
-  <h2>🔐 Human Verification</h2>
-  <p>Please complete the reCAPTCHA to continue</p>
+<!-- ===== HUMAN VERIFICATION OVERLAY ===== -->
+<div id="humanVerification">
+  <div class="box">
+      <h2>🔐 Human Verification</h2>
+      <p>Please complete the reCAPTCHA to continue</p>
 
-  <div class="g-recaptcha" data-sitekey="6Ldo_nAsAAAAAPaqNWrlxZ2PVCRKGzmcE4JcZfl4"></div>
-  <input type="text" id="userName" placeholder="Your Name">
-  <button onclick="verify()">Verify & Enter</button>
+      <!-- Google reCAPTCHA -->
+      <div class="g-recaptcha" data-sitekey="6Ldo_nAsAAAAAPaqNWrlxZ2PVCRKGzmcE4JcZfl4"></div>
+
+      <!-- Optional Name Input -->
+      <input type="text" id="userName" placeholder="Your Name">
+
+      <button onclick="verify()">Verify & Enter</button>
+  </div>
+</div>
+
+<!-- ===== MAIN SITE CONTENT ===== -->
+<div id="mainContent" style="display:none;">
+  <h1>Welcome to Cinemax.lk</h1>
+  <p>Your main site content goes here...</p>
 </div>
 
 <script>
@@ -66,12 +86,23 @@ function verify(){
         alert("⚠ Please complete the reCAPTCHA!");
         return;
     }
+
     // Save verification flag + user name
     localStorage.setItem("humanVerified","true");
     localStorage.setItem("userName",document.getElementById("userName").value);
-    // Redirect to main site
-    window.location.href="index.html";
+
+    // Hide overlay + show main content
+    document.getElementById("humanVerification").style.display="none";
+    document.getElementById("mainContent").style.display="block";
 }
+
+// Check if user already verified
+window.addEventListener('DOMContentLoaded', ()=>{
+    if(localStorage.getItem("humanVerified")==="true"){
+        document.getElementById("humanVerification").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+    }
+});
 </script>
 
 </body>
