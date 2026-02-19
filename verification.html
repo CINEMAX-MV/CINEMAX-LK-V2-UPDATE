@@ -4,89 +4,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Human Verification</title>
-
-<!-- Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
 <style>
-/* ===== FULL SCREEN VERIFICATION OVERLAY ===== */
-body, html {
-    margin:0;
-    padding:0;
-    height:100%;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#000428,#004e92);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.verification-box {
-    background: rgba(17,17,17,0.95);
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 450px;
-    width: 90%;
-    text-align: center;
-    box-shadow: 0 0 30px rgba(0,0,0,0.7);
-    animation: fadeIn 0.6s ease;
-}
-
-.verification-box h2 {
-    color: #00d4ff;
-    margin-bottom: 15px;
-}
-
-.verification-box p {
-    color: #ccc;
-    margin-bottom: 20px;
-}
-
-.verification-box button {
-    margin-top: 20px;
-    padding: 12px 25px;
-    border:none;
-    border-radius: 30px;
-    background: #00d4ff;
-    color: #000;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.verification-box button:hover {
-    background: #00aacc;
-}
-
-@keyframes fadeIn {
-    from { opacity:0; transform: scale(0.9); }
-    to { opacity:1; transform: scale(1); }
-}
+body, html {margin:0; padding:0; height:100%; display:flex; justify-content:center; align-items:center; background:#004e92; font-family:Arial;}
+.box {background: rgba(17,17,17,0.95); padding:40px; border-radius:15px; text-align:center; box-shadow:0 0 25px rgba(0,0,0,0.7);}
+button {margin-top:20px; padding:12px 25px; border:none; border-radius:30px; background:#00d4ff; color:#000; font-weight:bold; cursor:pointer;}
 </style>
 </head>
 <body>
+<div class="box">
+  <h2>🔐 Human Verification</h2>
+  <p>Please complete the reCAPTCHA to continue</p>
 
-<div class="verification-box">
-    <h2>🔐 Human Verification</h2>
-    <p>Please verify you are not a robot to continue</p>
-
-    <!-- Google reCAPTCHA v2 checkbox -->
-    <div class="g-recaptcha" data-sitekey="6Lcv8nAsAAAAAECDyVxngRpCaer43AGmlQx-5cbj"></div>
-
-    <button onclick="verifyHuman()">Verify & Enter</button>
+  <div class="g-recaptcha" data-sitekey="6Lcv8nAsAAAAAECDyVxngRpCaer43AGmlQx-5cbj"></div>
+  <input type="text" id="userName" placeholder="Your Name" style="margin-top:15px; padding:10px; width:90%; border-radius:8px; border:none;">
+  <button onclick="verify()">Verify & Enter</button>
 </div>
 
 <script>
-function verifyHuman() {
+function verify(){
     var response = grecaptcha.getResponse();
-    if(response.length === 0){
+    if(response.length===0){
         alert("⚠ Please complete the reCAPTCHA!");
-    } else {
-        // Redirect to your main site or hide overlay
-        window.location.href = "index.html"; // Redirect to main site
+        return;
     }
+    // Save verification flag and optional user name
+    localStorage.setItem("humanVerified","true");
+    localStorage.setItem("userName",document.getElementById("userName").value);
+    // Redirect to main site
+    window.location.href="index.html";
 }
 </script>
-
 </body>
 </html>
