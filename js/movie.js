@@ -56,11 +56,27 @@ fetch("data/movies.json")
         <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
           <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
         </a>
-        <a href="https://wa.me/?text=${encodeURIComponent('.gdrive ' + movie.players[0].link)}" target="_blank">
-  <img src="https://img.icons8.com/color/48/000000/whatsapp.png"
-       width="35"
+        <a id="whatsappBtn" target="_blank">
+  <img src="https://img.icons8.com/color/48/000000/whatsapp.png" 
+       width="35" 
        title="Download via WhatsApp Bot">
-        </a>
+</a>
+
+<script>
+  // Player 1 link from your existing movie object
+  let player1Link = movie.players && movie.players.length > 0 
+    ? movie.players[0].link 
+    : '';
+
+  // Construct the WhatsApp message
+  let whatsappMessage = `.gdrive ${player1Link}`;
+
+  // Encode message for WhatsApp link
+  let whatsappURL = "https://wa.me/?text=" + encodeURIComponent(whatsappMessage);
+
+  // Assign href to WhatsApp icon
+  document.getElementById("whatsappBtn").href = whatsappURL;
+</script>
         <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
           <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
         </a>
