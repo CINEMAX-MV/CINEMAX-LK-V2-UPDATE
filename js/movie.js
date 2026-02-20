@@ -56,9 +56,9 @@ fetch("data/movies.json")
         <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
           <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
         </a>
-        <a href="https://chat.whatsapp.com/IIYR59JFFW4EwhVn1Enq6F?mode=gi_t=${encodeURIComponent('.gdrive ' + window.location.href)}" target="_blank">
+        <a href="https://wa.me/?text=${encodeURIComponent('.gdrive ' + window.location.href)}" target="_blank">
   <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Download via WhatsApp Bot">
-        </a>
+      b </a>
         <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
           <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
         </a>
