@@ -48,81 +48,30 @@ fetch("data/movies.json")
     let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
     shareURL = encodeURIComponent(shareURL);
 
-    
-    
-<!-- ================= Social Icons Section ================= -->
-<div id="socialIconsContainer" style="margin-top:20px; display:flex; gap:12px;"></div>
-
-<script>
-  // ===============================
-  // 🌐 CURRENT PAGE URL
-  // ===============================
-  let currentURL = encodeURIComponent(window.location.href);
-
-  // ===============================
-  // DAILY 3 USES WHATSAPP CONFIG
-  // ===============================
-  const maxDailyUses = 3;
-  const storageKey = "whatsappDailyCount";
-  let data = JSON.parse(localStorage.getItem(storageKey)) || { date: '', count: 0 };
-  const today = new Date().toISOString().slice(0,10);
-
-  if(data.date !== today){
-    data = { date: today, count: 0 };
-    localStorage.setItem(storageKey, JSON.stringify(data));
-  }
-
-  // ===============================
-  // BUILD SOCIAL ICONS HTML
-  // ===============================
-  const socialHTML = `
-    <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
-    </a>
-
-    <a id="whatsappDownloadIcon" href="https://wa.me/94740707157?text=${encodeURIComponent('.gdrive or .download ' + movie.players[0].link)}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Download via WhatsApp Bot">
-    </a>
-
-    <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
-    </a>
-
-    <a href="https://wa.me/?text=${shareURL}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" width="35" title="Share on WhatsApp">
-    </a>
-  `;
-
-  // Inject icons into container
-  document.getElementById("socialIconsContainer").innerHTML = socialHTML;
-
-  // ===============================
-  // DAILY 3 USES LOGIC FOR WHATSAPP
-  // ===============================
-  const whatsappIcon = document.getElementById("whatsappDownloadIcon");
-
-  function updateIconState(){
-    if(data.count >= maxDailyUses){
-      whatsappIcon.style.pointerEvents = "none"; // disable click
-      whatsappIcon.style.opacity = "0.5";        // faded look
-      whatsappIcon.title = `You reached the daily limit of ${maxDailyUses} uses`;
-    } else {
-      whatsappIcon.style.pointerEvents = "auto";
-      whatsappIcon.style.opacity = "1";
-      whatsappIcon.title = "Download via WhatsApp Bot";
-    }
-  }
-
-  updateIconState();
-
-  whatsappIcon.addEventListener("click", function(){
-    data.count++;
-    localStorage.setItem(storageKey, JSON.stringify(data));
-    updateIconState();
-  });
-</script>
-
-    
+   
+    // ===============================
+    // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
+    // ===============================
+    let currentURL = encodeURIComponent(window.location.href);
+    let socialHTML = `
+      <div style="margin-top:20px; display:flex; gap:12px;">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
+        </a>
+        <a href="https://wa.me/94740707157?text=${encodeURIComponent('.gdrive or .download ' + movie.players[0].link)}" target="_blank">
+  <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Download via WhatsApp Bot">
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
+          <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
+        </a>
+         <a href="https://wa.me/?text=${shareURL}" target="_blank">
+  <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
+       width="35" 
+       title="Share on WhatsApp">
+        </a>
+      </div>
+    `;
+   
     // ===============================
     // 🎥 GET TRAILER FROM YOUTUBE
     // ===============================
