@@ -164,15 +164,19 @@ fetch("data/movies.json")
 
         </div>
 
+
 <!-- =============================== -->
-<!-- 📢 FULLSCREEN ANNOUNCEMENT WITH CLOSE + AUTO-HIDE -->
+<!-- 📢 NETFLIX STYLE FULLSCREEN ANNOUNCEMENT (WORKING) -->
 <!-- =============================== -->
+
 <div id="fullscreenAnnouncement">
-  <div class="announcement-container">
+  <div class="announcement-box">
+    
     <div class="announcement-header">
       📢 Announcement
-      <span id="closeAnnouncement" style="cursor:pointer;">&times;</span>
+      <span class="close-btn" onclick="closeAnnouncement()">✕</span>
     </div>
+
     <div class="announcement-body">
       මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
       <span class="gradient-text">WHATSAPP PACKAGE</span> 
@@ -183,127 +187,120 @@ fetch("data/movies.json")
       <span class="highlight-text">.Download</span> 
       යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
       <span class="highlight-text">.download</span> 
-      යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+      යන මුරපදය පමණක් භාවිතා කරන්න. 
+      <br><br>
       <span class="gradient-text">WA - USER BOT</span> 
-      යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+      භාවිතා කිරීම ඔබගේ අනන්‍යතාවයට හානිදායක විය හැක.
     </div>
+
   </div>
 </div>
 
 <style>
 #fullscreenAnnouncement {
   position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.85);
-  display:flex; justify-content:center; align-items:center;
-  z-index:9999;
-  padding:20px;
-  box-sizing:border-box;
-  overflow-y:auto;
-  animation: fadeInOverlay 1s forwards;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  animation: fadeIn 0.6s ease;
 }
 
-.announcement-container {
-  background:#111;
-  border-left:8px solid #E50914;
-  border-radius:16px;
-  padding:25px 30px;
-  max-width:800px;
-  width:100%;
-  text-align:center;
-  box-shadow:0 10px 40px rgba(0,0,0,0.7);
-  color:#FFD700;
+.announcement-box {
+  background: #111;
+  border-left: 8px solid #E50914;
+  border-radius: 18px;
+  padding: 30px;
+  width: 90%;
+  max-width: 750px;
+  color: #FFD700;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
   position: relative;
-}
-
-#closeAnnouncement {
-  position: absolute;
-  top:15px;
-  right:20px;
-  font-size:1.5em;
-  font-weight:bold;
-  color:#fff;
-  transition:0.3s;
-  user-select:none;
-}
-#closeAnnouncement:hover {
-  color:#FF2A68;
-  transform: scale(1.2);
+  text-align: center;
 }
 
 .announcement-header {
-  font-size:1.8em;
-  font-weight:800;
-  margin-bottom:20px;
-  color:#E50914;
-  text-transform: uppercase;
-  letter-spacing:1px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  font-size: 1.8em;
+  font-weight: 800;
+  color: #E50914;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #FF2A68;
+  transform: scale(1.2);
 }
 
 .announcement-body {
-  font-size:1.1em;
-  line-height:1.8em;
-  word-wrap:break-word;
+  font-size: 1.1em;
+  line-height: 1.8em;
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
-  background-size: 400% 100%;
+  background: linear-gradient(90deg,#25D366,#128C7E,#FF8C00,#FF2A68);
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradientMove 5s linear infinite;
   font-weight: bold;
-  animation: gradientShift 6s linear infinite;
-  display:inline-block;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .highlight-text {
-  color:#FF4081;
-  font-weight:bold;
+  color: #FF4081;
+  font-weight: bold;
   animation: pulse 1.5s infinite alternate;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
-@keyframes fadeInOverlay {
-  0% { opacity:0; }
-  100% { opacity:1; }
+@keyframes fadeIn {
+  from {opacity:0}
+  to {opacity:1}
 }
 
-@keyframes gradientShift {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
+@keyframes gradientMove {
+  0% {background-position:0%}
+  100% {background-position:100%}
 }
 
 @keyframes pulse {
-  0% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
-  50% { color: #FF80AB; text-shadow: 0 0 6px #FF80AB; }
-  100% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
+  from {opacity:0.7}
+  to {opacity:1}
 }
 
-/* Responsive */
-@media (max-width:600px) {
-  .announcement-container { padding:20px 18px; }
-  .announcement-header { font-size:1.5em; }
-  .announcement-body { font-size:1em; }
+/* Fade out animation */
+.fade-out {
+  animation: fadeOut 0.4s forwards;
+}
+
+@keyframes fadeOut {
+  to {opacity:0; visibility:hidden;}
 }
 </style>
 
 <script>
-const ann = document.getElementById("fullscreenAnnouncement");
-const closeBtn = document.getElementById("closeAnnouncement");
+function closeAnnouncement(){
+  const el = document.getElementById("fullscreenAnnouncement");
+  el.classList.add("fade-out");
+  setTimeout(() => {
+    el.style.display = "none";
+  }, 400);
+}
 
-// Close button functionality
-closeBtn.addEventListener("click", function(){
-  ann.style.display = "none";
-});
-
-// Auto-hide after 10 seconds
-setTimeout(() => {
-  ann.style.display = "none";
-}, 10000);
+// Auto hide after 10 seconds
+setTimeout(closeAnnouncement, 10000);
 </script>
         <!-- =============================== -->
         <!-- 💎 STYLES -->
