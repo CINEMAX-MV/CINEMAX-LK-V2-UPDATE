@@ -165,13 +165,13 @@ fetch("data/movies.json")
         </div>
 
 <!-- =============================== -->
-<!-- 📢 FULLSCREEN ANNOUNCEMENT FIXED VERSION -->
+<!-- 📢 FULLSCREEN ANNOUNCEMENT WITH CLOSE + AUTO-HIDE -->
 <!-- =============================== -->
 <div id="fullscreenAnnouncement">
   <div class="announcement-container">
     <div class="announcement-header">
       📢 Announcement
-      <span id="closeAnnouncement">&times;</span>
+      <span id="closeAnnouncement" style="cursor:pointer;">&times;</span>
     </div>
     <div class="announcement-body">
       මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
@@ -193,19 +193,15 @@ fetch("data/movies.json")
 <style>
 #fullscreenAnnouncement {
   position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top:0; left:0;
+  width:100%; height:100%;
   background: rgba(0,0,0,0.85);
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display:flex; justify-content:center; align-items:center;
   z-index:9999;
   padding:20px;
   box-sizing:border-box;
-  overflow-y:auto; /* scroll if text too long */
-  animation: fadeInOverlay 1.5s forwards;
+  overflow-y:auto;
+  animation: fadeInOverlay 1s forwards;
 }
 
 .announcement-container {
@@ -226,9 +222,8 @@ fetch("data/movies.json")
   top:15px;
   right:20px;
   font-size:1.5em;
-  cursor:pointer;
-  color:#fff;
   font-weight:bold;
+  color:#fff;
   transition:0.3s;
   user-select:none;
 }
@@ -288,17 +283,11 @@ fetch("data/movies.json")
   100% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
 }
 
-/* Responsive for mobile */
+/* Responsive */
 @media (max-width:600px) {
-  .announcement-container {
-    padding:20px 18px;
-  }
-  .announcement-header {
-    font-size:1.5em;
-  }
-  .announcement-body {
-    font-size:1em;
-  }
+  .announcement-container { padding:20px 18px; }
+  .announcement-header { font-size:1.5em; }
+  .announcement-body { font-size:1em; }
 }
 </style>
 
@@ -306,13 +295,14 @@ fetch("data/movies.json")
 const ann = document.getElementById("fullscreenAnnouncement");
 const closeBtn = document.getElementById("closeAnnouncement");
 
+// Close button functionality
 closeBtn.addEventListener("click", function(){
-  if(ann) ann.style.display="none";
+  ann.style.display = "none";
 });
 
 // Auto-hide after 10 seconds
 setTimeout(() => {
-  if(ann) ann.style.display="none";
+  ann.style.display = "none";
 }, 10000);
 </script>
         <!-- =============================== -->
