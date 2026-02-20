@@ -164,44 +164,103 @@ fetch("data/movies.json")
 
         </div>
 <!-- =============================== -->
-<!-- 📢 COMMENT BOX ANNOUNCEMENT WITH ANIMATION -->
+<!-- 📢 COMMENT BOX ANNOUNCEMENT - ULTRA PREMIUM -->
 <!-- =============================== -->
-<div id="commentAnnouncement" style="
-    margin-top:20px;
-    padding:15px 18px;
-    font-family: Poppins, sans-serif;
-    font-weight:600;
-    font-size:0.95em;
-    line-height:1.5em;
-    color:#FFD700; /* සිංහල text - කහ */
-    background: rgba(0,0,0,0.7);
-    border-left: 5px solid #FF8C00;
-    border-radius: 10px;
-    max-width:100%;
-    overflow-wrap: break-word;
-    box-sizing:border-box;
-    opacity:0;
-    animation: fadeInAnnouncement 2s forwards;
-">
+<div id="commentAnnouncementPremium">
   📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
-  <span class="gradient-text">
-    WHATSAPP PACKAGE
-  </span> 
+  <span class="gradient-text">WHATSAPP PACKAGE</span> 
   ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
-  <span class="gradient-text">
-    @WHATSAPP SOCIAL MEDIA ICON
-  </span> 
+  <span class="gradient-text">@WHATSAPP SOCIAL MEDIA ICON</span> 
   එක භාවිතා කරන්න. මෙහිදී ඔබට 
   <span class="highlight-text">.Gdrive</span> & 
   <span class="highlight-text">.Download</span> 
   යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
   <span class="highlight-text">.download</span> 
   යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
-  <span class="gradient-text">
-    WA - USER BOT
-  </span> 
+  <span class="gradient-text">WA - USER BOT</span> 
   යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
 </div>
+
+<style>
+  /* =============================== */
+  /* ULTRA PREMIUM ANNOUNCEMENT STYLES */
+  /* =============================== */
+  #commentAnnouncementPremium {
+    margin-top:20px;
+    padding:20px 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight:600;
+    font-size:1em;
+    line-height:1.6em;
+    color:#FFD700; /* Sinhala text - golden yellow */
+    background: rgba(0,0,0,0.85);
+    border-left: 6px solid #FF8C00;
+    border-radius: 14px;
+    max-width:100%;
+    overflow-wrap: break-word;
+    box-sizing:border-box;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    transform: translateY(10px);
+    animation: floatIn 1.5s ease-out forwards;
+    position: relative;
+  }
+
+  /* Gradient text animation for English words */
+  .gradient-text {
+    background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    animation: gradientShift 6s linear infinite;
+    display: inline-block;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  /* Highlight for .Gdrive and .Download */
+  .highlight-text {
+    color:#FF4081;
+    font-weight:bold;
+    animation: pulse 1.5s infinite alternate;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  }
+
+  /* Floating entrance animation */
+  @keyframes floatIn {
+    0% { opacity:0; transform: translateY(30px); }
+    100% { opacity:1; transform: translateY(0); }
+  }
+
+  /* Gradient shifting animation */
+  @keyframes gradientShift {
+    0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+  }
+
+  /* Pulse effect for highlight text */
+  @keyframes pulse {
+    0% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
+    50% { color: #FF80AB; text-shadow: 0 0 6px #FF80AB; }
+    100% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
+  }
+
+  /* Ultra modern subtle hover effect */
+  #commentAnnouncementPremium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+    transition: all 0.3s ease-out;
+  }
+
+  /* Responsive for mobile screens */
+  @media (max-width:600px) {
+    #commentAnnouncementPremium {
+      font-size:0.95em;
+      padding:18px 20px;
+    }
+    .gradient-text { font-size:1em; }
+  }
+</style>
 
 <!-- =============================== -->
 <!-- 🔹 STYLES AND ANIMATION -->
