@@ -72,27 +72,6 @@ fetch("data/movies.json")
       </div>
     `;
     
-// ===== ENABLE / DISABLE WHATSAPP DOWNLOAD ICON BASED ON COINS =====
-const whatsappDownloadIcon = document.getElementById("whatsappDownloadIcon");
-
-if(userCoins < requiredCoins){
-  whatsappDownloadIcon.style.pointerEvents = "none"; // block click
-  whatsappDownloadIcon.style.opacity = "0.5";        // faded look
-  whatsappDownloadIcon.title = "You need 1 coin to use this feature";
-} else {
-  whatsappDownloadIcon.style.pointerEvents = "auto";
-  whatsappDownloadIcon.style.opacity = "1";
-}
-
-// ===== OPTIONAL: DEDUCT COIN ON CLICK =====
-whatsappDownloadIcon.addEventListener("click", function(){
-  if(userCoins >= requiredCoins){
-    userCoins -= requiredCoins;
-    console.log("Coin deducted, remaining:", userCoins);
-    // Update UI / send to backend DB if needed
-  }
-});
-
     // ===============================
     // 🎥 GET TRAILER FROM YOUTUBE
     // ===============================
