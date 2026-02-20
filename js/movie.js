@@ -164,7 +164,7 @@ fetch("data/movies.json")
 
         </div>
 <!-- =============================== -->
-<!-- 📢 BOX ANNOUNCEMENT -->
+<!-- 📢 COMMENT BOX ANNOUNCEMENT WITH ANIMATION -->
 <!-- =============================== -->
 <div id="commentAnnouncement" style="
     margin-top:20px;
@@ -180,26 +180,78 @@ fetch("data/movies.json")
     max-width:100%;
     overflow-wrap: break-word;
     box-sizing:border-box;
+    opacity:0;
+    animation: fadeInAnnouncement 2s forwards;
 ">
   📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
-  <span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+  <span class="gradient-text">
     WHATSAPP PACKAGE
   </span> 
   ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
-  <span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+  <span class="gradient-text">
     @WHATSAPP SOCIAL MEDIA ICON
   </span> 
   එක භාවිතා කරන්න. මෙහිදී ඔබට 
-  <span style="color:#FF4081;font-weight:bold;">.Gdrive</span> & 
-  <span style="color:#FF4081;font-weight:bold;">.Download</span> 
+  <span class="highlight-text">.Gdrive</span> & 
+  <span class="highlight-text">.Download</span> 
   යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
-  <span style="color:#FF4081;font-weight:bold;">.download</span> 
+  <span class="highlight-text">.download</span> 
   යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
-  <span style="background:linear-gradient(90deg,#FF8C00,#FF2A68);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+  <span class="gradient-text">
     WA - USER BOT
   </span> 
   යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
 </div>
+
+<!-- =============================== -->
+<!-- 🔹 STYLES AND ANIMATION -->
+<!-- =============================== -->
+<style>
+  /* Gradient text animation for English words */
+  .gradient-text {
+    background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    animation: gradientShift 4s infinite alternate;
+    display: inline-block;
+  }
+
+  /* Highlight for .Gdrive and .Download */
+  .highlight-text {
+    color:#FF4081;
+    font-weight:bold;
+    animation: pulse 1.5s infinite alternate;
+  }
+
+  /* Fade-in for whole announcement */
+  @keyframes fadeInAnnouncement {
+    0% { opacity:0; transform: translateY(10px); }
+    100% { opacity:1; transform: translateY(0); }
+  }
+
+  /* Gradient shift animation */
+  @keyframes gradientShift {
+    0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+  }
+
+  /* Pulse effect for highlight text */
+  @keyframes pulse {
+    0% { color: #FF4081; }
+    50% { color: #FF80AB; }
+    100% { color: #FF4081; }
+  }
+
+  /* Responsive for mobile screens */
+  @media (max-width:600px) {
+    #commentAnnouncement {
+      font-size:0.9em;
+      padding:12px 15px;
+    }
+  }
+</style>
         <!-- =============================== -->
         <!-- 💎 STYLES -->
         <!-- =============================== -->
