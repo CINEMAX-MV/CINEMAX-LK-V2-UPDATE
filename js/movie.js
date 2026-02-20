@@ -163,71 +163,41 @@ fetch("data/movies.json")
           </div>
 
         </div>
-        
 <!-- =============================== -->
-<!-- 📢 FULLSCREEN TYPEWRITER ANNOUNCEMENT -->
+<!-- 📢 ANNOUNCEMENT BOX -->
 <!-- =============================== -->
-<div id="announcementOverlay" style="
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.85);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    padding:20px;
-    box-sizing:border-box;
+<div id="announcementBox" style="
+    margin-top:20px;
+    padding:12px 15px;
+    font-family: Poppins, sans-serif;
+    font-weight:600;
+    font-size:0.95em;
+    max-width:600px;
+    margin-left:0;
+    text-align:left;
+    line-height:1.5em;
+    background:none;
+    color:#fff;
 ">
-  <div id="announcementBox" style="
-      font-family: Poppins, sans-serif;
-      font-weight:600;
-      font-size:1.1em;
-      line-height:1.6em;
-      color:#FFD700; /* සිංහල අකුරු කහ පාට */
-      max-width:800px;
-      white-space:pre-wrap;
-      overflow-wrap:break-word;
-  ">
-    <!-- Typewriter text will appear here -->
-  </div>
+  📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
+  <span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+    WHATSAPP PACKAGE
+  </span> 
+  ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
+  <span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+    @WHATSAPP SOCIAL MEDIA ICON
+  </span> 
+  එක භාවිතා කරන්න. මෙහිදී ඔබට 
+  <span style="color:#FF4081;font-weight:bold;">.Gdrive</span> & 
+  <span style="color:#FF4081;font-weight:bold;">.Download</span> 
+  යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
+  <span style="color:#FF4081;font-weight:bold;">.download</span> 
+  යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+  <span style="background:linear-gradient(90deg,#FF8C00,#FF2A68);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+    WA - USER BOT
+  </span> 
+  යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
 </div>
-
-<script>
-const announcementText = `
-📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
-WHATSAPP PACKAGE ඔස්සේ බාගත කිරීමට ඉහත දී ඇති @WHATSAPP SOCIAL MEDIA ICON එක භාවිතා කරන්න. 
-මෙහිදී ඔබට .Gdrive & .Download යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර .download යන මුරපදය පමණක් භාවිතා කරන්න. 
-මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට WA - USER BOT යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
-`;
-
-// Highlight keywords with gradient colors
-const highlighted = announcementText
-  .replace(/WHATSAPP PACKAGE/g, '<span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">WHATSAPP PACKAGE</span>')
-  .replace(/@WHATSAPP SOCIAL MEDIA ICON/g, '<span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">@WHATSAPP SOCIAL MEDIA ICON</span>')
-  .replace(/\.Gdrive/g, '<span style="color:#FF4081;font-weight:bold;">.Gdrive</span>')
-  .replace(/\.Download/g, '<span style="color:#FF4081;font-weight:bold;">.Download</span>')
-  .replace(/\.download/g, '<span style="color:#FF4081;font-weight:bold;">.download</span>')
-  .replace(/WA - USER BOT/g, '<span style="background:linear-gradient(90deg,#FF8C00,#FF2A68);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">WA - USER BOT</span>');
-
-const box = document.getElementById("announcementBox");
-let i = 0;
-
-function typeWriter() {
-    if(i < highlighted.length){
-        box.innerHTML += highlighted.charAt(i);
-        i++;
-        setTimeout(typeWriter, 25);
-    }
-}
-
-// Delay start to ensure DOM loads
-window.addEventListener("load", () => {
-    typeWriter();
-});
-</script>
         <!-- =============================== -->
         <!-- 💎 STYLES -->
         <!-- =============================== -->
