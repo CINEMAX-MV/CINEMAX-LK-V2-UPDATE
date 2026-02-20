@@ -62,13 +62,11 @@ fetch("data/movies.json")
         <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
           <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
         </a>
-         <a href="https://wa.me/?text=${encodeURIComponent(
-    '🎬 ' + movie.title + 
-    '\n\n🔗 Watch Now:\n' + window.location.href + 
-    '\n\n🖼 Poster:\n' + movie.image
-  )}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/share--v1.png" width="35" title="Share Film">
-       </a>
+         <a href="https://wa.me/?text=${shareURL}" target="_blank">
+  <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
+       width="35" 
+       title="Share on WhatsApp">
+        </a>
       </div>
     `;
 
