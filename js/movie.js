@@ -163,10 +163,8 @@ fetch("data/movies.json")
           </div>
 
         </div>
-
-<!-- =============================== -->
-<!-- 📢 COMMENT BOX ANNOUNCEMENT WITH TYPEWRITER -->
-<!-- =============================== -->
+// After rendering movie details and comment section
+const commentAnnouncementHTML = `
 <div id="commentAnnouncement" style="
     margin-top:20px;
     padding:15px 18px;
@@ -174,7 +172,7 @@ fetch("data/movies.json")
     font-weight:600;
     font-size:0.95em;
     line-height:1.5em;
-    color:#FFD700; /* සිංහල text - කහ */
+    color:#FFD700;
     background: rgba(0,0,0,0.7);
     border-left: 5px solid #FF8C00;
     border-radius: 10px;
@@ -184,43 +182,15 @@ fetch("data/movies.json")
 ">
   <span id="typewriterText"></span>
 </div>
+`;
 
-<style>
-  /* Gradient text for English words */
-  .gradient-text {
-    background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-  }
+// Append announcement BELOW comment section
+const movieContainer = document.getElementById("movieDetails");
+const commentSection = movieContainer.querySelector(".comment-section");
+commentSection.insertAdjacentHTML('afterend', commentAnnouncementHTML);
 
-  /* Highlight for .Gdrive/.Download */
-  .highlight-text {
-    color:#FF4081;
-    font-weight:bold;
-  }
-
-  /* Typewriter cursor */
-  #typewriterText::after {
-    content: '|';
-    animation: blinkCursor 0.7s infinite;
-    margin-left:2px;
-    color:#FFD700;
-  }
-
-  @keyframes blinkCursor {
-    0%, 50% { opacity:1; }
-    51%, 100% { opacity:0; }
-  }
-
-  /* Responsive */
-  @media (max-width:600px) {
-    #commentAnnouncement { font-size:0.9em; padding:12px 15px; }
-  }
-</style>
-
-<script>
-  const textContent = `
+// Typewriter script
+const typewriterText = `
 📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
 <span class="gradient-text">WHATSAPP PACKAGE</span> 
 ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
@@ -235,20 +205,19 @@ fetch("data/movies.json")
 යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
 `;
 
-  const container = document.getElementById("typewriterText");
-  let index = 0;
+const typewriterContainer = document.getElementById("typewriterText");
+let idx = 0;
 
-  function typeWriter() {
-    if(index < textContent.length){
-      container.innerHTML += textContent.charAt(index);
-      index++;
-      setTimeout(typeWriter, 25); // speed: 25ms per character
-    }
+function typeWriter() {
+  if(idx < typewriterText.length){
+    typewriterContainer.innerHTML += typewriterText.charAt(idx);
+    idx++;
+    setTimeout(typeWriter, 25);
   }
+}
 
-  // Start typing after page load
-  window.addEventListener('DOMContentLoaded', typeWriter);
-</script>
+// Start typing AFTER movieDetails loaded
+typeWriter();
 
 <!-- =============================== -->
 <!-- 🔹 STYLES AND ANIMATION -->
