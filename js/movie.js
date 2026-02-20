@@ -164,9 +164,9 @@ fetch("data/movies.json")
 
         </div>
         
-        <!-- =============================== -->
-        <!-- 📢 FULLSCREEN TYPEWRITER ANNOUNCEMENT -->
-        <!-- =============================== -->
+<!-- =============================== -->
+<!-- 📢 FULLSCREEN TYPEWRITER ANNOUNCEMENT -->
+<!-- =============================== -->
 <div id="announcementOverlay" style="
     position: fixed;
     top:0;
@@ -184,7 +184,7 @@ fetch("data/movies.json")
   <div id="announcementBox" style="
       font-family: Poppins, sans-serif;
       font-weight:600;
-      font-size:1em;
+      font-size:1.1em;
       line-height:1.6em;
       color:#FFD700; /* සිංහල අකුරු කහ පාට */
       max-width:800px;
@@ -212,7 +212,6 @@ const highlighted = announcementText
   .replace(/\.download/g, '<span style="color:#FF4081;font-weight:bold;">.download</span>')
   .replace(/WA - USER BOT/g, '<span style="background:linear-gradient(90deg,#FF8C00,#FF2A68);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">WA - USER BOT</span>');
 
-// Typewriter effect
 const box = document.getElementById("announcementBox");
 let i = 0;
 
@@ -220,13 +219,15 @@ function typeWriter() {
     if(i < highlighted.length){
         box.innerHTML += highlighted.charAt(i);
         i++;
-        setTimeout(typeWriter, 25); // speed
+        setTimeout(typeWriter, 25);
     }
 }
-typeWriter();
 
+// Delay start to ensure DOM loads
+window.addEventListener("load", () => {
+    typeWriter();
+});
 </script>
-
         <!-- =============================== -->
         <!-- 💎 STYLES -->
         <!-- =============================== -->
