@@ -164,62 +164,76 @@ fetch("data/movies.json")
 
         </div>
 <!-- =============================== -->
-<!-- 📢 COMMENT BOX ANNOUNCEMENT - NETFLIX STYLE -->
+<!-- 📢 FULLSCREEN NETFLIX STYLE ANNOUNCEMENT -->
 <!-- =============================== -->
-<div id="commentAnnouncementNetflix">
-  <div class="announcement-header">📢 Announcement</div>
-  <div class="announcement-body">
-    මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
-    <span class="gradient-text">WHATSAPP PACKAGE</span> 
-    ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
-    <span class="gradient-text">@WHATSAPP SOCIAL MEDIA ICON</span> 
-    එක භාවිතා කරන්න. මෙහිදී ඔබට 
-    <span class="highlight-text">.Gdrive</span> & 
-    <span class="highlight-text">.Download</span> 
-    යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
-    <span class="highlight-text">.download</span> 
-    යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
-    <span class="gradient-text">WA - USER BOT</span> 
-    යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+<div id="fullscreenAnnouncement">
+  <div class="announcement-container">
+    <div class="announcement-header">📢 Announcement</div>
+    <div class="announcement-body">
+      මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
+      <span class="gradient-text">WHATSAPP PACKAGE</span> 
+      ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
+      <span class="gradient-text">@WHATSAPP SOCIAL MEDIA ICON</span> 
+      එක භාවිතා කරන්න. මෙහිදී ඔබට 
+      <span class="highlight-text">.Gdrive</span> & 
+      <span class="highlight-text">.Download</span> 
+      යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
+      <span class="highlight-text">.download</span> 
+      යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+      <span class="gradient-text">WA - USER BOT</span> 
+      යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+    </div>
   </div>
 </div>
 
 <style>
 /* =============================== */
-/* NETFLIX STYLE ANNOUNCEMENT CARD */
+/* FULLSCREEN NETFLIX ANNOUNCEMENT */
 /* =============================== */
-#commentAnnouncementNetflix {
-  margin-top:20px;
+#fullscreenAnnouncement {
+  position: fixed;
+  top:0;
+  left:0;
   width:100%;
-  max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
-  background: #111; /* Dark Netflix style */
-  border-radius:12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-  font-family: 'Poppins', sans-serif;
-  color:#FFD700; /* Sinhala text - golden */
-  overflow-wrap: break-word;
-  padding:18px 20px;
+  height:100%;
+  background: rgba(0,0,0,0.85); /* dark overlay */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  animation: fadeInOverlay 1.5s forwards;
+  padding:20px;
   box-sizing:border-box;
-  border-left:6px solid #E50914; /* Netflix red accent */
+}
+
+/* Card container */
+.announcement-container {
+  background:#111;
+  border-left:8px solid #E50914;
+  border-radius:16px;
+  padding:25px 30px;
+  max-width:800px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,0.7);
+  color:#FFD700; /* Sinhala text golden */
 }
 
 /* Header */
 .announcement-header {
-  font-size:1.25em;
-  font-weight:700;
-  margin-bottom:10px;
-  color:#E50914; /* Netflix red */
+  font-size:1.8em;
+  font-weight:800;
+  margin-bottom:20px;
+  color:#E50914;
   text-transform: uppercase;
   letter-spacing:1px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 /* Body text */
 .announcement-body {
-  font-size:1em;
-  line-height:1.6em;
+  font-size:1.1em;
+  line-height:1.8em;
 }
 
 /* Gradient text animation for English words */
@@ -229,8 +243,8 @@ fetch("data/movies.json")
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
-  animation: gradientShift 5s linear infinite;
-  display: inline-block;
+  animation: gradientShift 6s linear infinite;
+  display:inline-block;
   text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
@@ -239,7 +253,13 @@ fetch("data/movies.json")
   color:#FF4081;
   font-weight:bold;
   animation: pulse 1.5s infinite alternate;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* Fade-in overlay */
+@keyframes fadeInOverlay {
+  0% { opacity:0; }
+  100% { opacity:1; }
 }
 
 /* Gradient shift animation */
@@ -249,7 +269,7 @@ fetch("data/movies.json")
   100% { background-position:0% 50%; }
 }
 
-/* Pulse effect for highlight text */
+/* Pulse effect */
 @keyframes pulse {
   0% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
   50% { color: #FF80AB; text-shadow: 0 0 6px #FF80AB; }
@@ -258,17 +278,14 @@ fetch("data/movies.json")
 
 /* Responsive for mobile screens */
 @media (max-width:600px) {
-  #commentAnnouncementNetflix {
-    padding:15px 16px;
+  .announcement-container {
+    padding:20px 18px;
   }
   .announcement-header {
-    font-size:1.15em;
+    font-size:1.5em;
   }
   .announcement-body {
-    font-size:0.95em;
-  }
-  .gradient-text {
-    font-size:0.95em;
+    font-size:1em;
   }
 }
 </style>
