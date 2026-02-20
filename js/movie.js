@@ -163,8 +163,9 @@ fetch("data/movies.json")
           </div>
 
         </div>
+
 <!-- =============================== -->
-<!-- 📢 COMMENT BOX ANNOUNCEMENT WITH ANIMATION -->
+<!-- 📢 COMMENT BOX ANNOUNCEMENT WITH TYPEWRITER -->
 <!-- =============================== -->
 <div id="commentAnnouncement" style="
     margin-top:20px;
@@ -180,28 +181,74 @@ fetch("data/movies.json")
     max-width:100%;
     overflow-wrap: break-word;
     box-sizing:border-box;
-    opacity:0;
-    animation: fadeInAnnouncement 2s forwards;
 ">
-  📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
-  <span class="gradient-text">
-    WHATSAPP PACKAGE
-  </span> 
-  ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
-  <span class="gradient-text">
-    @WHATSAPP SOCIAL MEDIA ICON
-  </span> 
-  එක භාවිතා කරන්න. මෙහිදී ඔබට 
-  <span class="highlight-text">.Gdrive</span> & 
-  <span class="highlight-text">.Download</span> 
-  යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
-  <span class="highlight-text">.download</span> 
-  යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
-  <span class="gradient-text">
-    WA - USER BOT
-  </span> 
-  යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+  <span id="typewriterText"></span>
 </div>
+
+<style>
+  /* Gradient text for English words */
+  .gradient-text {
+    background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+
+  /* Highlight for .Gdrive/.Download */
+  .highlight-text {
+    color:#FF4081;
+    font-weight:bold;
+  }
+
+  /* Typewriter cursor */
+  #typewriterText::after {
+    content: '|';
+    animation: blinkCursor 0.7s infinite;
+    margin-left:2px;
+    color:#FFD700;
+  }
+
+  @keyframes blinkCursor {
+    0%, 50% { opacity:1; }
+    51%, 100% { opacity:0; }
+  }
+
+  /* Responsive */
+  @media (max-width:600px) {
+    #commentAnnouncement { font-size:0.9em; padding:12px 15px; }
+  }
+</style>
+
+<script>
+  const textContent = `
+📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
+<span class="gradient-text">WHATSAPP PACKAGE</span> 
+ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
+<span class="gradient-text">@WHATSAPP SOCIAL MEDIA ICON</span> 
+එක භාවිතා කරන්න. මෙහිදී ඔබට 
+<span class="highlight-text">.Gdrive</span> & 
+<span class="highlight-text">.Download</span> 
+යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
+<span class="highlight-text">.download</span> 
+යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+<span class="gradient-text">WA - USER BOT</span> 
+යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+`;
+
+  const container = document.getElementById("typewriterText");
+  let index = 0;
+
+  function typeWriter() {
+    if(index < textContent.length){
+      container.innerHTML += textContent.charAt(index);
+      index++;
+      setTimeout(typeWriter, 25); // speed: 25ms per character
+    }
+  }
+
+  // Start typing after page load
+  window.addEventListener('DOMContentLoaded', typeWriter);
+</script>
 
 <!-- =============================== -->
 <!-- 🔹 STYLES AND ANIMATION -->
