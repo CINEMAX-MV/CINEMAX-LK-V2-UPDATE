@@ -163,6 +163,27 @@ fetch("data/movies.json")
           </div>
 
         </div>
+        
+        <!-- =============================== -->
+        <!-- 📢 ANNOUNCEMENT BOX -->
+        <!-- =============================== -->
+<div id="announcementBox" style="
+    margin-top:20px;
+    padding:15px 20px;
+    background: linear-gradient(90deg, #ff8c00, #ff2a68);
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-weight:bold;
+    font-size:1em;
+">
+  📢 Announcement: New movies are added daily! Stay tuned for the latest updates.
+</div>
 
         <!-- =============================== -->
         <!-- 💎 STYLES -->
