@@ -164,110 +164,114 @@ fetch("data/movies.json")
 
         </div>
 <!-- =============================== -->
-<!-- 📢 FULL SCREEN ULTRA PREMIUM ANNOUNCEMENT OVERLAY -->
+<!-- 📢 COMMENT BOX ANNOUNCEMENT - NETFLIX STYLE -->
 <!-- =============================== -->
-<div id="fullScreenAnnouncement">
-  📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
-  <span class="gradient-text">WHATSAPP PACKAGE</span> 
-  ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
-  <span class="gradient-text">@WHATSAPP SOCIAL MEDIA ICON</span> 
-  එක භාවිතා කරන්න. මෙහිදී ඔබට 
-  <span class="highlight-text">.Gdrive</span> & 
-  <span class="highlight-text">.Download</span> 
-  යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
-  <span class="highlight-text">.download</span> 
-  යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
-  <span class="gradient-text">WA - USER BOT</span> 
-  යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+<div id="commentAnnouncementNetflix">
+  <div class="announcement-header">📢 Announcement</div>
+  <div class="announcement-body">
+    මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
+    <span class="gradient-text">WHATSAPP PACKAGE</span> 
+    ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
+    <span class="gradient-text">@WHATSAPP SOCIAL MEDIA ICON</span> 
+    එක භාවිතා කරන්න. මෙහිදී ඔබට 
+    <span class="highlight-text">.Gdrive</span> & 
+    <span class="highlight-text">.Download</span> 
+    යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
+    <span class="highlight-text">.download</span> 
+    යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+    <span class="gradient-text">WA - USER BOT</span> 
+    යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+  </div>
 </div>
 
 <style>
-  /* =============================== */
-  /* FULL SCREEN ANNOUNCEMENT STYLES */
-  /* =============================== */
-  #fullScreenAnnouncement {
-    position: fixed;
-    bottom: 0; /* comment box යටින් පේන්න */
-    left: 0;
-    width: 100%;
-    max-height: 40vh; /* screen එකේ 40% cover */
-    overflow-y: auto;
-    padding: 18px 22px;
-    font-family: 'Poppins', sans-serif;
-    font-weight:600;
-    font-size:1em;
-    line-height:1.6em;
-    color:#FFD700; /* Sinhala text - golden yellow */
-    background: rgba(0,0,0,0.85);
-    border-left: 6px solid #FF8C00;
-    box-shadow: 0 -6px 30px rgba(0,0,0,0.5);
-    border-top-right-radius: 12px;
-    border-top-left-radius: 12px;
-    z-index: 9999;
-    box-sizing:border-box;
-    opacity:0;
-    transform: translateY(50px);
-    animation: slideUpFadeIn 1.5s forwards;
-  }
+/* =============================== */
+/* NETFLIX STYLE ANNOUNCEMENT CARD */
+/* =============================== */
+#commentAnnouncementNetflix {
+  margin-top:20px;
+  width:100%;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  background: #111; /* Dark Netflix style */
+  border-radius:12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  font-family: 'Poppins', sans-serif;
+  color:#FFD700; /* Sinhala text - golden */
+  overflow-wrap: break-word;
+  padding:18px 20px;
+  box-sizing:border-box;
+  border-left:6px solid #E50914; /* Netflix red accent */
+}
 
-  /* Gradient text animation for English words */
+/* Header */
+.announcement-header {
+  font-size:1.25em;
+  font-weight:700;
+  margin-bottom:10px;
+  color:#E50914; /* Netflix red */
+  text-transform: uppercase;
+  letter-spacing:1px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Body text */
+.announcement-body {
+  font-size:1em;
+  line-height:1.6em;
+}
+
+/* Gradient text animation for English words */
+.gradient-text {
+  background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  animation: gradientShift 5s linear infinite;
+  display: inline-block;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Highlight for .Gdrive and .Download */
+.highlight-text {
+  color:#FF4081;
+  font-weight:bold;
+  animation: pulse 1.5s infinite alternate;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Gradient shift animation */
+@keyframes gradientShift {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* Pulse effect for highlight text */
+@keyframes pulse {
+  0% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
+  50% { color: #FF80AB; text-shadow: 0 0 6px #FF80AB; }
+  100% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
+}
+
+/* Responsive for mobile screens */
+@media (max-width:600px) {
+  #commentAnnouncementNetflix {
+    padding:15px 16px;
+  }
+  .announcement-header {
+    font-size:1.15em;
+  }
+  .announcement-body {
+    font-size:0.95em;
+  }
   .gradient-text {
-    background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
-    background-size: 400% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-    animation: gradientShift 6s linear infinite;
-    display: inline-block;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    font-size:0.95em;
   }
-
-  /* Highlight for .Gdrive and .Download */
-  .highlight-text {
-    color:#FF4081;
-    font-weight:bold;
-    animation: pulse 1.5s infinite alternate;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-  }
-
-  /* Slide up + fade in */
-  @keyframes slideUpFadeIn {
-    0% { opacity:0; transform: translateY(50px); }
-    100% { opacity:1; transform: translateY(0); }
-  }
-
-  /* Gradient shift animation */
-  @keyframes gradientShift {
-    0% { background-position:0% 50%; }
-    50% { background-position:100% 50%; }
-    100% { background-position:0% 50%; }
-  }
-
-  /* Pulse effect for highlight text */
-  @keyframes pulse {
-    0% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
-    50% { color: #FF80AB; text-shadow: 0 0 6px #FF80AB; }
-    100% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
-  }
-
-  /* Hover lift effect (desktop only) */
-  #fullScreenAnnouncement:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 -12px 40px rgba(0,0,0,0.7);
-    transition: all 0.3s ease-out;
-  }
-
-  /* Mobile responsive */
-  @media (max-width:600px) {
-    #fullScreenAnnouncement {
-      font-size:0.95em;
-      padding:16px 18px;
-      max-height: 50vh;
-    }
-    .gradient-text { font-size:0.95em; }
-  }
+}
 </style>
-
 <!-- =============================== -->
 <!-- 🔹 STYLES AND ANIMATION -->
 <!-- =============================== -->
