@@ -48,28 +48,57 @@ fetch("data/movies.json")
     let shareURL = `https://cinemaxlk.vercel.app/api/og?id=${movieId}&title=${encodeURIComponent(movie.title)}&image=${encodeURIComponent(movie.image)}`;
     shareURL = encodeURIComponent(shareURL);
 
-    // ===============================
     // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
-    // ===============================
-    let currentURL = encodeURIComponent(window.location.href);
-    let socialHTML = `
-      <div style="margin-top:20px; display:flex; gap:12px;">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
-        </a>
-        <a href="https://wa.me/94740707157?text=${encodeURIComponent('.gdrive or .download ' + movie.players[0].link)}" target="_blank">
-  <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Download via WhatsApp Bot">
-        </a>
-        <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
-          <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
-        </a>
-         <a href="https://wa.me/?text=${shareURL}" target="_blank">
-  <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
-       width="35" 
-       title="Share on WhatsApp">
-        </a>
-      </div>
-    `;
+let currentURL = encodeURIComponent(window.location.href);
+let userCoins = 0;        // example: user current coins
+let requiredCoins = 1;    // coins needed to use WhatsApp download
+
+let socialHTML = `
+  <div style="margin-top:20px; display:flex; gap:12px;">
+
+    <!-- Facebook Share -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
+    </a>
+
+    <!-- WhatsApp Download via Bot (Coin gated) -->
+    <a id="whatsappDownloadIcon" href="https://wa.me/94740707157?text=${encodeURIComponent('.gdrive or .download ' + movie.players[0].link)}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Download via WhatsApp Bot">
+    </a>
+
+    <!-- Twitter Share -->
+    <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
+    </a>
+
+    <!-- WhatsApp Forward (Share Film) -->
+    <a href="https://wa.me/?text=${shareURL}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" width="35" title="Share on WhatsApp">
+    </a>
+
+  </div>
+`;
+
+// ===== ENABLE / DISABLE WHATSAPP DOWNLOAD ICON BASED ON COINS =====
+const whatsappDownloadIcon = document.getElementById("whatsappDownloadIcon");
+
+if(userCoins < requiredCoins){
+  whatsappDownloadIcon.style.pointerEvents = "none"; // block click
+  whatsappDownloadIcon.style.opacity = "0.5";        // faded look
+  whatsappDownloadIcon.title = "You need 1 coin to use this feature";
+} else {
+  whatsappDownloadIcon.style.pointerEvents = "auto";
+  whatsappDownloadIcon.style.opacity = "1";
+}
+
+// ===== OPTIONAL: DEDUCT COIN ON CLICK =====
+whatsappDownloadIcon.addEventListener("click", function(){
+  if(userCoins >= requiredCoins){
+    userCoins -= requiredCoins;
+    console.log("Coin deducted, remaining:", userCoins);
+    // Update UI / send to backend DB if needed
+  }
+});
 
     // ===============================
     // 🎥 GET TRAILER FROM YOUTUBE
