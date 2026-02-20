@@ -164,9 +164,9 @@ fetch("data/movies.json")
 
         </div>
 <!-- =============================== -->
-<!-- 📢 COMMENT BOX ANNOUNCEMENT - ULTRA PREMIUM -->
+<!-- 📢 FULL SCREEN ULTRA PREMIUM ANNOUNCEMENT OVERLAY -->
 <!-- =============================== -->
-<div id="commentAnnouncementPremium">
+<div id="fullScreenAnnouncement">
   📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
   <span class="gradient-text">WHATSAPP PACKAGE</span> 
   ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
@@ -183,11 +183,16 @@ fetch("data/movies.json")
 
 <style>
   /* =============================== */
-  /* ULTRA PREMIUM ANNOUNCEMENT STYLES */
+  /* FULL SCREEN ANNOUNCEMENT STYLES */
   /* =============================== */
-  #commentAnnouncementPremium {
-    margin-top:20px;
-    padding:20px 25px;
+  #fullScreenAnnouncement {
+    position: fixed;
+    bottom: 0; /* comment box යටින් පේන්න */
+    left: 0;
+    width: 100%;
+    max-height: 40vh; /* screen එකේ 40% cover */
+    overflow-y: auto;
+    padding: 18px 22px;
     font-family: 'Poppins', sans-serif;
     font-weight:600;
     font-size:1em;
@@ -195,20 +200,20 @@ fetch("data/movies.json")
     color:#FFD700; /* Sinhala text - golden yellow */
     background: rgba(0,0,0,0.85);
     border-left: 6px solid #FF8C00;
-    border-radius: 14px;
-    max-width:100%;
-    overflow-wrap: break-word;
+    box-shadow: 0 -6px 30px rgba(0,0,0,0.5);
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    z-index: 9999;
     box-sizing:border-box;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    transform: translateY(10px);
-    animation: floatIn 1.5s ease-out forwards;
-    position: relative;
+    opacity:0;
+    transform: translateY(50px);
+    animation: slideUpFadeIn 1.5s forwards;
   }
 
   /* Gradient text animation for English words */
   .gradient-text {
     background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
-    background-size: 300% 100%;
+    background-size: 400% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
@@ -225,13 +230,13 @@ fetch("data/movies.json")
     text-shadow: 0 1px 3px rgba(0,0,0,0.5);
   }
 
-  /* Floating entrance animation */
-  @keyframes floatIn {
-    0% { opacity:0; transform: translateY(30px); }
+  /* Slide up + fade in */
+  @keyframes slideUpFadeIn {
+    0% { opacity:0; transform: translateY(50px); }
     100% { opacity:1; transform: translateY(0); }
   }
 
-  /* Gradient shifting animation */
+  /* Gradient shift animation */
   @keyframes gradientShift {
     0% { background-position:0% 50%; }
     50% { background-position:100% 50%; }
@@ -245,20 +250,21 @@ fetch("data/movies.json")
     100% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
   }
 
-  /* Ultra modern subtle hover effect */
-  #commentAnnouncementPremium:hover {
+  /* Hover lift effect (desktop only) */
+  #fullScreenAnnouncement:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.7);
     transition: all 0.3s ease-out;
   }
 
-  /* Responsive for mobile screens */
+  /* Mobile responsive */
   @media (max-width:600px) {
-    #commentAnnouncementPremium {
+    #fullScreenAnnouncement {
       font-size:0.95em;
-      padding:18px 20px;
+      padding:16px 18px;
+      max-height: 50vh;
     }
-    .gradient-text { font-size:1em; }
+    .gradient-text { font-size:0.95em; }
   }
 </style>
 
