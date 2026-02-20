@@ -164,11 +164,14 @@ fetch("data/movies.json")
 
         </div>
 <!-- =============================== -->
-<!-- 📢 FULLSCREEN NETFLIX STYLE ANNOUNCEMENT -->
+<!-- 📢 FULLSCREEN NETFLIX STYLE ANNOUNCEMENT WITH CLOSE -->
 <!-- =============================== -->
 <div id="fullscreenAnnouncement">
   <div class="announcement-container">
-    <div class="announcement-header">📢 Announcement</div>
+    <div class="announcement-header">
+      📢 Announcement
+      <span id="closeAnnouncement">&times;</span>
+    </div>
     <div class="announcement-body">
       මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
       <span class="gradient-text">WHATSAPP PACKAGE</span> 
@@ -196,7 +199,7 @@ fetch("data/movies.json")
   left:0;
   width:100%;
   height:100%;
-  background: rgba(0,0,0,0.85); /* dark overlay */
+  background: rgba(0,0,0,0.85);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -216,7 +219,24 @@ fetch("data/movies.json")
   width:100%;
   text-align:center;
   box-shadow:0 10px 40px rgba(0,0,0,0.7);
-  color:#FFD700; /* Sinhala text golden */
+  color:#FFD700;
+  position: relative;
+}
+
+/* Close button */
+#closeAnnouncement {
+  position: absolute;
+  top:15px;
+  right:20px;
+  font-size:1.5em;
+  cursor:pointer;
+  color:#fff;
+  font-weight:bold;
+  transition:0.3s;
+}
+#closeAnnouncement:hover {
+  color:#FF2A68;
+  transform: scale(1.2);
 }
 
 /* Header */
@@ -289,6 +309,19 @@ fetch("data/movies.json")
   }
 }
 </style>
+
+<script>
+  // Close on click
+  document.getElementById("closeAnnouncement").addEventListener("click", function(){
+    document.getElementById("fullscreenAnnouncement").style.display = "none";
+  });
+
+  // Auto-hide after 10 seconds
+  setTimeout(function(){
+    const ann = document.getElementById("fullscreenAnnouncement");
+    if(ann) ann.style.display = "none";
+  }, 10000);
+</script>
 <!-- =============================== -->
 <!-- 🔹 STYLES AND ANIMATION -->
 <!-- =============================== -->
