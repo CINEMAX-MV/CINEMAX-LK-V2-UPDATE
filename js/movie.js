@@ -49,6 +49,7 @@ fetch("data/movies.json")
     shareURL = encodeURIComponent(shareURL);
 
     
+    
     // ===============================
     // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
     // ===============================
@@ -58,61 +59,20 @@ fetch("data/movies.json")
         <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
           <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
         </a>
-        
-        <a id="whatsappDownloadIcon" href="https://wa.me/94740707157?text=${encodeURIComponent('.gdrive or .download ' + movie.players[0].link)}" target="_blank">
+        <a href="https://wa.me/94740707157?text=${encodeURIComponent('.gdrive or .download ' + movie.players[0].link)}" target="_blank">
   <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Download via WhatsApp Bot">
-</a>
-
-<script>
-  const whatsappIcon = document.getElementById("whatsappDownloadIcon");
-  const maxDailyUses = 3;
-
-  // LocalStorage key
-  const storageKey = "whatsappDailyCount";
-
-  // Load saved data
-  let data = JSON.parse(localStorage.getItem(storageKey)) || { date: '', count: 0 };
-  const today = new Date().toISOString().slice(0,10); // YYYY-MM-DD
-
-  // Reset count if new day
-  if(data.date !== today){
-    data = { date: today, count: 0 };
-    localStorage.setItem(storageKey, JSON.stringify(data));
-  }
-
-  // Disable icon if limit reached
-  function updateIconState(){
-    if(data.count >= maxDailyUses){
-      whatsappIcon.style.pointerEvents = "none"; // block click
-      whatsappIcon.style.opacity = "0.5";        // faded look
-      whatsappIcon.title = `You reached the daily limit of ${maxDailyUses} uses`;
-    } else {
-      whatsappIcon.style.pointerEvents = "auto";
-      whatsappIcon.style.opacity = "1";
-      whatsappIcon.title = "Download via WhatsApp Bot";
-    }
-  }
-
-  updateIconState();
-
-  // Increment usage on click
-  whatsappIcon.addEventListener("click", function(){
-    data.count++;
-    localStorage.setItem(storageKey, JSON.stringify(data));
-    updateIconState();
-  });
-</script>
-
+        </a>
         <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
           <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
         </a>
-        <a href="https://wa.me/?text=${shareURL}" target="_blank">
+         <a href="https://wa.me/?text=${shareURL}" target="_blank">
   <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
        width="35" 
        title="Share on WhatsApp">
         </a>
       </div>
     `;
+
     
     // ===============================
     // 🎥 GET TRAILER FROM YOUTUBE
