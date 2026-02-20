@@ -275,28 +275,131 @@ fetch("data/movies.json")
   animation: pulse 1.5s infinite alternate;
   text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
+<!-- =============================== -->
+<!-- 📢 FULLSCREEN ANNOUNCEMENT FIXED VERSION -->
+<!-- =============================== -->
+<div id="fullscreenAnnouncement">
+  <div class="announcement-container">
+    <div class="announcement-header">
+      📢 Announcement
+      <span id="closeAnnouncement">&times;</span>
+    </div>
+    <div class="announcement-body">
+      මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
+      <span class="gradient-text">WHATSAPP PACKAGE</span> 
+      ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
+      <span class="gradient-text">@WHATSAPP SOCIAL MEDIA ICON</span> 
+      එක භාවිතා කරන්න. මෙහිදී ඔබට 
+      <span class="highlight-text">.Gdrive</span> & 
+      <span class="highlight-text">.Download</span> 
+      යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
+      <span class="highlight-text">.download</span> 
+      යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+      <span class="gradient-text">WA - USER BOT</span> 
+      යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
+    </div>
+  </div>
+</div>
 
-/* Fade-in overlay */
+<style>
+#fullscreenAnnouncement {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.85);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  padding:20px;
+  box-sizing:border-box;
+  overflow-y:auto; /* scroll if text too long */
+  animation: fadeInOverlay 1.5s forwards;
+}
+
+.announcement-container {
+  background:#111;
+  border-left:8px solid #E50914;
+  border-radius:16px;
+  padding:25px 30px;
+  max-width:800px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,0.7);
+  color:#FFD700;
+  position: relative;
+}
+
+#closeAnnouncement {
+  position: absolute;
+  top:15px;
+  right:20px;
+  font-size:1.5em;
+  cursor:pointer;
+  color:#fff;
+  font-weight:bold;
+  transition:0.3s;
+  user-select:none;
+}
+#closeAnnouncement:hover {
+  color:#FF2A68;
+  transform: scale(1.2);
+}
+
+.announcement-header {
+  font-size:1.8em;
+  font-weight:800;
+  margin-bottom:20px;
+  color:#E50914;
+  text-transform: uppercase;
+  letter-spacing:1px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+.announcement-body {
+  font-size:1.1em;
+  line-height:1.8em;
+  word-wrap:break-word;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  animation: gradientShift 6s linear infinite;
+  display:inline-block;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.highlight-text {
+  color:#FF4081;
+  font-weight:bold;
+  animation: pulse 1.5s infinite alternate;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
 @keyframes fadeInOverlay {
   0% { opacity:0; }
   100% { opacity:1; }
 }
 
-/* Gradient shift animation */
 @keyframes gradientShift {
   0% { background-position:0% 50%; }
   50% { background-position:100% 50%; }
   100% { background-position:0% 50%; }
 }
 
-/* Pulse effect */
 @keyframes pulse {
   0% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
   50% { color: #FF80AB; text-shadow: 0 0 6px #FF80AB; }
   100% { color: #FF4081; text-shadow: 0 0 2px #FF4081; }
 }
 
-/* Responsive for mobile screens */
+/* Responsive for mobile */
 @media (max-width:600px) {
   .announcement-container {
     padding:20px 18px;
@@ -311,66 +414,18 @@ fetch("data/movies.json")
 </style>
 
 <script>
-  // Close on click
-  document.getElementById("closeAnnouncement").addEventListener("click", function(){
-    document.getElementById("fullscreenAnnouncement").style.display = "none";
-  });
+const ann = document.getElementById("fullscreenAnnouncement");
+const closeBtn = document.getElementById("closeAnnouncement");
 
-  // Auto-hide after 10 seconds
-  setTimeout(function(){
-    const ann = document.getElementById("fullscreenAnnouncement");
-    if(ann) ann.style.display = "none";
-  }, 10000);
+closeBtn.addEventListener("click", function(){
+  if(ann) ann.style.display="none";
+});
+
+// Auto-hide after 10 seconds
+setTimeout(() => {
+  if(ann) ann.style.display="none";
+}, 10000);
 </script>
-<!-- =============================== -->
-<!-- 🔹 STYLES AND ANIMATION -->
-<!-- =============================== -->
-<style>
-  /* Gradient text animation for English words */
-  .gradient-text {
-    background: linear-gradient(90deg, #25D366, #128C7E, #FF8C00, #FF2A68);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-    animation: gradientShift 4s infinite alternate;
-    display: inline-block;
-  }
-
-  /* Highlight for .Gdrive and .Download */
-  .highlight-text {
-    color:#FF4081;
-    font-weight:bold;
-    animation: pulse 1.5s infinite alternate;
-  }
-
-  /* Fade-in for whole announcement */
-  @keyframes fadeInAnnouncement {
-    0% { opacity:0; transform: translateY(10px); }
-    100% { opacity:1; transform: translateY(0); }
-  }
-
-  /* Gradient shift animation */
-  @keyframes gradientShift {
-    0% { background-position:0% 50%; }
-    50% { background-position:100% 50%; }
-    100% { background-position:0% 50%; }
-  }
-
-  /* Pulse effect for highlight text */
-  @keyframes pulse {
-    0% { color: #FF4081; }
-    50% { color: #FF80AB; }
-    100% { color: #FF4081; }
-  }
-
-  /* Responsive for mobile screens */
-  @media (max-width:600px) {
-    #commentAnnouncement {
-      font-size:0.9em;
-      padding:12px 15px;
-    }
-  }
-</style>
 
 <!-- =============================== -->
 <!-- 🔹 STYLES AND ANIMATION -->
