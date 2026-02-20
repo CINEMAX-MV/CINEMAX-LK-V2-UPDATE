@@ -169,22 +169,36 @@ fetch("data/movies.json")
         <!-- =============================== -->
 <div id="announcementBox" style="
     margin-top:20px;
-    padding:10px 15px;
-    color: transparent;
+    padding:12px 15px;
     font-family: Poppins, sans-serif;
-    font-weight:bold;
-    font-size:1em;
-    max-width:500px;
+    font-weight:600;
+    font-size:0.95em;
+    max-width:600px;
     margin-left:0;
     text-align:left;
-    background: none;
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-image: linear-gradient(90deg, #ff8c00, #ff2a68, #ff0080, #ffcc00);
+    line-height:1.5em;
+    background:none;
+    color:#fff;
 ">
-  📢 Announcement: New movies are added daily! Stay tuned for the latest updates.
+  📢 මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
+  <span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+    WHATSAPP PACKAGE
+  </span> 
+  ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
+  <span style="background:linear-gradient(90deg,#25D366,#128C7E);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+    @WHATSAPP SOCIAL MEDIA ICON
+  </span> 
+  එක භාවිතා කරන්න. මෙහිදී ඔබට 
+  <span style="color:#FF4081;font-weight:bold;">.Gdrive</span> & 
+  <span style="color:#FF4081;font-weight:bold;">.Download</span> 
+  යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
+  <span style="color:#FF4081;font-weight:bold;">.download</span> 
+  යන මුරපදය පමණක් භාවිතා කරන්න. මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+  <span style="background:linear-gradient(90deg,#FF8C00,#FF2A68);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:bold;">
+    WA - USER BOT
+  </span> 
+  යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත.
 </div>
-
         <!-- =============================== -->
         <!-- 💎 STYLES -->
         <!-- =============================== -->
