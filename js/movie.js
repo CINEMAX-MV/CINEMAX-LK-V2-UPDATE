@@ -205,7 +205,7 @@ fetch("data/movies.json")
     මෙහිදී ඔබට 
     <span class="rainbow">.Gdrive</span> & 
     <span class="rainbow">.Download</span> 
-    යනුවෙන් දිස්වෙන අතර Google drive ලින්ක් එකක් නොවේ නම් එය කපා හැර 
+    යනුවෙන් දිස්වෙන අතර  <span class="rainbow">Google drive</span> ලින්ක් එකක් නොවේ නම් එය කපා හැර 
     <span class="rainbow">.download</span> 
     යන මුරපදය පමණක් භාවිතා කරන්න. 
 
