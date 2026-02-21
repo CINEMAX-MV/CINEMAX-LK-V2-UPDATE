@@ -163,7 +163,6 @@ fetch("data/movies.json")
           </div>
 
         </div>
-
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
@@ -187,7 +186,7 @@ fetch("data/movies.json")
       margin-bottom:12px;
       letter-spacing:2px;
   ">
-    📢 <span class="red-animate">ANNOUNCEMENT</span>
+    📢 <span id="typeTitle" class="red-glow"></span>
   </div>
 
   <!-- 🔥 BODY -->
@@ -218,27 +217,13 @@ fetch("data/movies.json")
 </div>
 
 <style>
-/* 🔴 RED TITLE ANIMATION */
-.red-animate{
+/* 🔴 Red Glow Effect */
+.red-glow{
   color:#ff0000;
   text-shadow:0 0 5px #ff0000, 0 0 15px #ff0000, 0 0 25px #e50914;
-  animation:redPulse 1.5s infinite alternate;
 }
 
-@keyframes redPulse{
-  from{
-    opacity:0.6;
-    transform:scale(1);
-    text-shadow:0 0 5px #ff0000, 0 0 10px #ff0000;
-  }
-  to{
-    opacity:1;
-    transform:scale(1.05);
-    text-shadow:0 0 15px #ff0000, 0 0 30px #ff0000, 0 0 40px #e50914;
-  }
-}
-
-/* 🌈 Rainbow for English Words */
+/* 🌈 Rainbow English words */
 .rainbow{
   background:linear-gradient(
     90deg,
@@ -262,6 +247,23 @@ fetch("data/movies.json")
   100%{background-position:400%}
 }
 </style>
+
+<script>
+// 🔥 Typewriter Effect
+const text = "ANNOUNCEMENT";
+let i = 0;
+const speed = 120;
+
+function typeEffect(){
+  if(i < text.length){
+    document.getElementById("typeTitle").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, speed);
+  }
+}
+
+window.addEventListener("load", typeEffect);
+</script>
         <!-- =============================== -->
         <!-- 💎 STYLES -->
         <!-- =============================== -->
