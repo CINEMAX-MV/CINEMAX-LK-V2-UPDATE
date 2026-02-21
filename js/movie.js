@@ -173,7 +173,7 @@ fetch("data/movies.json")
     padding:18px 20px;
     font-family:Poppins, sans-serif;
     background:rgba(0,0,0,0.75);
-    border-left:5px solid #FF8C00;
+    border-left:5px solid #FF0000;
     border-radius:12px;
     max-width:100%;
     box-sizing:border-box;
@@ -182,12 +182,12 @@ fetch("data/movies.json")
 
   <!-- 🔥 TITLE -->
   <div style="
-      font-size:1.2em;
-      font-weight:800;
-      margin-bottom:10px;
-      letter-spacing:1px;
+      font-size:1.3em;
+      font-weight:900;
+      margin-bottom:12px;
+      letter-spacing:2px;
   ">
-    📢 <span class="rainbow">ANNOUNCEMENT</span>
+    📢 <span class="red-animate">ANNOUNCEMENT</span>
   </div>
 
   <!-- 🔥 BODY -->
@@ -218,6 +218,27 @@ fetch("data/movies.json")
 </div>
 
 <style>
+/* 🔴 RED TITLE ANIMATION */
+.red-animate{
+  color:#ff0000;
+  text-shadow:0 0 5px #ff0000, 0 0 15px #ff0000, 0 0 25px #e50914;
+  animation:redPulse 1.5s infinite alternate;
+}
+
+@keyframes redPulse{
+  from{
+    opacity:0.6;
+    transform:scale(1);
+    text-shadow:0 0 5px #ff0000, 0 0 10px #ff0000;
+  }
+  to{
+    opacity:1;
+    transform:scale(1.05);
+    text-shadow:0 0 15px #ff0000, 0 0 30px #ff0000, 0 0 40px #e50914;
+  }
+}
+
+/* 🌈 Rainbow for English Words */
 .rainbow{
   background:linear-gradient(
     90deg,
@@ -241,7 +262,6 @@ fetch("data/movies.json")
   100%{background-position:400%}
 }
 </style>
-
         <!-- =============================== -->
         <!-- 💎 STYLES -->
         <!-- =============================== -->
