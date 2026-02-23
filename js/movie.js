@@ -76,8 +76,17 @@ fetch("data/movies.json")
     // 🎥 GET TRAILER FROM YOUTUBE
     // ===============================
     getTrailer(movie.title).then(trailerId => {
-      let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
 
+  let trailerURL = trailerId ? `https://www.youtube.com/embed/${trailerId}?rel=0` : "";
+
+  document.getElementById("movieDetails").innerHTML = `
+     ... ඔයාගේ full HTML ...
+  `;
+
+  // ✅ මෙතනට දාන්න
+  loadCast(movie.title);
+
+});
       // ===============================
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
@@ -133,6 +142,12 @@ fetch("data/movies.json")
 
           <!-- VIDEO PLAYER -->
           <div id="videoPlayer" style="margin-top:20px;"></div>
+
+          <!-- 🎭 CAST SECTION -->
+<div style="margin-top:40px;">
+  <h3 style="font-size:1.8em;margin-bottom:15px;">🎭 Cast</h3>
+  <div id="castContainer" style="display:flex;gap:15px;overflow-x:auto;"></div>
+</div>
 
           <!-- COMMENT SECTION -->
           <div class="comment-section">
@@ -429,3 +444,47 @@ function goAdPage(link){
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
 
+// ===============================
+// 🎭 LOAD CAST FROM TMDB
+// ===============================
+function loadCast(movieTitle){
+
+  const TMDB_API_KEY = "664258113a1e4067d9a47099ac78e3a4";
+
+  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(movieTitle)}`)
+    .then(res => res.json())
+    .then(searchData => {
+
+      if(!searchData.results || searchData.results.length === 0) return;
+
+      const movieId = searchData.results[0].id;
+
+      return fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`);
+
+    })
+    .then(res => res.json())
+    .then(data => {
+
+      const castContainer = document.getElementById("castContainer");
+      if(!castContainer) return;
+
+      castContainer.innerHTML = "";
+
+      data.cast.slice(0,10).forEach(actor => {
+
+        const image = actor.profile_path
+          ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+          : "https://via.placeholder.com/150x220?text=No+Image";
+
+        castContainer.innerHTML += `
+          <div style="min-width:120px;background:#111;padding:10px;border-radius:10px;text-align:center;">
+            <img src="${image}" style="width:100%;border-radius:8px;">
+            <div style="color:#fff;font-size:14px;margin-top:8px;">${actor.name}</div>
+            <div style="color:#aaa;font-size:12px;">${actor.character}</div>
+          </div>
+        `;
+      });
+
+    })
+    .catch(err => console.log("Cast Error:", err));
+}
