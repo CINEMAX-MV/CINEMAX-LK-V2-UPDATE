@@ -1,4 +1,3 @@
-
 // ===============================
 // 🔐 YOUTUBE API KEY
 // ===============================
@@ -163,84 +162,6 @@ fetch("data/movies.json")
           </div>
 
         </div>
-
-                  <!-- ================= CAST SECTION ================= -->
-          <div style="margin-top:40px;">
-            <h3 style="color:white;font-size:1.8em;margin-bottom:15px;">
-              🎭 Cast
-            </h3>
-            <div id="castContainer"
-                 style="display:flex;
-                        gap:15px;
-                        overflow-x:auto;
-                        padding-bottom:10px;">
-            </div>
-          </div>
-
-        </div>
-      `;
-
-      // 🔥 LOAD CAST
-      loadCast(movie.title);
-
-    });
-
-  });
-
-
-// ===============================
-// 🎭 LOAD CAST FROM TMDB
-// ===============================
-function loadCast(movieTitle){
-
-  const TMDB_API_KEY = "664258113a1e4067d9a47099ac78e3a4";
-
-  fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(movieTitle)}`)
-    .then(res => res.json())
-    .then(searchData => {
-
-      if(!searchData.results || searchData.results.length === 0) return;
-
-      const movieId = searchData.results[0].id;
-
-      return fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${TMDB_API_KEY}`);
-
-    })
-    .then(res => res.json())
-    .then(data => {
-
-      const castContainer = document.getElementById("castContainer");
-      if(!castContainer) return;
-
-      castContainer.innerHTML = "";
-
-      data.cast.slice(0,12).forEach(actor => {
-
-        const image = actor.profile_path
-          ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
-          : "https://via.placeholder.com/120x180?text=No+Image";
-
-        castContainer.innerHTML += `
-          <div style="min-width:110px;
-                      background:#111;
-                      padding:8px;
-                      border-radius:10px;
-                      text-align:center;">
-            <img src="${image}" style="width:100%;border-radius:8px;">
-            <div style="color:white;font-size:13px;margin-top:6px;">
-              ${actor.name}
-            </div>
-            <div style="color:#aaa;font-size:11px;">
-              ${actor.character}
-            </div>
-          </div>
-        `;
-      });
-
-    })
-    .catch(err => console.log("Cast Error:", err));
-}
-
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
@@ -480,8 +401,8 @@ function getStars(rating){
   let halfStar = (rating%2)>=1 ? true:false;
   let emptyStars = 5 - fullStars - (halfStar?1:0);
   let stars="";
-  for(let i=0;i<fullStars;i++) stars+="⭐";
-  if(halfStar) stars+="✨";
+  for(let i=0;i<fullStars;i++) stars+="🌟";
+  if(halfStar) stars+="⭐";
   for(let i=0;i<emptyStars;i++) stars+="☆";
   return stars;
 }
@@ -506,3 +427,4 @@ function goAdPage(link){
   let movieId = params.get("id");
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
+
