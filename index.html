@@ -10,63 +10,72 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== MOVIE GRID & PAGINATION ===== */
-.movies-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
-    gap:15px;
+/* ===== MOVIE SLIDER / GRID ===== */
+.page-wrapper{
     padding:20px;
 }
 
+.page-title{
+    font-size:22px;
+    margin-bottom:10px;
+    color:#00d4ff;
+}
+
+.slider-wrapper{
+    position:relative;
+    margin-bottom:40px;
+}
+
+.slider-container{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding-bottom:10px;
+}
+
+.slider-container::-webkit-scrollbar{
+    display:none;
+}
+
 .movie-card{
-    background:#1c1c1c;
+    min-width:180px;
+    flex:0 0 auto;
     border-radius:10px;
     overflow:hidden;
+    background:#1c1c1c;
+    cursor:pointer;
     transition:0.3s;
 }
 
 .movie-card img{
     width:100%;
-    height:220px;
+    aspect-ratio:2/3;
     object-fit:cover;
 }
 
+.movie-card:hover{
+    transform: scale(1.05);
+}
+
 .movie-card p{
-    text-align:center;
     padding:8px;
+    text-align:center;
     font-size:14px;
 }
 
-.movie-card:hover{
-    transform:scale(1.05);
-}
-
-/* Pagination Controls */
-.pagination-controls{
-    text-align:center;
-    margin:20px 0;
-}
-
-.pagination-controls button{
-    background:red;
-    color:white;
+/* Next Button */
+.next-btn{
+    position:absolute;
+    right:5px;
+    top:50%;
+    transform: translateY(-50%);
+    background:rgba(255,0,0,0.8);
     border:none;
-    padding:8px 15px;
-    margin:5px;
-    border-radius:5px;
+    padding:12px;
+    border-radius:50%;
     cursor:pointer;
-}
-
-.pagination-controls button:disabled{
-    background:gray;
-    cursor:not-allowed;
-}
-
-#pageInfo{
-    color:white;
-    margin:0 10px;
-    font-weight:bold;
-    font-size:16px;
+    z-index:10;
 }
 </style>
 </head>
@@ -106,7 +115,6 @@ window.addEventListener('DOMContentLoaded',()=>{
     <div class="latest-title">LATEST MOVIES</div>
 </div>
 
-<!-- ===== LAST 10 MOVIES SLIDER ===== -->
 <section class="slider-section">
   <div class="slider" id="movieSlider"></div>
   <div class="slider-dots" id="sliderDots"></div>
@@ -138,29 +146,41 @@ window.addEventListener('DOMContentLoaded',()=>{
     </div>
 </div>
 
-<!-- ===== MOVIE GRID + PAGINATION ===== -->
-<section class="container">
+<!-- ===== MOVIE PAGES ===== -->
+<div class="page-wrapper">
 
-    <div class="ticker">
-        <div class="ticker-track">
-            <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-            </span>
-            <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-            </span>
-        </div>
-    </div>
+  <!-- Pages 1-5 -->
+  <div class="slider-wrapper">
+    <div class="page-title">Page 1</div>
+    <div class="slider-container" id="page1"></div>
+    <button class="next-btn" onclick="nextPage(1)">➤</button>
+  </div>
 
-    <div id="movieList" class="movies-grid"></div>
+  <div class="slider-wrapper">
+    <div class="page-title">Page 2</div>
+    <div class="slider-container" id="page2"></div>
+    <button class="next-btn" onclick="nextPage(2)">➤</button>
+  </div>
 
-    <div class="pagination-controls">
-        <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
-        <span id="pageInfo"></span>
-        <button id="nextBtn" onclick="changePage(1)">Next 👉</button>
-    </div>
+  <div class="slider-wrapper">
+    <div class="page-title">Page 3</div>
+    <div class="slider-container" id="page3"></div>
+    <button class="next-btn" onclick="nextPage(3)">➤</button>
+  </div>
 
-</section>
+  <div class="slider-wrapper">
+    <div class="page-title">Page 4</div>
+    <div class="slider-container" id="page4"></div>
+    <button class="next-btn" onclick="nextPage(4)">➤</button>
+  </div>
+
+  <div class="slider-wrapper">
+    <div class="page-title">Page 5</div>
+    <div class="slider-container" id="page5"></div>
+    <button class="next-btn" onclick="nextPage(5)">➤</button>
+  </div>
+
+</div>
 
 <!-- Social Media Section -->
 <div class="social-section">
@@ -176,63 +196,46 @@ window.addEventListener('DOMContentLoaded',()=>{
   <span class="highlight">Sinhala Movies & Cartoons</span>
 </footer>
 
-<!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
 
 <script>
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
-</script>
 
-<!-- ===== PAGINATION LOGIC ===== -->
-<script>
-// Sample Movies Array (50 Movies)
-const movies = [];
+// Sample 50 movies
+const allMovies = [];
 for(let i=1;i<=50;i++){
-    movies.push({
-        title: "Movie "+i,
-        image: "https://via.placeholder.com/300x450?text=Movie+"+i
-    });
+  allMovies.push({
+    title: "Movie "+i,
+    image: "https://via.placeholder.com/300x450?text=Movie+"+i
+  });
 }
 
-let currentPage = 1;
+// Split movies into pages
 const moviesPerPage = 10;
-const totalPages = Math.ceil(movies.length/moviesPerPage);
-
-const movieList = document.getElementById("movieList");
-const pageInfo = document.getElementById("pageInfo");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-
-function renderMovies(){
-    movieList.innerHTML = "";
-    let start = (currentPage-1)*moviesPerPage;
-    let end = start+moviesPerPage;
-    let pageMovies = movies.slice(start,end);
-
-    pageMovies.forEach(movie=>{
-        let card = document.createElement("div");
-        card.className = "movie-card";
-        card.innerHTML = `<img src="${movie.image}"><p>${movie.title}</p>`;
-        movieList.appendChild(card);
-    });
-
-    pageInfo.innerText = "Page "+currentPage+" of "+totalPages;
-
-    prevBtn.disabled = currentPage===1;
-    nextBtn.disabled = currentPage===totalPages;
+const pages = {};
+for(let i=1;i<=5;i++){
+    pages[i] = allMovies.slice((i-1)*moviesPerPage, i*moviesPerPage);
 }
 
-function changePage(dir){
-    currentPage += dir;
-    if(currentPage<1) currentPage=1;
-    if(currentPage>totalPages) currentPage=totalPages;
-    renderMovies();
+// Render movies
+for(let i=1;i<=5;i++){
+  const container = document.getElementById("page"+i);
+  pages[i].forEach(movie=>{
+      const card = document.createElement("div");
+      card.className = "movie-card";
+      card.innerHTML = `<img src="${movie.image}"><p>${movie.title}</p>`;
+      container.appendChild(card);
+  });
 }
 
-// Initial Render
-renderMovies();
+// Next page scroll
+function nextPage(pageNum){
+    const container = document.getElementById("page"+pageNum);
+    const scrollAmount = container.clientWidth;
+    container.scrollBy({left: scrollAmount, behavior:'smooth'});
+}
 </script>
 
 </body>
