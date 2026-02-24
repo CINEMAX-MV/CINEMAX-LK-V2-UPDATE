@@ -3,17 +3,262 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to the cinemaxlk</title>
-<link rel="stylesheet" href="css/style.css">
-<head>
-  <meta charset="UTF-8">
-  <title>CINEMAX</title>
+<title>Cinemax.lk</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Main CSS -->
+<style>
+/* ===== GENERAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background: #0a0a0a;
+  color: #eee;
+  line-height: 1.6;
+}
 
+/* ===== HEADER ===== */
+header.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+header .logo-container img {
+  height: 50px;
+  border-radius: 8px;
+}
+.menu-btn {
+  font-size: 28px;
+  cursor: pointer;
+  color: #00d4ff;
+}
+
+/* ===== BLUE LINES ===== */
+.blue-line {
+  height: 4px;
+  background: #00d4ff;
+  width: 100%;
+}
+
+/* ===== LATEST MOVIES TITLE ===== */
+.latest-wrapper {
+  padding: 20px;
+  text-align: center;
+}
+.latest-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00d4ff;
+  letter-spacing: 1px;
+}
+
+/* ===== SLIDER ===== */
+.slider-section {
+  position: relative;
+  padding: 20px;
+}
+.slider {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  scroll-behavior: smooth;
+}
+.slider::-webkit-scrollbar {
+  display: none;
+}
+.slider .movie-card {
+  min-width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.slider .movie-card:hover {
+  transform: scale(1.05);
+}
+.slider .movie-card img {
+  width: 100%;
+  display: block;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  width: 280px;
+  height: 100%;
+  background: #111;
+  padding: 20px;
+  transition: 0.4s;
+  overflow-y: auto;
+  z-index: 999;
+}
+.sidebar.active {
+  left: 0;
+}
+.sidebar a {
+  display: block;
+  color: #ccc;
+  padding: 12px 10px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  background: #222;
+  color: #00d4ff;
+}
+.close-btn {
+  text-align: right;
+  font-size: 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* ===== PROBLEMS FORM ===== */
+#problemsForm input,
+#problemsForm textarea,
+#problemsForm button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+#problemsForm input,
+#problemsForm textarea {
+  background: #222;
+  color: #eee;
+}
+#problemsForm button {
+  background: #00d4ff;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#problemsForm button:hover {
+  background: #00a3cc;
+}
+
+/* ===== MOVIE GRID ===== */
+.container {
+  padding: 20px;
+}
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+.movies-grid .movie-item {
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.movies-grid .movie-item:hover {
+  transform: scale(1.03);
+}
+.movies-grid .movie-item img {
+  width: 100%;
+  display: block;
+}
+
+/* ===== PAGINATION ===== */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.pagination-controls button {
+  background: #00d4ff;
+  border: none;
+  padding: 8px 15px;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+.pagination-controls button:hover {
+  background: #00a3cc;
+}
+
+/* ===== TICKER ===== */
+.ticker {
+  overflow: hidden;
+  background: #111;
+  padding: 10px 0;
+  margin-bottom: 15px;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: tickerAnim 20s linear infinite;
+}
+.ticker-track span {
+  margin-right: 50px;
+  color: #00d4ff;
+}
+@keyframes tickerAnim {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===== SOCIAL MEDIA ===== */
+.social-section {
+  text-align: center;
+  padding: 15px;
+  background: #111;
+}
+.social-section a {
+  display: inline-block;
+  margin: 0 8px;
+  color: #eee;
+  font-size: 18px;
+  transition: 0.3s;
+}
+.social-section a:hover {
+  color: #00d4ff;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 15px 10px;
+  background: #111;
+  border-top: 2px solid #00d4ff;
+  margin-top: 20px;
+  font-size: 14px;
+}
+footer .highlight {
+  color: #00d4ff;
+  font-weight: bold;
+}
+</style>
 </head>
-
 <body>
-<!-- ===== HUMAN VERIFICATION OVERLAY ===== -->
-<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
+
+<!-- ===== HUMAN VERIFICATION ===== -->
+<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center;">
     <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
         <h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
         <p style="color:#ccc; margin-bottom:20px;">
@@ -30,19 +275,26 @@ window.addEventListener('DOMContentLoaded',()=>{
         if(user) console.log("Welcome,", user);
     }
 });
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+function toggleProblems(){
+    const f = document.getElementById("problemsForm");
+    f.style.display = f.style.display === "block" ? "none" : "block";
+}
+function sendProblem(){
+    alert("Problem submitted! Thanks.");
+}
 </script>
+
 <!-- ===== HEADER ===== -->
 <header class="hero-header">
-
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
     <div class="logo-container">
-        <img src="https://i.ibb.co/5gCt9Lvd/Rashmika-Ofc.jpg" alt="Cinemax 3D Logo">
+        <img src="https://i.ibb.co/5gCt9Lvd/Rashmika-Ofc.jpg" alt="Cinemax Logo">
     </div>
-
 </header>
 
-<!-- Top Blue Line -->
 <div class="blue-line"></div>
 
 <!-- LATEST MOVIES TITLE -->
@@ -50,107 +302,66 @@ window.addEventListener('DOMContentLoaded',()=>{
     <div class="latest-title">LATEST MOVIES</div>
 </div>
 
-<!-- ===== LAST 10 MOVIES SLIDER ===== -->
+<!-- SLIDER -->
 <section class="slider-section">
-  <div class="slider" id="movieSlider"></div>
-  <div class="slider-dots" id="sliderDots"></div>
+  <div class="slider" id="movieSlider">
+    <!-- Movie cards will be injected via JS -->
+  </div>
 </section>
 
-<!-- Bottom Blue Line -->
 <div class="blue-line"></div>
 
-<!-- ===== SIDEBAR ===== -->
+<!-- SIDEBAR -->
 <div id="sidebar" class="sidebar">
-
-    <div class="sidebar-search">
-        <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
-    </div>
-
-    <!-- Close Button -->
     <div class="close-btn" onclick="toggleMenu()">✕</div>
-    
+    <input type="text" id="searchInput" placeholder="Search movies..." style="width:100%; padding:8px; margin-bottom:10px; border-radius:6px; border:none; background:#222; color:#eee;">
     <a href="index.html">✦ Home</a>
     <a href="dashboard.html">✦ Dashboard</a>
     <a href="contact.html">✦ Contact</a>
     <a href="dmca.html">✦ DMCA</a>
-    <!-- Problems Link -->
-<a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
-
-<!-- Compact Problems Form -->
-<div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#222; border-radius:6px;">
-    <input type="text" id="pName" placeholder="Name" required>
-    <input type="text" id="pUser" placeholder="User" required>
-    <input type="email" id="pEmail" placeholder="Email" required>
-    <input type="text" id="pNumber" placeholder="Number" required>
-    <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
-    <button onclick="sendProblem()">Submit ✔️</button>
-</div>
+    <a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
+    <div id="problemsForm" style="display:none; margin-top:10px;">
+        <input type="text" id="pName" placeholder="Name" required>
+        <input type="text" id="pUser" placeholder="User" required>
+        <input type="email" id="pEmail" placeholder="Email" required>
+        <input type="text" id="pNumber" placeholder="Number" required>
+        <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
+        <button onclick="sendProblem()">Submit ✔️</button>
+    </div>
 </div>
 
-<!-- ===== MOVIE GRID SECTION ===== -->
+<!-- MOVIE GRID -->
 <section class="container">
-
-    <!-- Ticker -->
     <div class="ticker">
         <div class="ticker-track">
-            <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-            </span>
-            <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-            </span>
+            <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත.</span>
+            <span>මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.</span>
         </div>
     </div>
-
-    <!-- Movie Grid -->
     <div id="movieList" class="movies-grid"></div>
-
-    <!-- Pagination Controls -->
     <div class="pagination-controls">
         <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
         <span id="pageInfo"></span>
         <button id="nextBtn" onclick="changePage(1)">Next 👉</button>
     </div>
-
 </section>
-    
-<!-- Social Media Section Start -->
+
+<!-- SOCIAL MEDIA -->
 <div class="social-section">
-    <a href="#" class="social facebook" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" class="social twitter" target="_blank">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank">
-        <i class="fab fa-youtube"></i>
-    </a>
-    <a href="#" class="social instagram" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>    
-</a>
+    <a href="#" class="social facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube"><i class="fab fa-youtube"></i></a>
+    <a href="#" class="social instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
  © <span class="year">2026</span> Cinemax Downloads | Watch & Download 
   <span class="highlight">Sinhala Movies & Cartoons</span>
 </footer>
 
-<!-- ===== MAIN JS ===== -->
+<!-- MAIN JS -->
 <script src="js/main.js"></script>
-
-<!-- ===== SIDEBAR TOGGLE ===== -->
-<script>
-function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("active");
-}
-</script>
-
-</body> 
+</body>
 </html>
