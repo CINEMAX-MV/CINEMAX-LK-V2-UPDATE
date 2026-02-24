@@ -8,256 +8,76 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- Main CSS -->
+<!-- Inline CSS for simplicity -->
 <style>
-/* ===== GENERAL RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
-}
-body {
-  background: #0a0a0a;
-  color: #eee;
-  line-height: 1.6;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Roboto',sans-serif;}
+body{background:#0a0a0a;color:#eee;line-height:1.6;}
 
-/* ===== HEADER ===== */
-header.hero-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #111;
-  padding: 15px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-header .logo-container img {
-  height: 50px;
-  border-radius: 8px;
-}
-.menu-btn {
-  font-size: 28px;
-  cursor: pointer;
-  color: #00d4ff;
-}
+/* HEADER */
+header.hero-header{display:flex;justify-content:space-between;align-items:center;background:#111;padding:15px 20px;position:sticky;top:0;z-index:1000;transition:0.3s;}
+header .logo-container img{height:50px;border-radius:8px;}
+.menu-btn{font-size:28px;cursor:pointer;color:#00d4ff;transition:0.3s;}
+.menu-btn:hover{color:#00a3cc;}
 
-/* ===== BLUE LINES ===== */
-.blue-line {
-  height: 4px;
-  background: #00d4ff;
-  width: 100%;
-}
+/* BLUE LINES */
+.blue-line{height:4px;background:#00d4ff;width:100%;}
 
-/* ===== LATEST MOVIES TITLE ===== */
-.latest-wrapper {
-  padding: 20px;
-  text-align: center;
-}
-.latest-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #00d4ff;
-  letter-spacing: 1px;
-}
+/* LATEST MOVIES */
+.latest-wrapper{padding:20px;text-align:center;}
+.latest-title{font-size:24px;font-weight:700;color:#00d4ff;letter-spacing:1px;}
 
-/* ===== SLIDER ===== */
-.slider-section {
-  position: relative;
-  padding: 20px;
-}
-.slider {
-  display: flex;
-  overflow-x: auto;
-  gap: 15px;
-  scroll-behavior: smooth;
-}
-.slider::-webkit-scrollbar {
-  display: none;
-}
-.slider .movie-card {
-  min-width: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s;
-  cursor: pointer;
-}
-.slider .movie-card:hover {
-  transform: scale(1.05);
-}
-.slider .movie-card img {
-  width: 100%;
-  display: block;
-}
+/* SLIDER */
+.slider-section{position:relative;padding:20px;overflow:hidden;}
+.slider{display:flex;gap:15px;overflow-x:auto;scroll-behavior:smooth;transition:0.3s;}
+.slider::-webkit-scrollbar{display:none;}
+.slider .movie-card{min-width:200px;border-radius:10px;overflow:hidden;transition:transform 0.3s, box-shadow 0.3s;cursor:pointer;}
+.slider .movie-card:hover{transform:scale(1.07);box-shadow:0 0 20px #00d4ff;}
+.slider .movie-card img{width:100%;display:block;}
 
-/* ===== SIDEBAR ===== */
-.sidebar {
-  position: fixed;
-  left: -300px;
-  top: 0;
-  width: 280px;
-  height: 100%;
-  background: #111;
-  padding: 20px;
-  transition: 0.4s;
-  overflow-y: auto;
-  z-index: 999;
-}
-.sidebar.active {
-  left: 0;
-}
-.sidebar a {
-  display: block;
-  color: #ccc;
-  padding: 12px 10px;
-  margin-bottom: 5px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.sidebar a:hover {
-  background: #222;
-  color: #00d4ff;
-}
-.close-btn {
-  text-align: right;
-  font-size: 20px;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
+/* SIDEBAR */
+.sidebar{position:fixed;left:-300px;top:0;width:280px;height:100%;background:#111;padding:20px;transition:0.4s;overflow-y:auto;z-index:999;}
+.sidebar.active{left:0;}
+.sidebar a{display:block;color:#ccc;padding:12px 10px;margin-bottom:5px;border-radius:6px;text-decoration:none;transition:0.3s;}
+.sidebar a:hover{background:#222;color:#00d4ff;}
+.close-btn{text-align:right;font-size:20px;margin-bottom:15px;cursor:pointer;}
 
-/* ===== PROBLEMS FORM ===== */
-#problemsForm input,
-#problemsForm textarea,
-#problemsForm button {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px 10px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-}
-#problemsForm input,
-#problemsForm textarea {
-  background: #222;
-  color: #eee;
-}
-#problemsForm button {
-  background: #00d4ff;
-  color: #111;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-#problemsForm button:hover {
-  background: #00a3cc;
-}
+/* PROBLEMS FORM */
+#problemsForm input,#problemsForm textarea,#problemsForm button{width:100%;margin-bottom:10px;padding:8px 10px;border-radius:6px;border:none;outline:none;}
+#problemsForm input,#problemsForm textarea{background:#222;color:#eee;}
+#problemsForm button{background:#00d4ff;color:#111;font-weight:bold;cursor:pointer;transition:0.3s;}
+#problemsForm button:hover{background:#00a3cc;}
 
-/* ===== MOVIE GRID ===== */
-.container {
-  padding: 20px;
-}
-.movies-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
-  gap: 15px;
-  margin-top: 15px;
-}
-.movies-grid .movie-item {
-  background: #111;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.movies-grid .movie-item:hover {
-  transform: scale(1.03);
-}
-.movies-grid .movie-item img {
-  width: 100%;
-  display: block;
-}
+/* MOVIE GRID */
+.container{padding:20px;}
+.movies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px;margin-top:15px;}
+.movies-grid .movie-item{background:#111;border-radius:8px;overflow:hidden;cursor:pointer;transition:transform 0.3s, box-shadow 0.3s;}
+.movies-grid .movie-item:hover{transform:scale(1.05);box-shadow:0 0 15px #00d4ff;}
+.movies-grid .movie-item img{width:100%;display:block;}
 
-/* ===== PAGINATION ===== */
-.pagination-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-.pagination-controls button {
-  background: #00d4ff;
-  border: none;
-  padding: 8px 15px;
-  color: #111;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: 0.3s;
-}
-.pagination-controls button:hover {
-  background: #00a3cc;
-}
+/* PAGINATION */
+.pagination-controls{display:flex;justify-content:center;align-items:center;gap:15px;margin-top:20px;}
+.pagination-controls button{background:#00d4ff;border:none;padding:8px 15px;color:#111;font-weight:bold;cursor:pointer;border-radius:6px;transition:0.3s;}
+.pagination-controls button:hover{background:#00a3cc;transform:scale(1.05);}
 
-/* ===== TICKER ===== */
-.ticker {
-  overflow: hidden;
-  background: #111;
-  padding: 10px 0;
-  margin-bottom: 15px;
-}
-.ticker-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: tickerAnim 20s linear infinite;
-}
-.ticker-track span {
-  margin-right: 50px;
-  color: #00d4ff;
-}
-@keyframes tickerAnim {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
+/* TICKER */
+.ticker{overflow:hidden;background:#111;padding:10px 0;margin-bottom:15px;}
+.ticker-track{display:inline-block;white-space:nowrap;animation:tickerAnim 25s linear infinite;}
+.ticker-track span{margin-right:50px;color:#00d4ff;font-weight:500;}
+@keyframes tickerAnim{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
 
-/* ===== SOCIAL MEDIA ===== */
-.social-section {
-  text-align: center;
-  padding: 15px;
-  background: #111;
-}
-.social-section a {
-  display: inline-block;
-  margin: 0 8px;
-  color: #eee;
-  font-size: 18px;
-  transition: 0.3s;
-}
-.social-section a:hover {
-  color: #00d4ff;
-}
+/* SOCIAL MEDIA */
+.social-section{text-align:center;padding:15px;background:#111;}
+.social-section a{display:inline-block;margin:0 8px;color:#eee;font-size:18px;transition:0.3s;}
+.social-section a:hover{color:#00d4ff;transform:scale(1.2);}
 
-/* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 15px 10px;
-  background: #111;
-  border-top: 2px solid #00d4ff;
-  margin-top: 20px;
-  font-size: 14px;
-}
-footer .highlight {
-  color: #00d4ff;
-  font-weight: bold;
-}
+/* FOOTER */
+footer{text-align:center;padding:15px 10px;background:#111;border-top:2px solid #00d4ff;margin-top:20px;font-size:14px;}
+footer .highlight{color:#00d4ff;font-weight:bold;}
 </style>
 </head>
 <body>
 
-<!-- ===== HUMAN VERIFICATION ===== -->
+<!-- HUMAN VERIFICATION -->
 <div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center;">
     <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
         <h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
@@ -275,19 +95,12 @@ window.addEventListener('DOMContentLoaded',()=>{
         if(user) console.log("Welcome,", user);
     }
 });
-function toggleMenu(){
-    document.getElementById("sidebar").classList.toggle("active");
-}
-function toggleProblems(){
-    const f = document.getElementById("problemsForm");
-    f.style.display = f.style.display === "block" ? "none" : "block";
-}
-function sendProblem(){
-    alert("Problem submitted! Thanks.");
-}
+function toggleMenu(){document.getElementById("sidebar").classList.toggle("active");}
+function toggleProblems(){const f=document.getElementById("problemsForm");f.style.display=f.style.display==="block"?"none":"block";}
+function sendProblem(){alert("Problem submitted! Thanks.");}
 </script>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <header class="hero-header">
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
     <div class="logo-container">
@@ -304,9 +117,7 @@ function sendProblem(){
 
 <!-- SLIDER -->
 <section class="slider-section">
-  <div class="slider" id="movieSlider">
-    <!-- Movie cards will be injected via JS -->
-  </div>
+  <div class="slider" id="movieSlider"></div>
 </section>
 
 <div class="blue-line"></div>
@@ -334,7 +145,7 @@ function sendProblem(){
 <section class="container">
     <div class="ticker">
         <div class="ticker-track">
-            <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත.</span>
+            <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත.</span>
             <span>මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.</span>
         </div>
     </div>
