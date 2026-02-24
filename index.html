@@ -3,94 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinemax.lk</title>
+<title>Welcome to the cinemaxlk</title>
 <link rel="stylesheet" href="css/style.css">
+<head>
+  <meta charset="UTF-8">
+  <title>CINEMAX</title>
 
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-.page-wrapper{
-    padding:20px;
-}
-
-.page-title{
-    font-size:22px;
-    margin-bottom:10px;
-    color:#00d4ff;
-}
-
-.slider-wrapper{
-    position:relative;
-    margin-bottom:40px;
-}
-
-.slider-container{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    padding-bottom:10px;
-}
-
-.slider-container::-webkit-scrollbar{
-    display:none;
-}
-
-.movie-card{
-    min-width:180px;
-    flex:0 0 auto;
-    border-radius:10px;
-    overflow:hidden;
-    background:#1c1c1c;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.movie-card img{
-    width:100%;
-    aspect-ratio:2/3;
-    object-fit:cover;
-}
-
-.movie-card:hover{
-    transform: scale(1.05);
-}
-
-.movie-card p{
-    padding:8px;
-    text-align:center;
-    font-size:14px;
-}
-
-/* Next Button */
-.next-btn{
-    position:absolute;
-    right:5px;
-    top:50%;
-    transform: translateY(-50%);
-    background:rgba(255,0,0,0.8);
-    border:none;
-    padding:12px;
-    border-radius:50%;
-    cursor:pointer;
-    z-index:10;
-    color:white;
-    font-size:18px;
-}
-
-/* Grid for showing 10 movies under each page */
-.movie-grid{
-    display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap:10px;
-    margin-top:10px;
-}
-
-.movie-grid .movie-card{
-    min-width:auto;
-}
-</style>
 </head>
 
 <body>
@@ -108,130 +26,131 @@
 window.addEventListener('DOMContentLoaded',()=>{
     if(localStorage.getItem("humanVerified")==="true"){
         document.getElementById("humanVerification").style.display="none";
+        const user = localStorage.getItem("userName");
+        if(user) console.log("Welcome,", user);
     }
 });
 </script>
-
+<!-- ===== HEADER ===== -->
 <header class="hero-header">
+
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
     <div class="logo-container">
         <img src="https://i.ibb.co/5gCt9Lvd/Rashmika-Ofc.jpg" alt="Cinemax 3D Logo">
     </div>
+
 </header>
 
+<!-- Top Blue Line -->
 <div class="blue-line"></div>
+
+<!-- LATEST MOVIES TITLE -->
 <div class="latest-wrapper">
     <div class="latest-title">LATEST MOVIES</div>
 </div>
+
+<!-- ===== LAST 10 MOVIES SLIDER ===== -->
 <section class="slider-section">
   <div class="slider" id="movieSlider"></div>
   <div class="slider-dots" id="sliderDots"></div>
 </section>
+
+<!-- Bottom Blue Line -->
 <div class="blue-line"></div>
 
+<!-- ===== SIDEBAR ===== -->
 <div id="sidebar" class="sidebar">
+
     <div class="sidebar-search">
         <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
     </div>
+
+    <!-- Close Button -->
     <div class="close-btn" onclick="toggleMenu()">✕</div>
     
     <a href="index.html">✦ Home</a>
     <a href="dashboard.html">✦ Dashboard</a>
     <a href="contact.html">✦ Contact</a>
     <a href="dmca.html">✦ DMCA</a>
-    <a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
+    <!-- Problems Link -->
+<a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
 
-    <div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#222; border-radius:6px;">
-        <input type="text" id="pName" placeholder="Name" required>
-        <input type="text" id="pUser" placeholder="User" required>
-        <input type="email" id="pEmail" placeholder="Email" required>
-        <input type="text" id="pNumber" placeholder="Number" required>
-        <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
-        <button onclick="sendProblem()">Submit ✔️</button>
+<!-- Compact Problems Form -->
+<div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#222; border-radius:6px;">
+    <input type="text" id="pName" placeholder="Name" required>
+    <input type="text" id="pUser" placeholder="User" required>
+    <input type="email" id="pEmail" placeholder="Email" required>
+    <input type="text" id="pNumber" placeholder="Number" required>
+    <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
+    <button onclick="sendProblem()">Submit ✔️</button>
+</div>
+</div>
+
+<!-- ===== MOVIE GRID SECTION ===== -->
+<section class="container">
+
+    <!-- Ticker -->
+    <div class="ticker">
+        <div class="ticker-track">
+            <span>
+                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
+            </span>
+            <span>
+                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
+            </span>
+        </div>
     </div>
-</div>
 
-<!-- ===== MOVIE PAGES ===== -->
-<div class="page-wrapper" id="moviePages"></div>
+    <!-- Movie Grid -->
+    <div id="movieList" class="movies-grid"></div>
 
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+        <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
+        <span id="pageInfo"></span>
+        <button id="nextBtn" onclick="changePage(1)">Next 👉</button>
+    </div>
+
+</section>
+    
+<!-- Social Media Section Start -->
 <div class="social-section">
-    <a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>    
+    <a href="#" class="social facebook" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" class="social twitter" target="_blank">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank">
+        <i class="fab fa-youtube"></i>
+    </a>
+    <a href="#" class="social instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>    
+</a>
 </div>
 
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- ===== FOOTER ===== -->
 <footer>
  © <span class="year">2026</span> Cinemax Downloads | Watch & Download 
   <span class="highlight">Sinhala Movies & Cartoons</span>
 </footer>
 
+<!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
+
+<!-- ===== SIDEBAR TOGGLE ===== -->
 <script>
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
-
-// ===== Sample 50 movies =====
-const totalMovies = 50;
-const moviesPerPage = 10;
-const totalPages = 5;
-const allMovies = [];
-
-for(let i=1; i<=totalMovies; i++){
-  allMovies.push({
-    title: "Movie "+i,
-    image: "https://via.placeholder.com/300x450?text=Movie+"+i
-  });
-}
-
-// ===== Generate pages dynamically =====
-const moviePages = document.getElementById("moviePages");
-
-for(let p=1; p<=totalPages; p++){
-    const pageDiv = document.createElement("div");
-    pageDiv.className = "slider-wrapper";
-
-    const title = document.createElement("div");
-    title.className = "page-title";
-    title.innerText = "Page "+p;
-
-    const container = document.createElement("div");
-    container.className = "slider-container";
-    container.id = "page"+p;
-
-    const nextBtn = document.createElement("button");
-    nextBtn.className = "next-btn";
-    nextBtn.innerHTML = "➤";
-    nextBtn.onclick = ()=>container.scrollBy({left: container.clientWidth, behavior:'smooth'});
-
-    // Add 10 movies per page as horizontal scroll
-    const start = (p-1)*moviesPerPage;
-    const end = start + moviesPerPage;
-    allMovies.slice(start,end).forEach(movie=>{
-        const card = document.createElement("div");
-        card.className = "movie-card";
-        card.innerHTML = `<img src="${movie.image}"><p>${movie.title}</p>`;
-        container.appendChild(card);
-    });
-
-    // ===== Add vertical grid under each page =====
-    const gridContainer = document.createElement("div");
-    gridContainer.className = "movie-grid";
-    allMovies.slice(start,end).forEach(movie=>{
-        const card = document.createElement("div");
-        card.className = "movie-card";
-        card.innerHTML = `<img src="${movie.image}"><p>${movie.title}</p>`;
-        gridContainer.appendChild(card);
-    });
-
-    pageDiv.appendChild(title);
-    pageDiv.appendChild(container);
-    pageDiv.appendChild(nextBtn);
-    pageDiv.appendChild(gridContainer); // Grid of 10 movies under each page
-    moviePages.appendChild(pageDiv);
-}
 </script>
-</body>
+
+</body> 
 </html>
