@@ -5,10 +5,70 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cinemax.lk</title>
 <link rel="stylesheet" href="css/style.css">
-<head>
-  <meta charset="UTF-8">
-  <title>CINEMAX</title>
 
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ===== MOVIE GRID & PAGINATION ===== */
+.movies-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+    gap:15px;
+    padding:20px;
+}
+
+.movie-card{
+    background:#1c1c1c;
+    border-radius:10px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.movie-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.movie-card p{
+    text-align:center;
+    padding:8px;
+    font-size:14px;
+}
+
+.movie-card:hover{
+    transform:scale(1.05);
+}
+
+/* Pagination Controls */
+.pagination-controls{
+    text-align:center;
+    margin:20px 0;
+}
+
+.pagination-controls button{
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    margin:5px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.pagination-controls button:disabled{
+    background:gray;
+    cursor:not-allowed;
+}
+
+#pageInfo{
+    color:white;
+    margin:0 10px;
+    font-weight:bold;
+    font-size:16px;
+}
+</style>
 </head>
 
 <body>
@@ -31,21 +91,17 @@ window.addEventListener('DOMContentLoaded',()=>{
     }
 });
 </script>
+
 <!-- ===== HEADER ===== -->
 <header class="hero-header">
-
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
     <div class="logo-container">
         <img src="https://i.ibb.co/5gCt9Lvd/Rashmika-Ofc.jpg" alt="Cinemax 3D Logo">
     </div>
-
 </header>
 
-<!-- Top Blue Line -->
 <div class="blue-line"></div>
 
-<!-- LATEST MOVIES TITLE -->
 <div class="latest-wrapper">
     <div class="latest-title">LATEST MOVIES</div>
 </div>
@@ -56,41 +112,35 @@ window.addEventListener('DOMContentLoaded',()=>{
   <div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- Bottom Blue Line -->
 <div class="blue-line"></div>
 
 <!-- ===== SIDEBAR ===== -->
 <div id="sidebar" class="sidebar">
-
     <div class="sidebar-search">
         <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
     </div>
 
-    <!-- Close Button -->
     <div class="close-btn" onclick="toggleMenu()">✕</div>
     
     <a href="index.html">✦ Home</a>
     <a href="dashboard.html">✦ Dashboard</a>
     <a href="contact.html">✦ Contact</a>
     <a href="dmca.html">✦ DMCA</a>
-    <!-- Problems Link -->
-<a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
+    <a href="javascript:void(0)" onclick="toggleProblems()">✦ Problems</a>
 
-<!-- Compact Problems Form -->
-<div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#222; border-radius:6px;">
-    <input type="text" id="pName" placeholder="Name" required>
-    <input type="text" id="pUser" placeholder="User" required>
-    <input type="email" id="pEmail" placeholder="Email" required>
-    <input type="text" id="pNumber" placeholder="Number" required>
-    <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
-    <button onclick="sendProblem()">Submit ✔️</button>
-</div>
+    <div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#222; border-radius:6px;">
+        <input type="text" id="pName" placeholder="Name" required>
+        <input type="text" id="pUser" placeholder="User" required>
+        <input type="email" id="pEmail" placeholder="Email" required>
+        <input type="text" id="pNumber" placeholder="Number" required>
+        <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
+        <button onclick="sendProblem()">Submit ✔️</button>
+    </div>
 </div>
 
-<!-- ===== MOVIE GRID SECTION ===== -->
+<!-- ===== MOVIE GRID + PAGINATION ===== -->
 <section class="container">
 
-    <!-- Ticker -->
     <div class="ticker">
         <div class="ticker-track">
             <span>
@@ -102,10 +152,8 @@ window.addEventListener('DOMContentLoaded',()=>{
         </div>
     </div>
 
-    <!-- Movie Grid -->
     <div id="movieList" class="movies-grid"></div>
 
-    <!-- Pagination Controls -->
     <div class="pagination-controls">
         <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
         <span id="pageInfo"></span>
@@ -113,30 +161,16 @@ window.addEventListener('DOMContentLoaded',()=>{
     </div>
 
 </section>
-    
-<!-- Social Media Section Start -->
+
+<!-- Social Media Section -->
 <div class="social-section">
-    <a href="#" class="social facebook" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" class="social twitter" target="_blank">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank">
-        <i class="fab fa-youtube"></i>
-    </a>
-    <a href="#" class="social instagram" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>    
-</a>
+    <a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>    
 </div>
 
-<!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- ===== FOOTER ===== -->
 <footer>
  © <span class="year">2026</span> Cinemax Downloads | Watch & Download 
   <span class="highlight">Sinhala Movies & Cartoons</span>
@@ -145,12 +179,61 @@ window.addEventListener('DOMContentLoaded',()=>{
 <!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
 
-<!-- ===== SIDEBAR TOGGLE ===== -->
 <script>
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
 </script>
 
-</body> 
+<!-- ===== PAGINATION LOGIC ===== -->
+<script>
+// Sample Movies Array (50 Movies)
+const movies = [];
+for(let i=1;i<=50;i++){
+    movies.push({
+        title: "Movie "+i,
+        image: "https://via.placeholder.com/300x450?text=Movie+"+i
+    });
+}
+
+let currentPage = 1;
+const moviesPerPage = 10;
+const totalPages = Math.ceil(movies.length/moviesPerPage);
+
+const movieList = document.getElementById("movieList");
+const pageInfo = document.getElementById("pageInfo");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function renderMovies(){
+    movieList.innerHTML = "";
+    let start = (currentPage-1)*moviesPerPage;
+    let end = start+moviesPerPage;
+    let pageMovies = movies.slice(start,end);
+
+    pageMovies.forEach(movie=>{
+        let card = document.createElement("div");
+        card.className = "movie-card";
+        card.innerHTML = `<img src="${movie.image}"><p>${movie.title}</p>`;
+        movieList.appendChild(card);
+    });
+
+    pageInfo.innerText = "Page "+currentPage+" of "+totalPages;
+
+    prevBtn.disabled = currentPage===1;
+    nextBtn.disabled = currentPage===totalPages;
+}
+
+function changePage(dir){
+    currentPage += dir;
+    if(currentPage<1) currentPage=1;
+    if(currentPage>totalPages) currentPage=totalPages;
+    renderMovies();
+}
+
+// Initial Render
+renderMovies();
+</script>
+
+</body>
 </html>
