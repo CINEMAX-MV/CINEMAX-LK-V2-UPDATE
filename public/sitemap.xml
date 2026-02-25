@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home Page -->
+  <url>
+    <loc>https://cinemaxlk.vercel.app/</loc>
+    <lastmod>2026-02-25</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Dashboard Page -->
+  <url>
+    <loc>https://cinemaxlk.vercel.app/dashboard.html</loc>
+    <lastmod>2026-02-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://cinemaxlk.vercel.app/contact.html</loc>
+    <lastmod>2026-02-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- DMCA Page -->
+  <url>
+    <loc>https://cinemaxlk.vercel.app/dmca.html</loc>
+    <lastmod>2026-02-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Verification Page -->
+  <url>
+    <loc>https://cinemaxlk.vercel.app/verification.html</loc>
+    <lastmod>2026-02-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
