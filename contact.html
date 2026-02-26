@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CINEMAX | Contact</title>
+<title>Tech Masters Academy | Contact</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -18,7 +18,7 @@
   scroll-behavior:smooth;
 }
 
-/* ===== CINEMATIC BACKGROUND WITH PARTICLES ===== */
+/* ===== BACKGROUND & PARTICLES ===== */
 body{
   font-family:'Poppins',sans-serif;
   color:#fff;
@@ -27,10 +27,9 @@ body{
   position:relative;
 }
 
-/* PARTICLES */
 .particle{
   position:absolute;
-  background:rgba(255,70,0,0.3);
+  background:rgba(0,255,255,0.2);
   border-radius:50%;
   pointer-events:none;
   animation:floatUp linear infinite;
@@ -42,8 +41,8 @@ body{
   100%{ transform: translateY(-100vh) scale(0.5);}
 }
 
-/* CINEMAX LOADING SCREEN */
-#cinemax-loader{
+/* ===== LOADER WITH ROBOT ANIMATION ===== */
+#loader{
   position:fixed;
   width:100%;
   height:100%;
@@ -57,11 +56,46 @@ body{
 
 .loader-logo{
   font-size:50px;
-  font-weight:700;
-  background: linear-gradient(90deg,#ff0000,#ff4f00,#ff00a6);
+  font-weight:800;
+  background: linear-gradient(90deg,#00f5ff,#7c3aed,#ff00c8);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   animation:glowLoader 1.5s infinite alternate;
+  text-transform:uppercase;
+  margin-bottom:40px;
+}
+
+/* Neon Robot */
+.robot{
+  width:60px;
+  height:60px;
+  border:3px solid #00f5ff;
+  border-radius:10px;
+  position:relative;
+  animation:robotMove 2s ease-in-out infinite alternate;
+}
+.robot::before{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:#ff00c8;
+  border-radius:50%;
+  top:10px;
+  left:50%;
+  transform:translateX(-50%);
+  animation:robotEye 0.8s infinite alternate;
+}
+
+@keyframes robotMove{
+  0%{ transform: translateY(0);}
+  50%{ transform: translateY(-15px);}
+  100%{ transform: translateY(0);}
+}
+@keyframes robotEye{
+  0%{ background:#ff00c8; }
+  50%{ background:#00f5ff; }
+  100%{ background:#ff00c8; }
 }
 
 .loader-bar{
@@ -77,15 +111,14 @@ body{
   display:block;
   height:100%;
   width:0%;
-  background:linear-gradient(90deg,#ff0000,#ff4f00,#ff00a6);
+  background:linear-gradient(90deg,#00f5ff,#7c3aed,#ff00c8);
   animation:loading 2.5s forwards;
 }
 
 @keyframes glowLoader{
-  from{ text-shadow:0 0 10px #ff0000; }
-  to{ text-shadow:0 0 25px #ff4f00; }
+  from{ text-shadow:0 0 10px #00f5ff,0 0 20px #7c3aed; }
+  to{ text-shadow:0 0 25px #ff00c8,0 0 40px #7c3aed; }
 }
-
 @keyframes loading{
   to{ width:100%; }
 }
@@ -104,10 +137,9 @@ body{
   z-index:10000;
   transition:0.3s;
 }
-
 .close-btn:hover{
-  background:linear-gradient(90deg,#ff0000,#ff4f00,#ff00a6);
-  box-shadow:0 0 15px #ff0000;
+  background:linear-gradient(90deg,#00f5ff,#7c3aed,#ff00c8);
+  box-shadow:0 0 15px #00f5ff;
 }
 
 /* HEADER */
@@ -115,7 +147,6 @@ header{
   padding:60px 0 40px 0;
   position:relative;
 }
-
 .typewriter{
   font-size:40px;
   font-weight:700;
@@ -125,23 +156,22 @@ header{
   padding-left:20px;
   min-height:55px;
 }
-
 #typing-text{
-  border-right:3px solid #ff0000;
+  border-right:3px solid #00f5ff;
   padding-right:5px;
-  background:linear-gradient(90deg,#ff0000,#ff4f00,#ff00a6);
+  background:linear-gradient(90deg,#00f5ff,#7c3aed,#ff00c8);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
 .sub-text{
   max-width:1200px;
   margin:auto;
   padding-left:22px;
   margin-top:10px;
-  color:#aaa;
+  color:#94a3b8;
 }
 
+/* TOGGLE MODE */
 .toggle-btn{
   position:absolute;
   top:20px;
@@ -157,13 +187,12 @@ header{
   padding:60px 20px;
 }
 
-/* TEAM */
+/* TEAM CARDS */
 .team{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
-
 .card{
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(25px);
@@ -173,30 +202,25 @@ header{
   transition:0.4s;
   border:1px solid rgba(255,255,255,0.1);
 }
-
 .card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 25px 50px rgba(255,0,76,0.4);
+  transform:translateY(-12px) scale(1.05);
+  box-shadow:0 25px 50px rgba(0,245,255,0.3);
 }
-
 .card img{
   width:100px;
   height:100px;
   border-radius:50%;
-  border:4px solid #ff0000;
+  border:4px solid #00f5ff;
   margin-bottom:20px;
   object-fit:cover;
 }
-
 .card h3{
   margin-bottom:5px;
 }
-
 .card span{
-  color:#ff4f00;
+  color:#7c3aed;
   font-size:13px;
 }
-
 .card p{
   font-size:13px;
   color:#bbb;
@@ -211,12 +235,10 @@ header{
   border-radius:20px;
   backdrop-filter:blur(25px);
 }
-
 .contact-form h3{
   margin-bottom:20px;
   text-align:center;
 }
-
 .contact-form input,
 .contact-form textarea{
   width:100%;
@@ -228,22 +250,20 @@ header{
   color:#fff;
   outline:none;
 }
-
 .contact-form button{
   width:100%;
   padding:12px;
   border:none;
   border-radius:30px;
-  background:linear-gradient(90deg,#ff0000,#ff4f00,#ff00a6);
+  background:linear-gradient(90deg,#00f5ff,#7c3aed,#ff00c8);
   color:#fff;
   font-weight:600;
   cursor:pointer;
   transition:0.3s;
 }
-
 .contact-form button:hover{
   transform:scale(1.05);
-  box-shadow:0 0 20px #ff0000;
+  box-shadow:0 0 20px #00f5ff;
 }
 
 /* FOOTER */
@@ -253,7 +273,6 @@ footer{
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(15px);
 }
-
 .footer-container{
   max-width:1200px;
   margin:auto;
@@ -261,12 +280,10 @@ footer{
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:40px;
 }
-
 .footer-col h4{
   margin-bottom:20px;
-  color:#ff0000;
+  color:#00f5ff;
 }
-
 .footer-col a{
   display:block;
   color:#aaa;
@@ -274,12 +291,10 @@ footer{
   margin-bottom:10px;
   transition:0.3s;
 }
-
 .footer-col a:hover{
   color:#fff;
   transform:translateX(5px);
 }
-
 .footer-bottom{
   margin-top:40px;
   text-align:center;
@@ -294,13 +309,11 @@ footer{
   background:#f5f5f5;
   color:#111;
 }
-
 .light-mode .card,
 .light-mode .contact-form{
   background:#fff;
   color:#111;
 }
-
 .light-mode footer{
   background:#eee;
   color:#111;
@@ -308,7 +321,6 @@ footer{
 
 </style>
 </head>
-
 <body>
 
 <!-- PARTICLES -->
@@ -325,9 +337,10 @@ for(let i=0;i<40;i++){
 }
 </script>
 
-<!-- CINEMAX LOADER -->
-<div id="cinemax-loader">
-  <div class="loader-logo">CINEMAX</div>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">TECH MASTERS</div>
+  <div class="robot"></div>
   <div class="loader-bar"><span></span></div>
 </div>
 
@@ -345,37 +358,32 @@ for(let i=0;i<40;i++){
     <span id="typing-text"></span>
   </h1>
 
-  <p class="sub-text">Meet The Core Team Behind CINEMAX</p>
+  <p class="sub-text">Meet The Core Team Behind Tech Masters Academy</p>
 </header>
 
 <div class="container">
-
   <div class="team">
     <div class="card">
       <img src="https://i.ibb.co/Qj391RWm/RD393437353638333237343640732e77686174736170702e6e6574-825959.jpg">
       <h3>Peksha Rasanjana</h3>
       <span>Owner & Founder</span>
-      <p>Main creator and manager of CINEMAX platform.</p>
+      <p>Main creator and manager of Tech Masters Academy platform.</p>
     </div>
-
     <div class="card">
       <img src="https://i.ibb.co/4RpRtj6X/RD393437353638333237343640732e77686174736170702e6e6574-903427.jpg">
       <h3>Yasiru Dasantha</h3>
       <span>Design & Developer</span>
       <p>UI design & full system development.</p>
     </div>
-
     <div class="card">
       <img src="https://files.catbox.moe/22ox7i.jpg">
-      <h3>Sulakshana abiman
-</h3>
+      <h3>Sulakshana Abiman</h3>
       <span>Content Manager</span>
       <p>Movie details, posters and testing.</p>
     </div>
-
     <div class="card">
       <img src="https://files.catbox.moe/qgk8of.jpg">
-      <h3>Hansaka dissanayaka</h3>
+      <h3>Hansaka Dissanayaka</h3>
       <span>Technical Support</span>
       <p>System support and maintenance.</p>
     </div>
@@ -388,26 +396,23 @@ for(let i=0;i<40;i++){
     <textarea rows="4" placeholder="Your Message"></textarea>
     <button>Send Message</button>
   </div>
-
 </div>
 
 <footer>
   <div class="footer-container">
     <div class="footer-col">
-      <h4>CINEMAX</h4>
+      <h4>Tech Masters</h4>
       <a href="index.html">Home</a>
-      <a href="#">Movies</a>
-      <a href="#">TV Series</a>
+      <a href="#">Courses</a>
+      <a href="#">Team</a>
       <a href="contact.html">Contact</a>
     </div>
-
     <div class="footer-col">
       <h4>Support</h4>
       <a href="#">Help Center</a>
-      <a href="#">Movie Requests</a>
+      <a href="#">Requests</a>
       <a href="dcma.html">Report Issue</a>
     </div>
-
     <div class="footer-col">
       <h4>Follow Us</h4>
       <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
@@ -415,9 +420,8 @@ for(let i=0;i<40;i++){
       <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
     </div>
   </div>
-
   <div class="footer-bottom">
-    © 2026 CINEMAX Movies • Ultra Pro Edition
+    © 2026 Tech Masters Academy • Ultra Pro Edition
   </div>
 </footer>
 
@@ -426,11 +430,10 @@ function toggleMode(){
   document.body.classList.toggle("light-mode");
 }
 
-/* TYPEWRITER SLOW AFTER LOADER */
-const text = "CINEMAX MAIN ADMINS";
+/* TYPEWRITER */
+const text = "TECH MASTERS MAIN ADMINS";
 let index = 0;
-const speed = 180; // slower typing
-
+const speed = 180;
 function typeEffect(){
   if(index < text.length){
     document.getElementById("typing-text").innerHTML += text.charAt(index);
@@ -439,11 +442,11 @@ function typeEffect(){
   }
 }
 
-/* LOADER + START TYPE AFTER HIDE */
+/* LOADER + TYPE AFTER */
 window.addEventListener("load", function(){
   setTimeout(function(){
-    document.getElementById("cinemax-loader").style.display="none";
-    typeEffect(); // start typewriter after loader hides
+    document.getElementById("loader").style.display="none";
+    typeEffect();
   },2500);
 });
 
