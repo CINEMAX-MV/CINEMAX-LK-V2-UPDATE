@@ -930,3 +930,13 @@ footer{
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* Space between blue line and TV cards */
+.latest-series .movie-grid {
+  margin-top: 15px;   /* distance from blue line */
+}
+
+/* Optional – heading එකටත් space එකක් */
+.latest-title {
+  margin-bottom: 10px;
+}
