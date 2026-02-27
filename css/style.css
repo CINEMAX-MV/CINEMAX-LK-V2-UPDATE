@@ -940,3 +940,9 @@ footer{
 .latest-title {
   margin-bottom: 10px;
 }
+
+.blue-line {
+  height: 2px;
+  background: #00bfff;
+  margin: 15px 0;
+}
