@@ -965,3 +965,30 @@ footer{
 .latest-series .movie-grid {
   margin-top: 22px;
 }
+
+/* Make ALL blue-line full screen */
+.blue-line {
+  height: 3px;
+  background: #00bfff;
+
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* Fix title alignment */
+.latest-title {
+  margin: 5px 0;
+  padding-left: 0;
+  margin-left: 10px;   /* equal spacing */
+  text-align: left;
+}
+
+/* Gap under line */
+.latest-series .movie-grid {
+  margin-top: 22px;
+}
