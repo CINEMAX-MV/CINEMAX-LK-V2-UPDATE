@@ -151,7 +151,6 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 <!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
-
 <!-- ===== SIDEBAR TOGGLE ===== -->
 <script>
 function toggleMenu() {
@@ -159,5 +158,14 @@ function toggleMenu() {
 }
 </script>
 
-</body> 
+<!-- LOAD TV SERIES SECTION -->
+<script>
+fetch("series-section.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("series-container").innerHTML = data;
+  });
+</script>
+
+</body>
 </html>
