@@ -1,0 +1,46 @@
+<script>
+
+const seriesData = {
+
+  moneyheist: {
+    title: "Money Heist (2017)",
+    episodes: [
+      { number: 1, link: "downloads/mh-ep1.mp4" },
+      { number: 2, link: "downloads/mh-ep2.mp4" },
+      { number: 3, link: "downloads/mh-ep3.mp4" }
+    ]
+  },
+
+  breakingbad: {
+    title: "Breaking Bad (2008)",
+    episodes: [
+      { number: 1, link: "downloads/bb-ep1.mp4" },
+      { number: 2, link: "downloads/bb-ep2.mp4" },
+      { number: 3, link: "downloads/bb-ep3.mp4" }
+    ]
+  }
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const show = params.get("show");
+
+if(seriesData[show]){
+  document.getElementById("seriesTitle").innerText = seriesData[show].title;
+
+  let html = '<div class="episode-grid">';
+
+  seriesData[show].episodes.forEach(ep=>{
+    html += `
+      <a href="${ep.link}" download class="episode-box">
+        EP ${ep.number}
+      </a>
+    `;
+  });
+
+  html += '</div>';
+
+  document.getElementById("episodeContainer").innerHTML = html;
+}
+
+</script>
