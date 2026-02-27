@@ -1,8 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TV Series</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background:#000; color:#fff;">
+
+<h1 id="seriesTitle"></h1>
+<div class="blue-line"></div>
+
+<div id="episodeContainer"></div>
+
 <script>
-
 const seriesData = {
-
-  Longweekend: {
+  longweekend: {
     title: "Long Weekend (2024)",
     episodes: [
       { number: 1, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59901/Long.Weekend.WebDL.%40sinhalaaaa.S1E1.mp4?hash=AgADmR" },
@@ -12,7 +24,6 @@ const seriesData = {
       { number: 5, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59907/Long.Weekend.WebDL.%40sinhalaaaa.S1E5.mp4?hash=AgADoB" }
     ]
   },
-
   breakingbad: {
     title: "Breaking Bad (2008)",
     episodes: [
@@ -21,28 +32,29 @@ const seriesData = {
       { number: 3, link: "downloads/bb-ep3.mp4" }
     ]
   }
-
 };
 
 const params = new URLSearchParams(window.location.search);
-const show = params.get("show");
+const show = params.get("show")?.toLowerCase(); // lowercase fix
 
 if(seriesData[show]){
   document.getElementById("seriesTitle").innerText = seriesData[show].title;
 
   let html = '<div class="episode-grid">';
-
   seriesData[show].episodes.forEach(ep=>{
     html += `
-      <a href="${ep.link}" download class="episode-box">
+      <a href="${ep.link}" class="episode-box">
         EP ${ep.number}
       </a>
     `;
   });
-
   html += '</div>';
 
   document.getElementById("episodeContainer").innerHTML = html;
+} else {
+  document.getElementById("seriesTitle").innerText = "Series Not Found";
 }
-
 </script>
+
+</body>
+</html>
