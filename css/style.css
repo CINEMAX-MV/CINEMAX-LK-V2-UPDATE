@@ -940,3 +940,18 @@ footer{
 .latest-title {
   margin-bottom: 10px;
 }
+
+/* ===============================
+   FULL WIDTH BLUE LINE
+=============================== */
+
+.blue-line {
+  height: 3px;
+  background: linear-gradient(90deg, #00bfff, #00e5ff);
+  
+  width: 100vw;              /* full screen width */
+  margin-left: calc(-50vw + 50%);  /* center full width */
+  
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
