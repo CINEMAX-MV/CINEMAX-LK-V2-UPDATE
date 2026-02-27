@@ -956,3 +956,16 @@ footer{
   margin-bottom: 15px;
 }
 
+.section-title {
+  text-align: left;
+  margin-left: 20px;   /* කැමති තරමට අඩු/වැඩි කරගන්න */
+}
+
+.section-title {
+  display: inline-block;
+  text-align: left;
+  margin-left: 20px;
+  padding-bottom: 5px;
+  border-top: 2px solid #00c3ff;
+  border-bottom: 2px solid #00c3ff;
+}
