@@ -931,30 +931,3 @@ footer{
   }
 }
 
-/* ===============================
-   SECTION TITLE + FIT BLUE LINES
-=============================== */
-
-.latest-title {
-  display: inline-block;        /* line එක text width එකට ගන්න */
-  font-size: 22px;
-  font-weight: bold;
-  color: #00c3ff;
-
-  margin-left: 20px;            /* left align */
-  margin-bottom: 15px;
-  padding: 8px 15px;            /* line length control */
-
-  border-top: 3px solid #00c3ff;
-  border-bottom: 3px solid #00c3ff;
-}
-
-/* Space between title and cards */
-.latest-series .movie-grid {
-  margin-top: 15px;
-}
-
-/* Remove old full width blue line */
-.blue-line {
-  display: none;
-}
