@@ -956,23 +956,3 @@ footer{
   margin-bottom: 15px;
 }
 
-/* Divider layout */
-.section-divider {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-/* Title center */
-.latest-title {
-  color: #fff;
-  font-size: 20px;
-  margin: 5mm 0;   /* 5mm gap top & bottom */
-  letter-spacing: 2px;
-}
-
-/* Full width blue line */
-.blue-line {
-  height: 3px;
-  background: linear-gradient(90deg, #00bfff, #00e5ff);
-  width: 100%;
-}
