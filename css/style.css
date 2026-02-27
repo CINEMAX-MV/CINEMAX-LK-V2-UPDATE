@@ -852,3 +852,28 @@ footer{
   color:white;
   display:block;
 }
+
+.episode-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
+  gap:15px;
+  margin:30px;
+}
+
+.episode-box{
+  background:#111;
+  padding:20px;
+  text-align:center;
+  border-radius:10px;
+  text-decoration:none;
+  color:#00bfff;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 0 10px rgba(0,191,255,0.3);
+}
+
+.episode-box:hover{
+  background:#00bfff;
+  color:#000;
+  transform:scale(1.05);
+}
