@@ -931,28 +931,30 @@ footer{
   }
 }
 
-/* Space between blue line and TV cards */
-.latest-series .movie-grid {
-  margin-top: 15px;   /* distance from blue line */
-}
-
-/* Optional – heading එකටත් space එකක් */
-.latest-title {
-  margin-bottom: 20px;
-}
-
 /* ===============================
-   FULL WIDTH BLUE LINE
+   SECTION TITLE + FIT BLUE LINES
 =============================== */
 
-.blue-line {
-  height: 3px;
-  background: linear-gradient(90deg, #00bfff, #00e5ff);
-  
-  width: 100vw;              /* full screen width */
-  margin-left: calc(-50vw + 50%);  /* center full width */
-  
-  margin-top: 15px;
+.latest-title {
+  display: inline-block;        /* line එක text width එකට ගන්න */
+  font-size: 22px;
+  font-weight: bold;
+  color: #00c3ff;
+
+  margin-left: 20px;            /* left align */
   margin-bottom: 15px;
+  padding: 8px 15px;            /* line length control */
+
+  border-top: 3px solid #00c3ff;
+  border-bottom: 3px solid #00c3ff;
 }
 
+/* Space between title and cards */
+.latest-series .movie-grid {
+  margin-top: 15px;
+}
+
+/* Remove old full width blue line */
+.blue-line {
+  display: none;
+}
