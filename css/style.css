@@ -931,3 +931,28 @@ footer{
   }
 }
 
+/* ===== Latest TV Series Section Fix ===== */
+
+.latest-tv {
+  width: 100%;
+  padding-top: 10px;
+}
+
+/* Title */
+.latest-tv h2 {
+  margin-bottom: 4px;   /* Blue lines title එකට ලං */
+  padding-left: 10px;
+}
+
+/* Blue Lines (Top & Bottom) */
+.latest-tv .blue-line {
+  width: 100%;          /* Screen Full */
+  height: 3px;
+  background: #00bfff;
+  margin: 4px 0;        /* Lines දෙක ලං වෙන්න */
+}
+
+/* TV Cards Container */
+.latest-tv .tv-container {
+  margin-top: 18px;     /* Cards blue line එකෙන් ඈත් */
+}
