@@ -846,3 +846,9 @@ footer{
 .blue-line{
     margin-top:30px;
 }
+
+.latest-series .movie-card{
+  text-decoration:none;
+  color:white;
+  display:block;
+}
