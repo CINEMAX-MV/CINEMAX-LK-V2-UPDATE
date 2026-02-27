@@ -931,25 +931,3 @@ footer{
   }
 }
 
-/* ===== Latest TV Series FIX ===== */
-
-/* Title */
-h2 {
-  margin-bottom: 5px;
-}
-
-/* Blue lines full width */
-hr {
-  width: 100%;
-  height: 3px;
-  background: #00bfff;
-  border: none;
-  margin: 4px 0;
-}
-
-/* Cards container gap */
-.tv-series-container,
-.latest-tv-series,
-.tv-container {
-  margin-top: 20px !important;
-}
