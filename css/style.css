@@ -879,22 +879,20 @@ footer{
 }
 
 /* ===============================
-   📺 TV SERIES SECTION FIXED
+   📺 TV SERIES GRID (2 Columns)
 =============================== */
 
 .latest-series {
   padding: 10px;
 }
 
-/* Same size as Movies */
-.latest-series .movie-grid {
+.movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
-  margin-top: 20px; /* gap under blue line */
+  grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+  gap: 12px;
 }
 
-/* Keep existing card style */
+/* Card Style */
 .movie-card {
   background: #111;
   border-radius: 12px;
@@ -911,7 +909,7 @@ footer{
 
 .movie-card img {
   width: 100%;
-  height: 260px;   /* 🔥 Same height feel as movies */
+  height: 150px;
   object-fit: cover;
 }
 
@@ -924,4 +922,31 @@ footer{
 .movie-card h3 {
   font-size: 14px;
   margin: 4px 8px 10px;
+}
+
+/* Desktop view - 4 columns (optional) */
+@media (min-width: 768px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===== FULL WIDTH BLUE LINE (both sections same) ===== */
+.blue-line {
+  height: 3px;
+  background: #00bfff;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* ===== Section Title (Movies & TV Same) ===== */
+.latest-title {
+  margin: 10px 0;
+  text-align: center;   /* same as movies */
+  font-size: 35px;
+  letter-spacing: 1px;
 }
