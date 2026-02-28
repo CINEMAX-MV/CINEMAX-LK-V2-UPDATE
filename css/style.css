@@ -951,44 +951,27 @@ footer{
   letter-spacing: 1px;
 }
 
-/* ============================= */
-/* Common Section Styling */
-/* ============================= */
-
-.section-title {
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;   /* 5mm approx space */
-    color: #00eaff;
-}
-
-/* ============================= */
-/* Movies & TV Series Grid */
-/* ============================= */
+/* ===== Movies & TV Series Same Poster Size ===== */
 
 .movies-container,
 .tv-series-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
 }
 
-/* ============================= */
-/* Card Styling (Same Size) */
-/* ============================= */
-
+/* Same card size */
 .movie-card,
 .series-card {
-    width: 220px;      /* Same width */
-    height: 320px;     /* Same height */
+    width: 200px;          /* Movies poster width */
+    aspect-ratio: 2 / 3;   /* Perfect movie poster ratio */
     background: #111;
     border-radius: 12px;
     overflow: hidden;
     transition: 0.3s ease;
 }
 
+/* Image fit properly */
 .movie-card img,
 .series-card img {
     width: 100%;
@@ -996,7 +979,17 @@ footer{
     object-fit: cover;
 }
 
+/* Hover effect */
 .movie-card:hover,
 .series-card:hover {
     transform: scale(1.05);
+}
+
+/* Title spacing (5mm ≈ 20px) */
+.latest-tv-series {
+    margin-top: 20px;
+}
+
+.latest-tv-series h2 {
+    margin-bottom: 20px;
 }
