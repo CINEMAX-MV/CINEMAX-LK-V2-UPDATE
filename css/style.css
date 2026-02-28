@@ -931,64 +931,22 @@ footer{
   }
 }
 
-/* ===== FORCE FULL WIDTH BLUE LINES ===== */
-
-.latest-series {
-  position: relative;
-  padding-top: 10px;
-}
-
-/* FULL SCREEN BLUE LINES (edge to edge) */
-.latest-series .blue-line {
-  height: 3px;
-  background: #00bfff;
-
-  width: 100vw;              /* full screen width */
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;        /* center break */
-  margin-right: -50vw;
-
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-/* Title more left */
-.latest-title {
-  margin: 5px 0;
-  padding-left: 3px;   /* 3mm වගේ effect */
-  text-align: left;
-}
-
-/* Cards gap from blue line */
-.latest-series .movie-grid {
-  margin-top: 22px;
-}
-
-/* Make ALL blue-line full screen */
+/* ===== FULL WIDTH BLUE LINE (both sections same) ===== */
 .blue-line {
   height: 3px;
   background: #00bfff;
-
   width: 100vw;
   position: relative;
   left: 50%;
   margin-left: -50vw;
-
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
-/* Fix title alignment */
+/* ===== Section Title (Movies & TV Same) ===== */
 .latest-title {
-  margin: 5px 0;
-  padding-left: 0;
-  margin-left: 20px;   /* equal spacing */
-  text-align: left;
-}
-
-/* Gap under line */
-.latest-series .movie-grid {
-  margin-top: 22px;
+  margin: 10px 0;
+  text-align: center;   /* same as movies */
+  font-size: 22px;
+  letter-spacing: 1px;
 }
