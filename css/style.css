@@ -931,22 +931,31 @@ footer{
   }
 }
 
-/* ===== FULL WIDTH BLUE LINE (both sections same) ===== */
+/* ===== Section Wrapper ===== */
+.section-header {
+  margin: 30px 0;
+}
+
+/* ===== Full Width Blue Line ===== */
 .blue-line {
   height: 3px;
   background: #00bfff;
+
   width: 100vw;
   position: relative;
   left: 50%;
   margin-left: -50vw;
-  margin-top: 6px;
-  margin-bottom: 6px;
 }
 
-/* ===== Section Title (Movies & TV Same) ===== */
+/* ===== Title Style ===== */
 .latest-title {
-  margin: 10px 0;
-  text-align: center;   /* same as movies */
   font-size: 22px;
   letter-spacing: 1px;
+  font-weight: bold;
+
+  text-align: left;        /* LEFT SIDE */
+  padding-left: 20px;      /* same spacing as 2nd photo */
+
+  margin-top: 14px;        /* space from top line */
+  margin-bottom: 14px;     /* space from bottom line */
 }
