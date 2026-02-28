@@ -951,3 +951,71 @@ footer{
   letter-spacing: 1px;
 }
 
+/* ===== FORCE DESKTOP WIDTH ===== */
+
+html, body {
+    width: 100%;
+    overflow-x: auto;   /* allow horizontal scroll */
+}
+
+.container {
+    width: 1200px;
+    margin: auto;
+}
+
+/* ===== MOVIES GRID (DESKTOP STYLE) ===== */
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* Desktop 5 per row */
+    gap: 20px;
+}
+
+/* Movie Poster */
+.movie-card {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+}
+
+.movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== TV SERIES SAME SIZE ===== */
+
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.series-card {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+}
+
+.series-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 🚫 DISABLE ALL MOBILE RESPONSIVE */
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+
+    .movies-grid,
+    .series-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
