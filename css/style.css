@@ -915,12 +915,10 @@ footer{
   }
 }
 
-/* ===== Section Wrapper ===== */
 .section-header {
   margin: 40px 0 25px 0;
 }
 
-/* ===== Full Width Blue Line ===== */
 .blue-line {
   height: 4px;
   background: #00a8ff;
@@ -932,7 +930,6 @@ footer{
   margin-left: -50vw;
 }
 
-/* ===== Title Between Blue Lines ===== */
 .latest-title {
   font-size: 26px;
   font-weight: bold;
@@ -941,14 +938,12 @@ footer{
   text-align: left;
   padding-left: 20px;
 
-  margin: 18px 0;   /* 🔥 perfectly center between lines */
+  margin: 18px 0;
 
   animation: rainbowText 5s linear infinite;
 }
 
-/* ===== Gap Under Bottom Blue Line ===== */
-.section-header + .container,
-.section-header + .latest-series,
-.section-header + .movie-grid {
-  margin-top: 25px;   /* 🔥 movies line එකට ඇලෙන්නෙ නැහැ */
+/* movies gap under bottom line */
+.movie-grid {
+  margin-top: 25px;
 }
