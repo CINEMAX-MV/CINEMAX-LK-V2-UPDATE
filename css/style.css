@@ -453,13 +453,6 @@ footer{
     background-color: #003f7f; /* darker blue on hover */
 }
 
-.latest-title {
-    font-size: 26px;
-    font-weight: bold;
-    text-align: left; /* left corner */
-    color: red; /* starting color */
-    animation: rainbowText 5s infinite;
-}
 
 @keyframes rainbowText {
     0%   { color: #ff0000; } /* red */
