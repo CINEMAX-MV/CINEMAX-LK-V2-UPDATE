@@ -917,13 +917,14 @@ footer{
 
 /* ===== Section Wrapper ===== */
 .section-header {
-  margin: 30px 0;
+  margin: 40px 0 25px 0;
 }
 
 /* ===== Full Width Blue Line ===== */
 .blue-line {
-  height: 3px;
-  background: #00bfff;
+  height: 4px;
+  background: #00a8ff;
+  box-shadow: 0 0 15px #00a8ff;
 
   width: 100vw;
   position: relative;
@@ -931,15 +932,23 @@ footer{
   margin-left: -50vw;
 }
 
-/* ===== Title Style ===== */
+/* ===== Title Between Blue Lines ===== */
 .latest-title {
-  font-size: 22px;
-  letter-spacing: 1px;
+  font-size: 26px;
   font-weight: bold;
+  letter-spacing: 2px;
 
-  text-align: left;        /* LEFT SIDE */
-  padding-left: 20px;      /* same spacing as 2nd photo */
+  text-align: left;
+  padding-left: 20px;
 
-  margin-top: 14px;        /* space from top line */
-  margin-bottom: 14px;     /* space from bottom line */
-      }
+  margin: 18px 0;   /* 🔥 perfectly center between lines */
+
+  animation: rainbowText 5s linear infinite;
+}
+
+/* ===== Gap Under Bottom Blue Line ===== */
+.section-header + .container,
+.section-header + .latest-series,
+.section-header + .movie-grid {
+  margin-top: 25px;   /* 🔥 movies line එකට ඇලෙන්නෙ නැහැ */
+}
