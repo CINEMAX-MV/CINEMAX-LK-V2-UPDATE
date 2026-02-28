@@ -31,23 +31,7 @@ body{
     border-radius:10px;
 }
 
-/* ===== BLUE LINE STYLE ===== */
-.blue-line{
-    height:4px;
-    background:#00a8ff;
-    box-shadow:0 0 20px #00a8ff;
-}
 
-/* ===== LATEST TITLE BETWEEN LINES ===== */
-.latest-title{
-    padding:18px 20px;   /* ≈ 5mm look */
-    font-size:26px;
-    font-weight:bold;
-    color:#00a8ff;
-    text-align:left;
-    letter-spacing:2px;
-    text-shadow:0 0 10px #00a8ff;
-}
 
 /* ===== SIDEBAR ===== */
 .sidebar{
@@ -453,6 +437,13 @@ footer{
     background-color: #003f7f; /* darker blue on hover */
 }
 
+.latest-title {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: left; /* left corner */
+    color: red; /* starting color */
+    animation: rainbowText 5s infinite;
+}
 
 @keyframes rainbowText {
     0%   { color: #ff0000; } /* red */
@@ -951,4 +942,4 @@ footer{
 
   margin-top: 14px;        /* space from top line */
   margin-bottom: 14px;     /* space from bottom line */
-}
+      }
