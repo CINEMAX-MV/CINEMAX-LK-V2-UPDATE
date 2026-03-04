@@ -7,7 +7,6 @@
 
 <style>
 
-/* ===== GLOBAL ===== */
 body{
 margin:0;
 font-family:'Segoe UI',Arial,sans-serif;
@@ -15,7 +14,6 @@ background:linear-gradient(to bottom,#0a0a0a,#111);
 color:#fff;
 }
 
-/* ===== CONTAINER ===== */
 .container{
 width:1000px;
 margin:40px auto;
@@ -26,7 +24,7 @@ border-radius:20px;
 box-shadow:0 0 40px rgba(255,60,0,0.15);
 }
 
-/* ===== HERO POSTER ===== */
+/* HERO */
 .hero{
 height:520px;
 border-radius:25px;
@@ -60,11 +58,7 @@ text-shadow:0 0 25px rgba(255,123,0,0.6);
 margin:0;
 }
 
-/* ===== EPISODES ===== */
-.episode-list{
-margin-top:20px;
-}
-
+/* EPISODES */
 .episode-item{
 display:flex;
 justify-content:space-between;
@@ -76,52 +70,18 @@ border-radius:16px;
 text-decoration:none;
 color:#fff;
 border:1px solid #222;
-transition:all 0.35s ease;
-position:relative;
-overflow:hidden;
-}
-
-.episode-item::before{
-content:"";
-position:absolute;
-left:0;
-top:0;
-height:100%;
-width:6px;
-background:#ff3c00;
-transition:0.3s;
+transition:0.35s;
 }
 
 .episode-item:hover{
-transform:translateX(10px) scale(1.03);
+transform:translateX(10px);
 box-shadow:0 15px 40px rgba(255,60,0,0.45);
 border:1px solid #ff3c00;
-}
-
-.episode-item:hover::before{
-width:10px;
-}
-
-.ep-left{
-display:flex;
-flex-direction:column;
-}
-
-.ep-title{
-font-size:18px;
-font-weight:600;
 }
 
 .ep-meta{
 font-size:13px;
 color:#aaa;
-margin-top:5px;
-}
-
-.ep-right{
-display:flex;
-align-items:center;
-gap:10px;
 }
 
 .badge{
@@ -138,9 +98,7 @@ padding:7px 18px;
 border-radius:30px;
 font-size:12px;
 text-transform:uppercase;
-letter-spacing:1px;
 border:1px solid #333;
-transition:0.3s;
 }
 
 .episode-item:hover .watch-btn{
@@ -149,24 +107,16 @@ color:#000;
 font-weight:bold;
 }
 
-/* ===== ANNOUNCEMENT ===== */
+/* ANNOUNCEMENT */
 .announcement{
-margin-top:70px;
-background:linear-gradient(145deg,#111,#1a1a1a);
-padding:30px;
+margin-top:60px;
+background:#111;
+padding:25px;
 border-left:6px solid red;
 border-radius:15px;
 color:#ffcc00;
-line-height:1.8;
-box-shadow:0 0 25px rgba(255,0,0,0.2);
 }
 
-.announcement h3{
-color:#ff3c00;
-margin-top:0;
-}
-
-/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
 .container{width:95%;}
 .hero{height:300px;}
@@ -190,7 +140,6 @@ margin-top:0;
 <div class="announcement">
 <h3>📢 ANNOUNCEMENT</h3>
 WhatsApp Package භාවිතා කරන අයට Google Drive Links open නොවෙන්න පුළුවන්.  
-User Bot භාවිතා කරන අයට download limit විය හැක.  
 Limit exceed වුනොත් ටික වෙලාවක් පස්සේ try කරන්න.
 </div>
 
@@ -202,6 +151,7 @@ const seriesData = {
 
 longweekend: {
 title: "Long Weekend (2024)",
+poster: "https://i.ibb.co/q3VNRSN6/IMG-20260227-222504-207.webp",
 episodes: [
 { number:1, duration:"45m", size:"1.2GB", quality:"720p", link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59901/Long.Weekend.WebDL.%40sinhalaaaa.S1E1.mp4?hash=AgADmR"},
 { number:2, duration:"47m", size:"1.3GB", quality:"720p", link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59903/Long.Weekend.WebDL.%40sinhalaaaa.S1E2.mp4?hash=AgADmx"},
@@ -213,6 +163,7 @@ episodes: [
 
 mahavanara: {
 title: "Maha Vanara (2024)",
+poster: "https://i.ibb.co/Q74prD3g/IMG-20260304-090419-550.webp",
 episodes: [
 { number:1, duration:"42m", size:"1.1GB", quality:"720p", link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67068/..."},
 { number:2, duration:"44m", size:"1.2GB", quality:"720p", link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67065/..."},
@@ -230,6 +181,7 @@ episodes: [
 }
 
 };
+
 const params = new URLSearchParams(window.location.search);
 const show = params.get("show")?.toLowerCase();
 
@@ -242,22 +194,21 @@ document.getElementById("seriesTitle").innerText = data.title;
 document.querySelector(".hero").style.backgroundImage =
 `url('${data.poster}')`;
 
-let html='<div class="episode-list">';
+let html='';
 data.episodes.forEach(ep=>{
 html+=`
 <a href="${ep.link}" target="_blank" class="episode-item">
-<div class="ep-left">
-<div class="ep-title">Episode ${ep.number}</div>
+<div>
+<b>Episode ${ep.number}</b>
 <div class="ep-meta">${ep.duration} • ${ep.size}</div>
 </div>
-<div class="ep-right">
-<div class="badge">${ep.quality}</div>
-<div class="watch-btn">Watch</div>
+<div>
+<span class="badge">${ep.quality}</span>
+<span class="watch-btn">Watch</span>
 </div>
 </a>
 `;
 });
-html+='</div>';
 
 document.getElementById("episodeContainer").innerHTML=html;
 
