@@ -8,7 +8,6 @@
 <style>
 
 /* ===== GLOBAL ===== */
-
 body{
 margin:0;
 font-family:'Segoe UI',Arial,sans-serif;
@@ -16,7 +15,7 @@ background:linear-gradient(to bottom,#0a0a0a,#111);
 color:#fff;
 }
 
-/* Glass Container */
+/* ===== CONTAINER ===== */
 .container{
 width:1000px;
 margin:40px auto;
@@ -27,57 +26,43 @@ border-radius:20px;
 box-shadow:0 0 40px rgba(255,60,0,0.15);
 }
 
-/* ===== TITLE ===== */
-
-#seriesTitle{
-font-size:38px;
-font-weight:700;
-color:#ff7b00;
-margin-bottom:10px;
-text-shadow:0 0 15px rgba(255,123,0,0.4);
+/* ===== HERO POSTER ===== */
+.hero{
+height:520px;
+border-radius:25px;
+background-size:cover;
+background-position:center;
+position:relative;
+overflow:hidden;
+box-shadow:0 0 50px rgba(255,60,0,0.3);
+margin-bottom:40px;
 }
 
-.orange-line{
-height:4px;
-width:200px;
-background:linear-gradient(to right,#ff3c00,#ff7b00);
-border-radius:50px;
-margin-bottom:35px;
-}
-
-/* ===== TRAILER ===== */
-
-.trailer iframe{
+.hero::before{
+content:"";
+position:absolute;
 width:100%;
-height:500px;
-border-radius:18px;
-border:2px solid #222;
-box-shadow:0 0 35px rgba(255,60,0,0.4);
+height:100%;
+background:linear-gradient(to top,rgba(0,0,0,0.9),rgba(0,0,0,0.3));
 }
 
-/* ===== SOCIAL ===== */
-
-.social-icons{
-margin:25px 0;
+.hero-overlay{
+position:absolute;
+bottom:40px;
+left:40px;
+z-index:2;
 }
 
-.social-icons a{
-display:inline-block;
-margin-right:18px;
-font-size:26px;
-text-decoration:none;
-transition:0.3s;
-}
-
-.social-icons a:hover{
-transform:scale(1.3);
-filter:brightness(1.5);
+.hero-overlay h1{
+font-size:42px;
+color:#ff7b00;
+text-shadow:0 0 25px rgba(255,123,0,0.6);
+margin:0;
 }
 
 /* ===== EPISODES ===== */
-
 .episode-list{
-margin-top:45px;
+margin-top:20px;
 }
 
 .episode-item{
@@ -165,7 +150,6 @@ font-weight:bold;
 }
 
 /* ===== ANNOUNCEMENT ===== */
-
 .announcement{
 margin-top:70px;
 background:linear-gradient(145deg,#111,#1a1a1a);
@@ -183,10 +167,9 @@ margin-top:0;
 }
 
 /* ===== RESPONSIVE ===== */
-
 @media(max-width:768px){
 .container{width:95%;}
-.trailer iframe{height:250px;}
+.hero{height:300px;}
 }
 
 </style>
@@ -196,18 +179,10 @@ margin-top:0;
 
 <div class="container">
 
-<h1 id="seriesTitle"></h1>
-<div class="orange-line"></div>
-
-<div class="trailer">
-<iframe id="trailerFrame" src="" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="social-icons">
-<a href="#" style="color:#3b5998;">📘</a>
-<a href="#" style="color:#25D366;">🟢</a>
-<a href="#" style="color:#1DA1F2;">🐦</a>
-<a href="#" style="color:#ff00ff;">🔗</a>
+<div class="hero">
+  <div class="hero-overlay">
+    <h1 id="seriesTitle"></h1>
+  </div>
 </div>
 
 <div id="episodeContainer"></div>
@@ -222,8 +197,6 @@ Limit exceed වුනොත් ටික වෙලාවක් පස්සේ 
 </div>
 
 <script>
-
-const API_KEY = "YOUR_YOUTUBE_API_KEY";
 
 const seriesData = {
 
@@ -257,29 +230,20 @@ episodes: [
 }
 
 };
-
 const params = new URLSearchParams(window.location.search);
 const show = params.get("show")?.toLowerCase();
 
 if(seriesData[show]){
 
-const title = seriesData[show].title;
-document.getElementById("seriesTitle").innerText = title;
+const data = seriesData[show];
 
-/* Auto Trailer */
-fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${title} official trailer&type=video&maxResults=1&key=${API_KEY}`)
-.then(res=>res.json())
-.then(data=>{
-if(data.items && data.items.length>0){
-const videoId = data.items[0].id.videoId;
-document.getElementById("trailerFrame").src =
-`https://www.youtube.com/embed/${videoId}`;
-}
-});
+document.getElementById("seriesTitle").innerText = data.title;
 
-/* Episodes */
+document.querySelector(".hero").style.backgroundImage =
+`url('${data.poster}')`;
+
 let html='<div class="episode-list">';
-seriesData[show].episodes.forEach(ep=>{
+data.episodes.forEach(ep=>{
 html+=`
 <a href="${ep.link}" target="_blank" class="episode-item">
 <div class="ep-left">
