@@ -4,65 +4,146 @@
 <meta charset="UTF-8">
 <title>TV Series</title>
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+body{background:#000;color:#fff;font-family:Arial;margin:0;padding:15px}
+
+.trailer iframe{
+width:100%;
+height:250px;
+border-radius:10px;
+}
+
+.social-icons{
+margin:15px 0;
+}
+
+.social-icons a{
+display:inline-block;
+margin-right:12px;
+font-size:22px;
+text-decoration:none;
+}
+
+.episode-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.episode-box{
+background:#ff3c00;
+padding:12px;
+text-align:center;
+border-radius:8px;
+text-decoration:none;
+color:#fff;
+font-weight:bold;
+}
+
+.episode-box:hover{
+background:#ff5722;
+}
+
+.blue-line{
+height:3px;
+background:#ff3c00;
+margin:10px 0 20px;
+}
+</style>
 </head>
-<body style="background:#000; color:#fff;">
+
+<body>
 
 <h1 id="seriesTitle"></h1>
 <div class="blue-line"></div>
 
+<!-- Trailer -->
+<div class="trailer">
+<iframe id="trailerFrame" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<!-- Social Icons -->
+<div class="social-icons">
+<a href="#" style="color:#3b5998;">📘</a>
+<a href="#" style="color:#25D366;">🟢</a>
+<a href="#" style="color:#1DA1F2;">🐦</a>
+<a href="#" style="color:#ff00ff;">🔗</a>
+</div>
+
+<!-- Episodes -->
 <div id="episodeContainer"></div>
 
 <script>
+
+const API_KEY = "AIzaSyBPPhDhVem-bSzZjGIlysFfnAax9bKQ2aM";
+
 const seriesData = {
-  longweekend: {
-    title: "Long Weekend (2024)",
-    episodes: [
-      { number: 1, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59901/Long.Weekend.WebDL.%40sinhalaaaa.S1E1.mp4?hash=AgADmR" },
-      { number: 2, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59903/Long.Weekend.WebDL.%40sinhalaaaa.S1E2.mp4?hash=AgADmx" },
-      { number: 3, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59909/Long.Weekend.WebDL.%40sinhalaaaa.S1E3.mp4?hash=AgADnR" },
-      { number: 4, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59902/Long.Weekend.WebDL.%40sinhalaaaa.S1E4.mp4?hash=AgADnx" },
-      { number: 5, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59907/Long.Weekend.WebDL.%40sinhalaaaa.S1E5.mp4?hash=AgADoB" }
-    ]
-  },
-  mahavanara: {
-    title: "Maha vanara (N/A)",
-    episodes: [
-      { number: 1, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67068/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E1.mp4?hash=AgADSR" },
-      { number: 2, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67065/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E2.mp4?hash=AgADWB" },
-      { number: 3, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67064/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E3.mp4?hash=AgADTR" },
-      { number: 4, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67078/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E4.mp4?hash=AgADTh" },
-      { number: 5, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67077/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E5.mp4?hash=AgADUR" },
-      { number: 6, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67069/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E6.mp4?hash=AgADTx" },
-      { number: 7, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67072/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E7.mp4?hash=AgADUh" },
-      { number: 8, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67074/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E8.mp4?hash=AgADUx" },
-      { number: 9, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67075/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E9.mp4?hash=AgADWR" },
-      { number: 10, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67080/_%E0%B6%B8%E0%B7%84%E0%B7%8F_%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B_Maha_Wanara_%40sinhalafilmsgo_S1_E10.mp4?hash=AgADWh" },
-      { number: 11, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67084/_%E0%B6%B8%E0%B7%84%E0%B7%8F_%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B_Maha_Wanara_%40sinhalafilmsgo_S1_E11.mp4?hash=AgADXB" },
-      { number: 12, link: "https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/68094/_%E0%B6%B8%E0%B7%84%E0%B7%8F_%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B_Maha_Wanara_%40sinhalafilmsgo_S1_E12.mp4?hash=AgADWx" }
-    ]
-  },
+
+longweekend: {
+title: "Long Weekend (2024)",
+episodes: [
+{ number:1, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59901/Long.Weekend.WebDL.%40sinhalaaaa.S1E1.mp4?hash=AgADmR"},
+{ number:2, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59903/Long.Weekend.WebDL.%40sinhalaaaa.S1E2.mp4?hash=AgADmx"},
+{ number:3, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59909/Long.Weekend.WebDL.%40sinhalaaaa.S1E3.mp4?hash=AgADnR"},
+{ number:4, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59902/Long.Weekend.WebDL.%40sinhalaaaa.S1E4.mp4?hash=AgADnx"},
+{ number:5, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/59907/Long.Weekend.WebDL.%40sinhalaaaa.S1E5.mp4?hash=AgADoB"}
+]
+},
+
+mahavanara: {
+title: "Maha vanara",
+episodes: [
+{ number:1, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67068/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E1.mp4?hash=AgADSR"},
+{ number:2, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67065/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E2.mp4?hash=AgADWB"},
+{ number:3, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67064/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E3.mp4?hash=AgADTR"},
+{ number:4, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67078/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E4.mp4?hash=AgADTh"},
+{ number:5, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67077/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E5.mp4?hash=AgADUR"},
+{ number:6, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67069/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E6.mp4?hash=AgADTx"},
+{ number:7, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67072/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E7.mp4?hash=AgADUh"},
+{ number:8, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67074/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E8.mp4?hash=AgADUx"},
+{ number:9, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67075/%E0%B6%B8%E0%B7%84%E0%B7%8F.%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B.Maha.Wanara.%40sinhalafilmsgo.S1.E9.mp4?hash=AgADWR"},
+{ number:10, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67080/_%E0%B6%B8%E0%B7%84%E0%B7%8F_%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B_Maha_Wanara_%40sinhalafilmsgo_S1_E10.mp4?hash=AgADWh"},
+{ number:11, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/67084/_%E0%B6%B8%E0%B7%84%E0%B7%8F_%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B_Maha_Wanara_%40sinhalafilmsgo_S1_E11.mp4?hash=AgADXB"},
+{ number:12, link:"https://publicfiletolinkbotsvhshs-e916f665bdbc.herokuapp.com/68094/_%E0%B6%B8%E0%B7%84%E0%B7%8F_%E0%B7%80%E0%B7%8F%E0%B6%B1%E0%B6%BB%E2%80%8B_Maha_Wanara_%40sinhalafilmsgo_S1_E12.mp4?hash=AgADWx"}
+]
+}
 };
 
 const params = new URLSearchParams(window.location.search);
-const show = params.get("show")?.toLowerCase(); // lowercase fix
+const show = params.get("show")?.toLowerCase();
 
 if(seriesData[show]){
-  document.getElementById("seriesTitle").innerText = seriesData[show].title;
 
-  let html = '<div class="episode-grid">';
-  seriesData[show].episodes.forEach(ep=>{
-    html += `
-      <a href="${ep.link}" class="episode-box">
-        EP ${ep.number}
-      </a>
-    `;
-  });
-  html += '</div>';
+const title = seriesData[show].title;
+document.getElementById("seriesTitle").innerText = title;
 
-  document.getElementById("episodeContainer").innerHTML = html;
-} else {
-  document.getElementById("seriesTitle").innerText = "Series Not Found";
+// 🔥 AUTO YOUTUBE TRAILER FETCH
+fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${title} official trailer&type=video&maxResults=1&key=${API_KEY}`)
+.then(res=>res.json())
+.then(data=>{
+if(data.items && data.items.length>0){
+const videoId = data.items[0].id.videoId;
+document.getElementById("trailerFrame").src =
+`https://www.youtube.com/embed/${videoId}`;
 }
+})
+.catch(err=>console.log(err));
+
+// Episodes
+let html='<div class="episode-grid">';
+seriesData[show].episodes.forEach(ep=>{
+html+=`<a href="${ep.link}" class="episode-box">EP ${ep.number}</a>`;
+});
+html+='</div>';
+
+document.getElementById("episodeContainer").innerHTML=html;
+
+}else{
+document.getElementById("seriesTitle").innerText="Series Not Found";
+}
+
 </script>
 
 </body>
