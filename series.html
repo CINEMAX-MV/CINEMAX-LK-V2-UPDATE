@@ -138,10 +138,8 @@ color:#ffcc00;
 <div id="episodeContainer"></div>
 
 <div class="announcement">
-<h3>📢 ANNOUNCEMENT</h3>
-මෙහි සමහර series වල episodes කිසියම් අඩුපාඩුවක් හෝ Upload කිරීම තවමත් යාවත්කාලීන නොවී පවතී. මා කෝඩ් කර ඇති ආකාරය අනුව මෙම episodes Wa User බොට් හරහා ඩවුන්ලෝඩ් කිරීමේ පහසුකම ඔබ වෙත ලබාදීමේ අපහසුතාවයක් පවතී.ඔබගේ පහසුව පරිදි කෙසේ හෝ එයත් ලබා දීම මාගේ අපේක්ෂාවයි.
-</div>
-
+  <h3>📢 ANNOUNCEMENT</h3>
+  <p id="typeText"></p>
 </div>
 
 <script>
@@ -247,7 +245,23 @@ document.getElementById("episodeContainer").innerHTML=html;
 }else{
 document.getElementById("seriesTitle").innerText="Series Not Found";
 }
+// ================= TYPEWRITER EFFECT =================
 
+const message = "මෙහි සමහර series වල episodes කිසියම් අඩුපාඩුවක් හෝ Upload කිරීම තවමත් යාවත්කාලීන නොවී පවතී. මා කෝඩ් කර ඇති ආකාරය අනුව මෙම episodes Wa User බොට් හරහා ඩවුන්ලෝඩ් කිරීමේ පහසුකම ඔබ වෙත ලබාදීමේ අපහසුතාවයක් පවතී. ඔබගේ පහසුව පරිදි කෙසේ හෝ එයත් ලබා දීම මාගේ අපේක්ෂාවයි.";
+
+let i = 0;
+const speed = 35; // smaller = faster typing
+
+function typeWriter(){
+  if(i < message.length){
+    document.getElementById("typeText").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+typeWriter();
+  
 </script>
 
 </body>
