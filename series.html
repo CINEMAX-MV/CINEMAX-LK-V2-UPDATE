@@ -229,7 +229,7 @@ document.querySelector(".hero").style.backgroundImage =
 let html='';
 data.episodes.forEach(ep=>{
 html+=`
-<a href="episode.html?show=${show}&ep=${ep.number}" class="episode-item">
+<a href="${ep.link}" target="_blank" class="episode-item">
 <div>
 <b>Episode ${ep.number}</b>
 <div class="ep-meta">${ep.duration} • ${ep.size}</div>
@@ -246,36 +246,6 @@ document.getElementById("episodeContainer").innerHTML=html;
 
 }else{
 document.getElementById("seriesTitle").innerText="Series Not Found";
-}
-
-<script>
-
-// Example seriesData structure (ඔයාගේ data එක replace කරන්න)
-const seriesData = {
-  maha: {
-    title: "Maha Series",
-    poster: "https://via.placeholder.com/500x700",
-    episodes: [
-      { number: 1, link: "https://example.com/ep1.mp4" },
-      { number: 2, link: "https://example.com/ep2.mp4" }
-    ]
-  }
-};
-
-// Episode open function
-function openEpisode(show, epNumber){
-
-  const data = seriesData[show.toLowerCase()];
-  const episode = data.episodes.find(e => e.number == epNumber);
-
-  localStorage.setItem("selectedEpisode", JSON.stringify({
-    title: data.title,
-    poster: data.poster,
-    number: episode.number,
-    link: episode.link
-  }));
-
-  window.location.href = "episode.html";
 }
 
 </script>
