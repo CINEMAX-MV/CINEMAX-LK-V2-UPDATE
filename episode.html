@@ -2,25 +2,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Episode</title>
+<meta name="viewport" content="width=1200">
+<title>Episode Download</title>
 
 <style>
 body{
 margin:0;
-font-family:Arial;
-background:#0f0f0f;
+font-family:'Segoe UI',Arial;
+background:linear-gradient(to bottom,#0a0a0a,#111);
 color:white;
 }
 
 .container{
-max-width:500px;
-margin:60px auto;
-background:#1a1a1a;
-padding:30px;
+width:600px;
+margin:80px auto;
+background:#141414;
+padding:40px;
 border-radius:20px;
+box-shadow:0 0 40px rgba(255,60,0,0.25);
 text-align:center;
-box-shadow:0 0 40px rgba(255,60,0,0.2);
 }
 
 img{
@@ -30,18 +30,17 @@ margin-bottom:20px;
 }
 
 h2{
-margin-bottom:10px;
 color:#ff7b00;
 }
 
 .meta{
 color:#aaa;
-margin-bottom:20px;
+margin:15px 0 30px 0;
 }
 
 .btn{
 display:block;
-padding:14px;
+padding:15px;
 margin:15px 0;
 border-radius:40px;
 text-decoration:none;
@@ -49,28 +48,22 @@ font-weight:bold;
 transition:0.3s;
 }
 
-.whatsapp{
-background:#25D366;
-color:white;
-}
-
 .online{
 background:#e50914;
 color:white;
 }
 
-.btn:hover{
-opacity:0.8;
+.whatsapp{
+background:#25D366;
+color:white;
 }
 
-.back{
-margin-top:20px;
-display:block;
-color:#aaa;
-text-decoration:none;
+.btn:hover{
+opacity:0.85;
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -82,22 +75,20 @@ text-decoration:none;
 <div id="meta" class="meta"></div>
 
 <a id="onlineBtn" class="btn online" target="_blank">
-🌐 Download via Online
+Download via Online
 </a>
 
 <a id="whatsappBtn" class="btn whatsapp" target="_blank">
-📥 Download via WhatsApp
-</a>
-
-<a href="javascript:history.back()" class="back">
-⬅ Back
+Download via WhatsApp
 </a>
 
 </div>
 
-<script src="series-data.js"></script>
-
 <script>
+
+// ⚠ IMPORTANT: SAME seriesData object paste here too
+
+const seriesData = /* 👉 මෙතන ඔයාගේ seriesData object එක full paste කරන්න */ ;
 
 const params = new URLSearchParams(window.location.search);
 const show = params.get("show")?.toLowerCase();
@@ -108,38 +99,30 @@ if(seriesData[show]){
 const data = seriesData[show];
 const episode = data.episodes.find(e => e.number === epNumber);
 
-if(!episode){
-document.getElementById("title").innerText = "Episode Not Found";
-}else{
+if(episode){
 
-// Title
 document.getElementById("title").innerText =
 data.title + " - Episode " + episode.number;
 
-// Poster
 document.getElementById("poster").src = data.poster;
 
-// Meta
 document.getElementById("meta").innerText =
-(episode.quality || "") +
-(episode.size ? " • " + episode.size : "") +
-(episode.duration ? " • " + episode.duration : "");
+(episode.duration || "") +
+(episode.size ? " • "+episode.size : "") +
+(episode.quality ? " • "+episode.quality : "");
 
-// Online button
+// 🔥 ONLINE DOWNLOAD
 document.getElementById("onlineBtn").href = episode.link;
 
-// WhatsApp button
+// 🔥 WHATSAPP COMMAND
 const whatsappNumber = "94772461954";
 const message = `.download ${episode.link}`;
-const whatsappURL =
-`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-document.getElementById("whatsappBtn").href = whatsappURL;
+document.getElementById("whatsappBtn").href =
+`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 }
 
-}else{
-document.getElementById("title").innerText = "Series Not Found";
 }
 
 </script>
