@@ -7,21 +7,21 @@ function toggleMenu(){
 let currentPage = 1;
 const moviesPerPage = 12;
 let moviesData = [];
-
+let seriesData = [];
 /* ===== Load Movies from JSON ===== */
-fetch("data/movies.json")
-.then(res => res.json())
-.then(data => {
-    moviesData = data;
+Promise.all([
+    fetch("data/movies.json").then(res => res.json()),
+    fetch("data/series.json").then(res => res.json())
+])
+.then(([movies, series]) => {
 
-    // Load Last 10 Slider
+    moviesData = movies;
+    seriesData = series;
+
     loadLast10Slider();
-
-    // Load Movie Grid
     displayMovies();
     updateButtons();
 });
-
 
 /* ===== Display Movies Function ===== */
 function displayMovies(){
@@ -48,7 +48,9 @@ function displayMovies(){
 function openMovie(id){
     window.location.href = `movie.html?id=${id}`;
 }
-
+function openSeries(id){
+    window.location.href = `series.html?id=${id}`;
+}
 /* ===== Pagination Buttons ===== */
 function changePage(direction){
     const totalPages = Math.ceil(moviesData.length / moviesPerPage);
@@ -168,19 +170,25 @@ document.addEventListener("DOMContentLoaded", () => {
             const searchValue = this.value.toLowerCase();
 
             const filteredMovies = moviesData.filter(movie =>
-                movie.title.toLowerCase().includes(searchValue)
-            );
+    movie.title.toLowerCase().includes(searchValue)
+);
 
-            displaySearchResults(filteredMovies);
+const filteredSeries = seriesData.filter(series =>
+    series.title.toLowerCase().includes(searchValue)
+);
+
+displaySearchResults(filteredMovies, filteredSeries);
         });
     }
 });
 
 /* ===== Display Search Results ===== */
-function displaySearchResults(filteredMovies){
+function displaySearchResults(filteredMovies, filteredSeries){
+
     const movieList = document.getElementById("movieList");
     movieList.innerHTML = "";
 
+    // Movies
     filteredMovies.forEach(movie => {
         const realId = moviesData.indexOf(movie);
 
@@ -188,6 +196,18 @@ function displaySearchResults(filteredMovies){
             <div class="movie-card" onclick="openMovie(${realId})">
                 <img src="${movie.image}" alt="${movie.title}">
                 <h4>${movie.title}</h4>
+            </div>
+        `;
+    });
+
+    // Series
+    filteredSeries.forEach(series => {
+        const realId = seriesData.indexOf(series);
+
+        movieList.innerHTML += `
+            <div class="movie-card" onclick="openSeries(${realId})">
+                <img src="${series.image}" alt="${series.title}">
+                <h4>${series.title} (Series)</h4>
             </div>
         `;
     });
