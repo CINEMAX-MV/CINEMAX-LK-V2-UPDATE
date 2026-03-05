@@ -7,23 +7,20 @@ function toggleMenu(){
 let currentPage = 1;
 const moviesPerPage = 12;
 let moviesData = [];
-let seriesData = [];
 
-/* ===== Load Movies + Series JSON ===== */
-Promise.all([
-    fetch("data/movies.json").then(res => res.json()),
-    fetch("data/series.json").then(res => res.json())
-])
-.then(([movies, series]) => {
+/* ===== Load Movies from JSON ===== */
+fetch("data/movies.json")
+.then(res => res.json())
+.then(data => {
+    moviesData = data;
 
-    moviesData = movies;
-    seriesData = series;
-
+    // Load Last 10 Slider
     loadLast10Slider();
+
+    // Load Movie Grid
     displayMovies();
     updateButtons();
-})
-.catch(error => console.log("JSON Load Error:", error));
+});
 
 
 /* ===== Display Movies Function ===== */
@@ -47,17 +44,12 @@ function displayMovies(){
     });
 }
 
-/* ===== Open Movie ===== */
+/* ===== Open Movie Function ===== */
 function openMovie(id){
     window.location.href = `movie.html?id=${id}`;
 }
 
-/* ===== Open Series ===== */
-function openSeries(id){
-    window.location.href = `series.html?id=${id}`;
-}
-
-/* ===== Pagination ===== */
+/* ===== Pagination Buttons ===== */
 function changePage(direction){
     const totalPages = Math.ceil(moviesData.length / moviesPerPage);
     currentPage += direction;
@@ -69,6 +61,7 @@ function changePage(direction){
     updateButtons();
 }
 
+/* ===== Update Buttons ===== */
 function updateButtons(){
     const totalPages = Math.ceil(moviesData.length / moviesPerPage);
 
@@ -85,7 +78,9 @@ function updateButtons(){
 }
 
 
-/* ===== LAST 10 MOVIES SLIDER ===== */
+/* =====================================================
+   LAST 10 MOVIES SLIDER (AUTO PLAY + CLICK OPEN FIXED)
+===================================================== */
 function loadLast10Slider(){
 
     const slider = document.getElementById("movieSlider");
@@ -93,6 +88,7 @@ function loadLast10Slider(){
 
     if(!slider || !dotsContainer) return;
 
+    // Last 10 movies (newest)
     const lastMovies = moviesData.slice(-10).reverse();
 
     slider.innerHTML = "";
@@ -100,11 +96,13 @@ function loadLast10Slider(){
 
     lastMovies.forEach((movie, index) => {
 
+        // Correct ID in moviesData
         const realId = moviesData.length - 1 - index;
 
         const slide = document.createElement("div");
         slide.className = "slide";
 
+        // ✅ CLICK FIX (always works)
         slide.onclick = () => {
             window.location.href = `movie.html?id=${realId}`;
         };
@@ -119,53 +117,70 @@ function loadLast10Slider(){
 
         slider.appendChild(slide);
 
+        // Dots
         const dot = document.createElement("span");
         dot.className = "dot";
         if(index === 0) dot.classList.add("active");
         dotsContainer.appendChild(dot);
     });
+
+    let currentIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(index){
+        slider.style.transform = `translateX(-${index * 100}%)`;
+
+        dots.forEach(d => d.classList.remove("active"));
+        if(dots[index]) dots[index].classList.add("active");
+    }
+
+    function nextSlide(){
+        currentIndex++;
+        if(currentIndex >= slides.length) currentIndex = 0;
+        showSlide(currentIndex);
+    }
+
+    // Auto play
+    let sliderInterval = setInterval(nextSlide, 4000);
+
+    // Pause on hover
+    slider.addEventListener("mouseenter", () => clearInterval(sliderInterval));
+    slider.addEventListener("mouseleave", () => {
+        sliderInterval = setInterval(nextSlide, 4000);
+    });
+
+    // Dot click
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", (e) => {
+            e.stopPropagation();
+            currentIndex = index;
+            showSlide(currentIndex);
+        });
+    });
 }
-
-
 /* ===== SEARCH FUNCTION ===== */
 document.addEventListener("DOMContentLoaded", () => {
-
     const searchInput = document.getElementById("searchInput");
 
     if(searchInput){
         searchInput.addEventListener("input", function(){
-
             const searchValue = this.value.toLowerCase();
-
-            if(searchValue === ""){
-                displayMovies();
-                updateButtons();
-                return;
-            }
 
             const filteredMovies = moviesData.filter(movie =>
                 movie.title.toLowerCase().includes(searchValue)
             );
 
-            const filteredSeries = seriesData.filter(series =>
-                series.title.toLowerCase().includes(searchValue)
-            );
-
-            displaySearchResults(filteredMovies, filteredSeries);
+            displaySearchResults(filteredMovies);
         });
     }
 });
 
-
 /* ===== Display Search Results ===== */
-function displaySearchResults(filteredMovies, filteredSeries){
-
+function displaySearchResults(filteredMovies){
     const movieList = document.getElementById("movieList");
-    if(!movieList) return;
-
     movieList.innerHTML = "";
 
-    // Movies
     filteredMovies.forEach(movie => {
         const realId = moviesData.indexOf(movie);
 
@@ -176,22 +191,9 @@ function displaySearchResults(filteredMovies, filteredSeries){
             </div>
         `;
     });
-
-    // Series
-    filteredSeries.forEach(series => {
-        const realId = seriesData.indexOf(series);
-
-        movieList.innerHTML += `
-            <div class="movie-card" onclick="openSeries(${realId})">
-                <img src="${series.image}" alt="${series.title}">
-                <h4>${series.title} (Series)</h4>
-            </div>
-        `;
-    });
 }
 
-
-/* ===== Toggle Problems Form ===== */
+// Toggle Problems form
 function toggleProblems(){
     const form = document.getElementById('problemsForm');
     if(form.style.display === "block"){
@@ -201,8 +203,7 @@ function toggleProblems(){
     }
 }
 
-
-/* ===== Send Problem via WhatsApp ===== */
+// Send Problems info via WhatsApp
 function sendProblem(){
     const name = document.getElementById('pName').value.trim();
     const user = document.getElementById('pUser').value.trim();
@@ -216,11 +217,12 @@ function sendProblem(){
     }
 
     const message = `🙋 Name: ${name}\n🙇‍♀️ User: ${user}\n🕊️ Email: ${email}\n🔰 Number: ${number}\n🔆 Problem: ${problem}`;
-    const whatsappNumber = "94740707157";
+    const whatsappNumber = "94740707157"; // Replace with your WhatsApp number
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappURL, "_blank");
 
+    // Clear form
     document.getElementById('pName').value = "";
     document.getElementById('pUser').value = "";
     document.getElementById('pEmail').value = "";
