@@ -229,16 +229,14 @@ document.querySelector(".hero").style.backgroundImage =
 let html='';
 data.episodes.forEach(ep=>{
 html+=`
-<a href="episode.html?show=${show}&ep=${ep.number}" class="episode-item">
+<a href="${ep.link}" target="_blank" class="episode-item">
 <div>
 <b>Episode ${ep.number}</b>
-<div class="ep-meta">
-${ep.duration || ""} ${ep.size ? " • "+ep.size : ""}
-</div>
+<div class="ep-meta">${ep.duration} • ${ep.size}</div>
 </div>
 <div>
-<span class="badge">${ep.quality || ""}</span>
-<span class="watch-btn">Open</span>
+<span class="badge">${ep.quality}</span>
+<span class="watch-btn">Watch</span>
 </div>
 </a>
 `;
