@@ -88,12 +88,6 @@ let socialHTML = `
       <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
     </a>
 
-    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/whatsapp.png"
-       width="35"
-       title="Share on WhatsApp">
-    </a>
-
   </div>
 `;
    
