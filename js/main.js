@@ -8,7 +8,8 @@ let currentPage = 1;
 const moviesPerPage = 12;
 let moviesData = [];
 let seriesData = [];
-/* ===== Load Movies from JSON ===== */
+
+/* ===== Load Movies + Series JSON ===== */
 Promise.all([
     fetch("data/movies.json").then(res => res.json()),
     fetch("data/series.json").then(res => res.json())
@@ -21,7 +22,9 @@ Promise.all([
     loadLast10Slider();
     displayMovies();
     updateButtons();
-});
+})
+.catch(error => console.log("JSON Load Error:", error));
+
 
 /* ===== Display Movies Function ===== */
 function displayMovies(){
@@ -44,14 +47,17 @@ function displayMovies(){
     });
 }
 
-/* ===== Open Movie Function ===== */
+/* ===== Open Movie ===== */
 function openMovie(id){
     window.location.href = `movie.html?id=${id}`;
 }
+
+/* ===== Open Series ===== */
 function openSeries(id){
     window.location.href = `series.html?id=${id}`;
 }
-/* ===== Pagination Buttons ===== */
+
+/* ===== Pagination ===== */
 function changePage(direction){
     const totalPages = Math.ceil(moviesData.length / moviesPerPage);
     currentPage += direction;
@@ -63,7 +69,6 @@ function changePage(direction){
     updateButtons();
 }
 
-/* ===== Update Buttons ===== */
 function updateButtons(){
     const totalPages = Math.ceil(moviesData.length / moviesPerPage);
 
@@ -80,9 +85,7 @@ function updateButtons(){
 }
 
 
-/* =====================================================
-   LAST 10 MOVIES SLIDER (AUTO PLAY + CLICK OPEN FIXED)
-===================================================== */
+/* ===== LAST 10 MOVIES SLIDER ===== */
 function loadLast10Slider(){
 
     const slider = document.getElementById("movieSlider");
@@ -90,7 +93,6 @@ function loadLast10Slider(){
 
     if(!slider || !dotsContainer) return;
 
-    // Last 10 movies (newest)
     const lastMovies = moviesData.slice(-10).reverse();
 
     slider.innerHTML = "";
@@ -98,13 +100,11 @@ function loadLast10Slider(){
 
     lastMovies.forEach((movie, index) => {
 
-        // Correct ID in moviesData
         const realId = moviesData.length - 1 - index;
 
         const slide = document.createElement("div");
         slide.className = "slide";
 
-        // ✅ CLICK FIX (always works)
         slide.onclick = () => {
             window.location.href = `movie.html?id=${realId}`;
         };
@@ -119,73 +119,50 @@ function loadLast10Slider(){
 
         slider.appendChild(slide);
 
-        // Dots
         const dot = document.createElement("span");
         dot.className = "dot";
         if(index === 0) dot.classList.add("active");
         dotsContainer.appendChild(dot);
     });
-
-    let currentIndex = 0;
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".dot");
-
-    function showSlide(index){
-        slider.style.transform = `translateX(-${index * 100}%)`;
-
-        dots.forEach(d => d.classList.remove("active"));
-        if(dots[index]) dots[index].classList.add("active");
-    }
-
-    function nextSlide(){
-        currentIndex++;
-        if(currentIndex >= slides.length) currentIndex = 0;
-        showSlide(currentIndex);
-    }
-
-    // Auto play
-    let sliderInterval = setInterval(nextSlide, 4000);
-
-    // Pause on hover
-    slider.addEventListener("mouseenter", () => clearInterval(sliderInterval));
-    slider.addEventListener("mouseleave", () => {
-        sliderInterval = setInterval(nextSlide, 4000);
-    });
-
-    // Dot click
-    dots.forEach((dot, index) => {
-        dot.addEventListener("click", (e) => {
-            e.stopPropagation();
-            currentIndex = index;
-            showSlide(currentIndex);
-        });
-    });
 }
+
+
 /* ===== SEARCH FUNCTION ===== */
 document.addEventListener("DOMContentLoaded", () => {
+
     const searchInput = document.getElementById("searchInput");
 
     if(searchInput){
         searchInput.addEventListener("input", function(){
+
             const searchValue = this.value.toLowerCase();
 
+            if(searchValue === ""){
+                displayMovies();
+                updateButtons();
+                return;
+            }
+
             const filteredMovies = moviesData.filter(movie =>
-    movie.title.toLowerCase().includes(searchValue)
-);
+                movie.title.toLowerCase().includes(searchValue)
+            );
 
-const filteredSeries = seriesData.filter(series =>
-    series.title.toLowerCase().includes(searchValue)
-);
+            const filteredSeries = seriesData.filter(series =>
+                series.title.toLowerCase().includes(searchValue)
+            );
 
-displaySearchResults(filteredMovies, filteredSeries);
+            displaySearchResults(filteredMovies, filteredSeries);
         });
     }
 });
+
 
 /* ===== Display Search Results ===== */
 function displaySearchResults(filteredMovies, filteredSeries){
 
     const movieList = document.getElementById("movieList");
+    if(!movieList) return;
+
     movieList.innerHTML = "";
 
     // Movies
@@ -213,7 +190,8 @@ function displaySearchResults(filteredMovies, filteredSeries){
     });
 }
 
-// Toggle Problems form
+
+/* ===== Toggle Problems Form ===== */
 function toggleProblems(){
     const form = document.getElementById('problemsForm');
     if(form.style.display === "block"){
@@ -223,7 +201,8 @@ function toggleProblems(){
     }
 }
 
-// Send Problems info via WhatsApp
+
+/* ===== Send Problem via WhatsApp ===== */
 function sendProblem(){
     const name = document.getElementById('pName').value.trim();
     const user = document.getElementById('pUser').value.trim();
@@ -237,12 +216,11 @@ function sendProblem(){
     }
 
     const message = `🙋 Name: ${name}\n🙇‍♀️ User: ${user}\n🕊️ Email: ${email}\n🔰 Number: ${number}\n🔆 Problem: ${problem}`;
-    const whatsappNumber = "94740707157"; // Replace with your WhatsApp number
+    const whatsappNumber = "94740707157";
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappURL, "_blank");
 
-    // Clear form
     document.getElementById('pName').value = "";
     document.getElementById('pUser').value = "";
     document.getElementById('pEmail').value = "";
