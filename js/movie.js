@@ -53,39 +53,43 @@ fetch("data/movies.json")
 // ===============================
 
 let currentURL = encodeURIComponent(window.location.href);
-let movieLink = movie.players[0].link;
 
-// 🔎 Auto Detect Command
-let command =
-  /drive\.google\.com/.test(movieLink) ? ".gdrive " :
-  /mega\.nz/.test(movieLink) ? ".mega " :
-  ".download ";
+let movieLink = "";
+let command = ".download "; // default
 
-// WhatsApp Bot Message
+if(movie.players && movie.players.length > 0){
+  movieLink = movie.players[0].link;
+
+  if(/drive\.google\.com/.test(movieLink)){
+    command = ".gdrive ";
+  }
+  else if(/mega\.nz/.test(movieLink)){
+    command = ".mega ";
+  }
+}
+
 let botMessage = encodeURIComponent(command + movieLink);
 
-// Optional normal share URL (ඔයා කලින් use කරපු එක)
-let shareURL = encodeURIComponent("Watch " + movie.title + " " + window.location.href);
+// ⚠️ shareURL නැවත declare කරන්න එපා
+let normalShare = encodeURIComponent("Watch " + movie.title + " " + window.location.href);
 
 let socialHTML = `
   <div style="margin-top:20px; display:flex; gap:12px;">
     
     <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35" title="Share on Facebook">
+      <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
     </a>
 
     <a href="https://wa.me/94772461954?text=${botMessage}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35" title="Download via WhatsApp Bot">
+      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
     </a>
 
     <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35" title="Share on Twitter">
+      <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
     </a>
 
-    <a href="https://wa.me/94772461954?text=${shareURL}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
-           width="35" 
-           title="Share on WhatsApp">
+    <a href="https://wa.me/94772461954?text=${normalShare}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" width="35">
     </a>
 
   </div>
