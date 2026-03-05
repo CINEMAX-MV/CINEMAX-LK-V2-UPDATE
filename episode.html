@@ -33,11 +33,6 @@ h2{
 color:#ff7b00;
 }
 
-.meta{
-color:#aaa;
-margin:15px 0 30px 0;
-}
-
 .btn{
 display:block;
 padding:15px;
@@ -72,8 +67,6 @@ opacity:0.85;
 
 <h2 id="title"></h2>
 
-<div id="meta" class="meta"></div>
-
 <a id="onlineBtn" class="btn online" target="_blank">
 Download via Online
 </a>
@@ -86,42 +79,24 @@ Download via WhatsApp
 
 <script>
 
-// ⚠ IMPORTANT: SAME seriesData object paste here too
+const episode = JSON.parse(localStorage.getItem("selectedEpisode"));
 
-const seriesData = /* 👉 මෙතන ඔයාගේ seriesData object එක full paste කරන්න */ ;
+if(!episode){
 
-const params = new URLSearchParams(window.location.search);
-const show = params.get("show")?.toLowerCase();
-const epNumber = parseInt(params.get("ep"));
+document.body.innerHTML =
+"<h2 style='color:white;text-align:center;margin-top:100px;'>Episode Not Found</h2>";
 
-if(seriesData[show]){
-
-const data = seriesData[show];
-const episode = data.episodes.find(e => e.number === epNumber);
-
-if(episode){
+}else{
 
 document.getElementById("title").innerText =
-data.title + " - Episode " + episode.number;
+episode.title + " - Episode " + episode.number;
 
-document.getElementById("poster").src = data.poster;
+document.getElementById("poster").src = episode.poster;
 
-document.getElementById("meta").innerText =
-(episode.duration || "") +
-(episode.size ? " • "+episode.size : "") +
-(episode.quality ? " • "+episode.quality : "");
-
-// 🔥 ONLINE DOWNLOAD
 document.getElementById("onlineBtn").href = episode.link;
 
-// 🔥 WHATSAPP COMMAND
-const whatsappNumber = "94772461954";
-const message = `.download ${episode.link}`;
-
 document.getElementById("whatsappBtn").href =
-`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-}
+`https://wa.me/94772461954?text=${encodeURIComponent(".download "+episode.link)}`;
 
 }
 
