@@ -8,38 +8,41 @@
 <style>
 body{
 margin:0;
-font-family:Arial, sans-serif;
+font-family:Arial;
 background:#0f0f0f;
 color:white;
 }
 
 .container{
 max-width:500px;
-margin:auto;
-padding:20px;
+margin:60px auto;
+background:#1a1a1a;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 40px rgba(255,60,0,0.2);
 }
 
-.thumbnail{
+img{
 width:100%;
-border-radius:12px;
+border-radius:15px;
 margin-bottom:20px;
 }
 
 h2{
-margin:10px 0;
+margin-bottom:10px;
+color:#ff7b00;
 }
 
 .meta{
 color:#aaa;
 margin-bottom:20px;
-font-size:14px;
 }
 
 .btn{
 display:block;
-text-align:center;
 padding:14px;
-margin:12px 0;
+margin:15px 0;
 border-radius:40px;
 text-decoration:none;
 font-weight:bold;
@@ -51,25 +54,18 @@ background:#25D366;
 color:white;
 }
 
-.whatsapp:hover{
-background:white;
-color:#25D366;
-}
-
 .online{
 background:#e50914;
 color:white;
 }
 
-.online:hover{
-background:white;
-color:#e50914;
+.btn:hover{
+opacity:0.8;
 }
 
 .back{
 margin-top:20px;
 display:block;
-text-align:center;
 color:#aaa;
 text-decoration:none;
 }
@@ -79,60 +75,60 @@ text-decoration:none;
 
 <div class="container">
 
-<img id="thumbnail" class="thumbnail">
+<img id="poster">
 
 <h2 id="title"></h2>
 
 <div id="meta" class="meta"></div>
 
-<a id="whatsappBtn" class="btn whatsapp" target="_blank">
-📥 Download via WhatsApp
-</a>
-
 <a id="onlineBtn" class="btn online" target="_blank">
 🌐 Download via Online
 </a>
 
+<a id="whatsappBtn" class="btn whatsapp" target="_blank">
+📥 Download via WhatsApp
+</a>
+
 <a href="javascript:history.back()" class="back">
-⬅ Back to Episodes
+⬅ Back
 </a>
 
 </div>
 
+<script src="series-data.js"></script>
+
 <script>
 
-const urlParams = new URLSearchParams(window.location.search);
-const seriesId = urlParams.get("series");
-const epNumber = urlParams.get("ep");
+const params = new URLSearchParams(window.location.search);
+const show = params.get("show")?.toLowerCase();
+const epNumber = parseInt(params.get("ep"));
 
-fetch("data/series.json")
-.then(res=>res.json())
-.then(data=>{
+if(seriesData[show]){
 
-const series = data.find(s=>s.id==seriesId);
-if(!series) return;
+const data = seriesData[show];
+const episode = data.episodes.find(e => e.number === epNumber);
 
-const episode = series.episodes.find(e=>e.number==epNumber);
-if(!episode) return;
+if(!episode){
+document.getElementById("title").innerText = "Episode Not Found";
+}else{
 
-// Set Title
+// Title
 document.getElementById("title").innerText =
-series.title + " - Episode " + episode.number;
+data.title + " - Episode " + episode.number;
 
-// Thumbnail (use episode image or series image)
-document.getElementById("thumbnail").src =
-episode.image || series.image;
+// Poster
+document.getElementById("poster").src = data.poster;
 
-// Meta Info
+// Meta
 document.getElementById("meta").innerText =
-(episode.quality || "") + " • " +
-(episode.size || "") + " • " +
-(episode.duration || "");
+(episode.quality || "") +
+(episode.size ? " • " + episode.size : "") +
+(episode.duration ? " • " + episode.duration : "");
 
-// Online Link
+// Online button
 document.getElementById("onlineBtn").href = episode.link;
 
-// WhatsApp Link
+// WhatsApp button
 const whatsappNumber = "94772461954";
 const message = `.download ${episode.link}`;
 const whatsappURL =
@@ -140,7 +136,11 @@ const whatsappURL =
 
 document.getElementById("whatsappBtn").href = whatsappURL;
 
-});
+}
+
+}else{
+document.getElementById("title").innerText = "Series Not Found";
+}
 
 </script>
 
