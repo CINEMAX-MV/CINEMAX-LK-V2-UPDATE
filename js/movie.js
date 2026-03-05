@@ -219,20 +219,11 @@ let socialHTML = `
       line-height:1.6em;
       color:#FFD700;
   ">
-    මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
+    <span class="rainbow">SITE V3</span> නව පහසුකම් යටතේ මෙම සිංහල චිත්‍රපටය ඔබට පහසුවෙන්ම 
     <span class="rainbow">WHATSAPP PACKAGE</span> 
-    ඔස්සේ බාගත කිරීමට ඉහත දී ඇති 
+    ඔස්සේ බාගත කරගත හැක.( ඉහත දී ඇති 
     <span class="rainbow">@WHATSAPP SOCIAL MEDIA ICON</span> 
-    එක භාවිතා කරන්න. 
-
-    මෙහිදී ඔබට 
-    <span class="rainbow">.Gdrive</span> & 
-    <span class="rainbow">.Download</span> 
-    යනුවෙන් දිස්වෙන අතර  <span class="rainbow">Google drive</span> ලින්ක් එකක් නොවේ නම් එය කපා හැර 
-    <span class="rainbow">.download</span> 
-    යන මුරපදය පමණක් භාවිතා කරන්න. 
-
-    මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
+    එක භාවිතා කරන්න.) මෙම වෙබ් අඩවිය ඔස්සේ ලබා ගන්නා ෆිල්ම්ස් හැර අනෙකුත් දේ ලබා ගැනීමට 
     <span class="rainbow">WA - USER BOT</span> 
     යොදා ගැනීම ඔබගෙ අනන්‍යතාවයට හානිදායක වනු ඇත. කිසියම් චිත්‍රපටයක් වට්සැප් ඔස්සෙ බාගත කිරීමට නොහැකිනම් නැවත උත්සාහ කරන්න. මෙය සිදුවන්නෙ වට්සැප් බොට් <span class="rainbow">OVER LIMIT</span> වන බැවිනි .
   </div>
