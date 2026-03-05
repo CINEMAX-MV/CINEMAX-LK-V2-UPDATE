@@ -89,6 +89,7 @@ let socialHTML = `
     </a>
 
      
+        <!-- ✅ Fixed WhatsApp Share -->
     <a href="https://wa.me/?text=${encodedShareText}" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/forward-arrow.png"
            width="35"
