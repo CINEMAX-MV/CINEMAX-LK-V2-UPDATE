@@ -229,7 +229,7 @@ document.querySelector(".hero").style.backgroundImage =
 let html='';
 data.episodes.forEach(ep=>{
 html+=`
-<a href="${ep.link}" target="_blank" class="episode-item">
+<a href="episode.html?show=${show}&ep=${ep.number}" class="episode-item">
 <div>
 <b>Episode ${ep.number}</b>
 <div class="ep-meta">${ep.duration} • ${ep.size}</div>
