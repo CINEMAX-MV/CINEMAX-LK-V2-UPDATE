@@ -248,6 +248,36 @@ document.getElementById("episodeContainer").innerHTML=html;
 document.getElementById("seriesTitle").innerText="Series Not Found";
 }
 
+<script>
+
+// Example seriesData structure (ඔයාගේ data එක replace කරන්න)
+const seriesData = {
+  maha: {
+    title: "Maha Series",
+    poster: "https://via.placeholder.com/500x700",
+    episodes: [
+      { number: 1, link: "https://example.com/ep1.mp4" },
+      { number: 2, link: "https://example.com/ep2.mp4" }
+    ]
+  }
+};
+
+// Episode open function
+function openEpisode(show, epNumber){
+
+  const data = seriesData[show.toLowerCase()];
+  const episode = data.episodes.find(e => e.number == epNumber);
+
+  localStorage.setItem("selectedEpisode", JSON.stringify({
+    title: data.title,
+    poster: data.poster,
+    number: episode.number,
+    link: episode.link
+  }));
+
+  window.location.href = "episode.html";
+}
+
 </script>
 
 </body>
