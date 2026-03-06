@@ -9,13 +9,41 @@
 
   <title>Cinemax.lk</title>
   <link rel="stylesheet" href="css/style.css">
-</head>
-  <meta charset="UTF-8">
-  <title>CINEMAX</title>
+
+<style>
+
+/* ===== NEW CINEMAX HEADER ===== */
+
+.hero-header{
+height:380px;
+
+background:
+linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%),
+url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+position:relative;
+}
+
+.cinemax-title{
+font-size:48px;
+font-weight:bold;
+color:#e50914;
+letter-spacing:4px;
+}
+
+</style>
 
 </head>
 
 <body>
+
 <!-- ===== HUMAN VERIFICATION OVERLAY ===== -->
 <div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
     <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
@@ -35,13 +63,14 @@ window.addEventListener('DOMContentLoaded',()=>{
     }
 });
 </script>
+
 <!-- ===== HEADER ===== -->
 <header class="hero-header">
 
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
 
-    <div class="logo-container">
-        <img src="https://i.ibb.co/5gCt9Lvd/Rashmika-Ofc.jpg" alt="Cinemax 3D Logo">
+    <div class="cinemax-title">
+        CINEMAX
     </div>
 
 </header>
@@ -77,10 +106,9 @@ window.addEventListener('DOMContentLoaded',()=>{
     <a href="dashboard.html">☛ 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
     <a href="contact.html">☛ 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
     <a href="dmca.html">☛ 𝐃𝐌𝐂𝐀</a>
-    <!-- Problems Link -->
-<a href="javascript:void(0)" onclick="toggleProblems()">☛ 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
 
-<!-- Compact Problems Form -->
+    <a href="javascript:void(0)" onclick="toggleProblems()">☛ 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
+
 <div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#211d1d; border-radius:6px;">
     <input type="text" id="pName" placeholder="Name" required>
     <input type="text" id="pUser" placeholder="User" required>
@@ -89,35 +117,34 @@ window.addEventListener('DOMContentLoaded',()=>{
     <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
     <button onclick="sendProblem()">Submit ✔️</button>
 </div>
+
 </div>
 
 <!-- ===== MOVIE GRID SECTION ===== -->
 <section class="container">
 
-    <!-- Ticker -->
-    <div class="ticker">
-        <div class="ticker-track">
-            <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-            </span>
-            <span>
-                සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.එසේ නැතහොත් download button එක උඩ ඔබා නැරඹීමට හා බාගත කිරීමට හැකියාව ඇත. මෙම වෙබ් අඩවිය සතු ෆිල්ම්ස් වල යම් කිසි දෝශ ඇත්නම් අප හා අමතන්න.
-            </span>
-        </div>
-    </div>
+<div class="ticker">
+<div class="ticker-track">
 
-    <!-- Movie Grid -->
-    <div id="movieList" class="movies-grid"></div>
+<span>
+සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
+</span>
 
-    <!-- Pagination Controls -->
-    <div class="pagination-controls">
-        <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
-        <span id="pageInfo"></span>
-        <button id="nextBtn" onclick="changePage(1)">Next 👉</button>
-    </div>
+<span>
+සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
+</span>
 
+</div>
+</div>
 
-  <!-- TV SERIES LOAD HERE -->
+<div id="movieList" class="movies-grid"></div>
+
+<div class="pagination-controls">
+<button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
+<span id="pageInfo"></span>
+<button id="nextBtn" onclick="changePage(1)">Next 👉</button>
+</div>
+
 <div id="series-container"></div>
 
 </section>
@@ -139,27 +166,23 @@ window.addEventListener('DOMContentLoaded',()=>{
     <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>    
-</a>
 </div>
 
-<!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- ===== FOOTER ===== -->
+
 <footer>
  © <span class="year">2026</span> Cinemax Downloads | Watch & Download 
   <span class="highlight">Sinhala Movies & Cartoons</span>
 </footer>
 
-<!-- ===== MAIN JS ===== -->
 <script src="js/main.js"></script>
-<!-- ===== SIDEBAR TOGGLE ===== -->
+
 <script>
 function toggleMenu() {
     document.getElementById("sidebar").classList.toggle("active");
 }
 </script>
 
-<!-- LOAD TV SERIES SECTION -->
 <script>
 fetch("series-section.html")
   .then(response => response.text())
