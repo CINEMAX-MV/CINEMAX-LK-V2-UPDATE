@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="9wkWklQlzoBCAHZ_SvbfR1IZPj-D8xyY0kNczzXcoFM" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Cinemax.lk</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta name="google-site-verification" content="9wkWklQlzoBCAHZ_SvbfR1IZPj-D8xyY0kNczzXcoFM" />
+
+<title>Cinemax.lk</title>
+<link rel="stylesheet" href="css/style.css">
 
 <style>
 
-/* ===== NEW CINEMAX HEADER ===== */
+/* ===== HERO SECTION (NEW STYLE) ===== */
 
 .hero-header{
-height:380px;
+height:400px;
 
 background:
 linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%),
@@ -26,16 +25,19 @@ background-position:center;
 
 display:flex;
 align-items:center;
-justify-content:center;
+padding:0 5%;
 
 position:relative;
 }
 
-.cinemax-title{
-font-size:48px;
-font-weight:bold;
-color:#e50914;
-letter-spacing:4px;
+.hero-content h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.hero-content p{
+color:#ccc;
+font-size:16px;
 }
 
 </style>
@@ -44,83 +46,79 @@ letter-spacing:4px;
 
 <body>
 
-<!-- ===== HUMAN VERIFICATION OVERLAY ===== -->
+<!-- HUMAN VERIFICATION -->
 <div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
-    <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
-        <h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
-        <p style="color:#ccc; margin-bottom:20px;">
-          Please <a href="verification.html" style="color:#00d4ff; text-decoration:underline;">verify here</a> first to enter the site.
-        </p>
-    </div>
+<div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
+<h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
+<p style="color:#ccc; margin-bottom:20px;">
+Please <a href="verification.html" style="color:#00d4ff; text-decoration:underline;">verify here</a> first to enter the site.
+</p>
+</div>
 </div>
 
 <script>
 window.addEventListener('DOMContentLoaded',()=>{
-    if(localStorage.getItem("humanVerified")==="true"){
-        document.getElementById("humanVerification").style.display="none";
-        const user = localStorage.getItem("userName");
-        if(user) console.log("Welcome,", user);
-    }
+if(localStorage.getItem("humanVerified")==="true"){
+document.getElementById("humanVerification").style.display="none";
+const user = localStorage.getItem("userName");
+if(user) console.log("Welcome,", user);
+}
 });
 </script>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER HERO -->
 <header class="hero-header">
 
-    <div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
+<div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
 
-    <div class="cinemax-title">
-        CINEMAX
-    </div>
+<div class="hero-content">
+
+<h1>නවතම සිංහල උපසිරැසි</h1>
+<p>Download Latest Movies with Sinhala Subtitles</p>
+
+</div>
 
 </header>
 
-<!-- Top Blue Line -->
-<div class="blue-line"></div>
-
-<!-- LATEST MOVIES TITLE -->
+<!-- LATEST MOVIES -->
 <div class="latest-wrapper">
-    <div class="latest-title">LATEST MOVIES</div>
+<div class="latest-title">LATEST MOVIES</div>
 </div>
 
-<!-- ===== LAST 10 MOVIES SLIDER ===== -->
+<!-- MOVIE SLIDER -->
 <section class="slider-section">
-  <div class="slider" id="movieSlider"></div>
-  <div class="slider-dots" id="sliderDots"></div>
+<div class="slider" id="movieSlider"></div>
+<div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- Bottom Blue Line -->
-<div class="blue-line"></div>
-
-<!-- ===== SIDEBAR ===== -->
+<!-- SIDEBAR -->
 <div id="sidebar" class="sidebar">
 
-    <div class="sidebar-search">
-        <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
-    </div>
+<div class="sidebar-search">
+<input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
+</div>
 
-    <!-- Close Button -->
-    <div class="close-btn" onclick="toggleMenu()">✕</div>
-    
-    <a href="index.html">☛ 𝐇𝐨𝐦𝐞</a>
-    <a href="dashboard.html">☛ 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
-    <a href="contact.html">☛ 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
-    <a href="dmca.html">☛ 𝐃𝐌𝐂𝐀</a>
+<div class="close-btn" onclick="toggleMenu()">✕</div>
 
-    <a href="javascript:void(0)" onclick="toggleProblems()">☛ 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
+<a href="index.html">☛ 𝐇𝐨𝐦𝐞</a>
+<a href="dashboard.html">☛ 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+<a href="contact.html">☛ 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
+<a href="dmca.html">☛ 𝐃𝐌𝐂𝐀</a>
+
+<a href="javascript:void(0)" onclick="toggleProblems()">☛ 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
 
 <div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#211d1d; border-radius:6px;">
-    <input type="text" id="pName" placeholder="Name" required>
-    <input type="text" id="pUser" placeholder="User" required>
-    <input type="email" id="pEmail" placeholder="Email" required>
-    <input type="text" id="pNumber" placeholder="Number" required>
-    <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
-    <button onclick="sendProblem()">Submit ✔️</button>
+<input type="text" id="pName" placeholder="Name" required>
+<input type="text" id="pUser" placeholder="User" required>
+<input type="email" id="pEmail" placeholder="Email" required>
+<input type="text" id="pNumber" placeholder="Number" required>
+<textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
+<button onclick="sendProblem()">Submit ✔️</button>
 </div>
 
 </div>
 
-<!-- ===== MOVIE GRID SECTION ===== -->
+<!-- MOVIE SECTION -->
 <section class="container">
 
 <div class="ticker">
@@ -148,47 +146,37 @@ window.addEventListener('DOMContentLoaded',()=>{
 <div id="series-container"></div>
 
 </section>
-    
-<!-- Social Media Section Start -->
+
+<!-- SOCIAL -->
 <div class="social-section">
-    <a href="#" class="social facebook" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" class="social twitter" target="_blank">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank">
-        <i class="fab fa-youtube"></i>
-    </a>
-    <a href="#" class="social instagram" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>    
+<a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+<a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+<a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <footer>
- © <span class="year">2026</span> Cinemax Downloads | Watch & Download 
-  <span class="highlight">Sinhala Movies & Cartoons</span>
+© <span class="year">2026</span> Cinemax Downloads | Watch & Download 
+<span class="highlight">Sinhala Movies & Cartoons</span>
 </footer>
 
 <script src="js/main.js"></script>
 
 <script>
 function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("active");
+document.getElementById("sidebar").classList.toggle("active");
 }
 </script>
 
 <script>
 fetch("series-section.html")
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById("series-container").innerHTML = data;
-  });
+.then(response => response.text())
+.then(data => {
+document.getElementById("series-container").innerHTML = data;
+});
 </script>
 
 </body>
