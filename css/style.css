@@ -922,4 +922,35 @@ footer{
     margin-top: 15px; /* ≈4mm */
 }
 
+/* ===== FORCE DESKTOP LAYOUT ON MOBILE ===== */
 
+@media screen and (max-width:768px){
+
+body{
+    min-width:1200px;
+}
+
+/* movie grid */
+.movies-grid,
+.movie-grid,
+.movie-container,
+.movies-container{
+    display:grid !important;
+    grid-template-columns:repeat(4,1fr) !important;
+    gap:12px;
+}
+
+/* movie card image */
+.movie-card img{
+    width:100%;
+    height:auto;
+}
+
+/* prevent stacking */
+.container,
+.wrapper{
+    width:1200px;
+    margin:auto;
+}
+
+}
