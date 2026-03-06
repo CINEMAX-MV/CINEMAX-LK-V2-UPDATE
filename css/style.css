@@ -910,3 +910,10 @@ footer{
   }
 }
 
+/* ===== Section Title (Movies & TV Same) ===== */
+.latest-title {
+  margin: 10px 0;
+  text-align: center;   /* same as movies */
+  font-size: 35px;
+  letter-spacing: 1px;
+}
