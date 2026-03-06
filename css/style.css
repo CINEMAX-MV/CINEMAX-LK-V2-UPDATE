@@ -954,3 +954,35 @@ body{
 }
 
 }
+
+/* ===== MOVIE CARD SAME SIZE FIX ===== */
+
+.movies-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+/* movie card */
+.movie-card{
+    background:#111;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+/* image size fix */
+.movie-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    display:block;
+}
+
+/* title fix */
+.movie-card h3,
+.movie-card p{
+    font-size:13px;
+    padding:6px;
+    height:36px;
+    overflow:hidden;
+}
