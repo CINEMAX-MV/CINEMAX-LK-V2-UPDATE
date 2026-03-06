@@ -921,3 +921,20 @@ footer{
 .tv-series-container{
     margin-top: 15px; /* ≈4mm */
 }
+
+
+/* Force Desktop Layout on Mobile */
+
+.movies-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:10px;
+}
+
+@media (max-width:768px){
+
+.movies-grid{
+    grid-template-columns: repeat(4, 1fr);
+}
+
+}
