@@ -917,3 +917,7 @@ footer{
   font-size: 35px;
   letter-spacing: 1px;
 }
+
+.tv-series-container{
+    margin-top: 15px; /* ≈4mm */
+}
