@@ -31,17 +31,6 @@ body{
     border-radius:10px;
 }
 
-/* ===== LATEST TITLE BETWEEN LINES ===== */
-.latest-title{
-    padding:18px 20px;   /* ≈ 5mm look */
-    font-size:26px;
-    font-weight:bold;
-    color:#00a8ff;
-    text-align:left;
-    letter-spacing:2px;
-    text-shadow:0 0 10px #00a8ff;
-}
-
 /* ===== SIDEBAR ===== */
 .sidebar{
     position:fixed;
@@ -920,5 +909,4 @@ footer{
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
 
