@@ -946,11 +946,12 @@ body{
     height:auto;
 }
 
-/* prevent stacking */
 .container,
 .wrapper{
-    width:1200px;
+    max-width:1200px;
+    width:100%;
     margin:auto;
+    padding:0 15px;
 }
 
 }
