@@ -986,3 +986,18 @@ body{
     height:36px;
     overflow:hidden;
 }
+
+/* Prevent auto zoom on mobile */
+
+html, body{
+    width:100%;
+    overflow-x:auto;
+}
+
+/* keep desktop layout but allow scrolling instead of zoom */
+.container,
+.wrapper{
+    width:1200px;
+    max-width:1200px;
+    margin:auto;
+}
