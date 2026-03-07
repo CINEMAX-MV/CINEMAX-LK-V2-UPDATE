@@ -988,3 +988,10 @@ body{
     overflow:hidden;
 }
 
+@media (max-width:768px){
+.container,
+.wrapper{
+    width:100%;
+    padding:0 10px;
+}
+}
