@@ -995,3 +995,12 @@ body{
     padding:0 10px;
 }
 }
+
+*{
+box-sizing:border-box;
+}
+
+img, iframe, video{
+max-width:100%;
+height:auto;
+}
