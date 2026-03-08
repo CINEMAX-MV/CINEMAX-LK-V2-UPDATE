@@ -988,3 +988,34 @@ body{
     overflow:hidden;
 }
 
+.site-footer{
+    text-align:center;
+    padding:22px 10px;
+    background:#0b0b0b;
+    border-top:1px solid #222;
+    font-size:14px;
+    color:#bbb;
+}
+
+/* Cinemax text */
+.brand{
+    color:#fff;
+    font-weight:600;
+}
+
+/* creator text */
+.creator{
+    margin-top:5px;
+    color:#999;
+}
+
+/* name highlight (simple clean color) */
+.name{
+    color:#00c853;
+    font-weight:600;
+}
+
+/* small hover effect */
+.name:hover{
+    color:#00ff88;
+}
