@@ -1019,3 +1019,24 @@ body{
 .name:hover{
     color:#00ff88;
 }
+
+.sidebar-search{
+display:flex;
+align-items:center;
+gap:8px;
+padding:10px;
+}
+
+.search-icon{
+font-size:18px;
+color:white;
+}
+
+.sidebar-input{
+flex:1;
+padding:8px 10px;
+border-radius:20px;
+border:none;
+outline:none;
+font-size:14px;
+}
