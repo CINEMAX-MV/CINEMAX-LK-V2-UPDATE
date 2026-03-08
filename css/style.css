@@ -215,17 +215,21 @@ footer{
     letter-spacing:1px;
 }
 
-.sidebar-search {
-    padding: 15px;
+.top-search{
+position:absolute;
+top:15px;
+right:20px;
+z-index:1000;
 }
 
-.sidebar-input {
-    width: 100%;              /* 🔥 Sidebar width එකටම match වෙන්න */
-    padding: 10px 15px;
-    border-radius: 25px;
-    border: none;
-    outline: none;
-    box-sizing: border-box;   /* Important */
+.top-search input{
+padding:8px 14px;
+border-radius:20px;
+border:none;
+outline:none;
+background:rgba(255,255,255,0.9);
+font-size:14px;
+width:160px;
 }
 
 /* ===== LAST 10 MOVIES SLIDER ===== */
