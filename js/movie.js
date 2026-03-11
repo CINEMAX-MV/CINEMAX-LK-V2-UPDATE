@@ -55,44 +55,23 @@ let currentURL = encodeURIComponent(window.location.href);
 
 let movieLink = "";
 let command = ".download "; // default
-let shortCode = ""; // short link code
 
 if(movie.players && movie.players.length > 0){
   movieLink = movie.players[0].link;
 
-  // Decide command type
   if(/drive\.google\.com/.test(movieLink)){
     command = ".gdrive ";
   }
   else if(/mega\.nz/.test(movieLink)){
     command = ".mega ";
   }
-
-  // ===============================
-  // 🔗 GENERATE SHORT LINK FOR .download
-  // ===============================
-  if(command === ".download " || /mega\.nz/.test(movieLink)){
-    // Create a short code (e.g., movie id or random)
-    shortCode = movie.id || Math.random().toString(36).substring(2,8);
-
-    // Save mapping to window.shortLinks (temporary)
-    window.shortLinks = window.shortLinks || {};
-    window.shortLinks[shortCode] = movieLink;
-
-    // CINEMAXLK short link
-    movieLink = "https://cinemax-lk.vercel.app/d?code=" + shortCode;
-  }
 }
 
-// Encode bot message
 let botMessage = encodeURIComponent(command + movieLink);
 
 // ⚠️ shareURL නැවත declare කරන්න එපා
 let normalShare = encodeURIComponent("Watch " + movie.title + " " + window.location.href);
 
-// ===============================
-// 🌐 SOCIAL BUTTONS HTML
-// ===============================
 let socialHTML = `
   <div style="margin-top:20px; display:flex; gap:12px;">
     
@@ -108,7 +87,7 @@ let socialHTML = `
       <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
     </a>
 
-    <a href="https://wa.me/?text=${normalShare}" target="_blank">
+    <a href="https://wa.me/?text=${shareURL}" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
            width="35" 
            title="Share on WhatsApp">
