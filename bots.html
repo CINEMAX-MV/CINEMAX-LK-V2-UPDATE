@@ -1,228 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Movie Details & Download</title>
+<title>Download Movie</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
+
 *{
-  margin:0; padding:0; box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-  background:linear-gradient(135deg,#0f172a,#020617);
-  color:white;
-  line-height:1.6;
-  padding:30px;
+background:linear-gradient(135deg,#0f172a,#020617);
+color:white;
+padding:25px;
 }
+
+/* container */
 
 .container{
-  max-width:1000px;
-  margin:0 auto;
+max-width:700px;
+margin:auto;
+text-align:center;
 }
+
+/* poster */
 
 .poster{
-  width:100%;
-  max-width:500px;
-  border-radius:15px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
-  margin:0 auto 25px auto;
-  transition:transform 0.3s;
+width:100%;
+max-width:350px;
+border-radius:12px;
+box-shadow:0 15px 40px rgba(0,0,0,0.6);
+margin-bottom:20px;
 }
-.poster:hover{
-  transform:scale(1.03);
-}
+
+/* title */
 
 .title{
-  font-size:2.8em;
-  font-weight:700;
-  text-align:center;
-  background:linear-gradient(90deg,#ff8c00,#ff2a68);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  margin-bottom:15px;
+font-size:28px;
+font-weight:600;
+margin-bottom:15px;
+background:linear-gradient(90deg,#ff8c00,#ff2a68);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.description{
-  font-size:1.15em;
-  color:#ddd;
-  text-align:center;
-  max-width:800px;
-  margin:0 auto 35px auto;
+/* description */
+
+.desc{
+font-size:15px;
+color:#ccc;
+line-height:1.7;
+margin-bottom:25px;
 }
+
+/* details */
 
 .details{
-  display:flex;
-  gap:35px;
-  flex-wrap:wrap;
-  margin-bottom:40px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:12px;
+margin-bottom:30px;
+line-height:1.8;
+font-size:15px;
 }
 
-.details-left{
-  flex:1;
-  min-width:250px;
-}
-
-.details-left img{
-  width:100%;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.5);
-  margin-bottom:15px;
-}
-
-.imdb{
-  font-size:1.2em;
-}
-
-.imdb span{
-  margin-right:8px;
-}
-
-.details-right{
-  flex:2;
-  min-width:300px;
-  line-height:1.8;
-  font-size:1.05em;
-}
-
-.bot-container{
-  text-align:center;
-  margin-top:20px;
-}
+/* bot button */
 
 .bot{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  margin:15px;
-  padding:16px 30px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.1);
-  color:white;
-  font-size:18px;
-  font-weight:500;
-  text-decoration:none;
-  position:relative;
-  overflow:hidden;
-  transition:0.4s;
-}
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
 
-.bot img{
-  width:22px;
-}
+margin:12px 0;
+padding:15px;
 
-.bot::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(120deg, rgba(37,211,102,0.4), rgba(37,211,102,0));
-  transition:0.5s;
-}
+border-radius:12px;
 
-.bot:hover::before{
-  left:100%;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+
+text-decoration:none;
+color:white;
+font-size:17px;
+
+transition:0.3s;
 }
 
 .bot:hover{
-  background:#25D366;
-  transform:translateY(-3px) scale(1.02);
-  box-shadow:0 10px 30px rgba(37,211,102,0.5);
+background:#25D366;
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(37,211,102,0.4);
 }
 
-@media(max-width:900px){
-  .details{
-    flex-direction:column;
-    align-items:center;
-  }
-  .details-right, .details-left{
-    min-width:100%;
-  }
+.bot img{
+width:22px;
 }
+
+.sub{
+margin-bottom:15px;
+opacity:0.7;
+}
+
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-  <!-- BIG POSTER -->
-  <img id="bigposter" class="poster" src="" alt="Movie Poster">
+<img id="poster" class="poster">
 
-  <!-- TITLE & DESCRIPTION -->
-  <div class="title" id="movietitle"></div>
-  <div class="description" id="moviedesc"></div>
+<div id="movietitle" class="title"></div>
 
-  <!-- DETAILS CARD -->
-  <div class="details">
-    <div class="details-left">
-      <img id="smallposter" src="" alt="Poster">
-      <div class="imdb">
-        <strong>IMDb:</strong> <span id="stars"></span> <span id="imdbscore"></span>
-      </div>
-    </div>
-    <div class="details-right">
-      <p>📅 <strong>Release Date:</strong> <span id="release"></span></p>
-      <p>🎬 <strong>Director:</strong> <span id="director"></span></p>
-      <p>⏳ <strong>Runtime:</strong> <span id="runtime"></span></p>
-      <p>🎭 <strong>Genre:</strong> <span id="genre"></span></p>
-    </div>
-  </div>
+<div id="desc" class="desc"></div>
 
-  <!-- WHATSAPP BOTS -->
-  <div class="bot-container">
-    <a id="bot1" class="bot"><img src="https://img.icons8.com/color/48/whatsapp.png">Use Bot 1</a>
-    <a id="bot2" class="bot"><img src="https://img.icons8.com/color/48/whatsapp.png">Use Bot 2</a>
-    <a id="bot3" class="bot"><img src="https://img.icons8.com/color/48/whatsapp.png">Use Bot 3</a>
-  </div>
+<div class="details">
+<p>📅 <b>Release Date:</b> <span id="release"></span></p>
+<p>🎬 <b>Director:</b> <span id="director"></span></p>
+<p>⏳ <b>Runtime:</b> <span id="runtime"></span></p>
+<p>🎭 <b>Genre:</b> <span id="genre"></span></p>
+</div>
+
+<div class="sub">Select WhatsApp Bot To Download</div>
+
+<a id="bot1" class="bot">
+<img src="https://img.icons8.com/color/48/whatsapp.png">
+Use Bot 1
+</a>
+
+<a id="bot2" class="bot">
+<img src="https://img.icons8.com/color/48/whatsapp.png">
+Use Bot 2
+</a>
+
+<a id="bot3" class="bot">
+<img src="https://img.icons8.com/color/48/whatsapp.png">
+Use Bot 3
+</a>
 
 </div>
 
 <script>
-// Sample movie object (replace with dynamic fetch)
-const movie = {
-  title: "Avengers: Endgame",
-  description: "After the devastating events of Infinity War, the Avengers assemble once more to reverse Thanos' actions.",
-  image: "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg",
-  imdb: 8.4,
-  release_date: "26 April 2019",
-  director: "Anthony & Joe Russo",
-  runtime: "3h 1m",
-  genre: "Action, Adventure, Sci-Fi"
-};
 
-// Function to show stars
-function getStars(score){
-  let full = Math.floor(score);
-  let half = score - full >= 0.5 ? 1 : 0;
-  let empty = 10 - full - half;
-  return '★'.repeat(full)+'☆'.repeat(half)+'✩'.repeat(empty);
-}
+// get params
+let params = new URLSearchParams(window.location.search);
 
-// Fill movie data
-document.getElementById("bigposter").src = movie.image;
-document.getElementById("smallposter").src = movie.image;
-document.getElementById("movietitle").textContent = movie.title;
-document.getElementById("moviedesc").textContent = movie.description;
-document.getElementById("stars").textContent = getStars(movie.imdb);
-document.getElementById("imdbscore").textContent = `(${movie.imdb}/10)`;
-document.getElementById("release").textContent = movie.release_date;
-document.getElementById("director").textContent = movie.director;
-document.getElementById("runtime").textContent = movie.runtime;
-document.getElementById("genre").textContent = movie.genre;
+let cmd = params.get("cmd");
+let link = params.get("link");
 
-// WhatsApp download setup
-let command = ".download "; // default (change dynamically based on link)
-let movieLink = "https://example.com/movie.mp4"; // replace with real link
-let message = encodeURIComponent(command + movieLink);
+let poster = params.get("poster");
+let title = params.get("title");
+let desc = params.get("desc");
 
-document.getElementById("bot1").href = "https://wa.me/94740571366?text=" + message;
-document.getElementById("bot2").href = "https://wa.me/94774397157?text=" + message;
-document.getElementById("bot3").href = "https://wa.me/94772461954?text=" + message;
+let release = params.get("release");
+let director = params.get("director");
+let runtime = params.get("runtime");
+let genre = params.get("genre");
+
+// set data
+
+document.getElementById("poster").src = poster;
+document.getElementById("movietitle").textContent = title;
+document.getElementById("desc").textContent = desc;
+
+document.getElementById("release").textContent = release;
+document.getElementById("director").textContent = director;
+document.getElementById("runtime").textContent = runtime;
+document.getElementById("genre").textContent = genre;
+
+// whatsapp command
+
+let message = encodeURIComponent(cmd + link);
+
+document.getElementById("bot1").href =
+"https://wa.me/94740571366?text=" + message;
+
+document.getElementById("bot2").href =
+"https://wa.me/94774397157?text=" + message;
+
+document.getElementById("bot3").href =
+"https://wa.me/94772461954?text=" + message;
 
 </script>
 
