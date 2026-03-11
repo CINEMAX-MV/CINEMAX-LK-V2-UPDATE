@@ -2,36 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CINEMAXLK Short Link</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Poppins, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .loader {
+      border: 6px solid #333;
+      border-top: 6px solid #ff0040;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+  </style>
 </head>
 <body>
-<script>
-// ===============================
-// 🔗 Client-side Short Link Redirect
-// ===============================
+  <div class="loader"></div>
+  <h2>Redirecting to your download...</h2>
+  <p>If nothing happens, <a id="manualLink" href="#" style="color:#ff0040;">click here</a></p>
 
-// Temporary short link mapping
-// ⚠️ For production, replace this with server/db mapping
-const shortLinks = {
-  // "abc123": "https://drive.google.com/...",
-  // "xyz789": "https://mega.nz/...",
-};
+  <script>
+    // ===============================
+    // Short code mapping (for demo)
+    // In production, use server-side DB/API
+    // ===============================
+    const shortLinks = {
+      "t34mke": "https://drive.google.com/uc?export=download&id=YOUR_GOOGLE_DRIVE_FILE_ID",
+      "abcd12": "https://mega.nz/file/EXAMPLE#KEY",
+      // add more short codes here
+    };
 
-// Extract shortCode from URL
-const params = new URLSearchParams(window.location.search);
-const code = params.get("code"); // URL example: /d?code=abc123
+    // Get code from URL
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
 
-if (code && shortLinks[code]) {
-  // Redirect to original movie link
-  window.location.href = shortLinks[code];
-} else {
-  // Invalid or missing code → show message
-  document.body.innerHTML = `
-    <h2 style="color:red;text-align:center;margin-top:50px;">
-      ❌ Invalid CINEMAXLK Short Link
-    </h2>
-  `;
-}
-</script>
+    // Find original link
+    const originalLink = shortLinks[code];
+
+    if(originalLink){
+      // Redirect after short delay
+      setTimeout(() => {
+        window.location.href = originalLink;
+      }, 1500);
+
+      // Also update manual link
+      document.getElementById('manualLink').href = originalLink;
+    } else {
+      document.querySelector('h2').textContent = "Link not found!";
+      document.querySelector('.loader').style.display = 'none';
+      document.getElementById('manualLink').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
