@@ -48,69 +48,77 @@ fetch("data/movies.json")
     shareURL = encodeURIComponent(shareURL)
     
 // ===============================
-// 🌐 SOCIAL SHARE URL (CURRENT PAGE) + CINEMAXLK SHORT LINK
+// 🌐 SOCIAL SHARE URL (CURRENT PAGE)
 // ===============================
 
-// Current page URL
 let currentURL = encodeURIComponent(window.location.href);
 
-// Movie link & command
 let movieLink = "";
 let command = ".download "; // default
+let shortCode = ""; // short link code
 
-if (movie.players && movie.players.length > 0) {
+if(movie.players && movie.players.length > 0){
   movieLink = movie.players[0].link;
 
-  if (/drive\.google\.com/.test(movieLink)) {
+  // Decide command type
+  if(/drive\.google\.com/.test(movieLink)){
     command = ".gdrive ";
-  } else if (/mega\.nz/.test(movieLink)) {
+  }
+  else if(/mega\.nz/.test(movieLink)){
     command = ".mega ";
+  }
+
+  // ===============================
+  // 🔗 GENERATE SHORT LINK FOR .download
+  // ===============================
+  if(command === ".download " || /mega\.nz/.test(movieLink)){
+    // Create a short code (e.g., movie id or random)
+    shortCode = movie.id || Math.random().toString(36).substring(2,8);
+
+    // Save mapping to window.shortLinks (temporary)
+    window.shortLinks = window.shortLinks || {};
+    window.shortLinks[shortCode] = movieLink;
+
+    // CINEMAXLK short link
+    movieLink = "https://cinemax-lk.vercel.app/d?code=" + shortCode;
   }
 }
 
-// ===============================
-// 🔗 CINEMAXLK SHORT LINK GENERATION
-// ===============================
+// Encode bot message
+let botMessage = encodeURIComponent(command + movieLink);
 
-// Short code (unique per movie)
-let shortCode = movie.id || Math.random().toString(36).substring(2, 8);
-let shortLink = "https://cinemax-lk.vercel.app/d/" + shortCode;
-
-// Bot message:
-// Google Drive → original link
-// Direct / Mega → CINEMAXLK short link
-let botMessage = encodeURIComponent(
-  command === ".gdrive " ? command + movieLink : ".download CINEMAXLK=" + shortLink
-);
-
-// Normal WhatsApp share
+// ⚠️ shareURL නැවත declare කරන්න එපා
 let normalShare = encodeURIComponent("Watch " + movie.title + " " + window.location.href);
 
 // ===============================
 // 🌐 SOCIAL BUTTONS HTML
 // ===============================
 let socialHTML = `
-<div style="margin-top:20px; display:flex; gap:12px;">
-  <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
-  </a>
+  <div style="margin-top:20px; display:flex; gap:12px;">
+    
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
+    </a>
 
-  <a href="https://wa.me/94772461954?text=${botMessage}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
-  </a>
+    <a href="https://wa.me/94772461954?text=${botMessage}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
+    </a>
 
-  <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
-  </a>
+    <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
+    </a>
 
-  <a href="https://wa.me/?text=${normalShare}" target="_blank">
-    <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" width="35" title="Share on WhatsApp">
-  </a>
-</div>
+    <a href="https://wa.me/?text=${normalShare}" target="_blank">
+      <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
+           width="35" 
+           title="Share on WhatsApp">
+    </a>
+
+  </div>
 `;
 
-// Inject buttons into page
-document.getElementById("social-buttons").innerHTML = socialHTML; 
+// Inject into page
+document.getElementById("social-buttons").innerHTML = socialHTML;
     // ===============================
     // 🎥 GET TRAILER FROM YOUTUBE
     // ===============================
