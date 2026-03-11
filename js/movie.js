@@ -79,7 +79,7 @@ let socialHTML = `
       <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
     </a>
 
-    <a href="https://wa.me/94772461954?text=${botMessage}" target="_blank">
+    <a href="bots.html?cmd=${command}&link=${encodeURIComponent(movieLink)}" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
     </a>
 
