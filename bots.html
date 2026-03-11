@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Download Movie</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -21,15 +21,11 @@ color:white;
 padding:25px;
 }
 
-/* container */
-
 .container{
 max-width:700px;
 margin:auto;
 text-align:center;
 }
-
-/* poster */
 
 .poster{
 width:100%;
@@ -38,8 +34,6 @@ border-radius:12px;
 box-shadow:0 15px 40px rgba(0,0,0,0.6);
 margin-bottom:20px;
 }
-
-/* title */
 
 .title{
 font-size:28px;
@@ -50,16 +44,12 @@ background:linear-gradient(90deg,#ff8c00,#ff2a68);
 -webkit-text-fill-color:transparent;
 }
 
-/* description */
-
 .desc{
 font-size:15px;
 color:#ccc;
 line-height:1.7;
 margin-bottom:25px;
 }
-
-/* details */
 
 .details{
 background:rgba(255,255,255,0.05);
@@ -70,26 +60,19 @@ line-height:1.8;
 font-size:15px;
 }
 
-/* bot button */
-
 .bot{
 display:flex;
 align-items:center;
 justify-content:center;
 gap:10px;
-
 margin:12px 0;
 padding:15px;
-
 border-radius:12px;
-
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
-
 text-decoration:none;
 color:white;
 font-size:17px;
-
 transition:0.3s;
 }
 
@@ -149,33 +132,37 @@ Use Bot 3
 
 <script>
 
-// get params
+// URL parameters
 let params = new URLSearchParams(window.location.search);
 
+let movieTitle = params.get("title");
 let cmd = params.get("cmd");
 let link = params.get("link");
 
-let poster = params.get("poster");
-let title = params.get("title");
-let desc = params.get("desc");
+// fetch movies.json
 
-let release = params.get("release");
-let director = params.get("director");
-let runtime = params.get("runtime");
-let genre = params.get("genre");
+fetch("data/movies.json")
+.then(res => res.json())
+.then(data => {
 
-// set data
+let movie = data.find(m => m.title === movieTitle);
 
-document.getElementById("poster").src = poster;
-document.getElementById("movietitle").textContent = title;
-document.getElementById("desc").textContent = desc;
+if(!movie) return;
 
-document.getElementById("release").textContent = release;
-document.getElementById("director").textContent = director;
-document.getElementById("runtime").textContent = runtime;
-document.getElementById("genre").textContent = genre;
+// show movie info
 
-// whatsapp command
+document.getElementById("poster").src = movie.image;
+document.getElementById("movietitle").textContent = movie.title;
+document.getElementById("desc").textContent = movie.description;
+
+document.getElementById("release").textContent = movie.release_date;
+document.getElementById("director").textContent = movie.director;
+document.getElementById("runtime").textContent = movie.runtime;
+document.getElementById("genre").textContent = movie.genre;
+
+});
+
+// whatsapp message
 
 let message = encodeURIComponent(cmd + link);
 
