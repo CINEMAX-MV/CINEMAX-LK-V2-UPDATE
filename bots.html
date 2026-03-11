@@ -15,27 +15,26 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-/* BODY */
-
 body{
 
 min-height:100vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
+
+color:white;
 
 background:linear-gradient(-45deg,#020617,#0f172a,#020617,#111827);
 background-size:400% 400%;
-animation:bg 12s infinite;
+animation:bgmove 15s ease infinite;
 
-color:white;
-padding:20px;
-
-overflow-x:hidden;
+overflow:hidden;
 }
 
-@keyframes bg{
+/* animated gradient */
+
+@keyframes bgmove{
 
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
@@ -43,115 +42,157 @@ overflow-x:hidden;
 
 }
 
-/* LOADING SCREEN */
+/* particles */
+
+body::before{
+
+content:"";
+position:absolute;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(2px 2px at 20% 30%,white,transparent),
+radial-gradient(2px 2px at 70% 60%,white,transparent),
+radial-gradient(2px 2px at 40% 80%,white,transparent),
+radial-gradient(2px 2px at 90% 20%,white,transparent);
+
+opacity:0.3;
+
+animation:stars 30s linear infinite;
+
+}
+
+@keyframes stars{
+
+0%{transform:translateY(0);}
+100%{transform:translateY(-200px);}
+
+}
+
+/* LOADER */
 
 #loader{
 
 position:fixed;
 top:0;
 left:0;
+
 width:100%;
 height:100%;
 
 background:#020617;
 
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 
 z-index:9999;
 
 }
 
-.loader-circle{
-
-width:80px;
-height:80px;
-
-border-radius:50%;
-border:5px solid rgba(255,255,255,0.1);
-border-top:5px solid #25D366;
-
-animation:spin 1s linear infinite;
-
-margin-bottom:20px;
-}
-
-@keyframes spin{
-
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-
-}
+/* loader number */
 
 #loadnum{
 
-font-size:32px;
+font-size:45px;
 font-weight:600;
+
 color:#25D366;
+
+text-shadow:0 0 15px #25D366;
+
+margin-bottom:20px;
 
 }
 
-/* MAIN CARD */
+/* progress bar */
+
+.bar{
+
+width:200px;
+height:6px;
+
+background:rgba(255,255,255,0.1);
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+.bar span{
+
+display:block;
+
+height:100%;
+
+width:0%;
+
+background:linear-gradient(90deg,#25D366,#16a34a);
+
+animation:loadbar 3s linear forwards;
+
+}
+
+@keyframes loadbar{
+
+0%{width:0;}
+100%{width:100%;}
+
+}
+
+/* container */
 
 .container{
 
+display:none;
+
 text-align:center;
-width:100%;
-max-width:430px;
+
+width:90%;
+max-width:420px;
 
 padding:35px;
 
 border-radius:25px;
 
 background:rgba(255,255,255,0.05);
+
 backdrop-filter:blur(20px);
 
 border:1px solid rgba(255,255,255,0.08);
 
 box-shadow:0 20px 60px rgba(0,0,0,0.7);
 
-animation:fade 1.2s;
-
 }
 
-@keyframes fade{
-
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-
-}
+/* titles */
 
 h2{
-
 font-size:28px;
-font-weight:600;
 margin-bottom:5px;
-
 }
 
 .sub{
-
 font-size:14px;
 opacity:0.7;
 margin-bottom:25px;
-
 }
 
-/* BUTTON BASE */
+/* buttons */
 
 .bot{
-
-position:relative;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
-gap:12px;
+gap:10px;
 
-margin:15px 0;
+margin:14px 0;
 padding:18px;
 
 border-radius:15px;
@@ -159,8 +200,10 @@ border-radius:15px;
 text-decoration:none;
 color:white;
 
-font-size:18px;
+font-size:17px;
 font-weight:500;
+
+position:relative;
 
 overflow:hidden;
 
@@ -168,11 +211,12 @@ transition:0.4s;
 
 }
 
-/* SHINE EFFECT */
+/* shine */
 
 .bot::before{
 
 content:"";
+
 position:absolute;
 
 top:0;
@@ -186,7 +230,7 @@ transparent,
 rgba(255,255,255,0.5),
 transparent);
 
-transition:0.6s;
+transition:0.7s;
 
 }
 
@@ -194,40 +238,43 @@ transition:0.6s;
 left:100%;
 }
 
-/* COLORS */
+/* colors */
 
 .bot1{
+
 background:linear-gradient(45deg,#25D366,#16a34a);
-box-shadow:0 0 20px #25D366;
+
+box-shadow:0 0 15px #25D366;
+
 }
 
 .bot2{
+
 background:linear-gradient(45deg,#9333ea,#7c3aed);
-box-shadow:0 0 20px #9333ea;
+
+box-shadow:0 0 15px #9333ea;
+
 }
 
 .bot3{
+
 background:linear-gradient(45deg,#0ea5e9,#0284c7);
-box-shadow:0 0 20px #0ea5e9;
+
+box-shadow:0 0 15px #0ea5e9;
+
 }
 
-/* HOVER */
+/* hover */
 
 .bot:hover{
 
 transform:translateY(-6px) scale(1.05);
 
-box-shadow:0 15px 40px rgba(0,0,0,0.7);
+box-shadow:0 0 30px rgba(255,255,255,0.2);
 
 }
 
-/* ICON */
-
-.bot img{
-width:24px;
-}
-
-/* ANNOUNCEMENT */
+/* announcement */
 
 .announcement{
 
@@ -246,29 +293,23 @@ line-height:1.6;
 
 }
 
-/* FOOTER */
+/* footer */
 
 footer{
 
 margin-top:30px;
 
-text-align:center;
-
-padding:15px;
-
-border-radius:12px;
-
-background:rgba(255,255,255,0.05);
-
-border:1px solid rgba(255,255,255,0.06);
+padding:12px 20px;
 
 font-size:13px;
 
-letter-spacing:0.5px;
+border-radius:10px;
+
+background:rgba(255,255,255,0.05);
+
+border:1px solid rgba(255,255,255,0.07);
 
 opacity:0.8;
-
-transition:0.4s;
 
 }
 
@@ -284,41 +325,30 @@ transform:scale(1.05);
 
 <body>
 
-<!-- LOADING -->
+<!-- LOADER -->
 
 <div id="loader">
 
-<div class="loader-circle"></div>
-
 <div id="loadnum">1</div>
+
+<div class="bar"><span></span></div>
 
 </div>
 
 <!-- MAIN -->
 
-<div class="container" id="main" style="display:none">
+<div class="container" id="main">
 
 <h2>Choose WhatsApp Bot</h2>
 <div class="sub">Select a bot to download the movie</div>
 
-<a id="bot1" class="bot bot1">
-<img src="https://img.icons8.com/color/48/whatsapp.png">
-Use Bot 1
-</a>
-
-<a id="bot2" class="bot bot2">
-<img src="https://img.icons8.com/color/48/whatsapp.png">
-Use Bot 2
-</a>
-
-<a id="bot3" class="bot bot3">
-<img src="https://img.icons8.com/color/48/whatsapp.png">
-Use Bot 3
-</a>
+<a id="bot1" class="bot bot1">🟢 Use Bot 1</a>
+<a id="bot2" class="bot bot2">🟣 Use Bot 2</a>
+<a id="bot3" class="bot bot3">🔵 Use Bot 3</a>
 
 <div class="announcement">
 
-📢 ඉහත දී ඇති <b>WA Download Bots</b> ඔස්සේ ඔබට මෙම ෆිල්ම් එක බාගත හැක.<br><br>
+📢 ඉහත දී ඇති WA Download Bots ඔස්සේ ඔබට මෙම ෆිල්ම් එක බාගත හැක.<br><br>
 
 කිසියම් හේතුවක් මගින් WhatsApp Bot ක්‍රියා විරහිත වී තිබුවහොත්  
 <b>WA User 2</b> භාවිතා කරන්න.
@@ -336,17 +366,17 @@ Directed by <b>Peksha Rasanjana.M</b>
 
 <script>
 
-/* LOADING COUNT */
+/* loading counter */
 
-let num=1;
+let n=1;
 
 let load=setInterval(()=>{
 
-num++;
+n++;
 
-document.getElementById("loadnum").innerText=num;
+document.getElementById("loadnum").innerText=n;
 
-if(num==10){
+if(n>=10){
 
 clearInterval(load);
 
@@ -355,26 +385,20 @@ document.getElementById("main").style.display="block";
 
 }
 
-},120);
+},300);
 
+/* bot links */
 
-/* BOT MESSAGE */
+let params=new URLSearchParams(window.location.search);
 
-let params = new URLSearchParams(window.location.search);
+let cmd=params.get("cmd");
+let link=params.get("link");
 
-let cmd = params.get("cmd");
-let link = params.get("link");
+let message=encodeURIComponent(cmd+link);
 
-let message = encodeURIComponent(cmd + link);
-
-document.getElementById("bot1").href =
-"https://wa.me/94740571366?text=" + message;
-
-document.getElementById("bot2").href =
-"https://wa.me/94774397157?text=" + message;
-
-document.getElementById("bot3").href =
-"https://wa.me/94772461954?text=" + message;
+document.getElementById("bot1").href="https://wa.me/94740571366?text="+message;
+document.getElementById("bot2").href="https://wa.me/94774397157?text="+message;
+document.getElementById("bot3").href="https://wa.me/94772461954?text="+message;
 
 </script>
 
