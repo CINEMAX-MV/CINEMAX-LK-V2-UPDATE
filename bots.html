@@ -17,32 +17,73 @@ font-family:'Poppins',sans-serif;
 
 body{
 
-height:100vh;
+min-height:100vh;
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 
-background:linear-gradient(135deg,#0f172a,#020617);
+background:linear-gradient(-45deg,#020617,#0f172a,#020617,#111827);
+background-size:400% 400%;
+animation:bgmove 12s ease infinite;
+
 color:white;
+padding:20px;
+}
+
+/* animated background */
+
+@keyframes bgmove{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
 }
 
 /* container */
 
 .container{
+
 text-align:center;
-width:90%;
-max-width:400px;
+width:100%;
+max-width:420px;
+
+padding:35px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 15px 45px rgba(0,0,0,0.6);
+
+animation:fadeIn 1.2s ease;
 }
 
-/* title */
+/* fade */
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
 
 h2{
-margin-bottom:35px;
-font-weight:500;
+font-weight:600;
+margin-bottom:8px;
 letter-spacing:1px;
+font-size:26px;
 }
 
-/* bot button */
+.sub{
+font-size:14px;
+opacity:0.7;
+margin-bottom:25px;
+}
+
+/* bot buttons */
 
 .bot{
 
@@ -52,47 +93,104 @@ justify-content:center;
 
 gap:12px;
 
-margin:15px 0;
+margin:14px 0;
 padding:18px;
 
 border-radius:14px;
 
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-
-border:1px solid rgba(255,255,255,0.08);
-
 text-decoration:none;
 color:white;
 font-size:18px;
+font-weight:500;
 
-transition:0.3s;
+transition:0.35s;
+
+box-shadow:0 8px 25px rgba(0,0,0,0.5);
 }
 
-/* hover */
+.bot img{
+width:24px;
+}
+
+/* button colors */
+
+.bot1{
+background:linear-gradient(45deg,#25D366,#128C7E);
+}
+
+.bot2{
+background:linear-gradient(45deg,#7c3aed,#9333ea);
+}
+
+.bot3{
+background:linear-gradient(45deg,#0ea5e9,#0284c7);
+}
+
+/* hover animation */
 
 .bot:hover{
 
-background:#25D366;
-transform:translateY(-4px) scale(1.02);
+transform:translateY(-5px) scale(1.04);
+filter:brightness(1.15);
 
-box-shadow:0 8px 25px rgba(37,211,102,0.5);
+box-shadow:0 12px 35px rgba(0,0,0,0.7);
 
 }
 
-/* icon */
-
-.bot img{
-width:22px;
+.bot:active{
+transform:scale(0.95);
 }
 
-/* subtitle */
+/* announcement box */
 
-.sub{
+.announcement{
+
+margin-top:25px;
+padding:18px;
+
+font-size:14px;
+line-height:1.6;
+
+border-radius:16px;
+
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:blur(10px);
+
+animation:fadeIn 1.8s ease;
+
+}
+
+/* footer */
+
+footer{
+
+margin-top:30px;
+text-align:center;
+
 font-size:13px;
-opacity:0.6;
-margin-top:-20px;
-margin-bottom:25px;
+
+padding:15px 20px;
+
+border-radius:12px;
+
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+
+backdrop-filter:blur(10px);
+
+opacity:0.8;
+
+transition:0.4s;
+
+}
+
+footer:hover{
+
+opacity:1;
+transform:scale(1.03);
+
 }
 
 </style>
@@ -103,25 +201,41 @@ margin-bottom:25px;
 <div class="container">
 
 <h2>Choose WhatsApp Bot</h2>
-
 <div class="sub">Select a bot to download the movie</div>
 
-<a id="bot1" class="bot">
+<a id="bot1" class="bot bot1">
 <img src="https://img.icons8.com/color/48/whatsapp.png">
 Use Bot 1
 </a>
 
-<a id="bot2" class="bot">
+<a id="bot2" class="bot bot2">
 <img src="https://img.icons8.com/color/48/whatsapp.png">
 Use Bot 2
 </a>
 
-<a id="bot3" class="bot">
+<a id="bot3" class="bot bot3">
 <img src="https://img.icons8.com/color/48/whatsapp.png">
 Use Bot 3
 </a>
 
+<div class="announcement">
+
+📢 ඉහත දී ඇති <b>WA Download Bots</b> ඔස්සේ ඔබට මෙම ෆිල්ම් එක බාගත හැක.  
+<br><br>
+කිසියම් හේතුවක් මගින් <b>WhatsApp Bot</b> ක්‍රියා විරහිත වී තිබුවහොත්  
+<b>WA User 2</b> භාවිතා කරන්න.
+
 </div>
+
+</div>
+
+<footer>
+
+©2026 Cinemax WA Download  
+<br>
+Directed by <b>Peksha Rasanjana.M</b>
+
+</footer>
 
 <script>
 
