@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Select WhatsApp Bot</title>
+<title>Cinemax WA Download</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -15,25 +15,27 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+/* BODY */
+
 body{
 
 min-height:100vh;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+flex-direction:column;
 
 background:linear-gradient(-45deg,#020617,#0f172a,#020617,#111827);
 background-size:400% 400%;
-animation:bgmove 12s ease infinite;
+animation:bg 12s infinite;
 
 color:white;
 padding:20px;
+
+overflow-x:hidden;
 }
 
-/* animated background */
-
-@keyframes bgmove{
+@keyframes bg{
 
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
@@ -41,51 +43,107 @@ padding:20px;
 
 }
 
-/* container */
+/* LOADING SCREEN */
+
+#loader{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:#020617;
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+z-index:9999;
+
+}
+
+.loader-circle{
+
+width:80px;
+height:80px;
+
+border-radius:50%;
+border:5px solid rgba(255,255,255,0.1);
+border-top:5px solid #25D366;
+
+animation:spin 1s linear infinite;
+
+margin-bottom:20px;
+}
+
+@keyframes spin{
+
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+
+}
+
+#loadnum{
+
+font-size:32px;
+font-weight:600;
+color:#25D366;
+
+}
+
+/* MAIN CARD */
 
 .container{
 
 text-align:center;
 width:100%;
-max-width:420px;
+max-width:430px;
 
 padding:35px;
 
-border-radius:22px;
+border-radius:25px;
 
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(20px);
 
 border:1px solid rgba(255,255,255,0.08);
 
-box-shadow:0 15px 45px rgba(0,0,0,0.6);
+box-shadow:0 20px 60px rgba(0,0,0,0.7);
 
-animation:fadeIn 1.2s ease;
+animation:fade 1.2s;
+
 }
 
-/* fade */
+@keyframes fade{
 
-@keyframes fadeIn{
 from{opacity:0;transform:translateY(30px);}
 to{opacity:1;transform:translateY(0);}
+
 }
 
 h2{
+
+font-size:28px;
 font-weight:600;
-margin-bottom:8px;
-letter-spacing:1px;
-font-size:26px;
+margin-bottom:5px;
+
 }
 
 .sub{
+
 font-size:14px;
 opacity:0.7;
 margin-bottom:25px;
+
 }
 
-/* bot buttons */
+/* BUTTON BASE */
 
 .bot{
+
+position:relative;
 
 display:flex;
 align-items:center;
@@ -93,92 +151,120 @@ justify-content:center;
 
 gap:12px;
 
-margin:14px 0;
+margin:15px 0;
 padding:18px;
 
-border-radius:14px;
+border-radius:15px;
 
 text-decoration:none;
 color:white;
+
 font-size:18px;
 font-weight:500;
 
-transition:0.35s;
+overflow:hidden;
 
-box-shadow:0 8px 25px rgba(0,0,0,0.5);
+transition:0.4s;
+
 }
+
+/* SHINE EFFECT */
+
+.bot::before{
+
+content:"";
+position:absolute;
+
+top:0;
+left:-100%;
+
+width:100%;
+height:100%;
+
+background:linear-gradient(120deg,
+transparent,
+rgba(255,255,255,0.5),
+transparent);
+
+transition:0.6s;
+
+}
+
+.bot:hover::before{
+left:100%;
+}
+
+/* COLORS */
+
+.bot1{
+background:linear-gradient(45deg,#25D366,#16a34a);
+box-shadow:0 0 20px #25D366;
+}
+
+.bot2{
+background:linear-gradient(45deg,#9333ea,#7c3aed);
+box-shadow:0 0 20px #9333ea;
+}
+
+.bot3{
+background:linear-gradient(45deg,#0ea5e9,#0284c7);
+box-shadow:0 0 20px #0ea5e9;
+}
+
+/* HOVER */
+
+.bot:hover{
+
+transform:translateY(-6px) scale(1.05);
+
+box-shadow:0 15px 40px rgba(0,0,0,0.7);
+
+}
+
+/* ICON */
 
 .bot img{
 width:24px;
 }
 
-/* button colors */
-
-.bot1{
-background:linear-gradient(45deg,#25D366,#128C7E);
-}
-
-.bot2{
-background:linear-gradient(45deg,#7c3aed,#9333ea);
-}
-
-.bot3{
-background:linear-gradient(45deg,#0ea5e9,#0284c7);
-}
-
-/* hover animation */
-
-.bot:hover{
-
-transform:translateY(-5px) scale(1.04);
-filter:brightness(1.15);
-
-box-shadow:0 12px 35px rgba(0,0,0,0.7);
-
-}
-
-.bot:active{
-transform:scale(0.95);
-}
-
-/* announcement box */
+/* ANNOUNCEMENT */
 
 .announcement{
 
 margin-top:25px;
+
 padding:18px;
+
+border-radius:15px;
+
+background:rgba(255,255,255,0.06);
+
+border:1px solid rgba(255,255,255,0.08);
 
 font-size:14px;
 line-height:1.6;
 
-border-radius:16px;
-
-background:rgba(255,255,255,0.06);
-border:1px solid rgba(255,255,255,0.08);
-
-backdrop-filter:blur(10px);
-
-animation:fadeIn 1.8s ease;
-
 }
 
-/* footer */
+/* FOOTER */
 
 footer{
 
 margin-top:30px;
+
 text-align:center;
 
-font-size:13px;
-
-padding:15px 20px;
+padding:15px;
 
 border-radius:12px;
 
-background:rgba(255,255,255,0.04);
+background:rgba(255,255,255,0.05);
+
 border:1px solid rgba(255,255,255,0.06);
 
-backdrop-filter:blur(10px);
+font-size:13px;
+
+letter-spacing:0.5px;
 
 opacity:0.8;
 
@@ -189,7 +275,7 @@ transition:0.4s;
 footer:hover{
 
 opacity:1;
-transform:scale(1.03);
+transform:scale(1.05);
 
 }
 
@@ -198,7 +284,19 @@ transform:scale(1.03);
 
 <body>
 
-<div class="container">
+<!-- LOADING -->
+
+<div id="loader">
+
+<div class="loader-circle"></div>
+
+<div id="loadnum">1</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container" id="main" style="display:none">
 
 <h2>Choose WhatsApp Bot</h2>
 <div class="sub">Select a bot to download the movie</div>
@@ -220,9 +318,9 @@ Use Bot 3
 
 <div class="announcement">
 
-📢 ඉහත දී ඇති <b>WA Download Bots</b> ඔස්සේ ඔබට මෙම ෆිල්ම් එක බාගත හැක.  
-<br><br>
-කිසියම් හේතුවක් මගින් <b>WhatsApp Bot</b> ක්‍රියා විරහිත වී තිබුවහොත්  
+📢 ඉහත දී ඇති <b>WA Download Bots</b> ඔස්සේ ඔබට මෙම ෆිල්ම් එක බාගත හැක.<br><br>
+
+කිසියම් හේතුවක් මගින් WhatsApp Bot ක්‍රියා විරහිත වී තිබුවහොත්  
 <b>WA User 2</b> භාවිතා කරන්න.
 
 </div>
@@ -231,13 +329,36 @@ Use Bot 3
 
 <footer>
 
-©2026 Cinemax WA Download  
-<br>
+©2026 Cinemax WA Download<br>
 Directed by <b>Peksha Rasanjana.M</b>
 
 </footer>
 
 <script>
+
+/* LOADING COUNT */
+
+let num=1;
+
+let load=setInterval(()=>{
+
+num++;
+
+document.getElementById("loadnum").innerText=num;
+
+if(num==10){
+
+clearInterval(load);
+
+document.getElementById("loader").style.display="none";
+document.getElementById("main").style.display="block";
+
+}
+
+},120);
+
+
+/* BOT MESSAGE */
 
 let params = new URLSearchParams(window.location.search);
 
