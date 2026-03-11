@@ -49,7 +49,7 @@ fetch("data/movies.json")
 
    
 // ===============================
-// 🌐 SOCIAL SHARE URL (CURRENT PAGE)
+// 🌐 SOCIAL SHARE + BOT LINK GENERATOR
 // ===============================
 
 let currentURL = encodeURIComponent(window.location.href);
@@ -61,7 +61,7 @@ if(movie.players && movie.players.length > 0){
   movieLink = movie.players[0].link;
 
   if(/drive\.google\.com/.test(movieLink)){
-    command = ".gdrive ";
+    command = ".gdrive "; // real Google Drive link
   }
   else if(/mega\.nz/.test(movieLink)){
     command = ".mega ";
@@ -72,45 +72,54 @@ if(movie.players && movie.players.length > 0){
 // 🔗 SHORT LINK GENERATOR
 // ===============================
 
-// movie id use කරලා short code එක
+// Generate short code
 let shortCode = movie.id || Math.random().toString(36).substring(2,8);
+
+// Save mapping: shortCode -> real link (temporary JS store, for production use DB/server)
+window.shortLinks = window.shortLinks || {};
+window.shortLinks[shortCode] = movieLink;
 
 // CINEMAX short link
 let shortLink = "https://cinemax-lk.vercel.app/d/" + shortCode;
 
-// WhatsApp bot message
-let botMessage = encodeURIComponent(command + shortLink);
+// Bot message
+// Google Drive: send original link
+// Direct / Mega: send short link via .download
+let botMessage = encodeURIComponent(
+  command === ".gdrive " ? command + movieLink : ".download " + shortLink
+);
 
 // Normal WhatsApp share
 let normalShare = encodeURIComponent("Watch " + movie.title + " " + window.location.href);
 
 // ===============================
-// 🌐 SOCIAL BUTTONS
+// 🌐 SOCIAL BUTTONS HTML
 // ===============================
 
 let socialHTML = `
-  <div style="margin-top:20px; display:flex; gap:12px;">
-    
-    <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
-    </a>
+<div style="margin-top:20px; display:flex; gap:12px;">
+  <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/facebook-new.png" width="35">
+  </a>
 
-    <a href="https://wa.me/94772461954?text=${botMessage}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
-    </a>
+  <a href="https://wa.me/94772461954?text=${botMessage}" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="35">
+  </a>
 
-    <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
-    </a>
+  <a href="https://twitter.com/intent/tweet?url=${currentURL}&text=Watch ${encodeURIComponent(movie.title)}" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
+  </a>
 
-    <a href="https://wa.me/?text=${normalShare}" target="_blank">
-      <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
-           width="35" 
-           title="Share on WhatsApp">
-    </a>
-
-  </div>
+  <a href="https://wa.me/?text=${normalShare}" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
+         width="35" 
+         title="Share on WhatsApp">
+  </a>
+</div>
 `;
+
+// Inject into page (make sure you have a container with id="social-buttons")
+document.getElementById("social-buttons").innerHTML = socialHTML;
    
     // ===============================
     // 🎥 GET TRAILER FROM YOUTUBE
