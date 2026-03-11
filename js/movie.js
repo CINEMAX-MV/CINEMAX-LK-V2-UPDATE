@@ -49,6 +49,7 @@ fetch("data/movies.json")
 
    
 // ===============================
+// ===============================
 // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
 // ===============================
 
@@ -68,9 +69,13 @@ if(movie.players && movie.players.length > 0){
   }
 }
 
-let botMessage = encodeURIComponent(command + movieLink);
+// 🔒 Encode link (short code style)
+let shortCode = btoa(movieLink);
 
-// ⚠️ shareURL නැවත declare කරන්න එපා
+// Bot message
+let botMessage = encodeURIComponent(command + "CINEMAX=" + shortCode);
+
+// Share message
 let normalShare = encodeURIComponent("Watch " + movie.title + " " + window.location.href);
 
 let socialHTML = `
@@ -88,7 +93,7 @@ let socialHTML = `
       <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" width="35">
     </a>
 
-    <a href="https://wa.me/?text=${shareURL}" target="_blank">
+    <a href="https://wa.me/?text=${normalShare}" target="_blank">
       <img src="https://img.icons8.com/color/48/000000/forward-arrow.png" 
            width="35" 
            title="Share on WhatsApp">
