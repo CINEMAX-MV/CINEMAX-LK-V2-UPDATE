@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CINEMAXLK Short Link</title>
+</head>
+<body>
+<script>
+// ===============================
+// 🔗 Client-side Short Link Redirect
+// ===============================
+
+// Temporary short link mapping
+// ⚠️ For production, replace this with server/db mapping
+const shortLinks = {
+  // "abc123": "https://drive.google.com/...",
+  // "xyz789": "https://mega.nz/...",
+};
+
+// Extract shortCode from URL
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code"); // URL example: /d?code=abc123
+
+if (code && shortLinks[code]) {
+  // Redirect to original movie link
+  window.location.href = shortLinks[code];
+} else {
+  // Invalid or missing code → show message
+  document.body.innerHTML = `
+    <h2 style="color:red;text-align:center;margin-top:50px;">
+      ❌ Invalid CINEMAXLK Short Link
+    </h2>
+  `;
+}
+</script>
+</body>
+</html>
