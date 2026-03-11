@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Select WhatsApp Bot</title>
+
+<style>
+
+body{
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+  padding-top:60px;
+}
+
+h2{
+  margin-bottom:30px;
+}
+
+.bot{
+  display:block;
+  width:260px;
+  margin:15px auto;
+  padding:18px;
+
+  background:#1e293b;
+  border-radius:12px;
+
+  text-decoration:none;
+  color:white;
+  font-size:18px;
+
+  transition:0.3s;
+}
+
+.bot:hover{
+  background:#25D366;
+  transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Select WhatsApp Bot</h2>
+
+<a id="bot1" class="bot">Use Bot 1</a>
+<a id="bot2" class="bot">Use Bot 2</a>
+<a id="bot3" class="bot">Use Bot 3</a>
+
+<script>
+
+let params = new URLSearchParams(window.location.search);
+
+let cmd = params.get("cmd");
+let link = params.get("link");
+
+let message = encodeURIComponent(cmd + link);
+
+document.getElementById("bot1").href =
+"https://wa.me/94740571366?text=" + message;
+
+document.getElementById("bot2").href =
+"https://wa.me/94774397157?text=" + message;
+
+document.getElementById("bot3").href =
+"https://wa.me/94772461954?text=" + message;
+
+</script>
+
+</body>
+</html>
