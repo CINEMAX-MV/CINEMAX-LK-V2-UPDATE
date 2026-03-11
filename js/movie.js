@@ -117,8 +117,6 @@ let socialHTML = `
   </div>
 `;
 
-// Inject into page
-document.getElementById("social-buttons").innerHTML = socialHTML;
     // ===============================
     // 🎥 GET TRAILER FROM YOUTUBE
     // ===============================
