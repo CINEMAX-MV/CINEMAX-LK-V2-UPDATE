@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Cinemax WA Download</title>
@@ -15,316 +15,245 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-/* BODY */
+/* BODY + Aurora Gradient Background */
 
 body{
-
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
 color:white;
-
-background:linear-gradient(-45deg,#020617,#0f172a,#020617,#111827);
-background-size:400% 400%;
-animation:bgmove 15s ease infinite;
-
 overflow:hidden;
+background: linear-gradient(270deg,#020617,#0f172a,#111827,#020617,#0f172a,#111827);
+background-size:1200% 1200%;
+animation: aurora 30s ease infinite;
 }
 
-/* background animation */
-
-@keyframes bgmove{
-
+@keyframes aurora{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
-
 }
 
-/* stars */
+/* stars particles */
 
 body::before{
-
 content:"";
 position:absolute;
-
 width:100%;
 height:100%;
-
 background-image:
-radial-gradient(3px 3px at 20% 30%,white,transparent),
-radial-gradient(3px 3px at 70% 60%,white,transparent),
-radial-gradient(3px 3px at 40% 80%,white,transparent),
-radial-gradient(3px 3px at 90% 20%,white,transparent);
-
-opacity:0.25;
-
-animation:stars 40s linear infinite;
-
+radial-gradient(2px 2px at 10% 20%,white,transparent),
+radial-gradient(2px 2px at 50% 70%,white,transparent),
+radial-gradient(2px 2px at 80% 30%,white,transparent),
+radial-gradient(2px 2px at 20% 90%,white,transparent);
+opacity:0.2;
+animation: stars 60s linear infinite;
 }
 
 @keyframes stars{
-
 0%{transform:translateY(0);}
-100%{transform:translateY(-300px);}
-
+100%{transform:translateY(-400px);}
 }
 
 /* LOADER */
 
 #loader{
-
 position:fixed;
 top:0;
 left:0;
-
 width:100%;
 height:100%;
-
 background:#020617;
-
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
 z-index:9999;
-
 }
 
 #loadnum{
-
-font-size:140px;
+font-size:120px;
 font-weight:700;
-
 color:#25D366;
-
-text-shadow:0 0 60px #25D366;
-
-margin-bottom:40px;
-
+text-shadow:0 0 50px #25D366, 0 0 80px #16a34a;
+margin-bottom:30px;
 }
 
-/* progress bar */
-
 .bar{
-
-width:520px;
-height:16px;
-
+width:400px;
+height:12px;
 background:rgba(255,255,255,0.1);
-
 border-radius:30px;
-
 overflow:hidden;
-
 }
 
 .bar span{
-
 display:block;
 height:100%;
 width:0%;
-
 background:linear-gradient(90deg,#25D366,#16a34a);
-
 animation:loadbar 3s linear forwards;
-
 }
 
 @keyframes loadbar{
-
 0%{width:0;}
 100%{width:100%;}
-
 }
 
 /* MAIN CARD */
 
 .container{
-
 display:none;
-
 text-align:center;
-
-width:96%;
-max-width:900px;
-
-padding:90px 70px;
-
+width:94%;
+max-width:850px;
+padding:80px 60px;
 border-radius:35px;
-
-background:rgba(255,255,255,0.06);
-
-backdrop-filter:blur(30px);
-
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(28px);
 border:1px solid rgba(255,255,255,0.08);
-
-box-shadow:0 40px 120px rgba(0,0,0,0.9);
-
+box-shadow:0 30px 100px rgba(0,0,0,0.9);
+position:relative;
+z-index:2;
 }
 
 /* titles */
 
 h2{
-font-size:50px;
+font-size:48px;
 margin-bottom:15px;
+text-shadow: 0 0 10px #fff;
 }
 
 .sub{
-font-size:22px;
+font-size:20px;
 opacity:0.85;
-margin-bottom:45px;
+margin-bottom:40px;
 }
 
-/* buttons */
+/* WhatsApp Buttons - Neon Style */
 
 .bot{
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 gap:12px;
-
 margin:25px 0;
 padding:34px;
-
 border-radius:25px;
-
 text-decoration:none;
 color:white;
-
 font-size:26px;
 font-weight:600;
-
 position:relative;
-
 overflow:hidden;
-
 transition:0.4s;
-
+text-shadow: 0 0 8px #fff;
 }
 
-/* shine */
-
 .bot::before{
-
 content:"";
-
 position:absolute;
-
 top:0;
 left:-100%;
-
 width:100%;
 height:100%;
-
 background:linear-gradient(120deg,
 transparent,
 rgba(255,255,255,0.5),
 transparent);
-
 transition:0.7s;
-
 }
 
 .bot:hover::before{
 left:100%;
 }
 
-/* colors */
-
 .bot1{
-
-background:linear-gradient(45deg,#25D366,#16a34a);
-
-box-shadow:0 0 35px #25D366;
-
+background: linear-gradient(45deg,#25D366,#16a34a);
+box-shadow:0 0 40px #25D366, 0 0 80px #25D366 inset;
 }
 
 .bot2{
-
-background:linear-gradient(45deg,#9333ea,#7c3aed);
-
-box-shadow:0 0 35px #9333ea;
-
+background: linear-gradient(45deg,#9333ea,#7c3aed);
+box-shadow:0 0 40px #9333ea, 0 0 80px #9333ea inset;
 }
 
 .bot3{
-
-background:linear-gradient(45deg,#0ea5e9,#0284c7);
-
-box-shadow:0 0 35px #0ea5e9;
-
+background: linear-gradient(45deg,#0ea5e9,#0284c7);
+box-shadow:0 0 40px #0ea5e9, 0 0 80px #0ea5e9 inset;
 }
-
-/* hover */
 
 .bot:hover{
-
-transform:translateY(-10px) scale(1.08);
-
-box-shadow:0 0 60px rgba(255,255,255,0.4);
-
+transform:translateY(-8px) scale(1.08);
+box-shadow:0 0 70px rgba(255,255,255,0.5);
 }
 
-/* announcement */
+/* Announcement */
 
 .announcement{
-
 margin-top:40px;
-
 padding:30px;
-
 border-radius:25px;
-
 background:rgba(255,255,255,0.07);
-
 border:1px solid rgba(255,255,255,0.08);
-
 font-size:20px;
 line-height:1.9;
-
+text-shadow:0 0 5px #fff;
 }
 
-/* footer */
+/* FOOTER - bottom fixed + glow */
 
 footer{
-
-margin-top:40px;
-
+position:fixed;
+bottom:15px;
+width:90%;
+max-width:850px;
+margin:0 auto;
 padding:20px 35px;
-
 font-size:18px;
-
 border-radius:15px;
+background:rgba(0,0,0,0.4);
+border:1px solid rgba(255,255,255,0.1);
+text-align:center;
+color:white;
+box-shadow:0 0 25px #16a34a,0 0 50px #25D366 inset;
+z-index:5;
+transition:0.3s;
+}
 
-background:rgba(255,255,255,0.05);
+footer:hover{
+transform:scale(1.02);
+box-shadow:0 0 40px #16a34a,0 0 80px #25D366 inset;
+}
 
-border:1px solid rgba(255,255,255,0.07);
+/* Responsive adjustments */
 
-opacity:0.9;
-
+@media(max-width:768px){
+#loadnum{font-size:90px;margin-bottom:20px;}
+.bar{width:300px;height:10px;}
+.container{padding:60px 40px;}
+h2{font-size:36px;}
+.sub{font-size:18px;}
+.bot{font-size:20px;padding:26px;}
+.announcement{font-size:16px;padding:22px;}
+footer{font-size:16px;padding:16px 26px;}
 }
 
 </style>
 </head>
-
 <body>
 
+<!-- LOADER -->
 <div id="loader">
-
 <div id="loadnum">1</div>
 <div class="bar"><span></span></div>
-
 </div>
 
+<!-- MAIN CARD -->
 <div class="container" id="main">
-
 <h2>Choose WhatsApp Bot</h2>
 <div class="sub">Select a bot to download the movie</div>
 
@@ -333,55 +262,39 @@ opacity:0.9;
 <a id="bot3" class="bot bot3">🪀 Use Bot 3</a>
 
 <div class="announcement">
-
 📢 ඉහත දී ඇති <b>WA Download Bots</b> ඔස්සේ ඔබට මෙම ෆිල්ම් එක බාගත හැක.<br><br>
-
 කිසියම් හේතුවක් මගින් WhatsApp Bot ක්‍රියා විරහිත වී තිබුවහොත්  
 <b>WA User 2</b> භාවිතා කරන්න.
-
+</div>
 </div>
 
-</div>
-
+<!-- FOOTER -->
 <footer>
-
 ©2026 Cinemax WA Download<br>
 Directed by <b>PEKSHA RASANJANA</b>
-
 </footer>
 
 <script>
-
+/* Loader animation */
 let n=1;
-
 let load=setInterval(()=>{
-
 n++;
-
 document.getElementById("loadnum").innerText=n;
-
 if(n>=13){
-
 clearInterval(load);
-
 document.getElementById("loader").style.display="none";
 document.getElementById("main").style.display="block";
-
 }
-
 },300);
 
+/* WhatsApp bot links */
 let params=new URLSearchParams(window.location.search);
-
 let cmd=params.get("cmd");
 let link=params.get("link");
-
 let message=encodeURIComponent(cmd+link);
-
 document.getElementById("bot1").href="https://wa.me/94772461954?text="+message;
 document.getElementById("bot2").href="https://wa.me/94772461954?text="+message;
 document.getElementById("bot3").href="https://wa.me/94772461954?text="+message;
-
 </script>
 
 </body>
