@@ -49,44 +49,34 @@ fetch("data/movies.json")
 
    
 // ===============================
-// 🌐 SOCIAL SHARE + BOT LINK GENERATOR
+// 🌐 SOCIAL SHARE URL (CURRENT PAGE) + CINEMAXLK SHORT LINK
 // ===============================
 
+// Current page URL
 let currentURL = encodeURIComponent(window.location.href);
 
-let movieLink = "";
-let command = ".download "; // default
+// Movie link & bot command logic
+let movieLink = movie.players && movie.players.length > 0 ? movie.players[0].link : "";
+let command = ".download "; // default command
 
-if(movie.players && movie.players.length > 0){
-  movieLink = movie.players[0].link;
-
-  if(/drive\.google\.com/.test(movieLink)){
-    command = ".gdrive "; // real Google Drive link
-  }
-  else if(/mega\.nz/.test(movieLink)){
-    command = ".mega ";
-  }
+if(/drive\.google\.com/.test(movieLink)){
+  command = ".gdrive ";
+} else if(/mega\.nz/.test(movieLink)){
+  command = ".mega ";
 }
 
 // ===============================
-// 🔗 SHORT LINK GENERATOR
-// ===============================
-
-// Generate short code
+// 🔗 CINEMAXLK SHORT LINK GENERATOR
 let shortCode = movie.id || Math.random().toString(36).substring(2,8);
-
-// Save mapping: shortCode -> real link (temporary JS store, for production use DB/server)
 window.shortLinks = window.shortLinks || {};
-window.shortLinks[shortCode] = movieLink;
-
-// CINEMAX short link
+window.shortLinks[shortCode] = movieLink; // temporary store mapping
 let shortLink = "https://cinemax-lk.vercel.app/d/" + shortCode;
 
-// Bot message
-// Google Drive: send original link
-// Direct / Mega: send short link via .download
+// Update botMessage for WhatsApp bot
+// Google Drive → original link
+// Direct/Mega → CINEMAXLK short link
 let botMessage = encodeURIComponent(
-  command === ".gdrive " ? command + movieLink : ".download " + shortLink
+  command === ".gdrive " ? command + movieLink : ".download CINEMAXLK=" + shortLink
 );
 
 // Normal WhatsApp share
@@ -95,7 +85,6 @@ let normalShare = encodeURIComponent("Watch " + movie.title + " " + window.locat
 // ===============================
 // 🌐 SOCIAL BUTTONS HTML
 // ===============================
-
 let socialHTML = `
 <div style="margin-top:20px; display:flex; gap:12px;">
   <a href="https://www.facebook.com/sharer/sharer.php?u=${currentURL}" target="_blank">
@@ -118,7 +107,7 @@ let socialHTML = `
 </div>
 `;
 
-// Inject into page (make sure you have a container with id="social-buttons")
+// Inject buttons into page
 document.getElementById("social-buttons").innerHTML = socialHTML;
    
     // ===============================
