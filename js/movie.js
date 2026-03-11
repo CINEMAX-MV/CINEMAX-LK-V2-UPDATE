@@ -49,7 +49,6 @@ fetch("data/movies.json")
 
    
 // ===============================
-// ===============================
 // 🌐 SOCIAL SHARE URL (CURRENT PAGE)
 // ===============================
 
@@ -69,14 +68,25 @@ if(movie.players && movie.players.length > 0){
   }
 }
 
-// 🔒 Encode link (short code style)
-let shortCode = btoa(movieLink);
+// ===============================
+// 🔗 SHORT LINK GENERATOR
+// ===============================
 
-// Bot message
-let botMessage = encodeURIComponent(command + "CINEMAX=" + shortCode);
+// movie id use කරලා short code එක
+let shortCode = movie.id || Math.random().toString(36).substring(2,8);
 
-// Share message
+// CINEMAX short link
+let shortLink = "https://cinemax-lk.vercel.app/d/" + shortCode;
+
+// WhatsApp bot message
+let botMessage = encodeURIComponent(command + shortLink);
+
+// Normal WhatsApp share
 let normalShare = encodeURIComponent("Watch " + movie.title + " " + window.location.href);
+
+// ===============================
+// 🌐 SOCIAL BUTTONS
+// ===============================
 
 let socialHTML = `
   <div style="margin-top:20px; display:flex; gap:12px;">
