@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Cinemax WA Download</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -15,8 +13,7 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-/* BODY + Aurora Gradient Background */
-
+/* BODY + Animated Aurora Background */
 body{
 height:100vh;
 display:flex;
@@ -25,9 +22,9 @@ justify-content:center;
 align-items:center;
 color:white;
 overflow:hidden;
-background: linear-gradient(270deg,#020617,#0f172a,#111827,#020617,#0f172a,#111827);
+background: linear-gradient(270deg,#0b0b0b,#1b1b1b,#0b0b0b,#1b1b1b);
 background-size:1200% 1200%;
-animation: aurora 30s ease infinite;
+animation: aurora 25s ease infinite;
 }
 
 @keyframes aurora{
@@ -36,8 +33,7 @@ animation: aurora 30s ease infinite;
 100%{background-position:0% 50%;}
 }
 
-/* stars particles */
-
+/* Stars particles for depth */
 body::before{
 content:"";
 position:absolute;
@@ -48,24 +44,23 @@ radial-gradient(2px 2px at 10% 20%,white,transparent),
 radial-gradient(2px 2px at 50% 70%,white,transparent),
 radial-gradient(2px 2px at 80% 30%,white,transparent),
 radial-gradient(2px 2px at 20% 90%,white,transparent);
-opacity:0.2;
+opacity:0.15;
 animation: stars 60s linear infinite;
 }
 
 @keyframes stars{
 0%{transform:translateY(0);}
-100%{transform:translateY(-400px);}
+100%{transform:translateY(-500px);}
 }
 
-/* LOADER */
-
+/* ULTRA PRO NETFLIX LOADER */
 #loader{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:#020617;
+background:#0b0b0b;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -74,27 +69,34 @@ z-index:9999;
 }
 
 #loadnum{
-font-size:120px;
-font-weight:700;
-color:#25D366;
-text-shadow:0 0 50px #25D366, 0 0 80px #16a34a;
+font-size:150px;
+font-weight:800;
+color:#e50914; /* Netflix Red */
+text-shadow: 0 0 40px #e50914,0 0 80px #b20710,0 0 120px #ff0000;
 margin-bottom:30px;
+animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+100%{transform:scale(1.08);}
 }
 
 .bar{
-width:400px;
-height:12px;
-background:rgba(255,255,255,0.1);
-border-radius:30px;
+width:500px;
+height:15px;
+background:rgba(255,255,255,0.05);
+border-radius:50px;
 overflow:hidden;
+box-shadow:0 0 20px rgba(255,255,255,0.2) inset;
 }
 
 .bar span{
 display:block;
 height:100%;
 width:0%;
-background:linear-gradient(90deg,#25D366,#16a34a);
-animation:loadbar 3s linear forwards;
+background:linear-gradient(90deg,#e50914,#ff3c3c);
+animation: loadbar 3s linear forwards;
 }
 
 @keyframes loadbar{
@@ -103,54 +105,52 @@ animation:loadbar 3s linear forwards;
 }
 
 /* MAIN CARD */
-
 .container{
 display:none;
 text-align:center;
-width:94%;
-max-width:850px;
-padding:80px 60px;
+width:95%;
+max-width:900px;
+padding:100px 70px;
 border-radius:35px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(28px);
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(30px);
 border:1px solid rgba(255,255,255,0.08);
-box-shadow:0 30px 100px rgba(0,0,0,0.9);
+box-shadow:0 40px 120px rgba(0,0,0,0.9);
 position:relative;
 z-index:2;
 }
 
-/* titles */
-
+/* Titles */
 h2{
-font-size:48px;
+font-size:56px;
 margin-bottom:15px;
-text-shadow: 0 0 10px #fff;
+text-shadow:0 0 15px #fff;
+letter-spacing:1px;
 }
 
 .sub{
-font-size:20px;
-opacity:0.85;
-margin-bottom:40px;
+font-size:24px;
+opacity:0.9;
+margin-bottom:50px;
 }
 
-/* WhatsApp Buttons - Neon Style */
-
+/* WhatsApp Buttons - Neon Netflix Style */
 .bot{
 display:flex;
 align-items:center;
 justify-content:center;
 gap:12px;
-margin:25px 0;
-padding:34px;
-border-radius:25px;
+margin:30px 0;
+padding:38px;
+border-radius:30px;
 text-decoration:none;
 color:white;
-font-size:26px;
-font-weight:600;
+font-size:28px;
+font-weight:700;
 position:relative;
 overflow:hidden;
 transition:0.4s;
-text-shadow: 0 0 8px #fff;
+text-shadow:0 0 10px #fff;
 }
 
 .bot::before{
@@ -160,10 +160,7 @@ top:0;
 left:-100%;
 width:100%;
 height:100%;
-background:linear-gradient(120deg,
-transparent,
-rgba(255,255,255,0.5),
-transparent);
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
 transition:0.7s;
 }
 
@@ -172,74 +169,72 @@ left:100%;
 }
 
 .bot1{
-background: linear-gradient(45deg,#25D366,#16a34a);
-box-shadow:0 0 40px #25D366, 0 0 80px #25D366 inset;
+background: linear-gradient(45deg,#e50914,#ff3c3c);
+box-shadow:0 0 45px #e50914,0 0 90px #ff3c3c inset;
 }
 
 .bot2{
 background: linear-gradient(45deg,#9333ea,#7c3aed);
-box-shadow:0 0 40px #9333ea, 0 0 80px #9333ea inset;
+box-shadow:0 0 45px #9333ea,0 0 90px #7c3aed inset;
 }
 
 .bot3{
 background: linear-gradient(45deg,#0ea5e9,#0284c7);
-box-shadow:0 0 40px #0ea5e9, 0 0 80px #0ea5e9 inset;
+box-shadow:0 0 45px #0ea5e9,0 0 90px #0284c7 inset;
 }
 
 .bot:hover{
-transform:translateY(-8px) scale(1.08);
-box-shadow:0 0 70px rgba(255,255,255,0.5);
+transform:translateY(-10px) scale(1.1);
+box-shadow:0 0 80px rgba(255,255,255,0.6);
 }
 
 /* Announcement */
-
 .announcement{
-margin-top:40px;
-padding:30px;
+margin-top:45px;
+padding:35px;
 border-radius:25px;
-background:rgba(255,255,255,0.07);
+background:rgba(255,255,255,0.06);
 border:1px solid rgba(255,255,255,0.08);
-font-size:20px;
-line-height:1.9;
+font-size:22px;
+line-height:2;
 text-shadow:0 0 5px #fff;
 }
 
-/* FOOTER - bottom fixed + glow */
-
+/* FOOTER Netflix Ultra Style */
 footer{
 position:fixed;
 bottom:15px;
 width:90%;
-max-width:850px;
+max-width:900px;
 margin:0 auto;
-padding:20px 35px;
-font-size:18px;
-border-radius:15px;
-background:rgba(0,0,0,0.4);
+padding:22px 40px;
+font-size:20px;
+border-radius:20px;
+background:rgba(0,0,0,0.5);
 border:1px solid rgba(255,255,255,0.1);
 text-align:center;
 color:white;
-box-shadow:0 0 25px #16a34a,0 0 50px #25D366 inset;
+box-shadow:0 0 35px #e50914,0 0 70px #ff3c3c inset;
 z-index:5;
 transition:0.3s;
+letter-spacing:1px;
 }
 
 footer:hover{
 transform:scale(1.02);
-box-shadow:0 0 40px #16a34a,0 0 80px #25D366 inset;
+box-shadow:0 0 50px #e50914,0 0 100px #ff3c3c inset;
 }
 
-/* Responsive adjustments */
-
+/* Responsive */
 @media(max-width:768px){
-#loadnum{font-size:90px;margin-bottom:20px;}
-.bar{width:300px;height:10px;}
-.container{padding:60px 40px;}
-h2{font-size:36px;}
-.sub{font-size:18px;}
-.bot{font-size:20px;padding:26px;}
-.announcement{font-size:16px;padding:22px;}
-footer{font-size:16px;padding:16px 26px;}
+#loadnum{font-size:100px;margin-bottom:20px;}
+.bar{width:350px;height:12px;}
+.container{padding:70px 40px;}
+h2{font-size:40px;}
+.sub{font-size:20px;}
+.bot{font-size:22px;padding:28px;}
+.announcement{font-size:18px;padding:25px;}
+footer{font-size:18px;padding:18px 28px;}
 }
 
 </style>
