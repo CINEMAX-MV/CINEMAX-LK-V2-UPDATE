@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Download Movie</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,8 +18,10 @@ font-family:'Poppins',sans-serif;
 body{
 background:linear-gradient(135deg,#0f172a,#020617);
 color:white;
-padding:25px;
+padding:30px;
 }
+
+/* container */
 
 .container{
 max-width:700px;
@@ -27,59 +29,80 @@ margin:auto;
 text-align:center;
 }
 
+/* poster */
+
 .poster{
 width:100%;
-max-width:350px;
+max-width:320px;
 border-radius:12px;
 box-shadow:0 15px 40px rgba(0,0,0,0.6);
 margin-bottom:20px;
 }
 
+/* title */
+
 .title{
 font-size:28px;
 font-weight:600;
-margin-bottom:15px;
+margin-bottom:10px;
 background:linear-gradient(90deg,#ff8c00,#ff2a68);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
+/* description */
+
 .desc{
 font-size:15px;
 color:#ccc;
 line-height:1.7;
-margin-bottom:25px;
+margin-bottom:20px;
 }
+
+/* details */
 
 .details{
 background:rgba(255,255,255,0.05);
-padding:20px;
+padding:18px;
 border-radius:12px;
-margin-bottom:30px;
+margin-bottom:25px;
 line-height:1.8;
-font-size:15px;
 }
 
+/* bot buttons */
+
 .bot{
+
 display:flex;
 align-items:center;
 justify-content:center;
-gap:10px;
+
+gap:12px;
+
 margin:12px 0;
-padding:15px;
-border-radius:12px;
+padding:16px;
+
+border-radius:14px;
+
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.08);
+
 text-decoration:none;
 color:white;
 font-size:17px;
+
 transition:0.3s;
 }
 
 .bot:hover{
+
 background:#25D366;
 transform:translateY(-3px);
-box-shadow:0 8px 20px rgba(37,211,102,0.4);
+
+box-shadow:0 8px 25px rgba(37,211,102,0.5);
+
 }
 
 .bot img{
@@ -87,8 +110,9 @@ width:22px;
 }
 
 .sub{
-margin-bottom:15px;
-opacity:0.7;
+font-size:13px;
+opacity:0.6;
+margin-bottom:20px;
 }
 
 </style>
@@ -135,21 +159,25 @@ Use Bot 3
 // URL parameters
 let params = new URLSearchParams(window.location.search);
 
-let movieTitle = params.get("title");
+let movieTitle = decodeURIComponent(params.get("title") || "");
 let cmd = params.get("cmd");
 let link = params.get("link");
 
 // fetch movies.json
-
-fetch("data/movies.json")
+fetch("/data/movies.json")
 .then(res => res.json())
 .then(data => {
 
-let movie = data.find(m => m.title === movieTitle);
+let movie = data.find(m => 
+m.title.toLowerCase() === movieTitle.toLowerCase()
+);
 
-if(!movie) return;
+if(!movie){
+console.log("Movie not found:", movieTitle);
+return;
+}
 
-// show movie info
+// show movie details
 
 document.getElementById("poster").src = movie.image;
 document.getElementById("movietitle").textContent = movie.title;
@@ -162,7 +190,7 @@ document.getElementById("genre").textContent = movie.genre;
 
 });
 
-// whatsapp message
+// whatsapp command
 
 let message = encodeURIComponent(cmd + link);
 
