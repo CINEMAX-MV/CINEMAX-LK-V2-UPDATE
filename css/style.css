@@ -1041,28 +1041,21 @@ outline:none;
 font-size:14px;
 }
 
-.whatsapp-msg{
-  padding:8px 14px;
-  border-radius:10px;
-  background:linear-gradient(45deg,#25D366,#128C7E);
-  color:white;
+.download-msg{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  font-size:0.8em;
   font-weight:600;
-  font-size:0.85em;
-  box-shadow:0 5px 15px rgba(0,0,0,0.4);
-  animation:whatsappGlow 2s infinite alternate;
-}
+  color:white;
 
-.whatsapp-msg span{
-  font-weight:800;
-}
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
 
-@keyframes whatsappGlow{
-  from{
-    transform:scale(1);
-    box-shadow:0 0 5px #25D366;
-  }
-  to{
-    transform:scale(1.05);
-    box-shadow:0 0 15px #25D366,0 0 25px #128C7E;
-  }
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.15);
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.5);
 }
