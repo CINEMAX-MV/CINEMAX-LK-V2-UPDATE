@@ -9,10 +9,15 @@ const moviesPerPage = 12;
 let moviesData = [];
 
 /* ===== Load Movies from JSON ===== */
-fetch("data/moviedata.json")
-.then(res => res.json())
-.then(data => {
+fetch("data/movie_data.txt")
+.then(res => res.text())
+.then(text => {
+    const data = JSON.parse(text);
     moviesData = data;
+
+    // මෙතනින් පස්සෙ ඔයාගේ existing code
+    displayMovies(moviesData);
+});
 
     // Load Last 10 Slider
     loadLast10Slider();
