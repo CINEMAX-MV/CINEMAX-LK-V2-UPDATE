@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Loading Movie...</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -16,171 +14,94 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-
-background:
-linear-gradient(180deg,#0a0a0a,#111,#0a0a0a);
-
+background:linear-gradient(180deg,#0a0a0a,#111,#0a0a0a);
 height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 color:white;
-
 }
 
 /* MAIN BOX */
-
 .box{
-
 width:420px;
 max-width:95%;
-
-background:
-linear-gradient(145deg,#151515,#1c1c1c);
-
+background:linear-gradient(145deg,#151515,#1c1c1c);
 border-radius:16px;
-
 padding:25px;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.8);
-
+box-shadow:0 10px 30px rgba(0,0,0,0.8);
 text-align:center;
-
 }
 
 /* TITLE */
-
 .title{
-
 font-size:22px;
 font-weight:600;
 margin-bottom:15px;
-
 letter-spacing:.5px;
-
 }
 
-/* POSTER */
-
+/* VIDEO */
 .poster{
-
 width:100%;
 border-radius:12px;
-
-box-shadow:
-0 6px 20px rgba(0,0,0,.6);
-
+box-shadow:0 6px 20px rgba(0,0,0,.6);
 }
 
-/* COUNTDOWN CONTAINER */
+/* AD WRAPPER */
+.ad-wrapper{
+position:relative;
+}
 
+/* TIMER */
 .timer{
-
 position:absolute;
 top:15px;
 right:15px;
-
-width:60px;
-height:60px;
-
-}
-
-/* SVG TIMER */
-
-svg{
-
-transform:rotate(-90deg);
-
-}
-
-circle{
-
-fill:none;
-stroke-width:6;
-
-}
-
-.bg{
-
-stroke:#333;
-
-}
-
-.progress{
-
-stroke:#ff0000;
-
-stroke-linecap:round;
-
-stroke-dasharray:157;
-
-stroke-dashoffset:0;
-
-transition:stroke-dashoffset 1s linear;
-
-}
-
-/* NUMBER */
-
-.time-text{
-
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-
+background:rgba(0,0,0,0.8);
+padding:6px 10px;
+border-radius:6px;
 font-weight:bold;
-font-size:16px;
-
 }
 
-/* BUTTON */
-
-button{
-
-margin-top:20px;
-
-padding:13px 25px;
-
+/* SKIP BUTTON */
+.skipBtn{
+position:absolute;
+bottom:15px;
+right:15px;
+background:rgba(0,0,0,0.85);
 border:none;
-
-border-radius:10px;
-
-background:
-linear-gradient(45deg,#ff0000,#ff3b3b);
-
 color:white;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+display:none;
+}
 
+.skipBtn:hover{
+background:#ff0000;
+}
+
+/* CONTINUE BUTTON */
+button{
+margin-top:20px;
+padding:13px 25px;
+border:none;
+border-radius:10px;
+background:linear-gradient(45deg,#ff0000,#ff3b3b);
+color:white;
 font-size:15px;
 font-weight:600;
-
 cursor:pointer;
-
 display:none;
-
-box-shadow:
-0 4px 15px rgba(255,0,0,.5);
-
+box-shadow:0 4px 15px rgba(255,0,0,.5);
 transition:.3s;
-
 }
 
 button:hover{
-
 transform:scale(1.05);
-
-box-shadow:
-0 6px 20px rgba(255,0,0,.8);
-
+box-shadow:0 6px 20px rgba(255,0,0,.8);
 }
-
-.ad-wrapper{
-
-position:relative;
-
-}
-
 </style>
 </head>
 
@@ -192,171 +113,83 @@ position:relative;
 
 <div class="ad-wrapper" id="adBox">
 
-<img class="poster"
-src="https://files.catbox.moe/8zsney.mp4">
+<video class="poster" autoplay muted playsinline>
+<source src="https://files.catbox.moe/8zsney.mp4" type="video/mp4">
+</video>
 
-<div class="timer">
-
-<svg width="60" height="60">
-
-<circle class="bg" cx="30" cy="30" r="25"></circle>
-
-<circle id="progress"
-class="progress"
-cx="30"
-cy="30"
-r="25">
-</circle>
-
-</svg>
-
-<div id="count" class="time-text">5</div>
+<div class="timer" id="count">5</div>
+<button class="skipBtn" id="skipAd">Skip Ad</button>
 
 </div>
 
-</div>
-
-<button id="continueBtn">
-Continue
-</button>
+<button id="continueBtn">Continue</button>
 
 </div>
 
 <script>
-
 /* MOVIE PARAMS */
-
 const urlParams = new URLSearchParams(window.location.search);
-
 const movieId = urlParams.get("id");
 const playLink = urlParams.get("play");
-
-const whatsappLink =
-"https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
-
-const imdbLink =
-"https://m.imdb.com/";
-
-const movieSite =
-"movie.html";
+const whatsappLink = "https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
+const imdbLink = "https://m.imdb.com/";
+const movieSite = "movie.html";
 
 /* ELEMENTS */
-
-const countText =
-document.getElementById("count");
-
-const progress =
-document.getElementById("progress");
-
-const btn =
-document.getElementById("continueBtn");
-
-const adBox =
-document.getElementById("adBox");
-
-/* TIMER */
-
-let timeLeft = 5;
-
-const circumference = 157;
-
-progress.style.strokeDasharray = circumference;
+const countText = document.getElementById("count");
+const btn = document.getElementById("continueBtn");
+const adBox = document.getElementById("adBox");
+const skipBtn = document.getElementById("skipAd");
 
 /* COUNTDOWN */
-
+let timeLeft = 5;
 const timer = setInterval(()=>{
-
 timeLeft--;
-
 countText.innerText = timeLeft;
-
-progress.style.strokeDashoffset =
-circumference - (timeLeft/5)*circumference;
-
 if(timeLeft <= 0){
-
 clearInterval(timer);
-
-adBox.style.display="none";
-
-btn.style.display="inline-block";
-
+countText.style.display="none";
+skipBtn.style.display="block";
 }
-
 },1000);
 
+/* SKIP BUTTON */
+skipBtn.onclick=()=>{
+adBox.style.display="none";
+btn.style.display="inline-block";
+};
 
 /* STEP SYSTEM */
-
-let step =
-sessionStorage.getItem("adStep") || "1";
+let step = sessionStorage.getItem("adStep") || "1";
 
 function updateButton(){
-
-if(step==="1")
-btn.innerText="Continue to IMDb";
-
-else if(step==="2")
-btn.innerText="Continue to WhatsApp";
-
+if(step==="1") btn.innerText="Continue to IMDb";
+else if(step==="2") btn.innerText="Continue to WhatsApp";
 }
 
 updateButton();
 
 /* BUTTON ACTION */
-
 btn.onclick=()=>{
-
 if(step==="1"){
-
 sessionStorage.setItem("adStep","2");
-
 step="2";
-
 updateButton();
-
 window.open(imdbLink,"_blank");
-
 }
-
 else if(step==="2"){
-
 sessionStorage.setItem("adStep","3");
-
 window.open(whatsappLink,"_blank");
-
 setTimeout(()=>{
-
-window.location.href=
-`${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
-
+window.location.href=`${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
 },1000);
-
 }
-
 };
-
-/* FOCUS DETECT */
-
-window.addEventListener("focus",()=>{
-
-if(step==="2"){
-
-btn.style.display="inline-block";
-
-}
-
-});
 
 /* RESET */
-
 window.onbeforeunload=()=>{
-
-if(step==="3")
-sessionStorage.removeItem("adStep");
-
+if(step==="3") sessionStorage.removeItem("adStep");
 };
-
 </script>
 
 </body>
