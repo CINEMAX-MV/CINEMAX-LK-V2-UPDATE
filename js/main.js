@@ -9,10 +9,9 @@ const moviesPerPage = 12;
 let moviesData = [];
 
 /* ===== Load Movies from JSON ===== */
-fetch("data/movie_data.txt")
-.then(res => res.text())
-.then(text => {
-    const data = JSON.parse(text);
+fetch("data/moviedata.json")
+.then(res => res.json())
+.then(data => {
     moviesData = data;
 
     // Load Last 10 Slider
