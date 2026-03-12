@@ -9,7 +9,7 @@ const moviesPerPage = 12;
 let moviesData = [];
 
 /* ===== Load Movies from JSON ===== */
-fetch("data/movies_data.json")
+fetch("data/movies.json")
 .then(res => res.json())
 .then(data => {
     moviesData = data;
