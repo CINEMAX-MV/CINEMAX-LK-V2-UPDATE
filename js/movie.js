@@ -93,13 +93,15 @@ let socialHTML = `
            title="Share on WhatsApp">
     </a>
 
-    <!-- MESSAGE BOX -->
-    <div class="download-msg">
-      Download via 
-      <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="18">
-      WhatsApp
-    </div>
-
+    <!-- MESSAGE BOX CLICK = WHATSAPP -->
+    <a href="bots.html?cmd=${command}&link=${encodeURIComponent(movieLink)}" target="_blank" style="text-decoration:none;">
+      <div class="download-msg">
+        Download via 
+        <img src="https://img.icons8.com/color/48/000000/whatsapp.png" width="18">
+        WhatsApp
+      </div>
+    </a>
+    
   </div>
 `;
 
