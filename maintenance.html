@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Cinemax Maintenance</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,181 +17,217 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#0b0f1a;
+background:#020617;
 color:white;
 overflow:hidden;
+padding:20px;
 }
 
-/* Animated Gradient Background */
+/* animated gradient */
 
 body::before{
 content:"";
-position:absolute;
-width:200%;
-height:200%;
-background:linear-gradient(
-45deg,
-#0f172a,
-#020617,
-#1e293b,
-#020617
-);
-animation:bgmove 20s linear infinite;
-z-index:-1;
+position:fixed;
+inset:0;
+background:linear-gradient(130deg,#020617,#0f172a,#1e293b,#020617);
+background-size:400% 400%;
+animation:bgmove 18s ease infinite;
+z-index:-2;
 }
 
 @keyframes bgmove{
-0%{transform:translate(-20%,-20%)}
-50%{transform:translate(-10%,-30%)}
-100%{transform:translate(-20%,-20%)}
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-/* Main Card */
+/* floating particles */
 
-.box{
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(2px 2px at 20% 30%,white,transparent),
+radial-gradient(2px 2px at 80% 60%,white,transparent),
+radial-gradient(2px 2px at 50% 80%,white,transparent),
+radial-gradient(2px 2px at 10% 70%,white,transparent);
+opacity:0.15;
+animation:particles 60s linear infinite;
+z-index:-1;
+}
 
-width:90%;
-max-width:650px;
+@keyframes particles{
+0%{transform:translateY(0)}
+100%{transform:translateY(-400px)}
+}
 
-padding:60px 45px;
+/* main card */
 
+.card{
+
+width:100%;
+max-width:640px;
 text-align:center;
 
-background:rgba(255,255,255,0.05);
-border-radius:25px;
+padding:50px 35px;
 
-backdrop-filter:blur(20px);
+background:rgba(255,255,255,0.05);
+border-radius:22px;
 
 border:1px solid rgba(255,255,255,0.08);
 
-box-shadow:
-0 30px 120px rgba(0,0,0,0.8),
-0 0 40px rgba(0,255,150,0.08);
+backdrop-filter:blur(16px);
 
-animation:fade 1.2s ease;
+box-shadow:0 20px 80px rgba(0,0,0,0.8);
+
+animation:fade 1s ease;
+
 }
 
-/* Icon */
+/* icon */
 
 .icon{
-
-font-size:70px;
-margin-bottom:20px;
-animation:spin 6s linear infinite;
-
+font-size:60px;
+margin-bottom:10px;
+animation:spin 8s linear infinite;
 }
 
 @keyframes spin{
-
-0%{transform:rotate(0deg)}
+0%{transform:rotate(0)}
 100%{transform:rotate(360deg)}
-
 }
 
-/* Title */
+/* title */
 
 h1{
-font-size:36px;
+font-size:32px;
 margin-bottom:10px;
-letter-spacing:1px;
 }
 
-/* Text */
+/* subtitle */
 
 p{
-
-font-size:18px;
+font-size:16px;
 opacity:0.8;
-line-height:1.7;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+/* progress bar */
+
+.progress{
+
+width:100%;
+height:10px;
+
+background:rgba(255,255,255,0.1);
+
+border-radius:10px;
+
+overflow:hidden;
+
 margin-bottom:35px;
 
 }
 
-/* Countdown */
+.progress span{
+
+display:block;
+height:100%;
+width:0%;
+
+background:linear-gradient(90deg,#22c55e,#4ade80);
+
+animation:load 6s linear infinite;
+
+}
+
+@keyframes load{
+0%{width:0}
+100%{width:100%}
+}
+
+/* countdown */
 
 .countdown{
 
 display:flex;
 justify-content:center;
-gap:20px;
-margin-bottom:40px;
+flex-wrap:wrap;
+gap:12px;
+
+margin-bottom:30px;
 
 }
 
 .time{
 
 background:rgba(255,255,255,0.06);
-padding:18px 22px;
-border-radius:15px;
-min-width:70px;
 
-box-shadow:0 0 20px rgba(0,255,120,0.1);
+padding:12px 16px;
+
+border-radius:12px;
+
+min-width:65px;
 
 }
 
 .time h2{
-
-font-size:28px;
-
+font-size:20px;
 }
 
 .time span{
-
-font-size:13px;
+font-size:12px;
 opacity:0.7;
-
 }
 
-/* Button */
+/* button */
 
 .btn{
 
 display:inline-block;
 
-padding:14px 30px;
+padding:12px 24px;
 
-background:linear-gradient(45deg,#22c55e,#16a34a);
+border-radius:10px;
 
-border-radius:12px;
+background:#22c55e;
+
+color:white;
 
 text-decoration:none;
-color:white;
-font-weight:600;
+
+font-weight:500;
 
 transition:0.3s;
 
 }
 
 .btn:hover{
-
-transform:scale(1.08);
-box-shadow:0 0 25px #22c55e;
-
+transform:translateY(-2px);
+box-shadow:0 0 18px #22c55e;
 }
 
-/* Footer */
+/* footer */
 
 footer{
-
-margin-top:35px;
-
-font-size:14px;
-
+margin-top:30px;
+font-size:13px;
 opacity:0.6;
-
 }
 
-/* Fade Animation */
+/* fade */
 
 @keyframes fade{
 
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(20px);
 }
 
 to{
@@ -202,24 +237,28 @@ transform:translateY(0);
 
 }
 
-/* Mobile */
+/* mobile */
 
-@media(max-width:600px){
+@media(max-width:480px){
 
 h1{
-font-size:28px;
+font-size:24px;
 }
 
 p{
-font-size:15px;
+font-size:14px;
 }
 
 .icon{
-font-size:55px;
+font-size:50px;
+}
+
+.time{
+min-width:55px;
 }
 
 .time h2{
-font-size:22px;
+font-size:17px;
 }
 
 }
@@ -229,31 +268,35 @@ font-size:22px;
 
 <body>
 
-<div class="box">
+<div class="card">
 
-<div class="icon">⚙️</div>
+<div class="icon">🎬</div>
 
-<h1>Site Under Maintenance</h1>
+<h1>Cinemax is Updating</h1>
 
 <p>
-Cinemax website is currently undergoing maintenance.<br>
-We are upgrading the system to give you a better experience.
+Our website is currently under maintenance.<br>
+We are upgrading the system to deliver a better movie experience.
 </p>
+
+<div class="progress">
+<span></span>
+</div>
 
 <div class="countdown">
 
 <div class="time">
-<h2 id="hours">00</h2>
+<h2 id="h">00</h2>
 <span>Hours</span>
 </div>
 
 <div class="time">
-<h2 id="minutes">00</h2>
+<h2 id="m">00</h2>
 <span>Minutes</span>
 </div>
 
 <div class="time">
-<h2 id="seconds">00</h2>
+<h2 id="s">00</h2>
 <span>Seconds</span>
 </div>
 
@@ -269,27 +312,23 @@ We are upgrading the system to give you a better experience.
 
 <script>
 
-/* Countdown 3 hours example */
-
 let time = 3 * 60 * 60;
 
-function updateCountdown(){
+function update(){
 
-let hours = Math.floor(time / 3600);
-let minutes = Math.floor((time % 3600) / 60);
-let seconds = time % 60;
+let h = Math.floor(time/3600);
+let m = Math.floor((time%3600)/60);
+let s = time%60;
 
-document.getElementById("hours").innerText = hours.toString().padStart(2,"0");
-document.getElementById("minutes").innerText = minutes.toString().padStart(2,"0");
-document.getElementById("seconds").innerText = seconds.toString().padStart(2,"0");
+document.getElementById("h").innerText = String(h).padStart(2,"0");
+document.getElementById("m").innerText = String(m).padStart(2,"0");
+document.getElementById("s").innerText = String(s).padStart(2,"0");
 
-if(time > 0){
-time--;
-}
+if(time>0) time--;
 
 }
 
-setInterval(updateCountdown,1000);
+setInterval(update,1000);
 
 </script>
 
