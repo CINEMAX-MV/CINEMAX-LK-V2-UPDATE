@@ -3,65 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Please Wait...</title>
+
+<title>Loading Movie...</title>
 
 <style>
 
-body{
-background:#0d0d0d;
-color:white;
-font-family:Arial,sans-serif;
-text-align:center;
-padding:40px 15px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
+
+body{
+
+background:
+linear-gradient(180deg,#0a0a0a,#111,#0a0a0a);
+
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+
+}
+
+/* MAIN BOX */
 
 .box{
-max-width:420px;
-margin:auto;
-background:#1a1a1a;
+
+width:420px;
+max-width:95%;
+
+background:
+linear-gradient(145deg,#151515,#1c1c1c);
+
+border-radius:16px;
+
 padding:25px;
-border-radius:12px;
-box-shadow:0 0 15px rgba(0,0,0,0.6);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.8);
+
+text-align:center;
+
 }
 
-h2{
-margin-bottom:10px;
+/* TITLE */
+
+.title{
+
+font-size:22px;
+font-weight:600;
+margin-bottom:15px;
+
+letter-spacing:.5px;
+
 }
 
-.ad-box{
-margin-top:20px;
-position:relative;
-}
+/* POSTER */
 
-.ad-box img{
+.poster{
+
 width:100%;
-border-radius:10px;
+border-radius:12px;
+
+box-shadow:
+0 6px 20px rgba(0,0,0,.6);
+
 }
 
-.countdown{
+/* COUNTDOWN CONTAINER */
+
+.timer{
+
 position:absolute;
-top:10px;
-right:10px;
-background:black;
-padding:6px 12px;
-border-radius:20px;
-font-size:14px;
+top:15px;
+right:15px;
+
+width:60px;
+height:60px;
+
 }
+
+/* SVG TIMER */
+
+svg{
+
+transform:rotate(-90deg);
+
+}
+
+circle{
+
+fill:none;
+stroke-width:6;
+
+}
+
+.bg{
+
+stroke:#333;
+
+}
+
+.progress{
+
+stroke:#ff0000;
+
+stroke-linecap:round;
+
+stroke-dasharray:157;
+
+stroke-dashoffset:0;
+
+transition:stroke-dashoffset 1s linear;
+
+}
+
+/* NUMBER */
+
+.time-text{
+
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+
+font-weight:bold;
+font-size:16px;
+
+}
+
+/* BUTTON */
 
 button{
+
 margin-top:20px;
-padding:12px 25px;
+
+padding:13px 25px;
+
 border:none;
+
 border-radius:10px;
-background:red;
+
+background:
+linear-gradient(45deg,#ff0000,#ff3b3b);
+
 color:white;
-font-size:16px;
+
+font-size:15px;
+font-weight:600;
+
 cursor:pointer;
+
 display:none;
+
+box-shadow:
+0 4px 15px rgba(255,0,0,.5);
+
+transition:.3s;
+
 }
 
 button:hover{
-background:darkred;
+
+transform:scale(1.05);
+
+box-shadow:
+0 6px 20px rgba(255,0,0,.8);
+
+}
+
+.ad-wrapper{
+
+position:relative;
+
 }
 
 </style>
@@ -71,57 +188,97 @@ background:darkred;
 
 <div class="box">
 
-<h2>Loading Movie...</h2>
+<div class="title">Loading Movie...</div>
 
-<!-- Poster Ad -->
-<div class="ad-box" id="adBox">
+<div class="ad-wrapper" id="adBox">
 
-<div class="countdown">
-<span id="count">5</span>s
+<img class="poster"
+src="https://i.ibb.co/Txx73Q0r/file-000000006230720b830d97cba8f861ea.png">
+
+<div class="timer">
+
+<svg width="60" height="60">
+
+<circle class="bg" cx="30" cy="30" r="25"></circle>
+
+<circle id="progress"
+class="progress"
+cx="30"
+cy="30"
+r="25">
+</circle>
+
+</svg>
+
+<div id="count" class="time-text">5</div>
+
 </div>
 
-<img src="https://i.ibb.co/Txx73Q0r/file-000000006230720b830d97cba8f861ea.png">
-
 </div>
 
-<!-- Continue Button -->
-<button id="continueBtn">Continue</button>
+<button id="continueBtn">
+Continue
+</button>
 
 </div>
 
 <script>
 
+/* MOVIE PARAMS */
+
 const urlParams = new URLSearchParams(window.location.search);
 
-// Movie info
 const movieId = urlParams.get("id");
 const playLink = urlParams.get("play");
 
-const whatsappLink = "https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
-const imdbLink = "https://m.imdb.com/";
-const movieSite = "movie.html";
+const whatsappLink =
+"https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
 
-// Elements
-const countText = document.getElementById("count");
-const btn = document.getElementById("continueBtn");
-const adBox = document.getElementById("adBox");
+const imdbLink =
+"https://m.imdb.com/";
+
+const movieSite =
+"movie.html";
+
+/* ELEMENTS */
+
+const countText =
+document.getElementById("count");
+
+const progress =
+document.getElementById("progress");
+
+const btn =
+document.getElementById("continueBtn");
+
+const adBox =
+document.getElementById("adBox");
+
+/* TIMER */
 
 let timeLeft = 5;
 
-// Countdown
+const circumference = 157;
+
+progress.style.strokeDasharray = circumference;
+
+/* COUNTDOWN */
+
 const timer = setInterval(()=>{
 
 timeLeft--;
+
 countText.innerText = timeLeft;
+
+progress.style.strokeDashoffset =
+circumference - (timeLeft/5)*circumference;
 
 if(timeLeft <= 0){
 
 clearInterval(timer);
 
-// hide poster
 adBox.style.display="none";
 
-// show continue button
 btn.style.display="inline-block";
 
 }
@@ -129,31 +286,40 @@ btn.style.display="inline-block";
 },1000);
 
 
-// Step system
-let step = sessionStorage.getItem("adStep") || "1";
+/* STEP SYSTEM */
 
-function updateButtonText(){
+let step =
+sessionStorage.getItem("adStep") || "1";
 
-if(step==="1") btn.innerText="Continue to IMDb";
+function updateButton(){
 
-else if(step==="2") btn.innerText="Continue to WhatsApp Channel";
+if(step==="1")
+btn.innerText="Continue to IMDb";
+
+else if(step==="2")
+btn.innerText="Continue to WhatsApp";
 
 }
 
-updateButtonText();
+updateButton();
 
-btn.onclick = () => {
+/* BUTTON ACTION */
+
+btn.onclick=()=>{
 
 if(step==="1"){
 
 sessionStorage.setItem("adStep","2");
+
 step="2";
 
-updateButtonText();
+updateButton();
 
 window.open(imdbLink,"_blank");
 
-}else if(step==="2"){
+}
+
+else if(step==="2"){
 
 sessionStorage.setItem("adStep","3");
 
@@ -161,7 +327,7 @@ window.open(whatsappLink,"_blank");
 
 setTimeout(()=>{
 
-window.location.href =
+window.location.href=
 `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
 
 },1000);
@@ -170,8 +336,8 @@ window.location.href =
 
 };
 
+/* FOCUS DETECT */
 
-// Focus detect
 window.addEventListener("focus",()=>{
 
 if(step==="2"){
@@ -182,15 +348,12 @@ btn.style.display="inline-block";
 
 });
 
+/* RESET */
 
-// Reset after movie start
-window.onbeforeunload = () => {
+window.onbeforeunload=()=>{
 
-if(step==="3"){
-
+if(step==="3")
 sessionStorage.removeItem("adStep");
-
-}
 
 };
 
