@@ -93,6 +93,13 @@ let socialHTML = `
            title="Share on WhatsApp">
     </a>
 
+    </div>
+
+    <!-- MESSAGE BOX -->
+    <div class="whatsapp-msg">
+      📥 Download via <span>WhatsApp</span>
+    </div>
+
   </div>
 `;
 
