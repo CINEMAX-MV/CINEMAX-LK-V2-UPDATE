@@ -7,140 +7,276 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
 }
 
 body{
-
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-
-background:linear-gradient(135deg,#0f172a,#020617);
-color:white;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#0f172a;
+  color:white;
+  overflow:hidden;
+  position:relative;
 }
 
-/* container */
+/* Tech background canvas */
+#tech-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
 
+#tech-bg canvas{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#0a0a0a;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+#loadnum{
+  font-size:60px;
+  font-weight:700;
+  color:#25D366;
+  text-shadow:0 0 20px #25D366,0 0 40px #16a34a;
+  margin-bottom:20px;
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  100%{transform:scale(1.08);}
+}
+
+.bar{
+  width:200px;
+  height:8px;
+  background:rgba(255,255,255,0.05);
+  border-radius:25px;
+  overflow:hidden;
+  box-shadow:0 0 10px rgba(255,255,255,0.2) inset;
+}
+
+.bar span{
+  display:block;
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#25D366,#16a34a);
+  animation: loadbar 2.5s linear forwards;
+}
+
+@keyframes loadbar{
+  0%{width:0;}
+  100%{width:100%;}
+}
+
+/* container stays on top */
 .container{
-text-align:center;
-width:90%;
-max-width:400px;
+  text-align:center;
+  width:90%;
+  max-width:400px;
+  position:relative;
+  z-index:2;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
 }
 
 /* title */
-
 h2{
-margin-bottom:35px;
-font-weight:500;
-letter-spacing:1px;
+  margin-bottom:35px;
+  font-weight:500;
+  letter-spacing:1px;
 }
 
 /* bot button */
-
 .bot{
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-gap:12px;
-
-margin:15px 0;
-padding:18px;
-
-border-radius:14px;
-
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-
-border:1px solid rgba(255,255,255,0.08);
-
-text-decoration:none;
-color:white;
-font-size:18px;
-
-transition:0.3s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  margin:15px 0;
+  padding:18px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.08);
+  text-decoration:none;
+  color:white;
+  font-size:18px;
+  transition:0.3s;
 }
 
 /* hover */
-
 .bot:hover{
-
-background:#25D366;
-transform:translateY(-4px) scale(1.02);
-
-box-shadow:0 8px 25px rgba(37,211,102,0.5);
-
+  background:#25D366;
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 8px 25px rgba(37,211,102,0.5);
 }
 
 /* icon */
-
 .bot img{
-width:22px;
+  width:22px;
 }
 
 /* subtitle */
-
 .sub{
-font-size:13px;
-opacity:0.6;
-margin-top:-20px;
-margin-bottom:25px;
+  font-size:13px;
+  opacity:0.6;
+  margin-top:-20px;
+  margin-bottom:25px;
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- Tech background -->
+<div id="tech-bg"><canvas id="canvas"></canvas></div>
 
-<h2>Choose WhatsApp Bot</h2>
+<!-- LOADER -->
+<div id="loader">
+  <div id="loadnum">1</div>
+  <div class="bar"><span></span></div>
+</div>
 
-<div class="sub">Select a bot to download the movie</div>
+<div class="container" id="main">
+  <h2>Choose WhatsApp Bot</h2>
+  <div class="sub">Select a bot to download the movie</div>
 
-<a id="bot1" class="bot">
-<img src="https://img.icons8.com/color/48/whatsapp.png">
-Use Bot 1
-</a>
+  <a id="bot1" class="bot">
+    <img src="https://img.icons8.com/color/48/whatsapp.png">
+    Use Bot 1
+  </a>
 
-<a id="bot2" class="bot">
-<img src="https://img.icons8.com/color/48/whatsapp.png">
-Use Bot 2
-</a>
+  <a id="bot2" class="bot">
+    <img src="https://img.icons8.com/color/48/whatsapp.png">
+    Use Bot 2
+  </a>
 
-<a id="bot3" class="bot">
-<img src="https://img.icons8.com/color/48/whatsapp.png">
-Use Bot 3
-</a>
-
+  <a id="bot3" class="bot">
+    <img src="https://img.icons8.com/color/48/whatsapp.png">
+    Use Bot 3
+  </a>
 </div>
 
 <script>
+/* Loader + count animation */
+let n = 1;
+let load = setInterval(()=>{
+  n++;
+  document.getElementById("loadnum").innerText = n;
+  if(n>=13){
+    clearInterval(load);
+    document.getElementById("loader").style.display = "none";
+    let main = document.getElementById("main");
+    main.style.opacity = 1;
+    main.style.transform = "translateY(0)";
+  }
+}, 250);
 
+/* WhatsApp bot links */
 let params = new URLSearchParams(window.location.search);
-
-let cmd = params.get("cmd");
-let link = params.get("link");
-
+let cmd = params.get("cmd") || "";
+let link = params.get("link") || "";
 let message = encodeURIComponent(cmd + link);
 
 document.getElementById("bot1").href =
-"https://wa.me/94740571366?text=" + message;
+"https://wa.me/94772461954?text=" + message;
 
 document.getElementById("bot2").href =
-"https://wa.me/94774397157?text=" + message;
+"https://wa.me/94772461954?text=" + message;
 
 document.getElementById("bot3").href =
 "https://wa.me/94772461954?text=" + message;
 
+/* Tech background animation */
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+window.addEventListener("resize", ()=>{
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+  init();
+});
+
+const points = [];
+const gridSize = 40;
+
+function init(){
+  points.length = 0;
+  for(let x=0;x<width;x+=gridSize){
+    for(let y=0;y<height;y+=gridSize){
+      points.push({
+        x: x + Math.random()*gridSize*0.5,
+        y: y + Math.random()*gridSize*0.5,
+        vx: (Math.random()-0.5)*0.3,
+        vy: (Math.random()-0.5)*0.3
+      });
+    }
+  }
+}
+init();
+
+function animate(){
+  ctx.clearRect(0,0,width,height);
+  ctx.strokeStyle = "rgba(0,255,0,0.2)";
+  ctx.fillStyle = "rgba(0,255,0,0.6)";
+
+  points.forEach(p=>{
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if(p.x<0||p.x>width) p.vx*=-1;
+    if(p.y<0||p.y>height) p.vy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fill();
+    ctx.closePath();
+
+    points.forEach(q=>{
+      let dx = p.x - q.x;
+      let dy = p.y - q.y;
+      let dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 60){
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(q.x,q.y);
+        ctx.stroke();
+        ctx.closePath();
+      }
+    });
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
