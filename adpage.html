@@ -6,12 +6,13 @@
 <title>Please Wait...</title>
 
 <style>
+
 body{
 background:#0d0d0d;
 color:white;
 font-family:Arial,sans-serif;
 text-align:center;
-padding:50px 15px;
+padding:40px 15px;
 }
 
 .box{
@@ -23,28 +24,32 @@ border-radius:12px;
 box-shadow:0 0 15px rgba(0,0,0,0.6);
 }
 
+h2{
+margin-bottom:10px;
+}
+
 .ad-box{
-margin:20px 0;
-padding:15px;
-background:#2b2b2b;
-border-radius:10px;
-overflow:hidden;
+margin-top:20px;
+position:relative;
 }
 
 .ad-box img{
 width:100%;
-border-radius:8px;
-opacity:0;
-transform:scale(0.95);
-transition:opacity 2s ease, transform 2s ease;
+border-radius:10px;
 }
 
-.ad-box img.show{
-opacity:1;
-transform:scale(1);
+.countdown{
+position:absolute;
+top:10px;
+right:10px;
+background:black;
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
 }
 
 button{
+margin-top:20px;
 padding:12px 25px;
 border:none;
 border-radius:10px;
@@ -59,9 +64,6 @@ button:hover{
 background:darkred;
 }
 
-h2{
-margin-bottom:10px;
-}
 </style>
 </head>
 
@@ -70,12 +72,19 @@ margin-bottom:10px;
 <div class="box">
 
 <h2>Loading Movie...</h2>
-<p>Please wait <span id="count">5</span> seconds</p>
 
-<div class="ad-box">
-<img id="adImage" src="https://i.ibb.co/Txx73Q0r/file-000000006230720b830d97cba8f861ea.png">
+<!-- Poster Ad -->
+<div class="ad-box" id="adBox">
+
+<div class="countdown">
+<span id="count">5</span>s
 </div>
 
+<img src="https://i.ibb.co/Txx73Q0r/file-000000006230720b830d97cba8f861ea.png">
+
+</div>
+
+<!-- Continue Button -->
 <button id="continueBtn">Continue</button>
 
 </div>
@@ -87,42 +96,48 @@ const urlParams = new URLSearchParams(window.location.search);
 // Movie info
 const movieId = urlParams.get("id");
 const playLink = urlParams.get("play");
+
 const whatsappLink = "https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
 const imdbLink = "https://m.imdb.com/";
 const movieSite = "movie.html";
 
-// Image slow load
-window.onload = () => {
-const img = document.getElementById("adImage");
-setTimeout(()=>{
-img.classList.add("show");
-},300);
-};
-
-// Countdown
+// Elements
 const countText = document.getElementById("count");
 const btn = document.getElementById("continueBtn");
+const adBox = document.getElementById("adBox");
 
 let timeLeft = 5;
 
+// Countdown
 const timer = setInterval(()=>{
-timeLeft--;
-countText.innerText=timeLeft;
 
-if(timeLeft<=0){
+timeLeft--;
+countText.innerText = timeLeft;
+
+if(timeLeft <= 0){
+
 clearInterval(timer);
+
+// hide poster
+adBox.style.display="none";
+
+// show continue button
 btn.style.display="inline-block";
+
 }
 
 },1000);
 
 
-// Track step
+// Step system
 let step = sessionStorage.getItem("adStep") || "1";
 
 function updateButtonText(){
+
 if(step==="1") btn.innerText="Continue to IMDb";
+
 else if(step==="2") btn.innerText="Continue to WhatsApp Channel";
+
 }
 
 updateButtonText();
@@ -133,20 +148,22 @@ if(step==="1"){
 
 sessionStorage.setItem("adStep","2");
 step="2";
+
 updateButtonText();
 
 window.open(imdbLink,"_blank");
-btn.style.display="none";
 
 }else if(step==="2"){
 
 sessionStorage.setItem("adStep","3");
-btn.style.display="none";
 
 window.open(whatsappLink,"_blank");
 
 setTimeout(()=>{
-window.location.href=`${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
+
+window.location.href =
+`${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
+
 },1000);
 
 }
@@ -154,38 +171,27 @@ window.location.href=`${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(p
 };
 
 
-// Detect tab focus
+// Focus detect
 window.addEventListener("focus",()=>{
+
 if(step==="2"){
+
 btn.style.display="inline-block";
+
 }
+
 });
 
 
-// Reload step check
-window.onload = () => {
-
-const img = document.getElementById("adImage");
-
-setTimeout(()=>{
-img.classList.add("show");
-},300);
-
-step = sessionStorage.getItem("adStep") || "1";
-updateButtonText();
-
-if(step==="2"){
-btn.style.display="inline-block";
-}
-
-};
-
-
-// Clear step
+// Reset after movie start
 window.onbeforeunload = () => {
+
 if(step==="3"){
+
 sessionStorage.removeItem("adStep");
+
 }
+
 };
 
 </script>
