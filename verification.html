@@ -91,6 +91,10 @@ function verify(){
     localStorage.setItem("humanVerified","true");
     localStorage.setItem("userName",document.getElementById("userName").value);
 
+
+    // Redirect to home page
+    window.location.href = "index.html";
+
     // Hide overlay + show main content
     document.getElementById("humanVerification").style.display="none";
     document.getElementById("mainContent").style.display="block";
