@@ -4,58 +4,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Please Wait...</title>
+
 <style>
-  body {
-    background: #0d0d0d;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 50px 15px;
-  }
-  .box {
-    max-width: 400px;
-    margin: auto;
-    background: #1a1a1a;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.6);
-  }
-  .ad-box {
-    margin: 20px 0;
-    padding: 20px;
-    background: #2b2b2b;
-    border-radius: 10px;
-  }
-  button {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    background: red;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    display: none;
-  }
-  button:hover { background: darkred; }
-  h2 { margin-bottom: 10px; }
+body{
+background:#0d0d0d;
+color:white;
+font-family:Arial,sans-serif;
+text-align:center;
+padding:50px 15px;
+}
+
+.box{
+max-width:420px;
+margin:auto;
+background:#1a1a1a;
+padding:25px;
+border-radius:12px;
+box-shadow:0 0 15px rgba(0,0,0,0.6);
+}
+
+.ad-box{
+margin:20px 0;
+padding:15px;
+background:#2b2b2b;
+border-radius:10px;
+overflow:hidden;
+}
+
+.ad-box img{
+width:100%;
+border-radius:8px;
+opacity:0;
+transform:scale(0.95);
+transition:opacity 2s ease, transform 2s ease;
+}
+
+.ad-box img.show{
+opacity:1;
+transform:scale(1);
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:red;
+color:white;
+font-size:16px;
+cursor:pointer;
+display:none;
+}
+
+button:hover{
+background:darkred;
+}
+
+h2{
+margin-bottom:10px;
+}
 </style>
 </head>
+
 <body>
 
 <div class="box">
-  <h2>Loading Movie...</h2>
-  <p>Please wait <span id="count">5</span> seconds</p>
 
-  <div class="ad-box">
-    <h3>Advertisement</h3>
-    <!-- Demo Playable Ad -->
-    <script data-cfasync="false" type="text/javascript" src="//demo.propellerads.com/demo-auto-ad.js"></script>
-  </div>
+<h2>Loading Movie...</h2>
+<p>Please wait <span id="count">5</span> seconds</p>
 
-  <button id="continueBtn">Continue</button>
+<div class="ad-box">
+<img id="adImage" src="https://i.ibb.co/Txx73Q0r/file-000000006230720b830d97cba8f861ea.png">
+</div>
+
+<button id="continueBtn">Continue</button>
+
 </div>
 
 <script>
+
 const urlParams = new URLSearchParams(window.location.search);
 
 // Movie info
@@ -65,75 +91,103 @@ const whatsappLink = "https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r";
 const imdbLink = "https://m.imdb.com/";
 const movieSite = "movie.html";
 
-// Countdown timer
+// Image slow load
+window.onload = () => {
+const img = document.getElementById("adImage");
+setTimeout(()=>{
+img.classList.add("show");
+},300);
+};
+
+// Countdown
 const countText = document.getElementById("count");
 const btn = document.getElementById("continueBtn");
+
 let timeLeft = 5;
 
-const timer = setInterval(() => {
-  timeLeft--;
-  countText.innerText = timeLeft;
-  if(timeLeft <= 0){
-    clearInterval(timer);
-    btn.style.display = "inline-block";
-  }
-}, 1000);
+const timer = setInterval(()=>{
+timeLeft--;
+countText.innerText=timeLeft;
 
-// Track step in sessionStorage
-let step = sessionStorage.getItem("adStep") || "1";
-
-function updateButtonText() {
-  if(step === "1") btn.innerText = "Continue to IMDb";
-  else if(step === "2") btn.innerText = "Continue to WhatsApp Channel";
+if(timeLeft<=0){
+clearInterval(timer);
+btn.style.display="inline-block";
 }
 
-// Auto detect if user came back from IMDb tab
-function detectFocus() {
-  window.addEventListener("focus", () => {
-    if(step === "2") {
-      btn.style.display = "inline-block";
-    }
-  });
+},1000);
+
+
+// Track step
+let step = sessionStorage.getItem("adStep") || "1";
+
+function updateButtonText(){
+if(step==="1") btn.innerText="Continue to IMDb";
+else if(step==="2") btn.innerText="Continue to WhatsApp Channel";
 }
 
 updateButtonText();
-detectFocus();
 
 btn.onclick = () => {
-  if(step === "1"){
-    // Step 1: open IMDb
-    sessionStorage.setItem("adStep", "2");
-    step = "2";
-    updateButtonText();
-    window.open(imdbLink, "_blank");
-    btn.style.display = "none"; // hide until user comes back
-  } else if(step === "2"){
-    // Step 2: open WhatsApp + redirect to movie autoplay
-    sessionStorage.setItem("adStep", "3");
-    btn.style.display = "none";
-    window.open(whatsappLink, "_blank");
 
-    setTimeout(() => {
-      window.location.href = `${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
-    }, 1000);
-  }
+if(step==="1"){
+
+sessionStorage.setItem("adStep","2");
+step="2";
+updateButtonText();
+
+window.open(imdbLink,"_blank");
+btn.style.display="none";
+
+}else if(step==="2"){
+
+sessionStorage.setItem("adStep","3");
+btn.style.display="none";
+
+window.open(whatsappLink,"_blank");
+
+setTimeout(()=>{
+window.location.href=`${movieSite}?id=${movieId}&autoplay=${encodeURIComponent(playLink)}`;
+},1000);
+
+}
+
 };
 
-// If user refreshes after step 1, keep Continue 2 hidden until focus back
+
+// Detect tab focus
+window.addEventListener("focus",()=>{
+if(step==="2"){
+btn.style.display="inline-block";
+}
+});
+
+
+// Reload step check
 window.onload = () => {
-  step = sessionStorage.getItem("adStep") || "1";
-  updateButtonText();
 
-  if(step === "2") {
-    // User refresh or back from IMDb
-    btn.style.display = "inline-block";
-  }
+const img = document.getElementById("adImage");
+
+setTimeout(()=>{
+img.classList.add("show");
+},300);
+
+step = sessionStorage.getItem("adStep") || "1";
+updateButtonText();
+
+if(step==="2"){
+btn.style.display="inline-block";
+}
+
 };
 
-// Clear step after movie starts
+
+// Clear step
 window.onbeforeunload = () => {
-  if(step === "3") sessionStorage.removeItem("adStep");
+if(step==="3"){
+sessionStorage.removeItem("adStep");
+}
 };
+
 </script>
 
 </body>
