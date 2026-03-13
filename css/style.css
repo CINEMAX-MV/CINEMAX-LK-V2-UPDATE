@@ -1061,24 +1061,3 @@ font-size:14px;
 }
 
 
-/* bot system lock 2 , 3 */
-
-.bot-locked{
-  opacity:0.4;
-  filter:grayscale(100%);
-  cursor:not-allowed;
-  position:relative;
-}
-
-.bot-locked::after{
-  content:"LOCKED";
-  position:absolute;
-  top:-6px;
-  right:-6px;
-  background:red;
-  color:white;
-  font-size:10px;
-  padding:2px 6px;
-  border-radius:5px;
-  font-weight:bold;
-}
