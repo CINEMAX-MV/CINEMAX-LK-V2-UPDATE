@@ -229,8 +229,9 @@ footer{
       Use Bot 2
     </a>
 
-    <a id="bot3" class="bot bot-locked" onclick="return botLocked()">
-     <img src="https://img.icons8.com/color/48/whatsapp.png">
+  <div class="bot-wrapper">
+    <a id="bot2" class="bot">
+      <img src="https://img.icons8.com/color/48/whatsapp.png">
       Use Bot 3
     </a>
   </div>
@@ -272,7 +273,7 @@ document.getElementById("bot2").href =
 "https://wa.me/94762320234?text=" + message;
 
 document.getElementById("bot3").href =
-"https://wa.me/94772461954?text=" + message;
+"https://wa.me/94740707157?text=" + message;
 
 /* Tech background animation */
 const canvas = document.getElementById("canvas");
@@ -340,10 +341,6 @@ function animate(){
 }
 animate();
 
-function botLocked(){
-  alert("⚠️ Bot 3 currently unavailable.\nPlease use Bot 1 & 2.");
-  return false; // stop link opening
-}
 </script>
 
 </body>
