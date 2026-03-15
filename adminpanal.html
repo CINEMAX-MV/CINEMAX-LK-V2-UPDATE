@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - Cinemax.lk</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Top bar */
+.admin-header {
+    width: 100%;
+    background-color: #87CEFA; /* light blue */
+    color: white;
+    padding: 15px 20px;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position: sticky; /* scroll වුණත් top එකේ fixed */
+    top: 0;
+    z-index: 999;
+}
+
+/* Panel content */
+.admin-content {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+.admin-btn {
+    background-color: #1E90FF;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 0;
+    transition: 0.2s;
+}
+
+.admin-btn:hover {
+    background-color: #104E8B;
+}
+
+/* Input fields */
+.admin-input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Top bar -->
+<div class="admin-header">Admin Panel - Cinemax.lk</div>
+
+<!-- Content area -->
+<div class="admin-content">
+
+    <h2>Welcome, Admin!</h2>
+    <p>මෙතනින් ඔයාට site එක manage කරන්න පුළුවන්. ඔයාට අවශ්‍ය නම් movies add/update/delete options දාන්න පුළුවන්.</p>
+
+    <hr>
+
+    <h3>Add Movie</h3>
+    <input type="text" class="admin-input" placeholder="Movie Name">
+    <input type="text" class="admin-input" placeholder="Movie Link">
+    <button class="admin-btn">Add Movie</button>
+
+    <h3>Manage Movies</h3>
+    <p>List of uploaded movies will appear here (future dynamic setup).</p>
+
+    <h3>User Feedback</h3>
+    <p>Users can send feedback or report problems. You can see them here.</p>
+
+</div>
+
+</body>
+</html>
