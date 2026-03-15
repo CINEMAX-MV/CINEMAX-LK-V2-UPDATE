@@ -3,40 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel - WhatsApp JSON</title>
+<title>Super Admin Panel</title>
 <style>
-body { font-family: Arial; background:#f2f2f2; margin:0; }
-.admin-content { max-width: 600px; margin: 50px auto; padding:20px; background:white; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2);}
-.admin-header { background:#87CEFA; color:white; font-size:22px; padding:15px; text-align:center; border-radius:10px 10px 0 0;}
-.admin-input { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc;}
-.admin-btn { background:#1E90FF; color:white; border:none; padding:10px 15px; cursor:pointer; border-radius:5px; margin-top:10px;}
-.admin-btn:hover { background:#104E8B; }
-#moviePreview { background:#fafafa; padding:10px; border-radius:8px; margin-top:15px; border:1px solid #ccc; font-size:14px; white-space:pre-wrap;}
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Arial', sans-serif; }
+
+/* Background & container */
+body { background:#1a1a1a; color:#fff; min-height:100vh; display:flex; justify-content:center; align-items:center; }
+.container { width:95%; max-width:700px; background:#111; border-radius:15px; padding:25px; box-shadow:0 0 20px rgba(0,0,0,0.7); }
+
+/* Login */
+#loginBox { display:flex; flex-direction:column; gap:15px; }
+#loginBox input { padding:12px; border-radius:8px; border:none; outline:none; }
+#loginBox input[type="password"], #loginBox input[type="tel"] { background:#222; color:#fff; }
+#loginBox button { padding:12px; border:none; border-radius:8px; background:#0f7ef0; color:white; cursor:pointer; font-size:16px; }
+#loginBox button:hover { background:#064a9c; }
+
+/* Panel */
+#adminPanel { display:none; flex-direction:column; gap:15px; }
+#adminPanel h2 { text-align:center; color:#0f7ef0; margin-bottom:15px; }
+.admin-input { width:100%; padding:12px; border-radius:8px; border:none; outline:none; background:#222; color:#fff; }
+.admin-btn { background:#0f7ef0; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-size:16px; }
+.admin-btn:hover { background:#064a9c; }
+#moviePreview { background:#222; padding:12px; border-radius:8px; font-size:14px; white-space:pre-wrap; max-height:300px; overflow:auto; }
+
+/* Locked overlay */
+#lockedOverlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); color:white; font-size:24px; justify-content:center; align-items:center; text-align:center; z-index:9999; }
 </style>
 </head>
 <body>
 
-<div class="admin-content">
-  <div class="admin-header">Admin Panel - Cinemax.lk</div>
+<div class="container">
+  <!-- LOGIN -->
+  <div id="loginBox">
+    <h2 style="text-align:center; color:#0f7ef0;">Super Admin Login</h2>
+    <input type="tel" id="mobile" placeholder="Mobile Number">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="checkLogin()">Login</button>
+    <p id="loginMsg" style="color:#f00; text-align:center;"></p>
+  </div>
 
-  <label>Movie Title:</label>
-  <input id="movieTitle" class="admin-input" type="text" placeholder="Enter movie title">
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel">
+    <h2>Admin Panel - Cinemax.lk</h2>
+    <input id="movieTitle" class="admin-input" type="text" placeholder="Movie Title">
+    <input id="movieImage" class="admin-input" type="text" placeholder="Movie Image URL">
+    <input id="player1" class="admin-input" type="text" placeholder="Player 1 Link">
+    <input id="player2" class="admin-input" type="text" placeholder="Player 2 Link">
+    <button class="admin-btn" onclick="sendWhatsApp()">Send to WhatsApp</button>
+    <div id="moviePreview"></div>
+  </div>
+</div>
 
-  <label>Movie Image URL:</label>
-  <input id="movieImage" class="admin-input" type="text" placeholder="Enter image URL">
-
-  <label>Player 1 Link:</label>
-  <input id="player1" class="admin-input" type="text" placeholder="Player 1 link">
-
-  <label>Player 2 Link:</label>
-  <input id="player2" class="admin-input" type="text" placeholder="Player 2 link">
-
-  <button class="admin-btn" onclick="sendWhatsApp()">Send to WhatsApp</button>
-
-  <div id="moviePreview"></div>
+<!-- Locked Overlay -->
+<div id="lockedOverlay">
+  ❌ You are temporarily locked out due to incorrect login.<br>
+  Please try again after 1 hour.
 </div>
 
 <script>
+let lockTimeout = false;
+
+function checkLogin() {
+  if(lockTimeout) return;
+
+  const mobile = document.getElementById("mobile").value.trim();
+  const password = document.getElementById("password").value.trim();
+  const loginMsg = document.getElementById("loginMsg");
+
+  const validLogins = [
+    { mobile:"0756832746", password:"dasantha123" },
+    { mobile:"0740571366", password:"peksha123" }
+  ];
+
+  const valid = validLogins.some(acc => acc.mobile===mobile && acc.password===password);
+
+  if(valid){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("adminPanel").style.display="flex";
+  } else {
+    loginMsg.innerText="Invalid mobile number or password!";
+    // Lock for 1 hour
+    lockTimeout = true;
+    document.getElementById("lockedOverlay").style.display="flex";
+    setTimeout(()=>{
+      lockTimeout=false;
+      document.getElementById("lockedOverlay").style.display="none";
+      loginMsg.innerText="";
+    },3600*1000); // 1 hour
+  }
+}
+
+// OMDb + WhatsApp
 async function sendWhatsApp() {
   const title = document.getElementById("movieTitle").value.trim();
   const image = document.getElementById("movieImage").value.trim();
@@ -52,13 +110,11 @@ async function sendWhatsApp() {
   try {
     const res = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
     const data = await res.json();
-
-    if(data.Response === "False"){
+    if(data.Response==="False"){
       alert("Movie not found on OMDb");
       return;
     }
 
-    // Create full JSON structure
     const newMovie = {
       title: data.Title || title,
       image: image,
@@ -74,15 +130,11 @@ async function sendWhatsApp() {
       ]
     };
 
-    // Show JSON preview
-    document.getElementById("moviePreview").innerText = JSON.stringify(newMovie, null, 2);
+    document.getElementById("moviePreview").innerText = JSON.stringify(newMovie,null,2);
 
-    // WhatsApp prefill
-    const phoneNumber = "94740571366";
+    const phoneNumber = "94740571366"; // WhatsApp number
     const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(JSON.stringify(newMovie,null,2))}`;
-
-    // Open WhatsApp
-    window.open(waLink, "_blank");
+    window.open(waLink,"_blank");
 
   } catch(err){
     console.error(err);
