@@ -219,7 +219,7 @@ footer{
 
   <div class="bot-wrapper">
 
-  <a href="maintenance.html" class="bot">
+  <a id="bot1" class="bot">
     <img src="https://img.icons8.com/color/48/whatsapp.png">
     Use Bot 1
   </a>
@@ -267,6 +267,8 @@ let link = params.get("link") || "";
 let message = encodeURIComponent(cmd + link);
 
 
+document.getElementById("bot1").href =
+"https://wa.me/94740707157?text=" + message;
 
 document.getElementById("bot2").href =
 "https://wa.me/94762320234?text=" + message;
