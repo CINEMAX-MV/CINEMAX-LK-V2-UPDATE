@@ -115,20 +115,21 @@ async function sendWhatsApp() {
       return;
     }
 
-    const newMovie = {
-      title: data.Title || title,
-      image: image,
-      imdb: data.imdbRating || "",
-      release_date: data.Released || "",
-      director: data.Director || "",
-      runtime: data.Runtime || "",
-      genre: data.Genre || "",
-      description: data.Plot || "",
-      players: [
-        { name: "Player 1", link: player1 },
-        { name: "Player 2", link: player2 }
-      ]
-    };
+    // Replace in sendWhatsApp() function
+const newMovie = {
+  title: `${data.Title || title} (${data.Released ? new Date(data.Released).getFullYear() : ""})`,
+  image: image,
+  imdb: data.imdbRating || "",
+  release_date: data.Released || "",
+  director: data.Director || "",
+  runtime: data.Runtime || "",
+  genre: data.Genre || "",
+  description: data.Plot || "",
+  players: [
+    { name: "Player 1", link: player1 },
+    { name: "Player 2", link: player2 }
+  ]
+};
 
     document.getElementById("moviePreview").innerText = JSON.stringify(newMovie,null,2);
 
