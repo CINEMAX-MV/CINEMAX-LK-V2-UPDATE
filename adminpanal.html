@@ -3,84 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel - Cinemax.lk</title>
-
+<title>Admin Panel - WhatsApp JSON</title>
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-}
-
-/* Top bar */
-.admin-header {
-  width: 100%;
-  background-color: #87CEFA;
-  color: white;
-  padding: 15px 20px;
-  font-size: 22px;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-/* Content area */
-.admin-content {
-  max-width: 800px;
-  margin: 30px auto;
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* Inputs */
-.admin-input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0 15px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-/* Buttons */
-.admin-btn {
-  background-color: #1E90FF;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 10px;
-  transition: 0.2s;
-}
-
-.admin-btn:hover {
-  background-color: #104E8B;
-}
-
-/* Movie preview box */
-#moviePreview {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: #fafafa;
-}
+body { font-family: Arial; background:#f2f2f2; margin:0; }
+.admin-content { max-width: 600px; margin: 50px auto; padding:20px; background:white; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.admin-header { background:#87CEFA; color:white; font-size:22px; padding:15px; text-align:center; border-radius:10px 10px 0 0;}
+.admin-input { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc;}
+.admin-btn { background:#1E90FF; color:white; border:none; padding:10px 15px; cursor:pointer; border-radius:5px; margin-top:10px;}
+.admin-btn:hover { background:#104E8B; }
+#moviePreview { background:#fafafa; padding:10px; border-radius:8px; margin-top:15px; border:1px solid #ccc; font-size:14px; white-space:pre-wrap;}
 </style>
 </head>
-
 <body>
 
-<div class="admin-header">Admin Panel - Cinemax.lk</div>
-
 <div class="admin-content">
-
-  <h2>Add Movie</h2>
+  <div class="admin-header">Admin Panel - Cinemax.lk</div>
 
   <label>Movie Title:</label>
   <input id="movieTitle" class="admin-input" type="text" placeholder="Enter movie title">
@@ -89,36 +26,39 @@ body {
   <input id="movieImage" class="admin-input" type="text" placeholder="Enter image URL">
 
   <label>Player 1 Link:</label>
-  <input id="movieLink" class="admin-input" type="text" placeholder="Enter movie link">
+  <input id="player1" class="admin-input" type="text" placeholder="Player 1 link">
 
-  <button class="admin-btn" onclick="addMovie()">Send</button>
+  <label>Player 2 Link:</label>
+  <input id="player2" class="admin-input" type="text" placeholder="Player 2 link">
+
+  <button class="admin-btn" onclick="sendWhatsApp()">Send to WhatsApp</button>
 
   <div id="moviePreview"></div>
-
 </div>
 
 <script>
-async function addMovie() {
+async function sendWhatsApp() {
   const title = document.getElementById("movieTitle").value.trim();
   const image = document.getElementById("movieImage").value.trim();
-  const link = document.getElementById("movieLink").value.trim();
+  const player1 = document.getElementById("player1").value.trim();
+  const player2 = document.getElementById("player2").value.trim();
 
-  if(!title || !image || !link){
+  if(!title || !image || !player1 || !player2){
     alert("Please fill all fields");
     return;
   }
 
   const apiKey = "249227bc"; // OMDb API key
   try {
-    // Fetch movie details from OMDb
     const res = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
     const data = await res.json();
 
     if(data.Response === "False"){
-      alert("Movie not found on OMDb. Please check the title.");
+      alert("Movie not found on OMDb");
       return;
     }
 
+    // Create full JSON structure
     const newMovie = {
       title: data.Title || title,
       image: image,
@@ -128,22 +68,22 @@ async function addMovie() {
       runtime: data.Runtime || "",
       genre: data.Genre || "",
       description: data.Plot || "",
-      players:[
-        {name:"Player 1", link: link},
-        {name:"Player 2", link: link} // can be extended
-      ] 
-    },
-    {
+      players: [
+        { name: "Player 1", link: player1 },
+        { name: "Player 2", link: player2 }
+      ]
+    };
 
-    // Preview movie JSON
-    document.getElementById("moviePreview").innerHTML = `<pre>${JSON.stringify(newMovie, null, 2)}</pre>`;
+    // Show JSON preview
+    document.getElementById("moviePreview").innerText = JSON.stringify(newMovie, null, 2);
 
-    // ------------------------
-    // TODO: Send newMovie to server to update movies.json
-    // fetch("/add-movie", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(newMovie) })
-    // ------------------------
+    // WhatsApp prefill
+    const phoneNumber = "94740571366";
+    const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(JSON.stringify(newMovie,null,2))}`;
 
-    alert("Movie data fetched successfully! Check preview below.");
+    // Open WhatsApp
+    window.open(waLink, "_blank");
+
   } catch(err){
     console.error(err);
     alert("Error fetching movie details");
