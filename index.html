@@ -70,23 +70,27 @@ if(user) console.log("Welcome,", user);
 
 <div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
 
-<!-- ADMIN LOGIN BUTTON -->
+<!-- ADMIN LOGIN BUTTON FIXED TOP-RIGHT -->
 <a href="adminpanal.html" 
    style="
-     position: fixed;
-     top: 15px;
-     right: 15px;
-     background-color: #87CEFA; /* light blue */
+     position: fixed;        /* scroll වුණත් same place */
+     top: 20px;              /* top margin */
+     right: 20px;            /* right margin */
+     background-color: rgba(135, 206, 250, 0.9); /* light blue with slight transparency */
      color: white;
-     padding: 10px 15px;
+     padding: 12px 18px;
      text-decoration: none;
-     border-radius: 6px;
+     border-radius: 8px;
      font-weight: bold;
      font-family: Arial, sans-serif;
-     z-index: 9999; /* overlay content not poster */
-     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-   ">
-  Admin Login
+     z-index: 9999;          /* hero image/other content ඉහලට overlay නොවෙයි */
+     box-shadow: 0 4px 12px rgba(0,0,0,0.4);  /* slightly floating effect */
+     transition: transform 0.2s, background-color 0.2s;
+   "
+   onmouseover="this.style.backgroundColor='rgba(100,149,237,0.95)'; this.style.transform='scale(1.05)';"
+   onmouseout="this.style.backgroundColor='rgba(135,206,250,0.9)'; this.style.transform='scale(1)';"
+>
+  Admin Panel
 </a>
 </div>
   
