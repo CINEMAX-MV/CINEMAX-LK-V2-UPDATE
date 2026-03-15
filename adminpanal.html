@@ -48,7 +48,7 @@ body { background:#1a1a1a; color:#fff; min-height:100vh; display:flex; justify-c
     <input id="movieImage" class="admin-input" type="text" placeholder="Movie Image URL">
     <input id="player1" class="admin-input" type="text" placeholder="Player 1 Link">
     <input id="player2" class="admin-input" type="text" placeholder="Player 2 Link">
-    <button class="admin-btn" onclick="reviewMovie()">Review JSON</button>
+    <button class="admin-btn" id="reviewBtn" onclick="reviewMovie()">Review JSON</button>
     <button class="admin-btn" onclick="sendWhatsApp()">Send to WhatsApp</button>
     <div id="moviePreview"></div>
   </div>
@@ -56,26 +56,42 @@ body { background:#1a1a1a; color:#fff; min-height:100vh; display:flex; justify-c
 
 <div id="lockedOverlay">
   ❌ You are temporarily locked out due to incorrect login.<br>
-  Please try again after 1 hour.
+  Please try again after 1 minute.
 </div>
 
 <script>
-const LOCK_KEY = "superAdminLock";
-const LOCK_DURATION = 3600*1000; // 1 hour in ms
+// LOCK SETTINGS
+const TEMP_LOCK_KEY = "tempLock"; // wrong password lock (1 min)
+const SESSION_KEY = "adminSession"; // correct login session (1 hour)
+const TEMP_LOCK_DURATION = 60*1000; // 1 min
+const SESSION_DURATION = 3600*1000; // 1 hour
 
-// Check lock on load
-if(localStorage.getItem(LOCK_KEY)){
-  const lockTime = parseInt(localStorage.getItem(LOCK_KEY));
-  if(Date.now() - lockTime < LOCK_DURATION){
-    document.getElementById("lockedOverlay").style.display="flex";
-  } else {
-    localStorage.removeItem(LOCK_KEY);
+// Check on load
+window.onload = function() {
+  // Session check
+  const session = localStorage.getItem(SESSION_KEY);
+  if(session && Date.now() - parseInt(session) < SESSION_DURATION){
+    document.getElementById("loginBox").style.display="none";
+    document.getElementById("adminPanel").style.display="flex";
   }
-}
 
+  // Temp lock check
+  const tempLock = localStorage.getItem(TEMP_LOCK_KEY);
+  if(tempLock && Date.now() - parseInt(tempLock) < TEMP_LOCK_DURATION){
+    document.getElementById("lockedOverlay").style.display="flex";
+    setTimeout(()=>{
+      document.getElementById("lockedOverlay").style.display="none";
+      localStorage.removeItem(TEMP_LOCK_KEY);
+    }, TEMP_LOCK_DURATION - (Date.now() - parseInt(tempLock)));
+  }
+};
+
+// LOGIN FUNCTION
 function checkLogin() {
-  if(localStorage.getItem(LOCK_KEY)){
-    alert("You are locked out. Try later.");
+  // Check temp lock
+  const tempLock = localStorage.getItem(TEMP_LOCK_KEY);
+  if(tempLock && Date.now() - parseInt(tempLock) < TEMP_LOCK_DURATION){
+    alert("You are temporarily locked out. Try later.");
     return;
   }
 
@@ -91,17 +107,24 @@ function checkLogin() {
   const valid = validLogins.some(acc => acc.mobile===mobile && acc.password===password);
 
   if(valid){
+    // Correct login → start 1 hour session
+    localStorage.setItem(SESSION_KEY, Date.now());
     document.getElementById("loginBox").style.display="none";
     document.getElementById("adminPanel").style.display="flex";
   } else {
+    // Wrong login → 1 min lock
     loginMsg.innerText="Invalid mobile number or password!";
-    // Lock for 1 hour
-    localStorage.setItem(LOCK_KEY, Date.now());
+    localStorage.setItem(TEMP_LOCK_KEY, Date.now());
     document.getElementById("lockedOverlay").style.display="flex";
+    setTimeout(()=>{
+      document.getElementById("lockedOverlay").style.display="none";
+      loginMsg.innerText="";
+      localStorage.removeItem(TEMP_LOCK_KEY);
+    }, TEMP_LOCK_DURATION);
   }
 }
 
-// JSON creation
+// MOVIE JSON
 let currentMovieJSON = null;
 
 function reviewMovie() {
