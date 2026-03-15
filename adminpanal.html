@@ -5,17 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Super Admin Panel</title>
 <style>
-/* Reset */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Arial', sans-serif; }
-
-/* Background & container */
 body { background:#1a1a1a; color:#fff; min-height:100vh; display:flex; justify-content:center; align-items:center; }
 .container { width:95%; max-width:700px; background:#111; border-radius:15px; padding:25px; box-shadow:0 0 20px rgba(0,0,0,0.7); }
 
 /* Login */
 #loginBox { display:flex; flex-direction:column; gap:15px; }
-#loginBox input { padding:12px; border-radius:8px; border:none; outline:none; }
-#loginBox input[type="password"], #loginBox input[type="tel"] { background:#222; color:#fff; }
+#loginBox input { padding:12px; border-radius:8px; border:none; outline:none; background:#222; color:#fff; }
 #loginBox button { padding:12px; border:none; border-radius:8px; background:#0f7ef0; color:white; cursor:pointer; font-size:16px; }
 #loginBox button:hover { background:#064a9c; }
 
@@ -26,6 +22,8 @@ body { background:#1a1a1a; color:#fff; min-height:100vh; display:flex; justify-c
 .admin-btn { background:#0f7ef0; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-size:16px; }
 .admin-btn:hover { background:#064a9c; }
 #moviePreview { background:#222; padding:12px; border-radius:8px; font-size:14px; white-space:pre-wrap; max-height:300px; overflow:auto; }
+#reviewBtn { background:#32CD32; margin-top:5px; }
+#reviewBtn:hover { background:#228B22; }
 
 /* Locked overlay */
 #lockedOverlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); color:white; font-size:24px; justify-content:center; align-items:center; text-align:center; z-index:9999; }
@@ -50,22 +48,36 @@ body { background:#1a1a1a; color:#fff; min-height:100vh; display:flex; justify-c
     <input id="movieImage" class="admin-input" type="text" placeholder="Movie Image URL">
     <input id="player1" class="admin-input" type="text" placeholder="Player 1 Link">
     <input id="player2" class="admin-input" type="text" placeholder="Player 2 Link">
+    <button class="admin-btn" onclick="reviewMovie()">Review JSON</button>
     <button class="admin-btn" onclick="sendWhatsApp()">Send to WhatsApp</button>
     <div id="moviePreview"></div>
   </div>
 </div>
 
-<!-- Locked Overlay -->
 <div id="lockedOverlay">
   ❌ You are temporarily locked out due to incorrect login.<br>
   Please try again after 1 hour.
 </div>
 
 <script>
-let lockTimeout = false;
+const LOCK_KEY = "superAdminLock";
+const LOCK_DURATION = 3600*1000; // 1 hour in ms
+
+// Check lock on load
+if(localStorage.getItem(LOCK_KEY)){
+  const lockTime = parseInt(localStorage.getItem(LOCK_KEY));
+  if(Date.now() - lockTime < LOCK_DURATION){
+    document.getElementById("lockedOverlay").style.display="flex";
+  } else {
+    localStorage.removeItem(LOCK_KEY);
+  }
+}
 
 function checkLogin() {
-  if(lockTimeout) return;
+  if(localStorage.getItem(LOCK_KEY)){
+    alert("You are locked out. Try later.");
+    return;
+  }
 
   const mobile = document.getElementById("mobile").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -84,18 +96,15 @@ function checkLogin() {
   } else {
     loginMsg.innerText="Invalid mobile number or password!";
     // Lock for 1 hour
-    lockTimeout = true;
+    localStorage.setItem(LOCK_KEY, Date.now());
     document.getElementById("lockedOverlay").style.display="flex";
-    setTimeout(()=>{
-      lockTimeout=false;
-      document.getElementById("lockedOverlay").style.display="none";
-      loginMsg.innerText="";
-    },3600*1000); // 1 hour
   }
 }
 
-// OMDb + WhatsApp
-async function sendWhatsApp() {
+// JSON creation
+let currentMovieJSON = null;
+
+function reviewMovie() {
   const title = document.getElementById("movieTitle").value.trim();
   const image = document.getElementById("movieImage").value.trim();
   const player1 = document.getElementById("player1").value.trim();
@@ -106,43 +115,41 @@ async function sendWhatsApp() {
     return;
   }
 
-  const apiKey = "249227bc"; // OMDb API key
-  try {
-    const res = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`);
-    const data = await res.json();
-    if(data.Response==="False"){
-      alert("Movie not found on OMDb");
-      return;
-    }
+  const apiKey = "249227bc";
+  fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`)
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.Response==="False"){
+        alert("Movie not found on OMDb");
+        return;
+      }
+      currentMovieJSON = {
+        title: `${data.Title || title} (${data.Released ? new Date(data.Released).getFullYear() : ""})`,
+        image: image,
+        imdb: data.imdbRating || "",
+        release_date: data.Released || "",
+        director: data.Director || "",
+        runtime: data.Runtime || "",
+        genre: data.Genre || "",
+        description: data.Plot || "",
+        players:[
+          { name:"Player 1", link:player1 },
+          { name:"Player 2", link:player2 }
+        ]
+      };
+      document.getElementById("moviePreview").innerText = JSON.stringify(currentMovieJSON,null,2);
+    }).catch(err=>{console.error(err); alert("Error fetching movie details");});
+}
 
-    // Replace in sendWhatsApp() function
-const newMovie = {
-  title: `${data.Title || title} (${data.Released ? new Date(data.Released).getFullYear() : ""})`,
-  image: image,
-  imdb: data.imdbRating || "",
-  release_date: data.Released || "",
-  director: data.Director || "",
-  runtime: data.Runtime || "",
-  genre: data.Genre || "",
-  description: data.Plot || "",
-  players: [
-    { name: "Player 1", link: player1 },
-    { name: "Player 2", link: player2 }
-  ]
-};
-
-    document.getElementById("moviePreview").innerText = JSON.stringify(newMovie,null,2);
-
-    const phoneNumber = "94740571366"; // WhatsApp number
-    const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(JSON.stringify(newMovie,null,2))}`;
-    window.open(waLink,"_blank");
-
-  } catch(err){
-    console.error(err);
-    alert("Error fetching movie details");
+function sendWhatsApp() {
+  if(!currentMovieJSON){
+    alert("Please review the movie JSON first!");
+    return;
   }
+  const phoneNumber = "94740571366";
+  const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(JSON.stringify(currentMovieJSON,null,2))}`;
+  window.open(waLink,"_blank");
 }
 </script>
-
 </body>
 </html>
