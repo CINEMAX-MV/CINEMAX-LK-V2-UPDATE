@@ -21,7 +21,7 @@ body { background:#1a1a1a; color:#fff; min-height:100vh; display:flex; justify-c
 .admin-input { width:100%; padding:12px; border-radius:8px; border:none; outline:none; background:#222; color:#fff; }
 .admin-btn { background:#0f7ef0; color:white; border:none; padding:12px; border-radius:8px; cursor:pointer; font-size:16px; }
 .admin-btn:hover { background:#064a9c; }
-#moviePreview { background:#222; padding:12px; border-radius:8px; font-size:14px; white-space:pre-wrap; max-height:300px; overflow:auto; }
+#moviePreview { background:#222; padding:12px; border-radius:8px; font-size:14px; white-space:pre-wrap; max-height:400px; overflow:auto; }
 #reviewBtn { background:#32CD32; margin-top:5px; }
 #reviewBtn:hover { background:#228B22; }
 
@@ -68,14 +68,11 @@ const SESSION_DURATION = 3600*1000; // 1 hour
 
 // Check on load
 window.onload = function() {
-  // Session check
   const session = localStorage.getItem(SESSION_KEY);
   if(session && Date.now() - parseInt(session) < SESSION_DURATION){
     document.getElementById("loginBox").style.display="none";
     document.getElementById("adminPanel").style.display="flex";
   }
-
-  // Temp lock check
   const tempLock = localStorage.getItem(TEMP_LOCK_KEY);
   if(tempLock && Date.now() - parseInt(tempLock) < TEMP_LOCK_DURATION){
     document.getElementById("lockedOverlay").style.display="flex";
@@ -88,7 +85,6 @@ window.onload = function() {
 
 // LOGIN FUNCTION
 function checkLogin() {
-  // Check temp lock
   const tempLock = localStorage.getItem(TEMP_LOCK_KEY);
   if(tempLock && Date.now() - parseInt(tempLock) < TEMP_LOCK_DURATION){
     alert("You are temporarily locked out. Try later.");
@@ -107,12 +103,10 @@ function checkLogin() {
   const valid = validLogins.some(acc => acc.mobile===mobile && acc.password===password);
 
   if(valid){
-    // Correct login → start 1 hour session
     localStorage.setItem(SESSION_KEY, Date.now());
     document.getElementById("loginBox").style.display="none";
     document.getElementById("adminPanel").style.display="flex";
   } else {
-    // Wrong login → 1 min lock
     loginMsg.innerText="Invalid mobile number or password!";
     localStorage.setItem(TEMP_LOCK_KEY, Date.now());
     document.getElementById("lockedOverlay").style.display="flex";
@@ -139,7 +133,7 @@ function reviewMovie() {
   }
 
   const apiKey = "249227bc";
-  fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}`)
+  fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${apiKey}&plot=full`)
     .then(res=>res.json())
     .then(data=>{
       if(data.Response==="False"){
@@ -154,7 +148,7 @@ function reviewMovie() {
         director: data.Director || "",
         runtime: data.Runtime || "",
         genre: data.Genre || "",
-        description: data.Plot || "",
+        description: data.Plot || "No description available",
         players:[
           { name:"Player 1", link:player1 },
           { name:"Player 2", link:player2 }
