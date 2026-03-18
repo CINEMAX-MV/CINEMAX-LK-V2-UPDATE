@@ -54,16 +54,16 @@ fetch("data/movies.json")
 let currentURL = encodeURIComponent(window.location.href);
 
 let movieLink = "";
-let command = ".download "; // default
+let command = "/START DOWNLOAD "; // default
 
 if(movie.players && movie.players.length > 0){
   movieLink = movie.players[0].link;
 
   if(/drive\.google\.com/.test(movieLink)){
-    command = ".gdrive ";
+    command = "/START GDRIVE ";
   }
   else if(/mega\.nz/.test(movieLink)){
-    command = ".mega ";
+    command = "/START MEGA ";
   }
 }
 
