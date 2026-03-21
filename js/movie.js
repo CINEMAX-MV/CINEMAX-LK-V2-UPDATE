@@ -60,10 +60,10 @@ if(movie.players && movie.players.length > 0){
   movieLink = movie.players[0].link;
 
   if(/drive\.google\.com/.test(movieLink)){
-    command = "/GDRIVE ";
+    command = ".gdrive ";
   }
   else if(/mega\.nz/.test(movieLink)){
-    command = "/MEGA ";
+    command = ".mega ";
   }
 }
 
