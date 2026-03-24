@@ -196,72 +196,6 @@ let socialHTML = `
           </div>
 
         </div>
-        
-<!-- =============================== -->
-<!-- 📢 YEAR FILTER ABOVE ANNOUNCEMENT -->
-<!-- =============================== -->
-<div id="yearFilter" style="margin:20px 0;">
-  <label for="selectYear" style="color:white;font-weight:bold;margin-right:10px;">Select Year:</label>
-  <select id="selectYear" style="padding:8px 12px;border-radius:6px;border:none;font-weight:bold;">
-    <option value="">-- All Years --</option>
-  </select>
-</div>
-
-<!-- FILTERED MOVIES WILL SHOW HERE -->
-<div id="yearMovies" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:15px;"></div>
-
-// ===============================
-// ⬇ POPULATE YEAR DROPDOWN
-// ===============================
-const selectYear = document.getElementById("selectYear");
-const yearMoviesDiv = document.getElementById("yearMovies");
-
-// 🔹 GET UNIQUE YEARS FROM ALL MOVIES
-const yearsSet = new Set();
-for(let key in data){
-  if(data[key].release_date){
-    yearsSet.add(data[key].release_date.split("-")[0]); // extract year
-  }
-}
-const yearsArray = Array.from(yearsSet).sort((a,b)=>b-a); // descending
-
-// 🔹 ADD YEARS TO SELECT
-yearsArray.forEach(y=>{
-  const opt = document.createElement("option");
-  opt.value = y;
-  opt.textContent = y;
-  selectYear.appendChild(opt);
-});
-
-// 🔹 SHOW MOVIES OF SELECTED YEAR
-selectYear.addEventListener("change", ()=>{
-  const year = selectYear.value;
-  yearMoviesDiv.innerHTML = ""; // clear previous
-
-  const filteredMovies = Object.values(data).filter(m=>{
-    return year === "" || (m.release_date && m.release_date.startsWith(year));
-  });
-
-  filteredMovies.forEach(m=>{
-    const movieDiv = document.createElement("div");
-    movieDiv.style.width = "150px";
-    movieDiv.style.cursor = "pointer";
-    movieDiv.style.textAlign = "center";
-
-    movieDiv.innerHTML = `
-      <img src="${m.image}" style="width:100%;border-radius:8px;box-shadow:0 5px 15px rgba(0,0,0,0.4);">
-      <p style="color:white;font-weight:bold;margin-top:5px;font-size:0.9em;">${m.title}</p>
-    `;
-    
-    movieDiv.addEventListener("click", ()=>{
-      window.location.href = "movie.html?id=" + m.id;
-    });
-
-    yearMoviesDiv.appendChild(movieDiv);
-  });
-});
-
-        
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
@@ -518,4 +452,3 @@ function goAdPage(link){
   let movieId = params.get("id");
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
-
