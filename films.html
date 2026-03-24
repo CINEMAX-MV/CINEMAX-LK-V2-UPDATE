@@ -1,1 +1,145 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sinhala Movies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin:0; font-family:Arial; background:#0f0f0f; color:white; }
+    h1 { text-align:center; padding:15px; color:#00ffd5; }
+
+    .years {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(80px,1fr));
+      gap:10px;
+      padding:15px;
+    }
+    .year-btn {
+      background:#1c1c1c;
+      padding:10px;
+      text-align:center;
+      border-radius:6px;
+      cursor:pointer;
+    }
+    .year-btn:hover { background:#00ffd5; color:black; }
+
+    .movies {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+      gap:15px;
+      padding:15px;
+    }
+    .card {
+      background:#1a1a1a;
+      border-radius:8px;
+      overflow:hidden;
+      cursor:pointer;
+      transition:0.2s;
+    }
+    .card:hover { transform:scale(1.05); }
+    .card img { width:100%; height:240px; object-fit:cover; }
+    .card h3 { font-size:14px; padding:8px; }
+
+    .modal {
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.85);
+      justify-content:center;
+      align-items:center;
+    }
+    .modal-content {
+      background:#1c1c1c;
+      width:90%;
+      max-width:500px;
+      border-radius:10px;
+      padding:15px;
+      position:relative;
+    }
+    .close { position:absolute; right:10px; top:10px; cursor:pointer; font-size:18px; color:red; }
+    .modal img { width:100%; border-radius:8px; }
+    .btn { display:inline-block; margin-top:10px; padding:8px 12px; background:#00ffd5; color:black; text-decoration:none; border-radius:5px; font-weight:bold; }
+  </style>
+</head>
+<body>
+
+<h1>🎬 Sinhala Movies By Year</h1>
+
+<div class="years" id="yearContainer"></div>
+<div class="movies" id="moviesContainer">Select a year</div>
+
+<div class="modal" id="movieModal">
+  <div class="modal-content" id="modalContent">
+    <span class="close" onclick="closeModal()">✖</span>
+  </div>
+</div>
+
+<script>
+const API_KEY = "664258113a1e4067d9a47099ac78e3a4"; // ඔබේ TMDB API key
+const IMG_PATH = "https://image.tmdb.org/t/p/w500";
+
+// Generate Years 2000-2026
+const yearContainer = document.getElementById("yearContainer");
+for(let y = 2026; y >= 2000; y--){
+  const btn = document.createElement("div");
+  btn.className = "year-btn";
+  btn.innerText = y;
+  btn.onclick = () => loadMoviesByYear(y);
+  yearContainer.appendChild(btn);
+}
+
+// Load Sinhala Movies by Year
+function loadMoviesByYear(year){
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&primary_release_year=${year}&with_original_language=si&sort_by=popularity.desc`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("moviesContainer");
+      container.innerHTML = "";
+
+      if(data.results.length === 0){
+        container.innerHTML = "No Sinhala movies found for this year.";
+        return;
+      }
+
+      data.results.forEach(movie => {
+        container.innerHTML += `
+          <div class="card" onclick="showDetails(${movie.id})">
+            <img src="${IMG_PATH + movie.poster_path}">
+            <h3>${movie.title}</h3>
+          </div>
+        `;
+      });
+    });
+}
+
+// Show Movie Details
+function showDetails(id){
+  fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos`)
+    .then(res => res.json())
+    .then(movie => {
+      const trailer = movie.videos.results.find(v => v.type === "Trailer");
+      const trailerUrl = trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : "#";
+
+      document.getElementById("modalContent").innerHTML = `
+        <span class="close" onclick="closeModal()">✖</span>
+        <img src="${IMG_PATH + movie.poster_path}">
+        <h2>${movie.title}</h2>
+        <p><b>Release:</b> ${movie.release_date}</p>
+        <p><b>Rating:</b> ⭐ ${movie.vote_average}</p>
+        <p>${movie.overview}</p>
+        ${trailer ? `<a class="btn" href="${trailerUrl}" target="_blank">▶ Watch Trailer</a>` : ""}
+      `;
+
+      document.getElementById("movieModal").style.display = "flex";
+    });
+}
+
+function closeModal(){
+  document.getElementById("movieModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
