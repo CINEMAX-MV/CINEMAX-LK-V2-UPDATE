@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select WhatsApp Bot | Cinemax</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Cinemax | Select WhatsApp Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary: #25D366;
-            --primary-glow: rgba(37, 211, 102, 0.4);
-            --bg-dark: #070b14;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --primary-dark: #128c7e;
+            --accent: #00ff88;
+            --bg-dark: #020617;
+            --card-bg: rgba(15, 23, 42, 0.7);
         }
 
         * {
@@ -33,7 +33,7 @@
             position: relative;
         }
 
-        /* Animated Canvas Background */
+        /* High Quality Background */
         #tech-bg {
             position: fixed;
             top: 0;
@@ -41,140 +41,149 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            background: radial-gradient(circle at center, #111827 0%, #070b14 100%);
         }
 
-        /* Improved Loader */
+        /* --- NEXT LEVEL LOADER --- */
         #loader {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #050505;
+            inset: 0;
+            background: #000;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s ease;
+            transition: 0.8s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
         #loadnum {
-            font-size: 120px;
-            font-weight: 800;
-            color: var(--primary);
-            text-shadow: 0 0 30px var(--primary-glow);
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(80px, 15vw, 140px);
+            font-weight: 700;
+            background: linear-gradient(to bottom, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(37, 211, 102, 0.4));
             margin-bottom: 20px;
-            font-variant-numeric: tabular-nums;
         }
 
-        .bar-container {
-            width: 280px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.05);
+        .loading-text {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 30px;
+            opacity: 0.8;
+            animation: pulse 1.5s infinite;
+        }
+
+        .bar-outer {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             position: relative;
             overflow: hidden;
         }
 
-        .bar-fill {
+        .bar-inner {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            background-size: 200% 100%;
-            box-shadow: 0 0 15px var(--primary);
-            animation: loadbar 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            background: var(--primary);
+            box-shadow: 0 0 20px var(--primary);
+            transition: width 0.4s ease-out;
         }
 
-        @keyframes loadbar {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
-
-        /* Main Container */
+        /* --- MAIN CONTENT --- */
         .container {
             text-align: center;
             width: 90%;
-            max-width: 500px;
+            max-width: 480px;
             position: relative;
             z-index: 2;
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 50px 40px;
-            border-radius: 30px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: translateY(40px);
+            transition: 1.2s cubic-bezier(0.2, 1, 0.2, 1);
+            padding: 50px 30px;
+            border-radius: 35px;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
         }
 
         h2 {
-            margin-bottom: 10px;
+            font-size: 34px;
             font-weight: 700;
-            font-size: 32px;
-            background: linear-gradient(to bottom, #fff, #94a3b8);
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .sub {
             font-size: 15px;
-            opacity: 0.6;
-            margin-bottom: 35px;
-            letter-spacing: 0.5px;
+            color: #94a3b8;
+            margin-bottom: 40px;
         }
 
+        /* --- BOT BUTTONS NEXT LEVEL --- */
         .bot-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-bottom: 35px;
+            gap: 18px;
+            margin-bottom: 30px;
         }
 
-        /* Professional Bot Button */
         .bot {
             position: relative;
             display: flex;
             align-items: center;
-            padding: 18px 25px;
-            border-radius: 15px;
+            padding: 20px 25px;
+            border-radius: 20px;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             text-decoration: none;
             color: white;
             font-size: 18px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            transition: all 0.4s ease;
             overflow: hidden;
+            z-index: 1;
         }
 
-        .bot::before {
+        /* Neon Glow Effect on Hover */
+        .bot::after {
             content: '';
             position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            transition: 0.5s;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(37, 211, 102, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+            z-index: -1;
         }
 
-        .bot:hover::before {
-            left: 100%;
+        .bot:hover::after {
+            transform: translateX(100%);
         }
 
         .bot:hover {
-            background: rgba(37, 211, 102, 0.1);
             border-color: var(--primary);
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.2);
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.2);
+            background: rgba(37, 211, 102, 0.05);
         }
 
         .bot img {
-            width: 24px;
-            margin-right: 15px;
-            filter: drop-shadow(0 0 5px rgba(37, 211, 102, 0.5));
+            width: 28px;
+            margin-right: 18px;
+            filter: drop-shadow(0 0 8px var(--primary));
         }
 
         /* Description Box */
@@ -182,33 +191,32 @@
             padding: 20px;
             font-size: 14px;
             line-height: 1.6;
-            color: #cbd5e1;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
-            border-left: 3px solid var(--primary);
+            color: #a0ffa0;
+            background: rgba(37, 211, 102, 0.05);
+            border: 1px dashed rgba(37, 211, 102, 0.3);
+            border-radius: 20px;
             text-align: left;
-        }
-
-        .description b {
-            color: var(--primary);
         }
 
         /* Footer */
         footer {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             font-size: 13px;
-            opacity: 0.5;
-            letter-spacing: 1px;
+            color: #64748b;
             z-index: 2;
         }
-
         footer b { color: var(--primary); }
 
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
         @media(max-width: 480px) {
-            .container { padding: 40px 20px; }
-            h2 { font-size: 26px; }
-            #loadnum { font-size: 80px; }
+            .container { padding: 40px 20px; width: 92%; }
+            h2 { font-size: 28px; }
+            .bot { font-size: 16px; padding: 18px; }
         }
     </style>
 </head>
@@ -217,13 +225,16 @@
 <div id="tech-bg"><canvas id="canvas"></canvas></div>
 
 <div id="loader">
+    <div class="loading-text">Initializing System</div>
     <div id="loadnum">0</div>
-    <div class="bar-container"><div class="bar-fill"></div></div>
+    <div class="bar-outer">
+        <div class="bar-inner" id="bar"></div>
+    </div>
 </div>
 
 <div class="container" id="main">
-    <h2>Choose Bot</h2>
-    <div class="sub">Select a server to request your movie</div>
+    <h2>Select Bot</h2>
+    <div class="sub">Choose an active server to start download</div>
 
     <div class="bot-wrapper">
         <a id="bot1" class="bot">
@@ -241,16 +252,16 @@
     </div>
 
     <div class="description">
-        💡 කිසියම් හේතුවක් මත <b>Server 1</b> ක්‍රියා නොකරයි නම්, වෙනත් Bot එකක් භාවිතා කරන්න.
+        ⚠️ <b>සටහන:</b> කිසියම් හේතුවක් මත එක් Server එකක් ක්‍රියා නොකරයි නම් කරුණාකර වෙනත් Server එකක් පරීක්ෂා කරන්න.
     </div>
 </div>
 
 <footer>
-    © 2026 CINEMAX | Directed by <b>Peksha Rasanjana</b>
+    © 2026 CINEMAX WEB | Directed by <b>Peksha Rasanjana</b>
 </footer>
 
 <script>
-    /* WhatsApp Logic (Keeping your original logic intact) */
+    /* Logic (Same as original) */
     let params = new URLSearchParams(window.location.search);
     let cmd = params.get("cmd") || "";
     let link = params.get("link") || "";
@@ -260,86 +271,86 @@
     document.getElementById("bot2").href = "https://wa.me/94762320234?text=" + message;
     document.getElementById("bot3").href = "https://wa.me/94772461954?text=" + message;
 
-    /* Enhanced Loader */
-    let n = 0;
-    let load = setInterval(() => {
-        n += Math.floor(Math.random() * 3) + 1; 
-        if(n > 13) n = 13;
-        document.getElementById("loadnum").innerText = n;
-        
-        if(n >= 13) {
-            clearInterval(load);
+    /* Professional Slower Loader Logic */
+    let count = 0;
+    const target = 13;
+    const duration = 3500; // 3.5 Seconds for loading (Better feel)
+    const intervalTime = duration / target;
+
+    let loadInterval = setInterval(() => {
+        count++;
+        document.getElementById("loadnum").innerText = count;
+        document.getElementById("bar").style.width = (count / target * 100) + "%";
+
+        if (count >= target) {
+            clearInterval(loadInterval);
             setTimeout(() => {
                 const loader = document.getElementById("loader");
                 loader.style.opacity = "0";
-                setTimeout(() => loader.style.display = "none", 500);
-                
-                let main = document.getElementById("main");
-                main.style.opacity = 1;
-                main.style.transform = "translateY(0)";
-            }, 300);
+                loader.style.transform = "scale(1.1)";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                    const main = document.getElementById("main");
+                    main.style.opacity = "1";
+                    main.style.transform = "translateY(0)";
+                }, 800);
+            }, 500);
         }
-    }, 150);
+    }, intervalTime);
 
-    /* Smooth Particle Background */
+    /* High Quality Canvas Animation */
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-    let points = [];
-    const maxDist = 100;
+    let particles = [];
 
-    function resize() {
+    function initCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        init();
-    }
-
-    function init() {
-        points = [];
-        const count = (canvas.width * canvas.height) / 15000;
-        for(let i=0; i<count; i++) {
-            points.push({
+        particles = [];
+        for (let i = 0; i < 80; i++) {
+            particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4,
+                size: Math.random() * 2
             });
         }
     }
 
-    function animate() {
+    function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for(let i=0; i<points.length; i++) {
-            let p = points[i];
+        ctx.fillStyle = "rgba(37, 211, 102, 0.5)";
+        ctx.strokeStyle = "rgba(37, 211, 102, 0.1)";
+
+        particles.forEach((p, i) => {
             p.x += p.vx;
             p.y += p.vy;
 
-            if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
-            if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-            ctx.fillStyle = "rgba(37, 211, 102, 0.3)";
             ctx.beginPath();
-            ctx.arc(p.x, p.y, 1.5, 0, Math.PI*2);
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             ctx.fill();
 
-            for(let j=i+1; j<points.length; j++) {
-                let q = points[j];
-                let dist = Math.hypot(p.x - q.x, p.y - q.y);
-                if(dist < maxDist) {
-                    ctx.strokeStyle = `rgba(37, 211, 102, ${0.15 * (1 - dist/maxDist)})`;
-                    ctx.lineWidth = 0.5;
+            for (let j = i + 1; j < particles.length; j++) {
+                let p2 = particles[j];
+                let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                if (dist < 120) {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(q.x, q.y);
+                    ctx.lineTo(p2.x, p2.y);
                     ctx.stroke();
                 }
             }
-        }
-        requestAnimationFrame(animate);
+        });
+        requestAnimationFrame(draw);
     }
 
-    window.addEventListener("resize", resize);
-    resize();
-    animate();
+    window.addEventListener("resize", initCanvas);
+    initCanvas();
+    draw();
 </script>
 
 </body>
