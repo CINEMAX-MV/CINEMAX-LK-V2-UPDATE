@@ -40,9 +40,9 @@
             position: relative;
         }
 
-        /* MENU BUTTON POSITION (වම් පැත්තේ ඉහළටම) */
+        /* MENU BUTTON POSITION (Scroll වෙද්දී මැකී යන ලෙස) */
         .menu-btn {
-            position: fixed;        /* scroll කළත් එකම තැන තිබීමට */
+            position: absolute;    /* මෙතන absolute කළා scroll වෙද්දී උඩම ඉතිරි වෙන්න */
             top: 20px;
             left: 20px;
             font-size: 22px;
@@ -56,7 +56,7 @@
             border-radius: 14px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            z-index: 10000;         /* අනෙක් අයිතම වලට වඩා ඉහලින් තිබීමට */
+            z-index: 100;          /* Sidebar එකට වඩා අඩු අගයක් (sidebar open වෙද්දී වැසෙන්න) */
             transition: 0.3s;
         }
         .menu-btn:hover { background: rgba(0, 212, 255, 0.2); border-color: var(--primary); }
@@ -191,6 +191,29 @@
             margin: 0;
         }
 
+        /* PAGINATION STYLING (For consistency) */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .pagination-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .pagination-btn:hover {
+            background: var(--primary);
+            color: black;
+        }
+
         .site-footer {
             background: #010413;
             padding: 60px 0;
@@ -252,14 +275,21 @@
 <section class="container">
     <div id="movieList" class="movies-grid"></div>
     <div class="pagination-controls" style="margin-top: 40px;">
-        <button onclick="changePage(-1)" style="padding: 12px 25px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--border); color: #fff; cursor: pointer;">👈 Previous</button>
+        <button onclick="changePage(-1)" class="pagination-btn">👈 Previous</button>
         <span id="pageInfo" style="margin: 0 20px; font-weight: 600;"></span>
-        <button onclick="changePage(1)" style="padding: 12px 25px; border-radius: 10px; background: var(--card-bg); border: 1px solid var(--border); color: #fff; cursor: pointer;">Next 👉</button>
+        <button onclick="changePage(1)" class="pagination-btn">Next 👉</button>
     </div>
 </section>
 
 <div class="section-title">TV Series</div>
-<div id="series-container"></div>
+<section class="container">
+    <div id="series-container"></div>
+    <div class="pagination-controls" style="margin-top: 40px;">
+        <button onclick="changeSeriesPage(-1)" class="pagination-btn">👈 Previous</button>
+        <span id="seriesPageInfo" style="margin: 0 20px; font-weight: 600;">Page 1 of 10</span>
+        <button onclick="changeSeriesPage(1)" class="pagination-btn">Next 👉</button>
+    </div>
+</section>
 
 <div id="sidebar" class="sidebar">
     <div class="close-btn" onclick="toggleMenu()">✕</div>
@@ -268,7 +298,7 @@
     </div>
     <nav style="margin-top: 30px;">
         <a href="index.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-home" style="margin-right: 15px; color: var(--primary);"></i> 𝐇𝐨𝐦𝐞</a>
-        <a href="dashboard.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-th-large" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+        <a href="dashboard.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-th-large" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐚𝐬𝐡𝐛ොබોર્ඩ්</a>
         <a href="contact.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-envelope" style="margin-right: 15px; color: var(--primary);"></i> 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
         <a href="dmca.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-copyright" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐌𝐂𝐀</a>
         <a href="films.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-film" style="margin-right: 15px; color: var(--primary);"></i> 𝐍-𝐑𝐞ලීසස්</a>
