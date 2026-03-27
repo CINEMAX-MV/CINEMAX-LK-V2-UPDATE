@@ -40,15 +40,11 @@
             position: relative;
         }
 
-        .top-nav {
-            position: absolute;
-            top: 25px;
-            left: 5%;
-            z-index: 100;
-        }
-
-        /* MENU BUTTON */
+        /* MENU BUTTON POSITION (වම් පැත්තේ ඉහළටම) */
         .menu-btn {
+            position: fixed;        /* scroll කළත් එකම තැන තිබීමට */
+            top: 20px;
+            left: 20px;
             font-size: 22px;
             cursor: pointer;
             background: rgba(255,255,255,0.08);
@@ -60,6 +56,7 @@
             border-radius: 14px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
+            z-index: 10000;         /* අනෙක් අයිතම වලට වඩා ඉහලින් තිබීමට */
             transition: 0.3s;
         }
         .menu-btn:hover { background: rgba(0, 212, 255, 0.2); border-color: var(--primary); }
@@ -67,8 +64,8 @@
         /* PREMIUM ADMIN BUTTON */
         .admin-btn-fixed {
             position: fixed;
-            top: 25px;
-            right: 25px;
+            top: 20px;
+            right: 20px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #000;
             padding: 12px 24px;
@@ -81,12 +78,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.4s;
         }
         .admin-btn-fixed:hover {
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-3px);
             box-shadow: 0 12px 25px rgba(0, 212, 255, 0.5);
-            filter: brightness(1.1);
         }
 
         .hero-content h1 {
@@ -96,7 +92,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
         /* ===== SEARCH BAR ===== */
@@ -111,7 +106,6 @@
 
         .search-box {
             background: rgba(15, 23, 42, 0.9);
-            border: 1px solid var(--border);
             border-radius: 18px;
             display: flex;
             align-items: center;
@@ -130,7 +124,6 @@
             padding: 10px;
             width: 100%;
             outline: none;
-            font-size: 15px;
         }
 
         /* ===== TICKER ===== */
@@ -138,10 +131,10 @@
             width: 100%;
             margin: 30px 0;
             background: rgba(0, 212, 255, 0.03);
-            border-top: 1px solid rgba(0, 212, 255, 0.1);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
             overflow: hidden;
             padding: 15px 0;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
         }
 
         .ticker-track {
@@ -155,8 +148,6 @@
             padding-right: 100px;
             font-size: 15px;
             color: var(--primary);
-            font-weight: 400;
-            letter-spacing: 0.5px;
         }
 
         @keyframes ticker-scroll {
@@ -164,16 +155,14 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ===== QUALITY SECTION TITLES ===== */
+        /* ===== SECTION TITLES ===== */
         .section-title {
             font-size: 28px;
             font-weight: 700;
             text-align: center;
             margin: 60px 0 40px;
             text-transform: uppercase;
-            letter-spacing: 2px;
             position: relative;
-            color: #fff;
         }
 
         .section-title::after {
@@ -187,7 +176,6 @@
             box-shadow: 0 0 10px var(--primary);
         }
 
-        /* SIDEBAR BRANDING */
         .sidebar-brand {
             padding: 40px 20px;
             text-align: center;
@@ -201,10 +189,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 0;
-            filter: drop-shadow(0 0 5px rgba(0,212,255,0.3));
         }
 
-        /* Footer Polishing */
         .site-footer {
             background: #010413;
             padding: 60px 0;
@@ -217,16 +203,17 @@
 
 <body>
 
+<div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
 <a href="adminpanal.html" class="admin-btn-fixed">
     <i class="fas fa-user-shield"></i> Admin Panel
 </a>
 
 <div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.96); display:flex; justify-content:center; align-items:center; z-index:10000; color:#fff; text-align:center;">
-    <div style="background:#0f172a; padding:50px; border-radius:35px; border: 1px solid rgba(0, 212, 255, 0.2); max-width:420px; width:90%; box-shadow: 0 25px 50px rgba(0,0,0,0.5);">
-        <div style="font-size: 50px; margin-bottom: 20px;">🔒</div>
-        <h2 style="color:var(--primary); margin-bottom:15px; font-weight: 700; font-size: 24px;">Security Check</h2>
-        <p style="color:#94a3b8; margin-bottom:30px; line-height: 1.6;">To keep Cinemax safe, please complete the quick human verification.</p>
-        <a href="verification.html" style="background:linear-gradient(to right, var(--primary), var(--secondary)); color:#000; padding:15px 40px; border-radius:14px; text-decoration:none; font-weight:800; display: inline-block; transition: 0.3s;">VERIFY NOW</a>
+    <div style="background:#0f172a; padding:50px; border-radius:35px; border: 1px solid rgba(0, 212, 255, 0.2); max-width:420px; width:90%;">
+        <h2 style="color:var(--primary); margin-bottom:15px; font-weight: 700;">Security Check</h2>
+        <p style="color:#94a3b8; margin-bottom:30px;">Complete verification to access Cinemax.</p>
+        <a href="verification.html" style="background:linear-gradient(to right, var(--primary), var(--secondary)); color:#000; padding:15px 40px; border-radius:14px; text-decoration:none; font-weight:800; display: inline-block;">VERIFY NOW</a>
     </div>
 </div>
 
@@ -235,9 +222,6 @@
 </script>
 
 <header class="hero-header">
-    <div class="top-nav">
-        <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-    </div>
     <div class="hero-content">
         <h1>නවතම සිංහල චිත්‍රපට</h1>
         <p style="color: #94a3b8; font-size: 17px;">The Ultimate Destination for Sinhala Movies & Dubbed Series</p>
@@ -283,12 +267,12 @@
         <h3>CINEMAX</h3>
     </div>
     <nav style="margin-top: 30px;">
-        <a href="index.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; font-weight: 500;"><i class="fas fa-home" style="margin-right: 15px; color: var(--primary);"></i> 𝐇𝐨𝐦𝐞</a>
-        <a href="dashboard.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; font-weight: 500;"><i class="fas fa-th-large" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
-        <a href="contact.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; font-weight: 500;"><i class="fas fa-envelope" style="margin-right: 15px; color: var(--primary);"></i> 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
-        <a href="dmca.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; font-weight: 500;"><i class="fas fa-copyright" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐌𝐂𝐀</a>
-        <a href="films.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; font-weight: 500;"><i class="fas fa-film" style="margin-right: 15px; color: var(--primary);"></i> 𝐍-𝐑𝐞ලීසස්</a>
-        <a href="javascript:void(0)" onclick="toggleProblems()" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; font-weight: 500;"><i class="fas fa-bug" style="margin-right: 15px; color: var(--primary);"></i> 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
+        <a href="index.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-home" style="margin-right: 15px; color: var(--primary);"></i> 𝐇𝐨𝐦𝐞</a>
+        <a href="dashboard.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-th-large" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+        <a href="contact.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-envelope" style="margin-right: 15px; color: var(--primary);"></i> 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
+        <a href="dmca.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-copyright" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐌𝐂𝐀</a>
+        <a href="films.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-film" style="margin-right: 15px; color: var(--primary);"></i> 𝐍-𝐑𝐞ලීසස්</a>
+        <a href="javascript:void(0)" onclick="toggleProblems()" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-bug" style="margin-right: 15px; color: var(--primary);"></i> 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
     </nav>
 </div>
 
@@ -313,11 +297,9 @@
 <script>
     function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
     
-    // Smooth load for series
     fetch("series-section.html")
     .then(r => r.text())
-    .then(d => { document.getElementById("series-container").innerHTML = d; })
-    .catch(e => console.log("Series load error"));
+    .then(d => { document.getElementById("series-container").innerHTML = d; });
 </script>
 
 </body>
