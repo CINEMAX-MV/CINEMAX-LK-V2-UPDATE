@@ -13,7 +13,7 @@
     <style>
         :root {
             --primary: #00d4ff;
-            --bg-dark: #0f0f0f;
+            --bg-dark: #020617;
             --card-bg: rgba(255, 255, 255, 0.05);
             --border: rgba(255, 255, 255, 0.1);
         }
@@ -29,7 +29,7 @@
         /* ===== HERO SECTION ===== */
         .hero-header {
             height: 350px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-dark)),
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--bg-dark)),
                         url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -39,11 +39,13 @@
             position: relative;
         }
 
+        /* Top Nav Layout */
         .top-nav {
             position: absolute;
-            top: 25px;
-            left: 5%;
-            right: 5%;
+            top: 20px;
+            left: 0;
+            right: 0;
+            padding: 0 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -51,54 +53,74 @@
         }
 
         .menu-btn {
-            font-size: 26px;
+            font-size: 24px;
             cursor: pointer;
-            background: rgba(255,255,255,0.1);
-            padding: 10px 15px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.08);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
         }
 
+        /* Top Right Admin Button */
         .admin-btn {
             background: var(--primary);
             color: #000;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 10px 22px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            box-shadow: 0 5px 15px rgba(0,212,255,0.3);
-            transition: 0.3s;
+            font-size: 14px;
+            box-shadow: 0 8px 20px rgba(0,212,255,0.25);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .admin-btn:hover { transform: scale(1.05); }
+        .admin-btn:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0,212,255,0.4);
+        }
 
         .hero-content h1 {
-            font-size: clamp(28px, 4vw, 42px);
+            font-size: clamp(30px, 5vw, 46px);
+            margin-top: 40px;
             background: linear-gradient(45deg, #fff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
-        /* ===== SEARCH & TICKER SECTION ===== */
-        .search-ticker-area {
-            padding: 20px 5%;
-            margin-top: -30px;
+        /* ===== PREMIUM SEARCH BAR ===== */
+        .search-area {
+            padding: 0 5%;
+            margin-top: -35px;
             position: relative;
             z-index: 10;
         }
 
-        /* Search Bar on Left */
         .search-box {
-            background: rgba(255,255,255,0.05);
+            background: rgba(15, 23, 42, 0.8);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             width: 100%;
-            max-width: 350px;
-            padding: 5px 15px;
-            margin-bottom: 15px;
-            backdrop-filter: blur(10px);
+            max-width: 380px;
+            padding: 8px 18px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
         }
 
         .search-box input {
@@ -108,62 +130,67 @@
             padding: 10px;
             width: 100%;
             outline: none;
+            font-size: 15px;
         }
 
-        /* INFINITE LOOP TICKER (හිස්තැන් රහිත) */
-        .ticker {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 12px 0;
-            border-radius: 8px;
+        /* ===== FULL WIDTH SMOOTH TICKER ===== */
+        .ticker-section {
+            width: 100%;
+            margin: 25px 0;
+            background: rgba(0, 212, 255, 0.05);
+            border-top: 1px solid rgba(0, 212, 255, 0.15);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
             overflow: hidden;
+        }
+
+        .ticker {
+            padding: 12px 0;
             white-space: nowrap;
-            position: relative;
+            display: flex;
         }
 
         .ticker-track {
             display: inline-block;
-            padding-left: 100%;
-            animation: ticker-scroll 30s linear infinite;
+            animation: ticker-scroll 45s linear infinite; /* Speed reduced to 45s for smoothness */
         }
 
         .ticker-track span {
             display: inline-block;
-            padding-right: 50px;
+            padding-right: 80px;
             font-size: 14px;
-            font-weight: 400;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         @keyframes ticker-scroll {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-100%, 0); }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Works perfectly with doubled content */
         }
 
-        /* ===== CENTERED HEADINGS ===== */
+        /* ===== SECTION HEADINGS ===== */
         .section-title {
             font-size: 26px;
             font-weight: 700;
-            text-align: center; /* මැදට ගෙන ඒම */
+            text-align: center;
             margin: 50px 0 30px;
-            letter-spacing: 1px;
             text-transform: uppercase;
-            position: relative;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 50px;
             height: 4px;
             background: var(--primary);
-            margin: 10px auto 0; /* රේඛාව මැදට */
+            margin: 12px auto 0;
             border-radius: 10px;
         }
 
         /* Footer */
         .site-footer {
-            background: #0a0a0a;
-            padding: 40px 0;
+            background: #000;
+            padding: 50px 0;
             text-align: center;
             border-top: 1px solid var(--border);
             margin-top: 80px;
@@ -174,11 +201,12 @@
 
 <body>
 
-<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.9); display:flex; justify-content:center; align-items:center; z-index:10000; color:#fff; text-align:center;">
-    <div style="background:#111; padding:40px; border-radius:20px; border:1px solid var(--border); max-width:400px; width:90%;">
-        <h2 style="color:var(--primary); margin-bottom:15px;">🔐 Verify Identity</h2>
-        <p style="color:#aaa; margin-bottom:20px;">Please complete verification to enter the site.</p>
-        <a href="verification.html" style="background:var(--primary); color:#000; padding:12px 25px; border-radius:8px; text-decoration:none; font-weight:bold;">Verify Here</a>
+<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.95); display:flex; justify-content:center; align-items:center; z-index:10000; color:#fff; text-align:center;">
+    <div style="background:#0f172a; padding:45px; border-radius:30px; border:1px solid var(--border); max-width:400px; width:90%; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+        <div style="font-size: 50px; margin-bottom: 15px;">🔒</div>
+        <h2 style="color:var(--primary); margin-bottom:15px; font-weight: 700;">Verify Identity</h2>
+        <p style="color:#94a3b8; margin-bottom:25px; line-height: 1.6;">Please complete human verification to access Cinemax Movies.</p>
+        <a href="verification.html" style="background:var(--primary); color:#000; padding:14px 35px; border-radius:12px; text-decoration:none; font-weight:bold; display: inline-block; transition: 0.3s;">Verify Now</a>
     </div>
 </div>
 
@@ -188,21 +216,25 @@
 
 <header class="hero-header">
     <div class="top-nav">
-        <div class="menu-btn" onclick="toggleMenu()">☰</div>
-        <a href="adminpanal.html" class="admin-btn">Admin Panel</a>
+        <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <a href="adminpanal.html" class="admin-btn">
+            <i class="fas fa-user-shield"></i> Admin Panel
+        </a>
     </div>
     <div class="hero-content">
         <h1>නවතම සිංහල චිත්‍රපට</h1>
-        <p>Download & Stream Best Sinhala Movies</p>
+        <p>Premium Stream & Direct Download Experience</p>
     </div>
 </header>
 
-<section class="search-ticker-area">
+<section class="search-area">
     <div class="search-box">
         <i class="fas fa-search" style="color:var(--primary)"></i>
-        <input type="text" id="searchInput" placeholder="Search movies...">
+        <input type="text" id="searchInput" placeholder="Search for movies, series...">
     </div>
+</section>
 
+<section class="ticker-section">
     <div class="ticker">
         <div class="ticker-track">
             <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
@@ -222,9 +254,9 @@
     <div id="movieList" class="movies-grid"></div>
 
     <div class="pagination-controls">
-        <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
+        <button id="prevBtn" onclick="changePage(-1)"><i class="fas fa-arrow-left"></i> Previous</button>
         <span id="pageInfo"></span>
-        <button id="nextBtn" onclick="changePage(1)">Next 👉</button>
+        <button id="nextBtn" onclick="changePage(1)">Next <i class="fas fa-arrow-right"></i></button>
     </div>
 </section>
 
@@ -233,32 +265,36 @@
 
 <div id="sidebar" class="sidebar">
     <div class="close-btn" onclick="toggleMenu()">✕</div>
-    <a href="index.html">𝐇𝐨𝐦𝐞</a>
-    <a href="dashboard.html">𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
-    <a href="contact.html">𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
-    <a href="dmca.html">𝐃𝐌𝐂𝐀</a>
-    <a href="films.html">𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
-    <a href="javascript:void(0)" onclick="toggleProblems()">𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
+    <nav style="margin-top: 50px;">
+        <a href="index.html"><i class="fas fa-home"></i> 𝐇𝐨𝐦𝐞</a>
+        <a href="dashboard.html"><i class="fas fa-chart-line"></i> 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+        <a href="contact.html"><i class="fas fa-headset"></i> 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
+        <a href="dmca.html"><i class="fas fa-shield-alt"></i> 𝐃𝐌𝐂𝐀</a>
+        <a href="films.html"><i class="fas fa-film"></i> 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
+        <a href="javascript:void(0)" onclick="toggleProblems()"><i class="fas fa-exclamation-circle"></i> 𝐏𝐫ො𝐛𝐥𝐞𝐦𝐬</a>
+    </nav>
 </div>
 
 <footer class="site-footer">
-    <div class="social-section" style="margin-bottom: 20px;">
-        <a href="https://youtube.com/@cinemax-u1s" target="_blank" style="color:#fff; font-size: 24px; margin: 0 15px;"><i class="fab fa-youtube"></i></a>
-        <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" target="_blank" style="color:#fff; font-size: 24px; margin: 0 15px;"><i class="fab fa-whatsapp"></i></a>
+    <div class="social-section" style="margin-bottom: 25px;">
+        <a href="https://youtube.com/@cinemax-u1s" target="_blank" style="color:#fff; font-size: 26px; margin: 0 18px; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
+        <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" target="_blank" style="color:#fff; font-size: 26px; margin: 0 18px; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p>© 2026 <b>Cinemax Downloads</b> | Created by Peksha Rasanjana</p>
+    <p style="font-size: 15px; color: #94a3b8;">© 2026 <b style="color: #fff;">Cinemax Downloads</b> | All Rights Reserved</p>
+    <p style="font-size: 13px; color: #64748b; margin-top: 5px;">Created by Peksha Rasanjana</p>
 </footer>
 
 <script src="js/main.js"></script>
 
 <script>
     function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
-    function toggleProblems() { /* original logic */ }
     
     // Load Series Section
     fetch("series-section.html")
     .then(r => r.text())
-    .then(d => document.getElementById("series-container").innerHTML = d);
+    .then(d => {
+        document.getElementById("series-container").innerHTML = d;
+    }).catch(err => console.log("Series loading skipped"));
 </script>
 
 </body>
