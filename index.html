@@ -40,9 +40,8 @@
             position: relative;
         }
 
-        /* MENU BUTTON POSITION (Scroll වෙද්දී මැකී යන ලෙස) */
         .menu-btn {
-            position: absolute;    /* මෙතන absolute කළා scroll වෙද්දී උඩම ඉතිරි වෙන්න */
+            position: absolute;
             top: 20px;
             left: 20px;
             font-size: 22px;
@@ -56,12 +55,11 @@
             border-radius: 14px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            z-index: 100;          /* Sidebar එකට වඩා අඩු අගයක් (sidebar open වෙද්දී වැසෙන්න) */
+            z-index: 100;
             transition: 0.3s;
         }
         .menu-btn:hover { background: rgba(0, 212, 255, 0.2); border-color: var(--primary); }
 
-        /* PREMIUM ADMIN BUTTON */
         .admin-btn-fixed {
             position: fixed;
             top: 20px;
@@ -94,7 +92,6 @@
             font-weight: 800;
         }
 
-        /* ===== SEARCH BAR ===== */
         .search-area {
             padding: 0 5%;
             margin-top: -35px;
@@ -126,7 +123,6 @@
             outline: none;
         }
 
-        /* ===== TICKER ===== */
         .ticker-section {
             width: 100%;
             margin: 30px 0;
@@ -155,7 +151,6 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ===== SECTION TITLES ===== */
         .section-title {
             font-size: 28px;
             font-weight: 700;
@@ -176,6 +171,52 @@
             box-shadow: 0 0 10px var(--primary);
         }
 
+        /* ===== PREMIUM PAGINATION CONTROLS (QUALITY FIX) ===== */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .pagination-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            min-width: 130px;
+            justify-content: center;
+        }
+
+        .pagination-btn:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+            border-color: transparent;
+        }
+
+        .page-info-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
         .sidebar-brand {
             padding: 40px 20px;
             text-align: center;
@@ -189,29 +230,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 0;
-        }
-
-        /* PAGINATION STYLING (For consistency) */
-        .pagination-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-        .pagination-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .pagination-btn:hover {
-            background: var(--primary);
-            color: black;
         }
 
         .site-footer {
@@ -260,8 +278,8 @@
 
 <section class="ticker-section">
     <div class="ticker-track">
-        <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
-        <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
+        <span>🔥 සිංහල ෆිල්ම්ස් , හඩකැවූ ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙත. 🔥</span>
+        <span>🔥 සිංහල ෆිල්ම්ස් , හඩකැවූ ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙත. 🔥</span>
     </div>
 </section>
 
@@ -274,20 +292,20 @@
 <div class="section-title">Latest Releases</div>
 <section class="container">
     <div id="movieList" class="movies-grid"></div>
-    <div class="pagination-controls" style="margin-top: 40px;">
-        <button onclick="changePage(-1)" class="pagination-btn">👈 Previous</button>
-        <span id="pageInfo" style="margin: 0 20px; font-weight: 600;"></span>
-        <button onclick="changePage(1)" class="pagination-btn">Next 👉</button>
+    <div class="pagination-controls">
+        <button onclick="changePage(-1)" class="pagination-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+        <span id="pageInfo" class="page-info-text"></span>
+        <button onclick="changePage(1)" class="pagination-btn">Next <i class="fas fa-chevron-right"></i></button>
     </div>
 </section>
 
 <div class="section-title">TV Series</div>
 <section class="container">
     <div id="series-container"></div>
-    <div class="pagination-controls" style="margin-top: 40px;">
-        <button onclick="changeSeriesPage(-1)" class="pagination-btn">👈 Previous</button>
-        <span id="seriesPageInfo" style="margin: 0 20px; font-weight: 600;">Page 1 of 10</span>
-        <button onclick="changeSeriesPage(1)" class="pagination-btn">Next 👉</button>
+    <div class="pagination-controls">
+        <button onclick="changeSeriesPage(-1)" class="pagination-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+        <span id="seriesPageInfo" class="page-info-text">Page 1 of 10</span>
+        <button onclick="changeSeriesPage(1)" class="pagination-btn">Next <i class="fas fa-chevron-right"></i></button>
     </div>
 </section>
 
@@ -298,10 +316,10 @@
     </div>
     <nav style="margin-top: 30px;">
         <a href="index.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-home" style="margin-right: 15px; color: var(--primary);"></i> 𝐇𝐨𝐦𝐞</a>
-        <a href="dashboard.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-th-large" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐚𝐬𝐡𝐛ොබોર્ඩ්</a>
-        <a href="contact.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-envelope" style="margin-right: 15px; color: var(--primary);"></i> 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
+        <a href="dashboard.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-th-large" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+        <a href="contact.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-envelope" style="margin-right: 15px; color: var(--primary);"></i> 𝐂𝐨𝐧𝐭𝐚𝐜𝐭𝐬</a>
         <a href="dmca.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-copyright" style="margin-right: 15px; color: var(--primary);"></i> 𝐃𝐌𝐂𝐀</a>
-        <a href="films.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-film" style="margin-right: 15px; color: var(--primary);"></i> 𝐍-𝐑𝐞ලීසස්</a>
+        <a href="films.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-film" style="margin-right: 15px; color: var(--primary);"></i> 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
         <a href="javascript:void(0)" onclick="toggleProblems()" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-bug" style="margin-right: 15px; color: var(--primary);"></i> 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
     </nav>
 </div>
