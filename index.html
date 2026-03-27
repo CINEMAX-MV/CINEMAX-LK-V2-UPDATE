@@ -39,7 +39,6 @@
             position: relative;
         }
 
-        /* Top Nav Layout */
         .top-nav {
             position: absolute;
             top: 20px;
@@ -52,6 +51,7 @@
             z-index: 100;
         }
 
+        /* MENU BUTTON */
         .menu-btn {
             font-size: 24px;
             cursor: pointer;
@@ -66,25 +66,24 @@
             border: 1px solid var(--border);
         }
 
-        /* Top Right Admin Button */
-        .admin-btn {
-            background: var(--primary);
-            color: #000;
-            padding: 10px 22px;
-            border-radius: 12px;
+        /* ADMIN BUTTON TOP RIGHT */
+        .admin-btn-fixed {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(135, 206, 250, 0.9);
+            color: white;
+            padding: 12px 18px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 8px 20px rgba(0,212,255,0.25);
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            transition: 0.3s;
         }
-
-        .admin-btn:hover { 
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(0,212,255,0.4);
+        .admin-btn-fixed:hover {
+            background-color: #00d4ff;
+            transform: scale(1.05);
         }
 
         .hero-content h1 {
@@ -96,12 +95,14 @@
             font-weight: 700;
         }
 
-        /* ===== PREMIUM SEARCH BAR ===== */
+        /* ===== SEARCH BAR (SHIFTED RIGHT) ===== */
         .search-area {
             padding: 0 5%;
             margin-top: -35px;
             position: relative;
             z-index: 10;
+            display: flex;
+            justify-content: flex-end; /* දකුණට ලං කිරීම */
         }
 
         .search-box {
@@ -115,12 +116,6 @@
             padding: 8px 18px;
             backdrop-filter: blur(20px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: 0.3s;
-        }
-
-        .search-box:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
         }
 
         .search-box input {
@@ -130,10 +125,9 @@
             padding: 10px;
             width: 100%;
             outline: none;
-            font-size: 15px;
         }
 
-        /* ===== FULL WIDTH SMOOTH TICKER ===== */
+        /* ===== TICKER ===== */
         .ticker-section {
             width: 100%;
             margin: 25px 0;
@@ -143,15 +137,10 @@
             overflow: hidden;
         }
 
-        .ticker {
-            padding: 12px 0;
-            white-space: nowrap;
-            display: flex;
-        }
-
         .ticker-track {
             display: inline-block;
-            animation: ticker-scroll 45s linear infinite; /* Speed reduced to 45s for smoothness */
+            white-space: nowrap;
+            animation: ticker-scroll 50s linear infinite;
         }
 
         .ticker-track span {
@@ -159,16 +148,30 @@
             padding-right: 80px;
             font-size: 14px;
             color: var(--primary);
-            font-weight: 500;
-            letter-spacing: 0.5px;
         }
 
         @keyframes ticker-scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Works perfectly with doubled content */
+            100% { transform: translateX(-50%); }
         }
 
-        /* ===== SECTION HEADINGS ===== */
+        /* ===== SIDEBAR BRANDING ===== */
+        .sidebar-brand {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-brand h3 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            background: linear-gradient(to right, #00d4ff, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+
+        /* SECTION TITLES */
         .section-title {
             font-size: 26px;
             font-weight: 700;
@@ -176,37 +179,18 @@
             margin: 50px 0 30px;
             text-transform: uppercase;
         }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background: var(--primary);
-            margin: 12px auto 0;
-            border-radius: 10px;
-        }
-
-        /* Footer */
-        .site-footer {
-            background: #000;
-            padding: 50px 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            margin-top: 80px;
-        }
-
     </style>
 </head>
 
 <body>
 
+<a href="adminpanal.html" class="admin-btn-fixed">Admin Panel</a>
+
 <div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.95); display:flex; justify-content:center; align-items:center; z-index:10000; color:#fff; text-align:center;">
-    <div style="background:#0f172a; padding:45px; border-radius:30px; border:1px solid var(--border); max-width:400px; width:90%; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-        <div style="font-size: 50px; margin-bottom: 15px;">🔒</div>
-        <h2 style="color:var(--primary); margin-bottom:15px; font-weight: 700;">Verify Identity</h2>
-        <p style="color:#94a3b8; margin-bottom:25px; line-height: 1.6;">Please complete human verification to access Cinemax Movies.</p>
-        <a href="verification.html" style="background:var(--primary); color:#000; padding:14px 35px; border-radius:12px; text-decoration:none; font-weight:bold; display: inline-block; transition: 0.3s;">Verify Now</a>
+    <div style="background:#0f172a; padding:45px; border-radius:30px; border:1px solid var(--border); max-width:400px; width:90%;">
+        <h2 style="color:var(--primary); margin-bottom:15px; font-weight: 700;">🔐 Verify Identity</h2>
+        <p style="color:#94a3b8; margin-bottom:25px;">Please complete human verification to access site.</p>
+        <a href="verification.html" style="background:var(--primary); color:#000; padding:12px 30px; border-radius:12px; text-decoration:none; font-weight:bold;">Verify Here</a>
     </div>
 </div>
 
@@ -227,16 +211,14 @@
 <section class="search-area">
     <div class="search-box">
         <i class="fas fa-search" style="color:var(--primary)"></i>
-        <input type="text" id="searchInput" placeholder="Search for movies, series...">
+        <input type="text" id="searchInput" placeholder="Search for movies...">
     </div>
 </section>
 
 <section class="ticker-section">
-    <div class="ticker">
-        <div class="ticker-track">
-            <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
-            <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
-        </div>
+    <div class="ticker-track">
+        <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
+        <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
     </div>
 </section>
 
@@ -249,54 +231,55 @@
 <div class="section-title">Latest Releases</div>
 <section class="container">
     <div id="movieList" class="movies-grid"></div>
-
     <div class="pagination-controls">
-        <button id="prevBtn" onclick="changePage(-1)"><i class="fas fa-arrow-left"></i> Previous</button>
+        <button onclick="changePage(-1)">👈 Previous</button>
         <span id="pageInfo"></span>
-        <button id="nextBtn" onclick="changePage(1)">Next <i class="fas fa-arrow-right"></i></button>
+        <button onclick="changePage(1)">Next 👉</button>
     </div>
 </section>
 
 <div class="section-title">TV Series</div>
 <div id="series-container"></div>
-    
+
 <div id="sidebar" class="sidebar">
     <div class="close-btn" onclick="toggleMenu()">✕</div>
-    <div style="padding: 20px; text-align: center; border-bottom: 1px solid var(--glass-border);">
-        <h3 style="color: var(--primary-blue);">CINEMAX</h3>
+    <div class="sidebar-brand">
+        <h3>CINEMAX</h3>
     </div>
-
-    <div class="close-btn" onclick="toggleMenu()">✕</div>
-    <nav style="margin-top: 50px;">
-        <a href="index.html"><i class="fas fa-home"></i> 𝐇𝐨𝐦𝐞</a>
-        <a href="dashboard.html"><i class="fas fa-chart-line"></i> 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
-        <a href="contact.html"><i class="fas fa-headset"></i> 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
-        <a href="dmca.html"><i class="fas fa-shield-alt"></i> 𝐃𝐌𝐂𝐀</a>
-        <a href="films.html"><i class="fas fa-film"></i> 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
-        <a href="javascript:void(0)" onclick="toggleProblems()"><i class="fas fa-exclamation-circle"></i> 𝐏𝐫ො𝐛𝐥𝐞𝐦𝐬</a>
+    <nav style="margin-top: 30px;">
+        <a href="index.html">•©• 𝐇𝐨𝐦𝐞</a>
+        <a href="dashboard.html">•©• 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+        <a href="contact.html">•©• 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
+        <a href="dmca.html">•©• 𝐃𝐌𝐂𝐀</a>
+        <a href="films.html">•©• 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
+        <a href="javascript:void(0)" onclick="toggleProblems()">•©• 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
     </nav>
 </div>
 
+<div class="social-section">
+    <a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
 <footer class="site-footer">
-    <div class="social-section" style="margin-bottom: 25px;">
-        <a href="https://youtube.com/@cinemax-u1s" target="_blank" style="color:#fff; font-size: 26px; margin: 0 18px; transition: 0.3s;"><i class="fab fa-youtube"></i></a>
-        <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" target="_blank" style="color:#fff; font-size: 26px; margin: 0 18px; transition: 0.3s;"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <p style="font-size: 15px; color: #94a3b8;">© 2026 <b style="color: #fff;">Cinemax Downloads</b> | All Rights Reserved</p>
-    <p style="font-size: 13px; color: #64748b; margin-top: 5px;">Created by Peksha Rasanjana</p>
+  <p class="footer-text">
+    © <span class="year">2026</span> <span class="brand">Cinemax Downloads</span> | Watch & Downloads
+  </p>
+  <p class="creator">
+    Created by <span class="name">Peksha Rasanjana</span>
+  </p>
 </footer>
 
 <script src="js/main.js"></script>
-
 <script>
     function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
     
-    // Load Series Section
     fetch("series-section.html")
     .then(r => r.text())
-    .then(d => {
-        document.getElementById("series-container").innerHTML = d;
-    }).catch(err => console.log("Series loading skipped"));
+    .then(d => { document.getElementById("series-container").innerHTML = d; });
 </script>
 
 </body>
