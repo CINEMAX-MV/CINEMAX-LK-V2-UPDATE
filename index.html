@@ -4,122 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="9wkWklQlzoBCAHZ_SvbfR1IZPj-D8xyY0kNczzXcoFM" />
-    <title>Cinemax.lk | Download Latest Movies</title>
+    <title>Cinemax.lk | Ultimate Entertainment</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
     <style>
         :root {
             --primary: #00d4ff;
-            --accent: #ff0055;
-            --dark-bg: #0b0b0b;
-            --glass: rgba(255, 255, 255, 0.05);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --secondary: #0080ff;
+            --bg-dark: #020617;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--dark-bg);
+            background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Poppins', sans-serif;
+            margin: 0;
             overflow-x: hidden;
-        }
-
-        /* ===== HUMAN VERIFICATION OVERLAY ===== */
-        #humanVerification {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            backdrop-filter: blur(10px);
-        }
-
-        .verify-box {
-            background: #151515;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid var(--primary);
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
-        }
-
-        .verify-box a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 25px;
-            background: var(--primary);
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: var(--transition);
         }
 
         /* ===== HERO SECTION ===== */
         .hero-header {
-            height: 60vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--dark-bg)),
+            height: 400px;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.3), var(--bg-dark)),
                         url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        /* MENU BUTTON - PC සහ Mobile දෙකටම පෙනෙන ලෙස */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 22px;
+            cursor: pointer;
+            background: rgba(15, 23, 42, 0.9);
+            width: 48px;
+            height: 48px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
+            border-radius: 14px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            z-index: 999;
+            transition: 0.3s;
         }
+        .menu-btn:hover { background: var(--primary); color: #000; }
 
-        .hero-content h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            margin-bottom: 10px;
-        }
-
-        /* ===== ADMIN PANEL BUTTON ===== */
-        .admin-btn {
+        /* ADMIN BUTTON */
+        .admin-btn-fixed {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: var(--primary);
-            color: #000 !important;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
             padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 700;
+            border-radius: 12px;
             text-decoration: none;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,212,255,0.4);
-            transition: var(--transition);
-        }
-
-        .admin-btn:hover { transform: scale(1.05); background: #fff; }
-
-        /* ===== SEARCH BOX ===== */
-        .search-container {
-            margin-top: 25px;
-            background: var(--glass);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 700;
+            font-size: 13px;
+            z-index: 1000;
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
             display: flex;
             align-items: center;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            gap: 8px;
+            transition: 0.4s;
         }
 
-        .search-container input {
-            background: transparent;
+        .hero-content h1 {
+            font-size: clamp(32px, 6vw, 55px);
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* ===== SEARCH BAR - PC වලදී ගැටලුව විසඳා ඇත ===== */
+        .search-area {
+            padding: 0 5%;
+            margin-top: -40px;
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: center; /* මැදට ගෙන ආවා */
+        }
+
+        .search-box {
+            background: #0f172a;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 550px; /* PC වලදී ලස්සනට පෙනෙන ලෙස */
+            padding: 12px 25px;
+            backdrop-filter: blur(25px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.6);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .search-box input {
+            background: none;
             border: none;
-            color: white;
+            color: #fff;
             padding: 10px;
             width: 100%;
             outline: none;
+            font-size: 16px;
+        }
+
+        /* ===== TICKER ===== */
+        .ticker-section {
+            width: 100%;
+            margin: 40px 0;
+            background: rgba(0, 212, 255, 0.03);
+            overflow: hidden;
+            padding: 15px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ticker-track {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker-scroll 55s linear infinite;
+        }
+
+        .ticker-track span {
+            display: inline-block;
+            padding-right: 100px;
+            font-size: 15px;
+            color: var(--primary);
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin: 60px 0 40px;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--primary);
         }
 
         /* ===== SIDEBAR ===== */
@@ -129,226 +181,152 @@
             top: 0;
             width: 280px;
             height: 100%;
-            background: #111;
-            transition: var(--transition);
-            z-index: 1000;
-            padding: 60px 20px;
-            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+            background: #020617;
+            z-index: 2000;
+            transition: 0.4s ease;
+            box-shadow: 15px 0 40px rgba(0,0,0,0.8);
+            border-right: 1px solid var(--border);
         }
-
         .sidebar.active { left: 0; }
 
-        .sidebar a {
-            display: block;
-            color: #ccc;
-            padding: 15px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--glass);
+        .sidebar-brand {
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* PAGINATION */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 50px 0;
+        }
+        .pagination-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 12px;
+            cursor: pointer;
             transition: 0.3s;
         }
-
-        .sidebar a:hover { color: var(--primary); padding-left: 25px; }
-
-        .menu-toggle {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 999;
-        }
-
-        /* ===== TICKER ===== */
-        .ticker {
-            background: var(--accent);
-            padding: 10px 0;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .ticker-track {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
-        }
-
-        @keyframes scroll {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-
-        /* ===== MOVIE GRID ===== */
-        .container { padding: 40px 5%; }
-        .latest-title {
-            font-size: 24px;
-            font-weight: 700;
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
-            margin-bottom: 30px;
-        }
+        .pagination-btn:hover { background: var(--primary); color: #000; }
 
         .movies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 25px;
-        }
-
-        /* ===== SOCIAL & FOOTER ===== */
-        .social-section {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 40px 0;
-        }
-
-        .social {
-            width: 45px;
-            height: 45px;
-            background: var(--glass);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: #fff;
-            font-size: 20px;
-            transition: 0.3s;
-        }
-
-        .social:hover { transform: translateY(-5px); background: var(--primary); color: #000; }
-
-        .site-footer {
-            text-align: center;
-            padding: 30px;
-            background: #050505;
-            border-top: 1px solid var(--glass);
-        }
-
-        /* ===== FORM STYLE ===== */
-        #problemsForm input, #problemsForm textarea {
-            width: 100%;
-            margin-bottom: 10px;
-            background: #222;
-            border: 1px solid #444;
-            color: #fff;
-            padding: 8px;
-            border-radius: 5px;
+            padding: 20px 5%;
         }
 
         @media (max-width: 768px) {
-            .hero-header { height: 45vh; }
-            .movies-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+            .hero-header { height: 350px; }
+            .movies-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .admin-btn-fixed { padding: 8px 15px; font-size: 11px; top: 15px; right: 15px; }
+            .menu-btn { top: 15px; left: 15px; width: 40px; height: 40px; }
         }
     </style>
 </head>
 
 <body>
 
-<div id="humanVerification">
-    <div class="verify-box">
-        <h2>🔐 Human Verification</h2>
-        <p>ඔබ රොබෝවෙක් නොවන බව තහවුරු කරන්න.</p>
-        <a href="verification.html" onclick="verifyMe()">Verify Now</a>
+<div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+<a href="adminpanal.html" class="admin-btn-fixed">
+    <i class="fas fa-user-shield"></i> Admin Panel
+</a>
+
+<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.96); display:flex; justify-content:center; align-items:center; z-index:10000; color:#fff; text-align:center;">
+    <div style="background:#0f172a; padding:50px; border-radius:35px; border: 1px solid rgba(0, 212, 255, 0.2); max-width:420px; width:90%;">
+        <h2 style="color:var(--primary); margin-bottom:15px; font-weight: 700;">Security Check</h2>
+        <p style="color:#94a3b8; margin-bottom:30px;">Complete verification to access Cinemax.</p>
+        <a href="verification.html" onclick="verifyMe()" style="background:linear-gradient(to right, var(--primary), var(--secondary)); color:#000; padding:15px 40px; border-radius:14px; text-decoration:none; font-weight:800; display: inline-block;">VERIFY NOW</a>
     </div>
 </div>
 
+<script>
+    if(localStorage.getItem("humanVerified")==="true") document.getElementById("humanVerification").style.display="none";
+    function verifyMe() { localStorage.setItem("humanVerified", "true"); }
+</script>
+
 <header class="hero-header">
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    <a href="adminpanal.html" class="admin-btn">Admin Panel</a>
-
     <div class="hero-content">
         <h1>නවතම සිංහල චිත්‍රපට</h1>
-        <p>Download Latest Movies with Sinhala Dubbed & Subtitles</p>
-        
-        <div class="search-container">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Search your favorite movie...">
-        </div>
+        <p style="color: #94a3b8; font-size: 17px;">The Ultimate Destination for Sinhala Movies & Dubbed Series</p>
     </div>
 </header>
 
-<div class="ticker">
+<section class="search-area">
+    <div class="search-box">
+        <i class="fas fa-search" style="color:var(--primary); font-size: 18px;"></i>
+        <input type="text" id="searchInput" placeholder="Search for movies, series...">
+    </div>
+</section>
+
+<section class="ticker-section">
     <div class="ticker-track">
-        <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙත. Player 1 හෝ Player 2 භාවිත කළ හැකිය. • </span>
-        <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙත. Player 1 හෝ Player 2 භාවිත කළ හැකිය. • </span>
+        <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
+        <span>🔥 සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත. 🔥</span>
     </div>
-</div>
+</section>
 
+<div class="section-title">Featured Movies</div>
+<section class="slider-section">
+    <div class="slider" id="movieSlider"></div>
+    <div class="slider-dots" id="sliderDots"></div>
+</section>
+
+<div class="section-title">Latest Releases</div>
 <section class="container">
-    <div class="latest-title">LATEST MOVIES</div>
-    
-    <div id="movieSlider" class="slider"></div>
-
-    <div id="movieList" class="movies-grid">
-        </div>
-
-    <div class="pagination-controls" style="text-align:center; margin-top:40px;">
-        <button id="prevBtn" onclick="changePage(-1)" style="padding:10px 20px; border-radius:5px; cursor:pointer;">👈 Prev</button>
-        <span id="pageInfo" style="margin:0 15px;">Page 1</span>
-        <button id="nextBtn" onclick="changePage(1)" style="padding:10px 20px; border-radius:5px; cursor:pointer;">Next 👉</button>
+    <div id="movieList" class="movies-grid"></div>
+    <div class="pagination-controls">
+        <button onclick="changePage(-1)" class="pagination-btn">👈 Previous</button>
+        <span id="pageInfo" style="font-weight: 600;"></span>
+        <button onclick="changePage(1)" class="pagination-btn">Next 👉</button>
     </div>
+</section>
 
+<div class="section-title">TV Series</div>
+<section class="container" style="padding: 0 5%;">
     <div id="series-container"></div>
 </section>
 
 <div id="sidebar" class="sidebar">
-    <div style="font-size:24px; cursor:pointer; margin-bottom:20px;" onclick="toggleMenu()">✕ Close</div>
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
-    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-    <a href="dmca.html"><i class="fas fa-file-shield"></i> DMCA</a>
-    <a href="films.html"><i class="fas fa-film"></i> N-Releases</a>
-    <a href="javascript:void(0)" onclick="toggleProblems()"><i class="fas fa-exclamation-triangle"></i> Problems</a>
-
-    <div id="problemsForm" style="display:none; padding:15px; background:rgba(255,255,255,0.05); border-radius:10px;">
-        <input type="text" id="pName" placeholder="Your Name">
-        <textarea id="pProblem" placeholder="What's the issue?" rows="3"></textarea>
-        <button onclick="sendProblem()" style="width:100%; background:var(--primary); border:none; padding:10px; border-radius:5px; cursor:pointer;">Submit</button>
+    <div style="padding: 20px; text-align: right; cursor: pointer; font-size: 24px;" onclick="toggleMenu()">✕</div>
+    <div class="sidebar-brand">
+        <h3 style="letter-spacing: 4px; color: var(--primary); margin: 0;">CINEMAX</h3>
     </div>
+    <nav style="margin-top: 20px;">
+        <a href="index.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; border-bottom: 1px solid var(--border);"><i class="fas fa-home" style="width: 30px; color: var(--primary);"></i> Home</a>
+        <a href="dashboard.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; border-bottom: 1px solid var(--border);"><i class="fas fa-th-large" style="width: 30px; color: var(--primary);"></i> Dashboard</a>
+        <a href="contact.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; border-bottom: 1px solid var(--border);"><i class="fas fa-envelope" style="width: 30px; color: var(--primary);"></i> Contact</a>
+        <a href="dmca.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; border-bottom: 1px solid var(--border);"><i class="fas fa-copyright" style="width: 30px; color: var(--primary);"></i> DMCA</a>
+        <a href="films.html" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff; border-bottom: 1px solid var(--border);"><i class="fas fa-film" style="width: 30px; color: var(--primary);"></i> N-Releases</a>
+        <a href="javascript:void(0)" onclick="toggleProblems()" style="padding: 15px 25px; display: block; text-decoration: none; color: #fff;"><i class="fas fa-bug" style="width: 30px; color: var(--primary);"></i> Problems</a>
+    </nav>
 </div>
 
-<div class="social-section">
-    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://youtube.com/@cinemax-u1s" class="social"><i class="fab fa-youtube"></i></a>
-    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social"><i class="fab fa-whatsapp"></i></a>
-    <a href="#" class="social"><i class="fab fa-telegram"></i></a>
+<div class="social-section" style="display: flex; justify-content: center; gap: 25px; margin: 80px 0 40px;">
+    <a href="#" class="social" style="color: #1877F2; font-size: 24px;"><i class="fab fa-facebook"></i></a>
+    <a href="https://youtube.com/@cinemax-u1s" class="social" style="color: #FF0000; font-size: 24px;"><i class="fab fa-youtube"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social" style="color: #25D366; font-size: 24px;"><i class="fab fa-whatsapp"></i></a>
 </div>
 
-<footer class="site-footer">
-    <p>© 2026 <strong>Cinemax Downloads</strong> | Watch & Download</p>
-    <p style="font-size: 0.8rem; color: #666;">Created with ❤️ by Peksha Rasanjana</p>
+<footer style="background: #010413; padding: 40px 0; text-align: center; border-top: 1px solid var(--border);">
+  <p style="color: #94a3b8; font-size: 14px;">© 2026 <strong>Cinemax Downloads</strong> | Watch & Download Movies</p>
+  <p style="color: #64748b; font-size: 12px; margin-top: 5px;">Created by Peksha Rasanjana</p>
 </footer>
 
 <script src="js/main.js"></script>
 <script>
-    // Sidebar Toggle
-    function toggleMenu() {
-        document.getElementById("sidebar").classList.toggle("active");
-    }
-
-    // Problem Form Toggle
-    function toggleProblems() {
-        const form = document.getElementById("problemsForm");
-        form.style.display = form.style.display === "none" ? "block" : "none";
-    }
-
-    // Verification Logic
-    window.addEventListener('DOMContentLoaded', () => {
-        if (localStorage.getItem("humanVerified") === "true") {
-            document.getElementById("humanVerification").style.display = "none";
-        }
-    });
-
-    function verifyMe() {
-        localStorage.setItem("humanVerified", "true");
-    }
-
-    // Dynamic Series Load
+    function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
+    
     fetch("series-section.html")
-        .then(res => res.text())
-        .then(data => { document.getElementById("series-container").innerHTML = data; })
-        .catch(err => console.log("Series section error"));
-
+    .then(r => r.text())
+    .then(d => { document.getElementById("series-container").innerHTML = d; })
+    .catch(e => console.log("Series loading skipped"));
 </script>
 
 </body>
