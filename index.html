@@ -1,215 +1,354 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="9wkWklQlzoBCAHZ_SvbfR1IZPj-D8xyY0kNczzXcoFM" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="9wkWklQlzoBCAHZ_SvbfR1IZPj-D8xyY0kNczzXcoFM" />
+    <title>Cinemax.lk | Download Latest Movies</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 
-<title>Cinemax.lk</title>
-<link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --accent: #ff0055;
+            --dark-bg: #0b0b0b;
+            --glass: rgba(255, 255, 255, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-<style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
 
-/* ===== HERO SECTION (NEW STYLE) ===== */
+        /* ===== HUMAN VERIFICATION OVERLAY ===== */
+        #humanVerification {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(10px);
+        }
 
-.hero-header{
-height:400px;
+        .verify-box {
+            background: #151515;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
 
-background:
-linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%),
-url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
+        .verify-box a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
 
-background-size:cover;
-background-position:center;
+        /* ===== HERO SECTION ===== */
+        .hero-header {
+            height: 60vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), var(--dark-bg)),
+                        url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-display:flex;
-align-items:center;
-padding:0 5%;
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
 
-position:relative;
-}
+        /* ===== ADMIN PANEL BUTTON ===== */
+        .admin-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: #000 !important;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(0,212,255,0.4);
+            transition: var(--transition);
+        }
 
-.hero-content h1{
-font-size:38px;
-margin-bottom:10px;
-}
+        .admin-btn:hover { transform: scale(1.05); background: #fff; }
 
-.hero-content p{
-color:#ccc;
-font-size:16px;
-}
+        /* ===== SEARCH BOX ===== */
+        .search-container {
+            margin-top: 25px;
+            background: var(--glass);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-</style>
+        .search-container input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+        }
 
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 280px;
+            height: 100%;
+            background: #111;
+            transition: var(--transition);
+            z-index: 1000;
+            padding: 60px 20px;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+        }
+
+        .sidebar.active { left: 0; }
+
+        .sidebar a {
+            display: block;
+            color: #ccc;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--glass);
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover { color: var(--primary); padding-left: 25px; }
+
+        .menu-toggle {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        /* ===== TICKER ===== */
+        .ticker {
+            background: var(--accent);
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-track {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* ===== MOVIE GRID ===== */
+        .container { padding: 40px 5%; }
+        .latest-title {
+            font-size: 24px;
+            font-weight: 700;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+        }
+
+        /* ===== SOCIAL & FOOTER ===== */
+        .social-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 0;
+        }
+
+        .social {
+            width: 45px;
+            height: 45px;
+            background: var(--glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .social:hover { transform: translateY(-5px); background: var(--primary); color: #000; }
+
+        .site-footer {
+            text-align: center;
+            padding: 30px;
+            background: #050505;
+            border-top: 1px solid var(--glass);
+        }
+
+        /* ===== FORM STYLE ===== */
+        #problemsForm input, #problemsForm textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            background: #222;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-header { height: 45vh; }
+            .movies-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        }
+    </style>
 </head>
 
 <body>
-  
-<!-- HUMAN VERIFICATION -->
-<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
-<div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
-<h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
-<p style="color:#ccc; margin-bottom:20px;">
-Please <a href="verification.html" style="color:#00d4ff; text-decoration:underline;">verify here</a> first to enter the site.
-</p>
-</div>
+
+<div id="humanVerification">
+    <div class="verify-box">
+        <h2>🔐 Human Verification</h2>
+        <p>ඔබ රොබෝවෙක් නොවන බව තහවුරු කරන්න.</p>
+        <a href="verification.html" onclick="verifyMe()">Verify Now</a>
+    </div>
 </div>
 
-<script>
-window.addEventListener('DOMContentLoaded',()=>{
-if(localStorage.getItem("humanVerified")==="true"){
-document.getElementById("humanVerification").style.display="none";
-const user = localStorage.getItem("userName");
-if(user) console.log("Welcome,", user);
-}
-});
-</script>
-
-<!-- HEADER HERO -->
 <header class="hero-header">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-<div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
+    <a href="adminpanal.html" class="admin-btn">Admin Panel</a>
 
-<!-- ADMIN LOGIN BUTTON FIXED TOP-RIGHT -->
-<a href="adminpanal.html" 
-   style="
-     position: fixed;        /* scroll වුණත් same place */
-     top: 20px;              /* top margin */
-     right: 20px;            /* right margin */
-     background-color: rgba(135, 206, 250, 0.9); /* light blue with slight transparency */
-     color: white;
-     padding: 12px 18px;
-     text-decoration: none;
-     border-radius: 8px;
-     font-weight: bold;
-     font-family: Arial, sans-serif;
-     z-index: 9999;          /* hero image/other content ඉහලට overlay නොවෙයි */
-     box-shadow: 0 4px 12px rgba(0,0,0,0.4);  /* slightly floating effect */
-     transition: transform 0.2s, background-color 0.2s;
-   "
-   onmouseover="this.style.backgroundColor='rgba(100,149,237,0.95)'; this.style.transform='scale(1.05)';"
-   onmouseout="this.style.backgroundColor='rgba(135,206,250,0.9)'; this.style.transform='scale(1)';"
->
-  Admin Panel
-</a>
-</div>
-  
-<div class="hero-content">
-
-<h1>නවතම සිංහල චිත්‍රපට</h1>
-<p>Download Latest Movies with Sinhala dubbed</p>
-  
-<div class="sidebar-search">
-
-<span class="search-icon">🔍</span>
-
-<input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
-
-</div>
-  
-
-</div>
-
+    <div class="hero-content">
+        <h1>නවතම සිංහල චිත්‍රපට</h1>
+        <p>Download Latest Movies with Sinhala Dubbed & Subtitles</p>
+        
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search your favorite movie...">
+        </div>
+    </div>
 </header>
 
-<!-- LATEST MOVIES -->
-<div class="latest-wrapper">
-<div class="latest-title">LATEST MOVIES</div>
-</div>
-
-<!-- MOVIE SLIDER -->
-<section class="slider-section">
-<div class="slider" id="movieSlider"></div>
-<div class="slider-dots" id="sliderDots"></div>
-</section>
-
-<!-- SIDEBAR -->
-<div id="sidebar" class="sidebar">
-<div class="close-btn" onclick="toggleMenu()">✕</div>
-
-<a href="index.html">•©• 𝐇𝐨𝐦𝐞</a>
-<a href="dashboard.html">•©• 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
-<a href="contact.html">•©• 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
-<a href="dmca.html">•©• 𝐃𝐌𝐂𝐀</a>
-<a href="films.html">•©• 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
-  
-<a href="javascript:void(0)" onclick="toggleProblems()">•©• 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
-
-<div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#211d1d; border-radius:6px;">
-<input type="text" id="pName" placeholder="Name" required>
-<input type="text" id="pUser" placeholder="User" required>
-<input type="email" id="pEmail" placeholder="Email" required>
-<input type="text" id="pNumber" placeholder="Number" required>
-<textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
-<button onclick="sendProblem()">Submit ✔️</button>
-</div>
-
-</div>
-
-<!-- MOVIE SECTION -->
-<section class="container">
-
 <div class="ticker">
-<div class="ticker-track">
-
-<span>
-සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
-</span>
-
-<span>
-සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
-</span>
-
-</div>
+    <div class="ticker-track">
+        <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙත. Player 1 හෝ Player 2 භාවිත කළ හැකිය. • </span>
+        <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙත. Player 1 හෝ Player 2 භාවිත කළ හැකිය. • </span>
+    </div>
 </div>
 
-<div id="movieList" class="movies-grid"></div>
+<section class="container">
+    <div class="latest-title">LATEST MOVIES</div>
+    
+    <div id="movieSlider" class="slider"></div>
 
-<div class="pagination-controls">
-<button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
-<span id="pageInfo"></span>
-<button id="nextBtn" onclick="changePage(1)">Next 👉</button>
-</div>
+    <div id="movieList" class="movies-grid">
+        </div>
 
-<div id="series-container"></div>
+    <div class="pagination-controls" style="text-align:center; margin-top:40px;">
+        <button id="prevBtn" onclick="changePage(-1)" style="padding:10px 20px; border-radius:5px; cursor:pointer;">👈 Prev</button>
+        <span id="pageInfo" style="margin:0 15px;">Page 1</span>
+        <button id="nextBtn" onclick="changePage(1)" style="padding:10px 20px; border-radius:5px; cursor:pointer;">Next 👉</button>
+    </div>
 
+    <div id="series-container"></div>
 </section>
 
-<!-- SOCIAL -->
-<div class="social-section">
-<a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-<a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-<a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
-<a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div id="sidebar" class="sidebar">
+    <div style="font-size:24px; cursor:pointer; margin-bottom:20px;" onclick="toggleMenu()">✕ Close</div>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="dmca.html"><i class="fas fa-file-shield"></i> DMCA</a>
+    <a href="films.html"><i class="fas fa-film"></i> N-Releases</a>
+    <a href="javascript:void(0)" onclick="toggleProblems()"><i class="fas fa-exclamation-triangle"></i> Problems</a>
+
+    <div id="problemsForm" style="display:none; padding:15px; background:rgba(255,255,255,0.05); border-radius:10px;">
+        <input type="text" id="pName" placeholder="Your Name">
+        <textarea id="pProblem" placeholder="What's the issue?" rows="3"></textarea>
+        <button onclick="sendProblem()" style="width:100%; background:var(--primary); border:none; padding:10px; border-radius:5px; cursor:pointer;">Submit</button>
+    </div>
 </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<div class="social-section">
+    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://youtube.com/@cinemax-u1s" class="social"><i class="fab fa-youtube"></i></a>
+    <a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social"><i class="fab fa-whatsapp"></i></a>
+    <a href="#" class="social"><i class="fab fa-telegram"></i></a>
+</div>
 
 <footer class="site-footer">
-  <p class="footer-text">
-    © <span class="year">2026</span> <span class="brand">Cinemax Downloads</span> | Watch & Downloads
-  </p>
-
-  <p class="creator">
-    Created by <span class="name">Peksha Rasanjana</span>
-  </p>
+    <p>© 2026 <strong>Cinemax Downloads</strong> | Watch & Download</p>
+    <p style="font-size: 0.8rem; color: #666;">Created with ❤️ by Peksha Rasanjana</p>
 </footer>
 
 <script src="js/main.js"></script>
-
 <script>
-function toggleMenu() {
-document.getElementById("sidebar").classList.toggle("active");
-}
-</script>
+    // Sidebar Toggle
+    function toggleMenu() {
+        document.getElementById("sidebar").classList.toggle("active");
+    }
 
-<script>
-fetch("series-section.html")
-.then(response => response.text())
-.then(data => {
-document.getElementById("series-container").innerHTML = data;
-});
+    // Problem Form Toggle
+    function toggleProblems() {
+        const form = document.getElementById("problemsForm");
+        form.style.display = form.style.display === "none" ? "block" : "none";
+    }
+
+    // Verification Logic
+    window.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem("humanVerified") === "true") {
+            document.getElementById("humanVerification").style.display = "none";
+        }
+    });
+
+    function verifyMe() {
+        localStorage.setItem("humanVerified", "true");
+    }
+
+    // Dynamic Series Load
+    fetch("series-section.html")
+        .then(res => res.text())
+        .then(data => { document.getElementById("series-container").innerHTML = data; })
+        .catch(err => console.log("Series section error"));
+
 </script>
 
 </body>
