@@ -1,1 +1,60 @@
 
+/* මුළු පිටුවේම පසුබිම අඳුරු කිරීම (Dark Theme) */
+body {
+    background-color: #0b1016; /* තද නිල්/කළු පැහැය */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Movies පෙන්වන Grid එක සැකසීම */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* එක Movie Card එකක් හැඩගැස්වීම */
+.movie-card {
+    background-color: #1a2129;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #2d3748;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px); /* මවුස් එක උඩට ගිය විට මඳක් ඉහළට එසවීම */
+}
+
+/* පෝස්ටර් රූපය (Image) */
+.movie-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* මූවී එකේ නම සහ විස්තර */
+.movie-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.movie-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #e2e8f0;
+}
+
+/* වසර (Year tag) පෙන්වීමට */
+.year-tag {
+    background-color: #00b894;
+    color: white;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
