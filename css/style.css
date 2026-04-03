@@ -1,42 +1,142 @@
+/* ===========================================
+   1. GLOBAL & THEME SETUP
+=========================================== */
+:root {
+    --primary: #ff2a2a;      /* ප්‍රධාන රතු පැහැය */
+    --accent: #00d2ff;       /* නිල් පැහැය */
+    --bg-dark: #0b0b0f;      /* පසුබිම */
+    --card-bg: #161b22;      /* කාඩ් එකේ පසුබිම */
+    --text-main: #ffffff;
+    --text-dim: rgba(255, 255, 255, 0.7);
+}
 
-/* මුළු පිටුවේම පසුබිම අඳුරු කිරීම (Dark Theme) */
+* { box-sizing: border-box; }
+
 body {
-    background-color: #0b1016; /* තද නිල්/කළු පැහැය */
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
-/* Movies පෙන්වන Grid එක සැකසීම */
-.movie-grid {
+/* ===========================================
+   2. HEADER & NAVIGATION
+=========================================== */
+header {
+    background: rgba(15, 15, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+/* Search Bar (Centered) */
+.search-container {
+    flex: 0 1 400px;
+    margin: 0 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+    background: rgba(255,255,255,0.1);
+}
+
+/* ===========================================
+   3. HERO BANNER
+=========================================== */
+.hero-banner {
+    width: 90%;
+    max-width: 1300px;
+    height: 350px;
+    margin: 20px auto;
+    border-radius: 20px;
+    background: linear-gradient(120deg, rgba(255,0,0,0.3), rgba(0,0,0,0.9)), url('your-hero-bg.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.5);
+}
+
+.hero-banner h1 { font-size: 42px; margin: 0; font-weight: 900; }
+.hero-banner p { color: var(--text-dim); max-width: 500px; }
+
+/* ===========================================
+   4. MOVIE GRID & CARDS
+=========================================== */
+.section-title {
+    padding: 0 5%;
+    margin: 30px 0 15px;
+    font-size: 22px;
+    border-left: 5px solid var(--primary);
+    margin-left: 5%;
+}
+
+.movies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 per row */
+    gap: 15px;
+    padding: 0 5%;
 }
 
-/* එක Movie Card එකක් හැඩගැස්වීම */
+/* Desktop: 6 per row */
+@media (min-width: 992px) {
+    .movies-grid { grid-template-columns: repeat(6, 1fr); }
+}
+
 .movie-card {
-    background-color: #1a2129;
-    border-radius: 10px;
+    background: var(--card-bg);
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease;
-    border: 1px solid #2d3748;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-decoration: none;
+    color: white;
 }
 
 .movie-card:hover {
-    transform: translateY(-5px); /* මවුස් එක උඩට ගිය විට මඳක් ඉහළට එසවීම */
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* පෝස්ටර් රූපය (Image) */
 .movie-card img {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    display: block;
 }
 
-/* මූවී එකේ නම සහ විස්තර */
 .movie-info {
     padding: 10px;
     text-align: center;
@@ -44,166 +144,70 @@ body {
 
 .movie-title {
     font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #e2e8f0;
+    font-weight: 600;
+    margin: 5px 0;
+    height: 40px;
+    overflow: hidden;
 }
 
-/* වසර (Year tag) පෙන්වීමට */
 .year-tag {
-    background-color: #00b894;
-    color: white;
-    font-size: 10px;
+    font-size: 11px;
+    background: var(--primary);
     padding: 2px 8px;
     border-radius: 4px;
-    display: inline-block;
 }
 
-/* --- Global Styles --- */
-:root {
-    --primary-color: #00d2ff;
-    --bg-dark: #0b1016;
-    --card-bg: #1a2129;
-    --text-main: #ffffff;
-    --text-dim: #94a3b8;
+/* ===========================================
+   5. SIDEBAR (MOBILE MENU)
+=========================================== */
+.sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 280px;
+    height: 100%;
+    background: #111;
+    z-index: 1000;
+    transition: 0.4s;
+    padding: 20px;
 }
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    margin: 0;
-    padding: 0;
-}
+.sidebar.active { left: 0; }
 
-/* --- Navigation Bar --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: #111827;
-    border-bottom: 1px solid #1e293b;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--primary-color);
-    text-transform: uppercase;
-}
-
-.nav-links a {
-    color: var(--text-dim);
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-/* --- Search Bar --- */
-.search-section {
-    padding: 30px 5%;
-    text-align: center;
-}
-
-.search-input {
-    width: 100%;
-    max-width: 500px;
-    padding: 12px 25px;
-    border-radius: 30px;
-    border: 1px solid #334155;
-    background: #1e293b;
+.sidebar a {
+    display: block;
     color: white;
-    outline: none;
-    transition: 0.3s;
-}
-
-.search-input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
-}
-
-/* --- Section Header --- */
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 5%;
-    margin: 20px 0;
-}
-
-.section-title {
-    border-left: 4px solid var(--primary-color);
-    padding-left: 15px;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.see-all {
-    color: var(--primary-color);
+    padding: 12px;
     text-decoration: none;
-    font-size: 0.8rem;
-    border: 1px solid var(--primary-color);
-    padding: 4px 12px;
-    border-radius: 20px;
+    border-bottom: 1px solid #222;
 }
 
-/* --- Movie Grid & Cards --- */
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Mobile: රූප 2 බැගින් */
-    gap: 15px;
-    padding: 0 5% 40px;
+/* ===========================================
+   6. PAGINATION & FOOTER
+=========================================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px 0;
 }
 
-@media (min-width: 768px) {
-    .movie-grid { grid-template-columns: repeat(4, 1fr); } /* Tablet */
-}
-
-@media (min-width: 1024px) {
-    .movie-grid { grid-template-columns: repeat(6, 1fr); } /* Desktop */
-}
-
-.movie-card {
+.pagination button {
     background: var(--card-bg);
+    color: white;
+    border: 1px solid #333;
+    padding: 8px 16px;
     border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    transition: 0.3s;
-    border: 1px solid #2d3748;
+    cursor: pointer;
 }
 
-.movie-card:hover {
-    transform: scale(1.03);
-}
+.pagination button:hover { background: var(--primary); }
 
-.movie-card img {
-    width: 100%;
-    aspect-ratio: 2/3;
-    object-fit: cover;
-}
-
-.movie-info {
-    padding: 8px;
+footer {
     text-align: center;
-}
-
-.movie-title {
+    padding: 30px;
+    background: #050505;
+    border-top: 1px solid #222;
+    color: var(--text-dim);
     font-size: 13px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 5px;
-}
-
-.year-tag {
-    background: #00b894;
-    font-size: 10px;
-    padding: 1px 6px;
-    border-radius: 3px;
 }
