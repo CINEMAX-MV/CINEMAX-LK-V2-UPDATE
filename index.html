@@ -3,23 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="9wkWklQlzoBCAHZ_SvbfR1IZPj-D8xyY0kNczzXcoFM" />
 
 <title>Cinemax.lk</title>
 <link rel="stylesheet" href="css/style.css">
 
 <style>
 
-/* ===== HERO ===== */
+/* ===== HERO SECTION (NEW STYLE) ===== */
+
 .hero-header{
 height:400px;
+
 background:
 linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%),
 url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
+
 background-size:cover;
 background-position:center;
+
 display:flex;
 align-items:center;
 padding:0 5%;
+
 position:relative;
 }
 
@@ -33,180 +39,177 @@ color:#ccc;
 font-size:16px;
 }
 
-/* ===== FEATURED SLIDER ===== */
-.featured-slider{
-position:relative;
-width:100%;
-height:420px;
-overflow:hidden;
-background:#000;
-}
-
-.featured-container{
-display:flex;
-transition:0.5s ease;
-height:100%;
-}
-
-.featured-item{
-min-width:100%;
-height:100%;
-position:relative;
-display:flex;
-align-items:flex-end;
-padding:20px;
-color:#fff;
-}
-
-.featured-item::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2));
-z-index:1;
-}
-
-.featured-content{
-position:relative;
-z-index:2;
-max-width:80%;
-}
-
-.featured-content h2{
-font-size:26px;
-margin-bottom:8px;
-}
-
-.featured-content p{
-font-size:14px;
-color:#ccc;
-margin-bottom:10px;
-}
-
-.watch-btn{
-background:#fff;
-color:#000;
-padding:8px 14px;
-border:none;
-border-radius:6px;
-font-weight:bold;
-cursor:pointer;
-}
-
-.slide-btn{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-background:rgba(0,0,0,0.6);
-color:#fff;
-border:none;
-font-size:22px;
-padding:8px 12px;
-cursor:pointer;
-z-index:3;
-}
-
-.prev{left:10px;}
-.next{right:10px;}
-
 </style>
+
 </head>
 
 <body>
-
-<!-- HERO -->
-<header class="hero-header">
-
-<div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px;">☰</div>
-
-<a href="adminpanal.html" 
-style="position:fixed; top:20px; right:20px; background:#87CEFA; color:white; padding:10px 15px; border-radius:8px; z-index:9999;">
-Admin Panel
-</a>
-
-<div class="hero-content">
-<h1>නවතම සිංහල චිත්‍රපට</h1>
-<p>Download Latest Movies with Sinhala dubbed</p>
-
-<input type="text" placeholder="Search movies..." style="padding:10px; border-radius:20px; border:none; width:250px;">
-
+  
+<!-- HUMAN VERIFICATION -->
+<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
+<div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
+<h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
+<p style="color:#ccc; margin-bottom:20px;">
+Please <a href="verification.html" style="color:#00d4ff; text-decoration:underline;">verify here</a> first to enter the site.
+</p>
 </div>
-</header>
-
-<!-- ===== FEATURED MOVIES (NEW) ===== -->
-<section class="featured-slider">
-
-<div class="featured-container" id="featuredSlider"></div>
-
-<button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
-<button class="slide-btn next" onclick="changeSlide(1)">❯</button>
-
-</section>
-
-<!-- MOVIE GRID -->
-<section class="container">
-<div id="movieList" class="movies-grid"></div>
-</section>
+</div>
 
 <script>
-
-/* ===== FEATURED SLIDER JS ===== */
-let currentSlide = 0;
-let featuredMovies = [];
-
-function loadFeaturedMovies(movies){
-
-    featuredMovies = movies.slice(-10).reverse();
-
-    const slider = document.getElementById("featuredSlider");
-    slider.innerHTML = "";
-
-    featuredMovies.forEach(movie => {
-
-        const item = document.createElement("div");
-        item.className = "featured-item";
-
-        item.style.background = `url('${movie.image}') center/cover no-repeat`;
-
-        item.innerHTML = `
-        <div class="featured-content">
-            <h2>${movie.title} (${movie.year})</h2>
-            <p>${movie.description || "No description available"}</p>
-            <button class="watch-btn" onclick="alert('Open movie page')">
-                WATCH NOW
-            </button>
-        </div>
-        `;
-
-        slider.appendChild(item);
-    });
+window.addEventListener('DOMContentLoaded',()=>{
+if(localStorage.getItem("humanVerified")==="true"){
+document.getElementById("humanVerification").style.display="none";
+const user = localStorage.getItem("userName");
+if(user) console.log("Welcome,", user);
 }
+});
+</script>
 
-function changeSlide(dir){
-    const slider = document.getElementById("featuredSlider");
+<!-- HEADER HERO -->
+<header class="hero-header">
 
-    currentSlide += dir;
+<div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
 
-    if(currentSlide < 0) currentSlide = featuredMovies.length - 1;
-    if(currentSlide >= featuredMovies.length) currentSlide = 0;
+<!-- ADMIN LOGIN BUTTON FIXED TOP-RIGHT -->
+<a href="adminpanal.html" 
+   style="
+     position: fixed;        /* scroll වුණත් same place */
+     top: 20px;              /* top margin */
+     right: 20px;            /* right margin */
+     background-color: rgba(135, 206, 250, 0.9); /* light blue with slight transparency */
+     color: white;
+     padding: 12px 18px;
+     text-decoration: none;
+     border-radius: 8px;
+     font-weight: bold;
+     font-family: Arial, sans-serif;
+     z-index: 9999;          /* hero image/other content ඉහලට overlay නොවෙයි */
+     box-shadow: 0 4px 12px rgba(0,0,0,0.4);  /* slightly floating effect */
+     transition: transform 0.2s, background-color 0.2s;
+   "
+   onmouseover="this.style.backgroundColor='rgba(100,149,237,0.95)'; this.style.transform='scale(1.05)';"
+   onmouseout="this.style.backgroundColor='rgba(135,206,250,0.9)'; this.style.transform='scale(1)';"
+>
+  Admin Panel
+</a>
+</div>
+  
+<div class="hero-content">
 
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+<h1>නවතම සිංහල චිත්‍රපට</h1>
+<p>Download Latest Movies with Sinhala dubbed</p>
+  
+<div class="sidebar-search">
+
+<span class="search-icon">🔍</span>
+
+<input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
+
+</div>
+  
+
+</div>
+
+</header>
+
+<!-- LATEST MOVIES -->
+<div class="latest-wrapper">
+<div class="latest-title">LATEST MOVIES</div>
+</div>
+
+<!-- MOVIE SLIDER -->
+<section class="slider-section">
+<div class="slider" id="movieSlider"></div>
+<div class="slider-dots" id="sliderDots"></div>
+</section>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+<div class="close-btn" onclick="toggleMenu()">✕</div>
+
+<a href="index.html">•©• 𝐇𝐨𝐦𝐞</a>
+<a href="dashboard.html">•©• 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+<a href="contact.html">•©• 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
+<a href="dmca.html">•©• 𝐃𝐌𝐂𝐀</a>
+<a href="films.html">•©• 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
+  
+<a href="javascript:void(0)" onclick="toggleProblems()">•©• 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
+
+<div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#211d1d; border-radius:6px;">
+<input type="text" id="pName" placeholder="Name" required>
+<input type="text" id="pUser" placeholder="User" required>
+<input type="email" id="pEmail" placeholder="Email" required>
+<input type="text" id="pNumber" placeholder="Number" required>
+<textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
+<button onclick="sendProblem()">Submit ✔️</button>
+</div>
+
+</div>
+
+<!-- MOVIE SECTION -->
+<section class="container">
+
+<div class="ticker">
+<div class="ticker-track">
+
+<span>
+සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
+</span>
+
+<span>
+සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
+</span>
+
+</div>
+</div>
+
+<div id="movieList" class="movies-grid"></div>
+
+<div class="pagination-controls">
+<button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
+<span id="pageInfo"></span>
+<button id="nextBtn" onclick="changePage(1)">Next 👉</button>
+</div>
+
+<div id="series-container"></div>
+
+</section>
+
+<!-- SOCIAL -->
+<div class="social-section">
+<a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+<a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+<a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="site-footer">
+  <p class="footer-text">
+    © <span class="year">2026</span> <span class="brand">Cinemax Downloads</span> | Watch & Downloads
+  </p>
+
+  <p class="creator">
+    Created by <span class="name">Peksha Rasanjana</span>
+  </p>
+</footer>
+
+<script src="js/main.js"></script>
+
+<script>
+function toggleMenu() {
+document.getElementById("sidebar").classList.toggle("active");
 }
+</script>
 
-/* ===== DEMO MOVIES (ඔයාගේ movies.json එක replace වෙයි) ===== */
-const movies = [
-{title:"Ratatouille",year:"2007",image:"https://i.ibb.co/1YKBXpbP/gullivers-travels-poster-3.jpg",description:"Cooking story"},
-{title:"Jungle Cruise",year:"2021",image:"https://i.ibb.co/1YKBXpbP/gullivers-travels-poster-3.jpg",description:"Adventure"},
-{title:"Garfield",year:"2004",image:"https://i.ibb.co/1YKBXpbP/gullivers-travels-poster-3.jpg",description:"Comedy"}
-];
-
-/* ===== LOAD ===== */
-loadFeaturedMovies(movies);
-
-function toggleMenu(){
-alert("Menu clicked");
-}
-
+<script>
+fetch("series-section.html")
+.then(response => response.text())
+.then(data => {
+document.getElementById("series-container").innerHTML = data;
+});
 </script>
 
 </body>
