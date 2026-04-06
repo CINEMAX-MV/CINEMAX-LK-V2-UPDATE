@@ -3,244 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinemax.lk</title>
+<meta name="google-site-verification" content="9wkWklQlzoBCAHZ_SvbfR1IZPj-D8xyY0kNczzXcoFM" />
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Cinemax.lk</title>
+<link rel="stylesheet" href="css/style.css">
 
 <style>
-:root{
-    --primary:#00d4ff;
-    --bg:#020617;
-}
 
-body{
-    margin:0;
-    background:var(--bg);
-    font-family:Poppins;
-    color:#fff;
-}
+/* ===== HERO SECTION (NEW STYLE) ===== */
 
-/* MENU */
-.menu-btn{
-    position:absolute;
-    top:20px;
-    left:20px;
-    z-index:100;
-    cursor:pointer;
-}
-
-/* HERO */
 .hero-header{
-    height:400px;
-    background:url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80') center/cover;
-    display:flex;
-    align-items:end;
-    padding:20px;
-    position:relative;
+height:400px;
+
+background:
+linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%),
+url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+padding:0 5%;
+
+position:relative;
 }
 
-.hero-header::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top,#020617,transparent);
+.hero-content h1{
+font-size:38px;
+margin-bottom:10px;
 }
 
-.hero-content{
-    position:relative;
+.hero-content p{
+color:#ccc;
+font-size:16px;
 }
 
-/* SEARCH CENTER */
-.search-area{
-    display:flex;
-    justify-content:center;
-    margin-top:-30px;
-}
-
-.search-box{
-    width:80%;
-    max-width:400px;
-    background:#111;
-    padding:10px;
-    border-radius:20px;
-    display:flex;
-}
-
-/* SLIDER */
-.slider{
-    display:flex;
-    overflow-x:auto;
-    gap:15px;
-    padding:20px;
-}
-
-.slide{
-    min-width:250px;
-}
-
-/* LATEST */
-.movies-grid{
-    display:flex;
-    overflow-x:auto;
-    gap:15px;
-    padding:20px;
-}
-
-.movie-card{
-    min-width:120px;
-}
-
-/* SIDEBAR */
-.sidebar{
-    position:fixed;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:100%;
-    background:#000;
-    transition:.3s;
-    z-index:9999;
-}
-
-.sidebar.active{
-    left:0;
-}
-
-.close-btn{
-    position:absolute;
-    right:20px;
-    top:20px;
-    font-size:25px;
-    cursor:pointer;
-}
-
-/* BOTTOM NAV */
-.bottom-nav{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    display:flex;
-    justify-content:space-around;
-    background:#000;
-    padding:10px;
-}
 </style>
+
 </head>
 
 <body>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-<header class="hero-header">
-    <div class="hero-content">
-        <h1 id="heroTitle">Loading...</h1>
-        <button onclick="playHero()">WATCH NOW</button>
-    </div>
-</header>
-
-<section class="search-area">
-    <div class="search-box">
-        <i class="fa fa-search"></i>
-        <input placeholder="Search...">
-    </div>
-</section>
-
-<!-- FEATURED -->
-<div class="slider" id="movieSlider"></div>
-
-<!-- LATEST -->
-<div class="movies-grid" id="movieList"></div>
-
-<!-- SIDEBAR -->
-<div id="sidebar" class="sidebar">
-    <div class="close-btn" onclick="toggleMenu()">✕</div>
+  
+<!-- HUMAN VERIFICATION -->
+<div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
+<div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
+<h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
+<p style="color:#ccc; margin-bottom:20px;">
+Please <a href="verification.html" style="color:#00d4ff; text-decoration:underline;">verify here</a> first to enter the site.
+</p>
 </div>
-
-<!-- BOTTOM -->
-<div class="bottom-nav">
-    <div>Home</div>
-    <div>Movies</div>
-    <div>TV</div>
-    <div>Collection</div>
 </div>
 
 <script>
-
-// KEEP ORIGINAL FUNCTION
-function toggleMenu(){
-    document.getElementById("sidebar").classList.toggle("active");
+window.addEventListener('DOMContentLoaded',()=>{
+if(localStorage.getItem("humanVerified")==="true"){
+document.getElementById("humanVerification").style.display="none";
+const user = localStorage.getItem("userName");
+if(user) console.log("Welcome,", user);
 }
-
-// ===== LOAD MOVIES =====
-let allMovies = [];
-let heroMovie = null;
-
-fetch("movies.json")
-.then(res=>res.json())
-.then(data=>{
-    allMovies = data.reverse();
-
-    heroMovie = allMovies[0];
-    document.getElementById("heroTitle").innerText = heroMovie.title;
-
-    loadFeatured();
-    loadLatest();
 });
+</script>
 
-// HERO PLAY
-function playHero(){
-    location.href = "movie.html";
+<!-- HEADER HERO -->
+<header class="hero-header">
+
+<div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
+
+<!-- ADMIN LOGIN BUTTON FIXED TOP-RIGHT -->
+<a href="adminpanal.html" 
+   style="
+     position: fixed;        /* scroll වුණත් same place */
+     top: 20px;              /* top margin */
+     right: 20px;            /* right margin */
+     background-color: rgba(135, 206, 250, 0.9); /* light blue with slight transparency */
+     color: white;
+     padding: 12px 18px;
+     text-decoration: none;
+     border-radius: 8px;
+     font-weight: bold;
+     font-family: Arial, sans-serif;
+     z-index: 9999;          /* hero image/other content ඉහලට overlay නොවෙයි */
+     box-shadow: 0 4px 12px rgba(0,0,0,0.4);  /* slightly floating effect */
+     transition: transform 0.2s, background-color 0.2s;
+   "
+   onmouseover="this.style.backgroundColor='rgba(100,149,237,0.95)'; this.style.transform='scale(1.05)';"
+   onmouseout="this.style.backgroundColor='rgba(135,206,250,0.9)'; this.style.transform='scale(1)';"
+>
+  Admin Panel
+</a>
+</div>
+  
+<div class="hero-content">
+
+<h1>නවතම සිංහල චිත්‍රපට</h1>
+<p>Download Latest Movies with Sinhala dubbed</p>
+  
+<div class="sidebar-search">
+
+<span class="search-icon">🔍</span>
+
+<input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
+
+</div>
+  
+
+</div>
+
+</header>
+
+<!-- LATEST MOVIES -->
+<div class="latest-wrapper">
+<div class="latest-title">LATEST MOVIES</div>
+</div>
+
+<!-- MOVIE SLIDER -->
+<section class="slider-section">
+<div class="slider" id="movieSlider"></div>
+<div class="slider-dots" id="sliderDots"></div>
+</section>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+<div class="close-btn" onclick="toggleMenu()">✕</div>
+
+<a href="index.html">•©• 𝐇𝐨𝐦𝐞</a>
+<a href="dashboard.html">•©• 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
+<a href="contact.html">•©• 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
+<a href="dmca.html">•©• 𝐃𝐌𝐂𝐀</a>
+<a href="films.html">•©• 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
+  
+<a href="javascript:void(0)" onclick="toggleProblems()">•©• 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
+
+<div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#211d1d; border-radius:6px;">
+<input type="text" id="pName" placeholder="Name" required>
+<input type="text" id="pUser" placeholder="User" required>
+<input type="email" id="pEmail" placeholder="Email" required>
+<input type="text" id="pNumber" placeholder="Number" required>
+<textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
+<button onclick="sendProblem()">Submit ✔️</button>
+</div>
+
+</div>
+
+<!-- MOVIE SECTION -->
+<section class="container">
+
+<div class="ticker">
+<div class="ticker-track">
+
+<span>
+සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
+</span>
+
+<span>
+සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
+</span>
+
+</div>
+</div>
+
+<div id="movieList" class="movies-grid"></div>
+
+<div class="pagination-controls">
+<button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
+<span id="pageInfo"></span>
+<button id="nextBtn" onclick="changePage(1)">Next 👉</button>
+</div>
+
+<div id="series-container"></div>
+
+</section>
+
+<!-- SOCIAL -->
+<div class="social-section">
+<a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+<a href="https://youtube.com/@cinemax-u1s?si=0b8kzlpbY01ppDB3" class="social youtube" target="_blank"><i class="fab fa-youtube"></i></a>
+<a href="#" class="social instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<footer class="site-footer">
+  <p class="footer-text">
+    © <span class="year">2026</span> <span class="brand">Cinemax Downloads</span> | Watch & Downloads
+  </p>
+
+  <p class="creator">
+    Created by <span class="name">Peksha Rasanjana</span>
+  </p>
+</footer>
+
+<script src="js/main.js"></script>
+
+<script>
+function toggleMenu() {
+document.getElementById("sidebar").classList.toggle("active");
 }
+</script>
 
-// FEATURED (LAST 10)
-function loadFeatured(){
-    let slider = document.getElementById("movieSlider");
-    let last10 = allMovies.slice(0,10);
-
-    last10.forEach((m,i)=>{
-        let div=document.createElement("div");
-        div.className="slide";
-
-        div.innerHTML=`
-        <img src="${m.image}" style="width:100%">
-        <p>${m.title}</p>
-        `;
-
-        slider.appendChild(div);
-    });
-
-    // AUTO SCROLL
-    let x=0;
-    setInterval(()=>{
-        x+=250;
-        if(x>=slider.scrollWidth) x=0;
-        slider.scrollTo({left:x,behavior:"smooth"});
-    },2000);
-}
-
-// LATEST 12 + SEE ALL
-function loadLatest(){
-    let box = document.getElementById("movieList");
-    let last12 = allMovies.slice(0,12);
-
-    last12.forEach((m)=>{
-        let d=document.createElement("div");
-        d.className="movie-card";
-
-        d.innerHTML=`
-        <img src="${m.image}" style="width:100%">
-        <p>${m.title}</p>
-        `;
-        box.appendChild(d);
-    });
-
-    let seeAll=document.createElement("div");
-    seeAll.innerHTML="See All ➜";
-    seeAll.onclick=()=>location.href="films.html";
-    box.appendChild(seeAll);
-}
-
+<script>
+fetch("series-section.html")
+.then(response => response.text())
+.then(data => {
+document.getElementById("series-container").innerHTML = data;
+});
 </script>
 
 </body>
