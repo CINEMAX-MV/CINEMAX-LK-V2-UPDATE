@@ -88,7 +88,7 @@ function loadLast10Slider(){
 
     if(!slider || !dotsContainer) return;
 
-    // Last 10 movies (newest)
+    // Last 10 movies
     const lastMovies = moviesData.slice(-10).reverse();
 
     slider.innerHTML = "";
@@ -96,28 +96,34 @@ function loadLast10Slider(){
 
     lastMovies.forEach((movie, index) => {
 
-        // Correct ID in moviesData
         const realId = moviesData.length - 1 - index;
 
         const slide = document.createElement("div");
         slide.className = "slide";
 
-        // ✅ CLICK FIX (always works)
+        // 🎬 BACKGROUND IMAGE STYLE
+        slide.style.background = `
+            linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2)),
+            url('${movie.image}') center/cover no-repeat
+        `;
+
+        // CLICK OPEN
         slide.onclick = () => {
             window.location.href = `movie.html?id=${realId}`;
         };
 
         slide.innerHTML = `
-            <img src="${movie.image}" alt="${movie.title}">
-            <div class="slide-info">
-                <h3>${movie.title}</h3>
-                <p>${movie.release_date || ""}</p>
+            <div class="slide-content">
+                <span class="movie-tag">MOVIE</span>
+                <h2>${movie.title} (${movie.year || ""})</h2>
+                <p>${movie.description || "No description available"}</p>
+                <button class="watch-btn">WATCH NOW</button>
             </div>
         `;
 
         slider.appendChild(slide);
 
-        // Dots
+        // DOTS
         const dot = document.createElement("span");
         dot.className = "dot";
         if(index === 0) dot.classList.add("active");
@@ -141,16 +147,15 @@ function loadLast10Slider(){
         showSlide(currentIndex);
     }
 
-    // Auto play
+    // AUTO PLAY
     let sliderInterval = setInterval(nextSlide, 4000);
 
-    // Pause on hover
     slider.addEventListener("mouseenter", () => clearInterval(sliderInterval));
     slider.addEventListener("mouseleave", () => {
         sliderInterval = setInterval(nextSlide, 4000);
     });
 
-    // Dot click
+    // DOT CLICK
     dots.forEach((dot, index) => {
         dot.addEventListener("click", (e) => {
             e.stopPropagation();
