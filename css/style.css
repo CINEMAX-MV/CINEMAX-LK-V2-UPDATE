@@ -1070,3 +1070,17 @@ display:-webkit-box;
 -webkit-box-orient:vertical;
 overflow:hidden;
 }
+
+/* Slider container fix */
+.slider-section{
+overflow:hidden;
+touch-action:pan-y; /* only vertical scroll allowed */
+}
+
+/* Description limit */
+.slide-content .desc{
+display:-webkit-box;
+-webkit-line-clamp:3;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
