@@ -109,7 +109,7 @@ function loadLast10Slider(){
             window.location.href = `movie.html?id=${realId}`;
         };
 
-        // 🔥 description short (max 120 chars)
+        // 🔥 short description
         let shortDesc = movie.description || "No description available";
         if(shortDesc.length > 120){
             shortDesc = shortDesc.substring(0,120) + "...";
@@ -143,8 +143,20 @@ function loadLast10Slider(){
         if(dots[index]) dots[index].classList.add("active");
     }
 
-    // ❌ AUTO SLIDE REMOVE
-    // (no setInterval anymore)
+    function nextSlide(){
+        currentIndex++;
+        if(currentIndex >= slides.length) currentIndex = 0;
+        showSlide(currentIndex);
+    }
+
+    // ✅ AUTO SLIDE ON
+    let sliderInterval = setInterval(nextSlide, 4000);
+
+    // Pause on hover (PC)
+    slider.addEventListener("mouseenter", () => clearInterval(sliderInterval));
+    slider.addEventListener("mouseleave", () => {
+        sliderInterval = setInterval(nextSlide, 4000);
+    });
 
     // DOT CLICK
     dots.forEach((dot, index) => {
@@ -154,6 +166,23 @@ function loadLast10Slider(){
             showSlide(currentIndex);
         });
     });
+
+    // 📱 MOBILE SCROLL FIX (IMPORTANT)
+    let startX = 0;
+
+    slider.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener("touchmove", (e) => {
+        let moveX = e.touches[0].clientX;
+
+        // horizontal swipe detect
+        if(Math.abs(moveX - startX) > 10){
+            e.preventDefault(); // 🚫 stop page scrolling
+        }
+    }, { passive:false });
+
 }
 /* ===== SEARCH FUNCTION ===== */
 document.addEventListener("DOMContentLoaded", () => {
