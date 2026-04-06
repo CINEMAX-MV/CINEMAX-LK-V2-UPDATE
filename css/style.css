@@ -1063,3 +1063,10 @@ padding:8px 14px;
 border-radius:6px;
 font-weight:bold;
 }
+
+.slide-content .desc{
+display:-webkit-box;
+-webkit-line-clamp:3; /* max 3 lines */
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
