@@ -88,7 +88,6 @@ function loadLast10Slider(){
 
     if(!slider || !dotsContainer) return;
 
-    // Last 10 movies
     const lastMovies = moviesData.slice(-10).reverse();
 
     slider.innerHTML = "";
@@ -101,29 +100,32 @@ function loadLast10Slider(){
         const slide = document.createElement("div");
         slide.className = "slide";
 
-        // 🎬 BACKGROUND IMAGE STYLE
         slide.style.background = `
             linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2)),
             url('${movie.image}') center/cover no-repeat
         `;
 
-        // CLICK OPEN
         slide.onclick = () => {
             window.location.href = `movie.html?id=${realId}`;
         };
+
+        // 🔥 description short (max 120 chars)
+        let shortDesc = movie.description || "No description available";
+        if(shortDesc.length > 120){
+            shortDesc = shortDesc.substring(0,120) + "...";
+        }
 
         slide.innerHTML = `
             <div class="slide-content">
                 <span class="movie-tag">MOVIE</span>
                 <h2>${movie.title} (${movie.year || ""})</h2>
-                <p>${movie.description || "No description available"}</p>
+                <p class="desc">${shortDesc}</p>
                 <button class="watch-btn">WATCH NOW</button>
             </div>
         `;
 
         slider.appendChild(slide);
 
-        // DOTS
         const dot = document.createElement("span");
         dot.className = "dot";
         if(index === 0) dot.classList.add("active");
@@ -141,19 +143,8 @@ function loadLast10Slider(){
         if(dots[index]) dots[index].classList.add("active");
     }
 
-    function nextSlide(){
-        currentIndex++;
-        if(currentIndex >= slides.length) currentIndex = 0;
-        showSlide(currentIndex);
-    }
-
-    // AUTO PLAY
-    let sliderInterval = setInterval(nextSlide, 4000);
-
-    slider.addEventListener("mouseenter", () => clearInterval(sliderInterval));
-    slider.addEventListener("mouseleave", () => {
-        sliderInterval = setInterval(nextSlide, 4000);
-    });
+    // ❌ AUTO SLIDE REMOVE
+    // (no setInterval anymore)
 
     // DOT CLICK
     dots.forEach((dot, index) => {
