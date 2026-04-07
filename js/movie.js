@@ -125,6 +125,15 @@ let socialHTML = `
               <img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">
             `}
           </div>
+          <!-- 🎬 RELEASE YEAR -->
+  <div style="margin-top:40px;">
+    <h3 style="border-left:4px solid red;padding-left:10px;">Release year</h3>
+    <div class="year-grid" id="yearGrid"></div>
+  </div>
+
+</div>
+`;
+      loadYears();
 
           <!-- DESCRIPTION -->
           <div style="margin-top:20px;">
