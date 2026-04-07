@@ -198,32 +198,6 @@ let socialHTML = `
         </div>
 
 <!-- =============================== -->
-<!-- 🎬 MOVIES BY YEAR SECTION -->
-<!-- =============================== -->
-<div id="yearSection" style="margin-top:40px;">
-  <h2 style="color:#00e6e6;text-align:center;margin-bottom:15px;">
-    🎬 Sinhala Movies By Year
-  </h2>
-
-  <!-- YEARS -->
-  <div id="yearButtons" style="
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    justify-content:center;
-    margin-bottom:20px;
-  "></div>
-
-  <!-- MOVIES LIST -->
-  <div id="yearMovies" style="
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-    justify-content:center;
-  "></div>
-</div>
-
-<!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
 
@@ -422,42 +396,6 @@ let socialHTML = `
   });
 
 // ===============================
-// 📅 BUILD YEARS LIST
-// ===============================
-setTimeout(()=>{
-
-  let years = new Set();
-
-  Object.values(data).forEach(m => {
-    if(m.release_date){
-      let year = m.release_date.split(" ")[0];
-      years.add(year);
-    }
-  });
-
-  years = Array.from(years).sort((a,b)=>b-a);
-
-  const yearButtonsDiv = document.getElementById("yearButtons");
-
-  if(!yearButtonsDiv){
-    console.log("❌ yearButtons not found");
-    return;
-  }
-
-  years.forEach(year=>{
-    let btn = document.createElement("button");
-    btn.className = "year-btn";
-    btn.innerText = year;
-
-    btn.onclick = ()=>{
-      showMoviesByYear(year, data);
-    };
-
-    yearButtonsDiv.appendChild(btn);
-  });
-
-}, 200);
-// ===============================
 // ⬇ LOAD PLAYER
 // ===============================
 function loadPlayer(link){
@@ -516,35 +454,3 @@ function goAdPage(link){
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
 
-// ===============================
-// 🎬 SHOW MOVIES BY YEAR
-// ===============================
-function showMoviesByYear(year, data){
-  const container = document.getElementById("yearMovies");
-  container.innerHTML = "";
-
-  Object.entries(data).forEach(([id, movie])=>{
-    if(movie.release_date && movie.release_date.includes(year)){
-      
-      let card = document.createElement("div");
-      card.className = "movie-card";
-
-      card.innerHTML = `
-        <img src="${movie.image}">
-        <p>${movie.title}</p>
-      `;
-
-      // 👉 CLICK = GO TO MOVIE PAGE
-      card.onclick = ()=>{
-        window.location.href = "movie.html?id=" + id;
-      };
-
-      container.appendChild(card);
-    }
-  });
-
-  // If no movies
-  if(container.innerHTML === ""){
-    container.innerHTML = "<p style='color:white'>No movies found</p>";
-  }
-}
