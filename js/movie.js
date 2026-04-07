@@ -214,6 +214,7 @@ let socialHTML = `
   <div class="year-grid" id="yearGrid"></div>
 </div>
 
+<script>
 // ===============================
 // 📅 LOAD YEAR GRID
 // ===============================
@@ -233,6 +234,7 @@ if (yearGrid) {
     yearGrid.appendChild(div);
   }
 }
+</script>
 
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
