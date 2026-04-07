@@ -424,32 +424,39 @@ let socialHTML = `
 // ===============================
 // 📅 BUILD YEARS LIST
 // ===============================
-let years = new Set();
+setTimeout(()=>{
 
-Object.values(data).forEach(m => {
-  if(m.release_date){
-    let year = m.release_date.split(" ")[0]; // "2021 Jul 30"
-    years.add(year);
+  let years = new Set();
+
+  Object.values(data).forEach(m => {
+    if(m.release_date){
+      let year = m.release_date.split(" ")[0];
+      years.add(year);
+    }
+  });
+
+  years = Array.from(years).sort((a,b)=>b-a);
+
+  const yearButtonsDiv = document.getElementById("yearButtons");
+
+  if(!yearButtonsDiv){
+    console.log("❌ yearButtons not found");
+    return;
   }
-});
 
-years = Array.from(years).sort((a,b)=>b-a); // latest first
+  years.forEach(year=>{
+    let btn = document.createElement("button");
+    btn.className = "year-btn";
+    btn.innerText = year;
 
-const yearButtonsDiv = document.getElementById("yearButtons");
+    btn.onclick = ()=>{
+      showMoviesByYear(year, data);
+    };
 
-// CREATE BUTTONS
-years.forEach(year=>{
-  let btn = document.createElement("button");
-  btn.className = "year-btn";
-  btn.innerText = year;
+    yearButtonsDiv.appendChild(btn);
+  });
 
-  btn.onclick = ()=>{
-    showMoviesByYear(year, data);
-  };
-
-  yearButtonsDiv.appendChild(btn);
-});
-
+}, 200);
 // ===============================
 // ⬇ LOAD PLAYER
 // ===============================
