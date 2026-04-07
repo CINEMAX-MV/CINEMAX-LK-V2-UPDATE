@@ -115,6 +115,7 @@ let socialHTML = `
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
+      loadYears();
         <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
@@ -471,3 +472,27 @@ function goAdPage(link){
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
 
+// ===============================
+// 📅 GENERATE YEARS GRID
+// ===============================
+function loadYears(){
+  const yearGrid = document.getElementById("yearGrid");
+  if(!yearGrid) return;
+
+  let currentYear = new Date().getFullYear();
+
+  for(let y = currentYear; y >= 1977; y--){
+    let div = document.createElement("div");
+    div.className = "year-btn";
+    div.innerText = y;
+
+    div.onclick = () => {
+      document.querySelectorAll(".year-btn").forEach(b => b.classList.remove("active"));
+      div.classList.add("active");
+
+      window.location.href = "index.html?year=" + y;
+    };
+
+    yearGrid.appendChild(div);
+  }
+} 
