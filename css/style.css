@@ -1230,3 +1230,13 @@ footer {
 .watch-btn:hover{
     background:#ffaa00;
 }
+
+.movie-info h4{
+    font-size:14px; /* කලින් 15px නම් මේක ටිකක් අඩු කරලා */
+    color:#fff;
+    margin:5px 0;
+
+    white-space:nowrap;       /* එක line එකට fix කරයි */
+    overflow:hidden;          
+    text-overflow:ellipsis;   /* ... දායි */
+}
