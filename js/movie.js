@@ -115,7 +115,7 @@ let socialHTML = `
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
-      𝗖𝗜𝗡𝗘𝗠𝗔𝗫 : 𝖣𝖾𝗍𝖺𝗂𝗅𝗌 𝖢𝗈𝗏𝖾𝗋𝖾𝖽 𝖡𝗒 𝖬𝗋.𝖯𝖾𝗄𝗌𝗁𝖺 𝗋𝖺𝗌𝖺𝗇𝗃𝖺𝗇𝖺
+      𝗖𝗜𝗡𝗘𝗠𝗔𝗫 : 𝖣𝖾𝗍𝖺𝗂𝗅𝗌 𝖢𝗈𝗏𝖾𝗋𝖾𝖽 𝖡𝗒 𝖬𝗋.𝖯𝖾𝗄𝗌𝗁𝖺 𝗋𝖺𝗌𝖺𝗇𝗃𝖺𝗇𝖺....
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
@@ -202,9 +202,9 @@ let socialHTML = `
 <!-- 🌐 SOCIAL BUTTONS -->
 <!-- =============================== -->
 <div class="social-box">
-  <a href="#" class="social-btn fb">Facebook Page</a>
-  <a href="#" class="social-btn tg">Telegram Channel</a>
-  <a href="#" class="social-btn yt">Youtube Channel</a>
+  <a href="https://www.facebook.com/share/17vFnFLPd3/" class="social-btn fb">Facebook Page</a>
+  <a href="https://t.me/+I4NqHagT59E0MGY1" class="social-btn tg">Telegram Channel</a>
+  <a href="https://youtube.com/@cinemax-u1s?si=ub15zYYlgq4XLzw8" class="social-btn yt">Youtube Channel</a>
 </div>
 
 <!-- =============================== -->
