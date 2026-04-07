@@ -196,6 +196,33 @@ let socialHTML = `
           </div>
 
         </div>
+        
+<!-- =============================== -->
+<!-- 🎬 MOVIES BY YEAR SECTION -->
+<!-- =============================== -->
+<div id="yearSection" style="margin-top:40px;">
+  <h2 style="color:#00e6e6;text-align:center;margin-bottom:15px;">
+    🎬 Sinhala Movies By Year
+  </h2>
+
+  <!-- YEARS -->
+  <div id="yearButtons" style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:20px;
+  "></div>
+
+  <!-- MOVIES LIST -->
+  <div id="yearMovies" style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+  "></div>
+</div>
+        
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
