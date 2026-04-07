@@ -202,7 +202,7 @@ let socialHTML = `
 <!-- 🌐 SOCIAL BUTTONS -->
 <!-- =============================== -->
 <div class="social-box">
-  <a href="https://www.facebook.com/share/17vFnFLPd3/" class="social-btn fb">Facebook Page</a>
+  <a href="https://www.facebook.com/share/17vPd3/" class="social-btn fb">Facebook Page</a>
   <a href="https://t.me/+I4NqHagT59E0MGY1" class="social-btn tg">Telegram Channel</a>
   <a href="https://youtube.com/@cinemax-u1s?si=ub15zYYlgq4XLzw8" class="social-btn yt">Youtube Channel</a>
 </div>
