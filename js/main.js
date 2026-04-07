@@ -216,9 +216,19 @@ function displaySearchResults(filteredMovies){
         const realId = moviesData.indexOf(movie);
 
         movieList.innerHTML += `
-            <div class="movie-card" onclick="openMovie(${realId})">
+            <div class="movie-card">
+
                 <img src="${movie.image}" alt="${movie.title}">
-                <h4>${movie.title}</h4>
+
+                <div class="movie-info">
+                    <h4>${movie.title}</h4>
+                    <p class="desc">${movie.description || "No description available."}</p>
+
+                    <button onclick="openMovie(${realId})" class="watch-btn">
+                        ▶ Watch Movie
+                    </button>
+                </div>
+
             </div>
         `;
     });
