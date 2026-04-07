@@ -14,14 +14,10 @@ fetch("data/movies.json")
 .then(data => {
     moviesData = data;
 
-    // Load Last 10 Slider
     loadLast10Slider();
-
-    // Load Movie Grid
     displayMovies();
     updateButtons();
 });
-
 
 /* ===== Display Movies Function ===== */
 function displayMovies(){
@@ -77,9 +73,8 @@ function updateButtons(){
     if(nextBtn) nextBtn.disabled = currentPage === totalPages;
 }
 
-
 /* =====================================================
-   🔥 NEW 3D COVERFLOW SLIDER (CENTER BIG + BLUR BG)
+   ✅ 3 MOVIES SLIDER (CENTER BIG)
 ===================================================== */
 function loadLast10Slider(){
 
@@ -100,22 +95,18 @@ function loadLast10Slider(){
         const slide = document.createElement("div");
         slide.className = "slide";
 
-        slide.style.backgroundImage = `url('${movie.image}')`;
+        slide.style.background = `
+            linear-gradient(to top, rgba(0,0,0,0.7), transparent),
+            url('${movie.image}') center/cover no-repeat
+        `;
 
         slide.onclick = () => {
             window.location.href = `movie.html?id=${realId}`;
         };
 
-        let shortDesc = movie.description || "No description available";
-        if(shortDesc.length > 120){
-            shortDesc = shortDesc.substring(0,120) + "...";
-        }
-
         slide.innerHTML = `
-            <div class="slide-overlay">
-                <h2>${movie.title}</h2>
-                <p>${shortDesc}</p>
-                <button class="watch-btn">WATCH NOW</button>
+            <div class="slide-content">
+                <h3>${movie.title}</h3>
             </div>
         `;
 
@@ -132,22 +123,22 @@ function loadLast10Slider(){
 
     function showSlide(index){
 
+        const slideWidth = slides[0].offsetWidth + 20;
+
+        slider.scrollTo({
+            left: slideWidth * index - slideWidth,
+            behavior: "smooth"
+        });
+
         slides.forEach((slide, i) => {
-            slide.classList.remove("active","left","right");
+            slide.classList.remove("active","side");
 
             if(i === index){
                 slide.classList.add("active");
-            }
-            else if(i === index - 1 || (index === 0 && i === slides.length - 1)){
-                slide.classList.add("left");
-            }
-            else if(i === index + 1 || (index === slides.length - 1 && i === 0)){
-                slide.classList.add("right");
+            }else if(i === index - 1 || i === index + 1){
+                slide.classList.add("side");
             }
         });
-
-        // 🔥 background blur effect
-        slider.style.backgroundImage = `url('${lastMovies[index].image}')`;
 
         dots.forEach(d => d.classList.remove("active"));
         if(dots[index]) dots[index].classList.add("active");
@@ -156,12 +147,6 @@ function loadLast10Slider(){
     function nextSlide(){
         currentIndex++;
         if(currentIndex >= slides.length) currentIndex = 0;
-        showSlide(currentIndex);
-    }
-
-    function prevSlide(){
-        currentIndex--;
-        if(currentIndex < 0) currentIndex = slides.length - 1;
         showSlide(currentIndex);
     }
 
@@ -198,11 +183,12 @@ function loadLast10Slider(){
         if(startX - endX > 50){
             nextSlide();
         } else if(endX - startX > 50){
-            prevSlide();
+            currentIndex--;
+            if(currentIndex < 0) currentIndex = slides.length - 1;
+            showSlide(currentIndex);
         }
     });
 }
-
 
 /* ===== SEARCH FUNCTION ===== */
 document.addEventListener("DOMContentLoaded", () => {
@@ -241,11 +227,7 @@ function displaySearchResults(filteredMovies){
 // Toggle Problems form
 function toggleProblems(){
     const form = document.getElementById('problemsForm');
-    if(form.style.display === "block"){
-        form.style.display = "none";
-    } else {
-        form.style.display = "block";
-    }
+    form.style.display = form.style.display === "block" ? "none" : "block";
 }
 
 // Send Problems info via WhatsApp
