@@ -1123,3 +1123,15 @@ footer {
 * {
     box-sizing: border-box;
 }
+
+/* ===== FIX FOR PC / LAPTOP ===== */
+@media screen and (min-width: 769px) {
+
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        transform: none !important;
+        margin: 0 auto;
+    }
+
+}
