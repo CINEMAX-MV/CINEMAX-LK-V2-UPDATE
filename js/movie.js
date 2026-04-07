@@ -114,10 +114,8 @@ let socialHTML = `
       // ===============================
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
-      document.getElementById("movieDetails").innerHTML = ` ... `;
-
-// 🔥 call function
-loadYearGrid();
+      document.getElementById("movieDetails").innerHTML = `
+      loadYearGrid();
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
