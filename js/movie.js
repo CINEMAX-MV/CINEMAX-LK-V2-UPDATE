@@ -214,6 +214,68 @@ let socialHTML = `
   <div class="year-grid" id="yearGrid"></div>
 </div>
 
+<style>
+.year-section {
+  padding: 15px;
+  color: #fff;
+}
+
+.year-section h3 {
+  margin-bottom: 10px;
+  border-left: 4px solid red;
+  padding-left: 10px;
+}
+
+/* GRID */
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* YEAR BOX */
+.year-box {
+  background: #111;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #222;
+}
+
+/* HOVER EFFECT */
+.year-box:hover {
+  background: #1a1a1a;
+  color: red;
+}
+
+/* ACTIVE (selected year) */
+.year-box.active {
+  border: 1px solid red;
+  color: red;
+}
+</style>
+
+<script>
+const yearGrid = document.getElementById("yearGrid");
+
+// 2027 -> 1997 reverse order
+for (let year = 2027; year >= 1997; year--) {
+  const div = document.createElement("div");
+  div.className = "year-box";
+  div.innerText = year;
+
+  // click event (active highlight)
+  div.addEventListener("click", () => {
+    document.querySelectorAll(".year-box").forEach(el => el.classList.remove("active"));
+    div.classList.add("active");
+  });
+
+  yearGrid.appendChild(div);
+}
+</script>
+
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
