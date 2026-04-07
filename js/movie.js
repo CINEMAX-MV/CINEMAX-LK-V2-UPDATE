@@ -115,7 +115,7 @@ let socialHTML = `
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
-      Cinemax : D();
+      Cinemax : Details covered by MR.PEKSHARASANJANA 🎬
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
