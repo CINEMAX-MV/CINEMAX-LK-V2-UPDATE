@@ -115,7 +115,7 @@ let socialHTML = `
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
-      loadYearGrid();
+      Cinemax : D();
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
@@ -208,39 +208,13 @@ let socialHTML = `
 </div>
 
 <!-- =============================== -->
-<!-- 🎬 RELEASE YEAR GRID -->
+<!-- 🎬 FOLLOW US GRID -->
 <!-- =============================== -->
 <div class="year-section">
-  <h3>Release year</h3>
+  <h3>Follow us 👋</h3>
   <div class="year-grid" id="yearGrid"></div>
 </div>
 
-<script>
-// ===============================
-// 📅 LOAD YEAR GRID (FIXED)
-// ===============================
-function loadYearGrid(){
-  const yearGrid = document.getElementById("yearGrid");
-
-  if (!yearGrid) return;
-
-  yearGrid.innerHTML = ""; // clear first
-
-  for (let year = 2027; year >= 1997; year--) {
-    const div = document.createElement("div");
-    div.className = "year-box";
-    div.innerText = year;
-
-    div.addEventListener("click", () => {
-      document.querySelectorAll(".year-box").forEach(el => el.classList.remove("active"));
-      div.classList.add("active");
-    });
-
-    yearGrid.appendChild(div);
-  }
-}
-
-</script>
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
