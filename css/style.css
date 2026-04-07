@@ -1079,3 +1079,52 @@ display:-webkit-box;
 -webkit-box-orient:vertical;
 overflow:hidden;
 }
+
+/* Force Desktop Layout on Mobile */
+
+html, body {
+    min-width: 1200px; /* desktop width */
+    overflow-x: auto;
+}
+
+/* Center content like desktop */
+body {
+    display: flex;
+    justify-content: center;
+}
+
+/* Main container */
+.container, 
+.main-content,
+.wrapper {
+    width: 1200px !important;
+    max-width: 1200px !important;
+}
+
+/* Prevent mobile responsive breaking */
+@media (max-width: 768px) {
+    html {
+        zoom: 0.7; /* adjust size (0.6 - 0.8 try) */
+    }
+}
+
+/* Slider fix */
+#movieSlider {
+    width: 1000px !important;
+}
+
+/* Grid fix (movies) */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) !important; /* desktop 4 columns */
+    gap: 20px;
+}
+
+/* Buttons & text keep desktop size */
+button, .btn {
+    font-size: 16px !important;
+}
+
+h1, h2, h3 {
+    font-size: inherit;
+}
