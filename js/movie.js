@@ -115,18 +115,7 @@ let socialHTML = `
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
-  <div>
-    <h2>${movie.title}</h2>
-
-    <!-- 👇 YEAR GRID PLACE -->
-    <div class="year-grid" id="yearGrid"></div>
-
-  </div>
-`;
-
-// ✅ YEARS LOAD වෙන්නේ මෙතනින්
-loadYears();
-        <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
+      <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
           <div id="trailerContainer" style="width:100%; text-align:center; margin-bottom:20px;">
