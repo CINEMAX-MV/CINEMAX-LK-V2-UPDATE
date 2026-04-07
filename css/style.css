@@ -1079,3 +1079,47 @@ display:-webkit-box;
 -webkit-box-orient:vertical;
 overflow:hidden;
 }
+
+/* ===== FORCE DESKTOP VIEW ON MOBILE (CLEAN) ===== */
+
+html {
+    width: 1200px;
+}
+
+body {
+    width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+/* Scale whole site for mobile */
+@media screen and (max-width: 768px) {
+    body {
+        transform: scale(0.65);
+        transform-origin: top left;
+        width: 1538px; /* 1200 / 0.65 ≈ fix white space */
+    }
+}
+
+/* Prevent footer jumping */
+footer {
+    position: relative;
+    width: 100%;
+}
+
+/* Keep grid like desktop */
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+/* Slider width fix */
+#movieSlider {
+    width: 100%;
+}
+
+/* General fix */
+* {
+    box-sizing: border-box;
+}
