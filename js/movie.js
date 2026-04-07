@@ -198,6 +198,23 @@ let socialHTML = `
         </div>
 
 <!-- =============================== -->
+<!-- 🌐 SOCIAL BUTTONS -->
+<!-- =============================== -->
+<div class="social-box">
+  <a href="#" class="social-btn fb">Facebook Page</a>
+  <a href="#" class="social-btn tg">Telegram Channel</a>
+  <a href="#" class="social-btn yt">Youtube Channel</a>
+</div>
+
+<!-- =============================== -->
+<!-- 🎬 RELEASE YEAR GRID -->
+<!-- =============================== -->
+<div class="year-section">
+  <h3>Release year</h3>
+  <div class="year-grid" id="yearGrid"></div>
+</div>
+
+<!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
 
