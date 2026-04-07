@@ -114,7 +114,10 @@ let socialHTML = `
       // ===============================
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
-      document.getElementById("movieDetails").innerHTML = `
+      document.getElementById("movieDetails").innerHTML = ` ... `;
+
+// 🔥 call function
+loadYearGrid();
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
@@ -216,11 +219,15 @@ let socialHTML = `
 
 <script>
 // ===============================
-// 📅 LOAD YEAR GRID
+// 📅 LOAD YEAR GRID (FIXED)
 // ===============================
-const yearGrid = document.getElementById("yearGrid");
+function loadYearGrid(){
+  const yearGrid = document.getElementById("yearGrid");
 
-if (yearGrid) {
+  if (!yearGrid) return;
+
+  yearGrid.innerHTML = ""; // clear first
+
   for (let year = 2027; year >= 1997; year--) {
     const div = document.createElement("div");
     div.className = "year-box";
@@ -234,8 +241,8 @@ if (yearGrid) {
     yearGrid.appendChild(div);
   }
 }
-</script>
 
+</script>
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
