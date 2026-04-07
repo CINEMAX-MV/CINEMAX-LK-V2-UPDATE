@@ -1279,43 +1279,32 @@ footer {
 }
 
 
-/* ===============================
-   🎬 YEAR GRID
-=============================== */
-.year-section{
-  margin-top:40px;
+/* GRID */
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-.year-section h3{
-  color:white;
-  margin-bottom:15px;
-  border-left:4px solid red;
-  padding-left:10px;
+/* YEAR BOX */
+.year-box {
+  background: #111;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid #222;
 }
 
-.year-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
+/* HOVER */
+.year-box:hover {
+  background: #1a1a1a;
+  color: red;
 }
 
-.year-btn{
-  padding:12px;
-  text-align:center;
-  background:#111;
-  color:#aaa;
-  border-radius:6px;
-  cursor:pointer;
-  transition:0.2s;
-  border:1px solid #222;
-}
-
-.year-btn:hover{
-  background:#222;
-  color:white;
-}
-
-.year-btn.active{
-  border:1px solid red;
-  color:red;
+/* ACTIVE */
+.year-box.active {
+  border: 1px solid red;
+  color: red;
 }
