@@ -115,7 +115,7 @@ let socialHTML = `
       // 🖼 RENDER MOVIE DETAILS + COMMENT SECTION
       // ===============================
       document.getElementById("movieDetails").innerHTML = `
-      𝗖𝗜𝗡𝗘𝗠𝗔𝗫 : 𝖣𝖾𝗍𝖺𝗂𝗅𝗌 𝖢𝗈𝗏𝖾𝗋𝖾𝖽 𝖡𝗒 ᴍʀ.ᴘᴇᴋsʜᴀ_ʀᴀsᴀɴᴊᴀɴᴀ 🎬
+      𝗖𝗜𝗡𝗘𝗠𝗔𝗫 : 𝖣𝖾𝗍𝖺𝗂𝗅𝗌 𝖢𝗈𝗏𝖾𝗋𝖾𝖽 𝖡𝗒 𝖬𝗋.𝖯𝖾𝗄𝗌𝗁𝖺 𝗋𝖺𝗌𝖺𝗇𝗃𝖺𝗇𝖺
       <div style="max-width:1000px;margin:auto;padding:20px;color:white;font-family:Poppins,sans-serif;">
 
           <!-- TRAILER / BIG SCREEN -->
