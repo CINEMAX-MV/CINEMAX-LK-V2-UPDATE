@@ -214,6 +214,26 @@ let socialHTML = `
   <div class="year-grid" id="yearGrid"></div>
 </div>
 
+// ===============================
+// 📅 LOAD YEAR GRID
+// ===============================
+const yearGrid = document.getElementById("yearGrid");
+
+if (yearGrid) {
+  for (let year = 2027; year >= 1997; year--) {
+    const div = document.createElement("div");
+    div.className = "year-box";
+    div.innerText = year;
+
+    div.addEventListener("click", () => {
+      document.querySelectorAll(".year-box").forEach(el => el.classList.remove("active"));
+      div.classList.add("active");
+    });
+
+    yearGrid.appendChild(div);
+  }
+}
+
 <!-- =============================== -->
 <!-- 📢 COMMENT BOX ANNOUNCEMENT -->
 <!-- =============================== -->
