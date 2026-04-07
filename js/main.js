@@ -79,7 +79,7 @@ function updateButtons(){
 
 
 /* =====================================================
-   LAST 10 MOVIES SLIDER (AUTO PLAY + CLICK OPEN FIXED)
+   🔥 NEW 3D COVERFLOW SLIDER (CENTER BIG + BLUR BG)
 ===================================================== */
 function loadLast10Slider(){
 
@@ -100,26 +100,21 @@ function loadLast10Slider(){
         const slide = document.createElement("div");
         slide.className = "slide";
 
-        slide.style.background = `
-            linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2)),
-            url('${movie.image}') center/cover no-repeat
-        `;
+        slide.style.backgroundImage = `url('${movie.image}')`;
 
         slide.onclick = () => {
             window.location.href = `movie.html?id=${realId}`;
         };
 
-        // 🔥 short description
         let shortDesc = movie.description || "No description available";
         if(shortDesc.length > 120){
             shortDesc = shortDesc.substring(0,120) + "...";
         }
 
         slide.innerHTML = `
-            <div class="slide-content">
-                <span class="movie-tag">MOVIE</span>
-                <h2>${movie.title} (${movie.year || ""})</h2>
-                <p class="desc">${shortDesc}</p>
+            <div class="slide-overlay">
+                <h2>${movie.title}</h2>
+                <p>${shortDesc}</p>
                 <button class="watch-btn">WATCH NOW</button>
             </div>
         `;
@@ -128,7 +123,6 @@ function loadLast10Slider(){
 
         const dot = document.createElement("span");
         dot.className = "dot";
-        if(index === 0) dot.classList.add("active");
         dotsContainer.appendChild(dot);
     });
 
@@ -137,7 +131,23 @@ function loadLast10Slider(){
     const dots = document.querySelectorAll(".dot");
 
     function showSlide(index){
-        slider.style.transform = `translateX(-${index * 100}%)`;
+
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active","left","right");
+
+            if(i === index){
+                slide.classList.add("active");
+            }
+            else if(i === index - 1 || (index === 0 && i === slides.length - 1)){
+                slide.classList.add("left");
+            }
+            else if(i === index + 1 || (index === slides.length - 1 && i === 0)){
+                slide.classList.add("right");
+            }
+        });
+
+        // 🔥 background blur effect
+        slider.style.backgroundImage = `url('${lastMovies[index].image}')`;
 
         dots.forEach(d => d.classList.remove("active"));
         if(dots[index]) dots[index].classList.add("active");
@@ -149,13 +159,21 @@ function loadLast10Slider(){
         showSlide(currentIndex);
     }
 
-    // ✅ AUTO SLIDE ON
-    let sliderInterval = setInterval(nextSlide, 4000);
+    function prevSlide(){
+        currentIndex--;
+        if(currentIndex < 0) currentIndex = slides.length - 1;
+        showSlide(currentIndex);
+    }
 
-    // Pause on hover (PC)
+    // INIT
+    showSlide(currentIndex);
+
+    // AUTO PLAY
+    let sliderInterval = setInterval(nextSlide, 3500);
+
     slider.addEventListener("mouseenter", () => clearInterval(sliderInterval));
     slider.addEventListener("mouseleave", () => {
-        sliderInterval = setInterval(nextSlide, 4000);
+        sliderInterval = setInterval(nextSlide, 3500);
     });
 
     // DOT CLICK
@@ -167,23 +185,25 @@ function loadLast10Slider(){
         });
     });
 
-    // 📱 MOBILE SCROLL FIX (IMPORTANT)
+    // MOBILE SWIPE
     let startX = 0;
 
     slider.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
     });
 
-    slider.addEventListener("touchmove", (e) => {
-        let moveX = e.touches[0].clientX;
+    slider.addEventListener("touchend", (e) => {
+        let endX = e.changedTouches[0].clientX;
 
-        // horizontal swipe detect
-        if(Math.abs(moveX - startX) > 10){
-            e.preventDefault(); // 🚫 stop page scrolling
+        if(startX - endX > 50){
+            nextSlide();
+        } else if(endX - startX > 50){
+            prevSlide();
         }
-    }, { passive:false });
-
+    });
 }
+
+
 /* ===== SEARCH FUNCTION ===== */
 document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("searchInput");
@@ -242,12 +262,11 @@ function sendProblem(){
     }
 
     const message = `🙋 Name: ${name}\n🙇‍♀️ User: ${user}\n🕊️ Email: ${email}\n🔰 Number: ${number}\n🔆 Problem: ${problem}`;
-    const whatsappNumber = "94740707157"; // Replace with your WhatsApp number
+    const whatsappNumber = "94740707157";
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappURL, "_blank");
 
-    // Clear form
     document.getElementById('pName').value = "";
     document.getElementById('pUser').value = "";
     document.getElementById('pEmail').value = "";
