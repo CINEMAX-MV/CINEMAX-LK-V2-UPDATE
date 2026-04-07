@@ -1135,3 +1135,48 @@ footer {
     }
 
 }
+
+/* ===== 3 MOVIES SLIDER (HORIZONTAL) ===== */
+
+#movieSlider{
+    display: flex;
+    gap: 20px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    padding: 20px;
+}
+
+/* each slide */
+.slide{
+    min-width: calc(100% / 3 - 14px); /* 3 per view */
+    height: 200px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    transition: 0.4s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* center movie */
+.slide.active{
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+/* side movies */
+.slide.side{
+    transform: scale(0.95);
+    opacity: 0.7;
+}
+
+/* overlay */
+.slide-content{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #fff;
+    font-size: 12px;
+}
