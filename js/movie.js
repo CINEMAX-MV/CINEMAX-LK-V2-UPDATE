@@ -125,15 +125,6 @@ let socialHTML = `
               <img src="${movie.image}" style="width:100%;max-height:500px;object-fit:cover;border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,0.3);">
             `}
           </div>
-          <!-- 🎬 RELEASE YEAR -->
-  <div style="margin-top:40px;">
-    <h3 style="border-left:4px solid red;padding-left:10px;">Release year</h3>
-    <div class="year-grid" id="yearGrid"></div>
-  </div>
-
-</div>
-`;
-      loadYears();
 
           <!-- DESCRIPTION -->
           <div style="margin-top:20px;">
@@ -480,27 +471,3 @@ function goAdPage(link){
   window.location.href = "adpage.html?id=" + movieId + "&play=" + encodeURIComponent(link);
 }
 
-// ===============================
-// 📅 GENERATE YEARS GRID
-// ===============================
-function loadYears(){
-  const yearGrid = document.getElementById("yearGrid");
-  if(!yearGrid) return;
-
-  let currentYear = new Date().getFullYear();
-
-  for(let y = currentYear; y >= 1977; y--){
-    let div = document.createElement("div");
-    div.className = "year-btn";
-    div.innerText = y;
-
-    div.onclick = () => {
-      document.querySelectorAll(".year-btn").forEach(b => b.classList.remove("active"));
-      div.classList.add("active");
-
-      window.location.href = "index.html?year=" + y;
-    };
-
-    yearGrid.appendChild(div);
-  }
-} 
