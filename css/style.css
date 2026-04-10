@@ -1308,3 +1308,21 @@ footer {
   border: 1px solid red;
   color: red;
 }
+
+/* AI+Whatsapp */
+
+.ai-text {
+  font-weight: bold;
+  font-size: 14px;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position
+}
