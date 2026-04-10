@@ -98,7 +98,7 @@ let socialHTML = `
       <div class="download-msg">
         Download via 
         <img src="https://img.icons8.com/ios-filled/48/ffffff/chatgpt.png" width="18">
-        AI+WhatsApp
+        <span class="ai-text">AI+WhatsApp</span>
       </div>
     </a>
     
