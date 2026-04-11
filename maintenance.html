@@ -1,336 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinemax Maintenance</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:#020617;
-color:white;
-overflow:hidden;
-padding:20px;
-}
-
-/* animated gradient */
-
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:linear-gradient(130deg,#020617,#0f172a,#1e293b,#020617);
-background-size:400% 400%;
-animation:bgmove 18s ease infinite;
-z-index:-2;
-}
-
-@keyframes bgmove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-/* floating particles */
-
-body::after{
-content:"";
-position:fixed;
-inset:0;
-background-image:
-radial-gradient(2px 2px at 20% 30%,white,transparent),
-radial-gradient(2px 2px at 80% 60%,white,transparent),
-radial-gradient(2px 2px at 50% 80%,white,transparent),
-radial-gradient(2px 2px at 10% 70%,white,transparent);
-opacity:0.15;
-animation:particles 60s linear infinite;
-z-index:-1;
-}
-
-@keyframes particles{
-0%{transform:translateY(0)}
-100%{transform:translateY(-400px)}
-}
-
-/* main card */
-
-.card{
-
-width:100%;
-max-width:640px;
-text-align:center;
-
-padding:50px 35px;
-
-background:rgba(255,255,255,0.05);
-border-radius:22px;
-
-border:1px solid rgba(255,255,255,0.08);
-
-backdrop-filter:blur(16px);
-
-box-shadow:0 20px 80px rgba(0,0,0,0.8);
-
-animation:fade 1s ease;
-
-}
-
-/* icon */
-
-.icon{
-font-size:60px;
-margin-bottom:10px;
-animation:spin 8s linear infinite;
-}
-
-@keyframes spin{
-0%{transform:rotate(0)}
-100%{transform:rotate(360deg)}
-}
-
-/* title */
-
-h1{
-font-size:32px;
-margin-bottom:10px;
-}
-
-/* subtitle */
-
-p{
-font-size:16px;
-opacity:0.8;
-line-height:1.6;
-margin-bottom:30px;
-}
-
-/* progress bar */
-
-.progress{
-
-width:100%;
-height:10px;
-
-background:rgba(255,255,255,0.1);
-
-border-radius:10px;
-
-overflow:hidden;
-
-margin-bottom:35px;
-
-}
-
-.progress span{
-
-display:block;
-height:100%;
-width:0%;
-
-background:linear-gradient(90deg,#22c55e,#4ade80);
-
-animation:load 6s linear infinite;
-
-}
-
-@keyframes load{
-0%{width:0}
-100%{width:100%}
-}
-
-/* countdown */
-
-.countdown{
-
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:12px;
-
-margin-bottom:30px;
-
-}
-
-.time{
-
-background:rgba(255,255,255,0.06);
-
-padding:12px 16px;
-
-border-radius:12px;
-
-min-width:65px;
-
-}
-
-.time h2{
-font-size:20px;
-}
-
-.time span{
-font-size:12px;
-opacity:0.7;
-}
-
-/* button */
-
-.btn{
-
-display:inline-block;
-
-padding:12px 24px;
-
-border-radius:10px;
-
-background:#22c55e;
-
-color:white;
-
-text-decoration:none;
-
-font-weight:500;
-
-transition:0.3s;
-
-}
-
-.btn:hover{
-transform:translateY(-2px);
-box-shadow:0 0 18px #22c55e;
-}
-
-/* footer */
-
-footer{
-margin-top:30px;
-font-size:13px;
-opacity:0.6;
-}
-
-/* fade */
-
-@keyframes fade{
-
-from{
-opacity:0;
-transform:translateY(20px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-/* mobile */
-
-@media(max-width:480px){
-
-h1{
-font-size:24px;
-}
-
-p{
-font-size:14px;
-}
-
-.icon{
-font-size:50px;
-}
-
-.time{
-min-width:55px;
-}
-
-.time h2{
-font-size:17px;
-}
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMax | Scheduled Maintenance</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-bg: #030712;
+            --secondary-bg: #0f172a;
+            --main-accent: #16ff83;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --glass: rgba(15, 23, 42, 0.7);
+            --border: rgba(22, 255, 131, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--primary-bg);
+            color: var(--text-main);
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* --- BACKGROUND & EFFECTS --- */
+
+        /* 1. Moving "CineMax" Text Background */
+        body::before {
+            content: "CINEMAX CINEMAX CINEMAX CINEMAX CINEMAX";
+            font-family: 'Chakra Petch', sans-serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 15vw;
+            font-weight: 700;
+            white-space: nowrap;
+            color: rgba(22, 255, 131, 0.02);
+            -webkit-text-stroke: 1px rgba(22, 255, 131, 0.03);
+            letter-spacing: 0.2em;
+            z-index: -3;
+            animation: textFlow 30s linear infinite;
+        }
+
+        @keyframes textFlow {
+            0% { transform: translate(-100%, -50%) rotate(-15deg); }
+            100% { transform: translate(50%, -50%) rotate(-15deg); }
+        }
+
+        /* 2. Gradient Glows */
+        .glow-sphere {
+            position: fixed;
+            width: 40vh;
+            height: 40vh;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(22, 255, 131, 0.1) 0%, transparent 70%);
+            filter: blur(50px);
+            z-index: -2;
+            opacity: 0.6;
+        }
+
+        .glow-1 { top: -10vh; left: -10vh; animation: pulseGlow 10s infinite; }
+        .glow-2 { bottom: -15vh; right: -15vh; animation: pulseGlow 15s infinite 2s; }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+        }
+
+        /* 3. Scan Lines Effect */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+            background-size: 100% 4px;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        /* --- MAIN CONTAINER --- */
+
+        .card {
+            width: 100%;
+            max-width: 680px;
+            padding: 60px 40px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            text-align: center;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+            animation: cardEntrance 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative Corner */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(225deg, var(--main-accent) 10%, transparent 50%);
+            opacity: 0.2;
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* --- HEADER & TEXT --- */
+
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .icon {
+            font-size: 55px;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(22, 255, 131, 0.5));
+            animation: pulseIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1) rotate(0); filter: drop-shadow(0 0 10px rgba(22, 255, 131, 0.5)); }
+            50% { transform: scale(1.05) rotate(5deg); filter: drop-shadow(0 0 15px rgba(22, 255, 131, 0.8)); }
+        }
+
+        h1 {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: clamp(30px, 6vw, 42px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #fff 40%, var(--main-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 45px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .highlight {
+            color: var(--main-accent);
+            font-weight: 600;
+        }
+
+        /* --- PROGRESS SECTION --- */
+
+        .progress-container {
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .progress-label {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--main-accent);
+            margin-bottom: 10px;
+            opacity: 0.8;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(22, 255, 131, 0.05);
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 75%; /* Initial progress */
+            background: linear-gradient(90deg, #10b981, var(--main-accent));
+            border-radius: 4px;
+            position: absolute;
+            animation: progressFill 10s ease-out infinite;
+            box-shadow: 0 0 15px var(--main-accent);
+        }
+
+        /* Subtle scan line on the progress bar */
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes progressFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes shine {
+            100% { left: 100%; }
+        }
+
+        /* --- COUNTDOWN SECTION --- */
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 45px;
+        }
+
+        .time-block {
+            background: rgba(22, 255, 131, 0.02);
+            border: 1px solid rgba(22, 255, 131, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .time-block:hover {
+            border-color: rgba(22, 255, 131, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .time-val {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--main-accent);
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(22, 255, 131, 0.3);
+        }
+
+        .time-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* --- REFRESH BUTTON --- */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: var(--main-accent);
+            color: #030712;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Chakra Petch', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 15px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(22, 255, 131, 0.3);
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(22, 255, 131, 0.5);
+        }
+
+        /* Icon within button */
+        .btn-icon {
+            font-size: 1.1em;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover .btn-icon {
+            transform: rotate(180deg);
+        }
+
+        /* --- FOOTER --- */
+
+        footer {
+            margin-top: 50px;
+            font-size: 13px;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+
+        @media (max-width: 580px) {
+            .card { padding: 40px 20px; }
+            .header-section { flex-direction: column; gap: 5px; text-align: center;}
+            .icon { font-size: 45px; }
+            .countdown { gap: 8px; }
+            .time-block { padding: 15px 5px; }
+            .time-val { font-size: 28px; }
+            .time-label { font-size: 10px; letter-spacing: 0.5px;}
+            h1 { font-size: 28px;}
+        }
+
+    </style>
 </head>
 
 <body>
 
-<div class="card">
+    <div class="glow-sphere glow-1"></div>
+    <div class="glow-sphere glow-2"></div>
 
-<div class="icon">⚙️</div>
+    <div class="card">
+        
+        <div class="header-section">
+            <span class="icon">🛰️</span>
+            <h1>SYSTEM MAINTENANCE</h1>
+        </div>
 
-<h1>Cinemax is Updating</h1>
+        <p class="subtitle">
+            CineMax is undergoing a scheduled upgrade to improve performance. We'll be back shortly with a <span class="highlight">better movie experience</span>. Thank you for your patience!
+        </p>
 
-<p>
-Our website is currently under maintenance.<br>
-We are upgrading the system to deliver a better movie experience.
-</p>
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Deployment in progress</span>
+                <span id="percent">75%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
 
-<div class="progress">
-<span></span>
-</div>
+        <div class="countdown">
+            <div class="time-block">
+                <div class="time-val" id="h">02</div>
+                <div class="time-label">Hours</div>
+            </div>
+            <div class="time-block">
+                <div class="time-val" id="m">15</div>
+                <div class="time-label">Minutes</div>
+            </div>
+            <div class="time-block">
+                <div class="time-val" id="s">45</div>
+                <div class="time-label">Seconds</div>
+            </div>
+        </div>
 
-<div class="countdown">
+        <a href="" class="btn">
+            <span class="btn-icon">🔄</span>
+            Refresh Page
+        </a>
 
-<div class="time">
-<h2 id="h">00</h2>
-<span>Hours</span>
-</div>
+        <footer>
+            © <script>document.write(new Date().getFullYear())</script> CineMax Movie. System ID: CM-U-0226.
+        </footer>
 
-<div class="time">
-<h2 id="m">00</h2>
-<span>Minutes</span>
-</div>
+    </div>
 
-<div class="time">
-<h2 id="s">00</h2>
-<span>Seconds</span>
-</div>
+    <script>
+        // --- 1. COUNTDOWN ---
+        let time = 2 * 60 * 60 + 15 * 60 + 45; // 2 hours, 15 minutes, 45 seconds
 
-</div>
+        function updateCountdown() {
+            let h = Math.floor(time / 3600);
+            let m = Math.floor((time % 3600) / 60);
+            let s = time % 60;
 
-<a href="" class="btn">Refresh Page</a>
+            document.getElementById("h").innerText = String(h).padStart(2, "0");
+            document.getElementById("m").innerText = String(m).padStart(2, "0");
+            document.getElementById("s").innerText = String(s).padStart(2, "0");
 
-<footer>
-© 2026 Cinemax Movie
-</footer>
+            if (time > 0) time--;
+        }
 
-</div>
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
 
-<script>
+        // --- 2. PROGRESS BAR ANIMATION ---
+        // (This simulates the progress bar filling up within the 10-second animation duration defined in CSS)
+        function updateProgress() {
+            const progressBarFill = document.querySelector('.progress-bar-fill');
+            const percentLabel = document.getElementById('percent');
 
-let time = 3 * 60 * 60;
+            // Listen for the start of the CSS animation
+            progressBarFill.addEventListener('animationiteration', () => {
+                // You can reset or update the percentage label here if needed
+                // For simplicity, we are just keeping the initial percent label
+            });
 
-function update(){
+            // Calculate percentage based on current width (this is tricky with CSS animations)
+            // A more precise approach would involve JS-driven animation for the percentage text.
+        }
+        
+        updateProgress();
 
-let h = Math.floor(time/3600);
-let m = Math.floor((time%3600)/60);
-let s = time%60;
-
-document.getElementById("h").innerText = String(h).padStart(2,"0");
-document.getElementById("m").innerText = String(m).padStart(2,"0");
-document.getElementById("s").innerText = String(s).padStart(2,"0");
-
-if(time>0) time--;
-
-}
-
-setInterval(update,1000);
-
-</script>
+    </script>
 
 </body>
 </html>
