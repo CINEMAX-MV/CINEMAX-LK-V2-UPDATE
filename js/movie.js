@@ -94,7 +94,7 @@ let socialHTML = `
     </a>
 
     <!-- MESSAGE BOX CLICK = WHATSAPP -->
-    <a href="bots.html?cmd=${command}&link=${encodeURIComponent(movieLink)}" target="_blank" style="text-decoration:none;">
+    <a href="ai.html?title=${encodeURIComponent(movie.title)}&link=${encodeURIComponent(movieLink)}&cmd=${command}" target="_blank" style="text-decoration:none;">
       <div class="download-msg">
         Download via 
         <img src="https://img.icons8.com/ios-filled/48/ffffff/chatgpt.png" width="18">
