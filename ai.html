@@ -132,14 +132,14 @@ function send(){
       addMsg(`
       <div class="movie-card">
         <h2>🎬 ${title}</h2>
-        ⭐ IMDb: 7.2/10 <br><br>
+         ⭐ IMDb: ${movie.imdbRating} <br><br>
 
-        📖 Description:<br>
-        This is a fantasy adventure movie with emotional storytelling and beautiful visuals.<br><br>
+        📖 ${movie.Plot} <br><br>
 
-        🎭 Genre: Animation / Adventure / Drama<br>
-        ⏱ Duration: 1h 34m<br>
-        📅 Year: 1997<br>
+        🎭 ${movie.Genre} <br>
+        ⏱ ${movie.Runtime} <br>
+        📅 ${movie.Year} <br>
+        🎬 Director: ${movie.Director}
       </div>
       `,"bot");
 
