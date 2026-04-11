@@ -6,15 +6,15 @@
   <style>
     body{
       margin:0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+      font-family:sans-serif;
+      background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
       color:white;
     }
 
     .container{
       max-width:500px;
       margin:auto;
-      padding:15px;
+      padding:10px;
     }
 
     .chat{
@@ -38,53 +38,39 @@
 
     .bot{
       background:rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    .input-box{
-      display:flex;
-      gap:10px;
+      backdrop-filter:blur(10px);
     }
 
     input{
-      flex:1;
-      padding:12px;
+      width:75%;
+      padding:10px;
       border:none;
       border-radius:10px;
-      outline:none;
     }
 
     button{
-      padding:12px 15px;
+      padding:10px;
       border:none;
       border-radius:10px;
       background:#00c6ff;
-      color:black;
-      cursor:pointer;
       font-weight:bold;
-    }
-
-    .movie-card{
-      background:rgba(255,255,255,0.1);
-      padding:15px;
-      border-radius:15px;
-      margin-top:10px;
+      cursor:pointer;
     }
 
     .download-btn{
       display:inline-block;
-      margin:5px;
+      margin:6px;
       padding:10px 15px;
-      border-radius:25px;
+      border-radius:20px;
       background:linear-gradient(45deg,#00ffcc,#00c6ff);
       color:black;
       font-weight:bold;
       cursor:pointer;
-      transition:0.3s;
     }
 
-    .download-btn:hover{
-      transform:scale(1.1);
+    img{
+      width:100%;
+      border-radius:10px;
     }
 
   </style>
@@ -96,75 +82,101 @@
 
   <div class="chat" id="chat"></div>
 
-  <div class="input-box">
-    <input id="input" placeholder="Type something..." />
-    <button onclick="send()">Send</button>
-  </div>
+  <input id="input" placeholder="Type message..." />
+  <button onclick="send()">Send</button>
 
 </div>
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
+const API_KEY = "AIzaSyCowQzN2EDdBqx4XtgXBATRAt6z3YTF1yY";
 
+const params = new URLSearchParams(window.location.search);
 const title = params.get("title");
 const link = params.get("link");
 const cmd = params.get("cmd");
-
-let step = 0;
 
 function addMsg(text,type){
   document.getElementById("chat").innerHTML += 
     `<div class="msg ${type}">${text}</div>`;
 }
 
+async function askAI(userMsg){
+
+  let prompt = `
+You are a smart movie assistant. Answer in Sinhala.
+
+Movie: ${title}
+
+User: ${userMsg}
+
+If user asks about movie details, give full real details like:
+- IMDb rating
+- story
+- year
+- actors
+- director
+- everything
+
+If user wants download, just say ask which bot.
+`;
+
+  let res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
+    {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        contents:[{parts:[{text: prompt}]}]
+      })
+    }
+  );
+
+  let data = await res.json();
+
+  return data.candidates?.[0]?.content?.parts?.[0]?.text || "Error 😢";
+}
+
 function send(){
+
   let input = document.getElementById("input");
   let text = input.value;
   input.value = "";
 
   addMsg(text,"user");
 
-  setTimeout(()=>{
-
-    if(step === 0){
-
+  // DOWNLOAD detect
+  if(text.toLowerCase().includes("download")){
+    
+    setTimeout(()=>{
       addMsg(`
-      <div class="movie-card">
-        <h2>🎬 ${title}</h2>
-         ⭐ IMDb: ${movie.imdbRating} <br><br>
+      🤖 ඔයාට මොන bot එකෙන්ද download කරන්න ඕනෙ?<br><br>
 
-        📖 ${movie.Plot} <br><br>
-
-        🎭 ${movie.Genre} <br>
-        ⏱ ${movie.Runtime} <br>
-        📅 ${movie.Year} <br>
-        🎬 Director: ${movie.Director}
-      </div>
+      <div class="download-btn" onclick="download(1)">Bot 1</div>
+      <div class="download-btn" onclick="download(2)">Bot 2</div>
+      <div class="download-btn" onclick="download(3)">Bot 3</div>
       `,"bot");
+    },500);
 
-      step = 1;
-    }
+    return;
+  }
 
-    else if(step === 1){
-      addMsg("📥 ඔයාට මේ ෆිල්ම් එක download කරන්න ඕනෙද?", "bot");
-      step = 2;
-    }
+  // DIRECT bot select
+  if(text.includes("bot 1")){
+    download(1); return;
+  }
+  if(text.includes("bot 2")){
+    download(2); return;
+  }
+  if(text.includes("bot 3")){
+    download(3); return;
+  }
 
-    else if(step === 2){
+  // AI response
+  askAI(text).then(reply=>{
+    addMsg(reply,"bot");
+  });
 
-      addMsg(`
-      🤖 Bot එකක් තෝරන්න:<br><br>
-
-      <div class="download-btn" onclick="download(1)">🚀 Bot 1</div>
-      <div class="download-btn" onclick="download(2)">⚡ Bot 2</div>
-      <div class="download-btn" onclick="download(3)">🔥 Bot 3</div>
-      `,"bot");
-
-      step = 3;
-    }
-
-  },700);
 }
 
 
@@ -172,8 +184,8 @@ function download(bot){
 
   let number;
 
-  if(bot==1) number="94740707157";
-  if(bot==2) number="94740273359";
+  if(bot==1) number="947XXXXXXXX";
+  if(bot==2) number="947YYYYYYYY";
   if(bot==3) number="947ZZZZZZZZ";
 
   let message = encodeURIComponent(cmd.trim() + " " + link);
