@@ -144,7 +144,7 @@
     const finalCmd = getAutoCommand(movieLink);
 
     window.onload = () => {
-        addMessage(`හායි! මම Cinemax AI. මම දැනට ${currentMovieTitle} ගැන විස්තර දෙන්න සූදානම්. ඔබට මොනවාද දැනගන්න ඕනේ?`, "ai-msg");
+        addMessage(`හායි! මම Cinemax AI. මම දැනට ${currentMovieTitle} ගැන විස්තර දෙන්න සූදානම්. ඔයාට ඕක වට්සැප් එකෙන් ඩවුන්ලෝඩ් කරගන්න උදව් වෙන්නත් මට පුලුවන්. ඔබට මොනවාද දැනගන්න ඕනේ?`, "ai-msg");
     };
 
     async function getMovieDataFromJSON() {
@@ -193,6 +193,7 @@
             <div class="bot-options">
                 <a href="https://wa.me/94740707157?text=${encodeURIComponent(finalCmd + movieLink)}" target="_blank" class="download-btn">WhatsApp Server 01</a>
                 <a href="https://wa.me/94762320234?text=${encodeURIComponent(finalCmd + movieLink)}" target="_blank" class="download-btn">WhatsApp Server 02</a>
+                <a href="https://wa.me/94762320234?text=${encodeURIComponent(finalCmd + movieLink)}" target="_blank" class="download-btn">WhatsApp Server 02</a>
             </div>
         `;
         chatContainer.appendChild(optionsDiv);
@@ -220,7 +221,7 @@
                 const aiResponse = await getGeminiResponse(text);
                 addMessage(aiResponse, "ai-msg");
             } catch (e) {
-                addMessage("සම්බන්ධ වීමට නොහැකි වුණා. නැවත උත්සාහ කරන්න.", "ai-msg");
+                addMessage("API-KEY එකට සම්බන්ධ වීමට නොහැකි වුණා. නැවත උත්සාහ කරන්න.", "ai-msg");
             }
             resetBtn();
         }
