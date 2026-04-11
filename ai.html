@@ -6,7 +6,7 @@
   <style>
     body{
       margin:0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family:Segoe UI, sans-serif;
       background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
       color:white;
     }
@@ -27,7 +27,7 @@
       padding:12px;
       margin:8px 0;
       border-radius:12px;
-      max-width:80%;
+      max-width:85%;
     }
 
     .user{
@@ -64,16 +64,9 @@
       font-weight:bold;
     }
 
-    .movie-card{
-      background:rgba(255,255,255,0.1);
-      padding:15px;
-      border-radius:15px;
-      margin-top:10px;
-    }
-
     .download-btn{
       display:inline-block;
-      margin:5px;
+      margin:6px;
       padding:10px 15px;
       border-radius:25px;
       background:linear-gradient(45deg,#00ffcc,#00c6ff);
@@ -87,6 +80,11 @@
       transform:scale(1.1);
     }
 
+    .movie-card{
+      background:rgba(255,255,255,0.1);
+      padding:15px;
+      border-radius:15px;
+    }
   </style>
 </head>
 
@@ -97,7 +95,7 @@
   <div class="chat" id="chat"></div>
 
   <div class="input-box">
-    <input id="input" placeholder="Type something..." />
+    <input id="input" placeholder="Type message..." />
     <button onclick="send()">Send</button>
   </div>
 
@@ -107,76 +105,109 @@
 
 const params = new URLSearchParams(window.location.search);
 
-const title = params.get("title");
-const link = params.get("link");
-const cmd = params.get("cmd");
+const title = params.get("title") || "Unknown Movie";
+const link = params.get("link") || "#";
+const cmd = params.get("cmd") || "download";
 
 let step = 0;
 
 function addMsg(text,type){
   document.getElementById("chat").innerHTML += 
     `<div class="msg ${type}">${text}</div>`;
+  document.getElementById("chat").scrollTop = 999999;
 }
 
-function send(){
-  let input = document.getElementById("input");
-  let text = input.value;
-  input.value = "";
+// 🚀 ON LOAD GREETING
+window.onload = () => {
 
-  addMsg(text,"user");
+  addMsg(`👋 හායි , මම MR.පේක්ෂ.<br>
+  මම ආවෙ මේ ෆිල්ම් එක ඔයාට වට්සැප් එකෙන්ම download කරලා බලන්න උදව් වෙන්න.<br><br>
+  මොකෝ කියන්නෙ ඔයා කැමතිද එහෙම 😍`,"bot");
+
+  setTimeout(showMovie,1200);
+};
+
+// 🎬 MOVIE DETAILS
+function showMovie(){
+
+  addMsg(`
+  <div class="movie-card">
+    <h2>🎬 ${title}</h2>
+
+    ⭐ IMDb: 8.1/10<br>
+    📅 Year: 2024<br>
+    ⏱ Duration: 2h 10m<br>
+    🎭 Genre: Action / Adventure / Drama<br><br>
+
+    📖 Description:<br>
+    A high-quality cinematic experience with strong story, visuals and emotion.
+  </div>
+  `,"bot");
 
   setTimeout(()=>{
-
-    if(step === 0){
-
-      addMsg(`
-      <div class="movie-card">
-        <h2>🎬 ${title}</h2>
-        ⭐ IMDb: 7.2/10 <br><br>
-
-        📖 Description:<br>
-        This is a fantasy adventure movie with emotional storytelling and beautiful visuals.<br><br>
-
-        🎭 Genre: Animation / Adventure / Drama<br>
-        ⏱ Duration: 1h 34m<br>
-        📅 Year: 1997<br>
-      </div>
-      `,"bot");
-
-      step = 1;
-    }
-
-    else if(step === 1){
-      addMsg("📥 ඔයාට මේ ෆිල්ම් එක download කරන්න ඕනෙද?", "bot");
-      step = 2;
-    }
-
-    else if(step === 2){
-
-      addMsg(`
-      🤖 Bot එකක් තෝරන්න:<br><br>
-
-      <div class="download-btn" onclick="download(1)">🚀 Bot 1</div>
-      <div class="download-btn" onclick="download(2)">⚡ Bot 2</div>
-      <div class="download-btn" onclick="download(3)">🔥 Bot 3</div>
-      `,"bot");
-
-      step = 3;
-    }
-
-  },700);
+    addMsg("😏 ඔයාට මේ ෆිල්ම් එක download කරන්න ඕනෙද?","bot");
+    step = 1;
+  },1000);
 }
 
+// 💬 INPUT HANDLER
+function send(){
+  let input = document.getElementById("input");
+  let text = input.value.trim();
+  input.value = "";
 
+  if(!text) return;
+
+  addMsg(text,"user");
+  let msg = text.toLowerCase();
+
+  // 🔒 WHO MADE YOU
+  if(msg.includes("who made you") || msg.includes("who created you")){
+    addMsg("😞 මාව හැදුවේ පේක්ශ රසාංජන","bot");
+    return;
+  }
+
+  // ❌ BLOCK OTHER QUESTIONS
+  if(step === 0){
+    addMsg("🤐 මට මේ ප්‍රශ්න වලට උත්තර සපයන්න අවසර දීලා නෑ යාලුවා 🤐","bot");
+    return;
+  }
+
+  // 🚀 DOWNLOAD TRIGGER
+  if(msg.includes("download") || msg.includes("yes") || msg.includes("ඔව්") || msg.includes("ok") || msg.includes("හා")){
+    showBots();
+    return;
+  }
+
+  if(step === 1){
+    addMsg("🤐 මට මේ ප්‍රශ්න වලට උත්තර සපයන්න අවසර දීලා නෑ යාලුවා 🤐","bot");
+  }
+}
+
+// 🤖 BOT SELECTION
+function showBots(){
+
+  step = 2;
+
+  addMsg(`
+  🤖 Bot එකක් තෝරන්න:<br><br>
+
+  <div class="download-btn" onclick="download(1)">🚀 Bot 1</div>
+  <div class="download-btn" onclick="download(2)">⚡ Bot 2</div>
+  <div class="download-btn" onclick="download(3)">🔥 Bot 3</div>
+  `,"bot");
+}
+
+// 📥 WHATSAPP REDIRECT
 function download(bot){
 
-  let number;
+  let number = "";
 
-  if(bot==1) number="947XXXXXXXX";
-  if(bot==2) number="947YYYYYYYY";
-  if(bot==3) number="947ZZZZZZZZ";
+  if(bot==1) number="94711111111";
+  if(bot==2) number="94722222222";
+  if(bot==3) number="94733333333";
 
-  let message = encodeURIComponent(cmd.trim() + " " + link);
+  let message = encodeURIComponent(cmd + " " + title + " " + link);
 
   window.location.href = `https://wa.me/${number}?text=${message}`;
 }
