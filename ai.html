@@ -81,9 +81,17 @@
     }
 
     .movie-card{
-      background:rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.08);
       padding:15px;
       border-radius:15px;
+      margin-top:10px;
+    }
+
+    .poster{
+      width:100%;
+      max-width:220px;
+      border-radius:12px;
+      box-shadow:0 8px 25px rgba(0,0,0,0.4);
     }
   </style>
 </head>
@@ -105,9 +113,18 @@
 
 const params = new URLSearchParams(window.location.search);
 
-const title = params.get("title") || "Unknown Movie";
-const link = params.get("link") || "#";
-const cmd = params.get("cmd") || "download";
+const movie = {
+  title: params.get("title") || "Unknown Movie",
+  link: params.get("link") || "#",
+  cmd: params.get("cmd") || "download",
+  image: params.get("image") || "https://via.placeholder.com/300x450",
+  imdb: 8.2,
+  release_date: "2024-05-10",
+  director: "Unknown Director",
+  runtime: "2h 10m",
+  genre: "Action / Adventure / Drama",
+  description: "A high-quality cinematic experience with strong story, visuals and emotion."
+};
 
 let step = 0;
 
@@ -117,7 +134,7 @@ function addMsg(text,type){
   document.getElementById("chat").scrollTop = 999999;
 }
 
-// 🚀 ON LOAD GREETING
+// 🚀 ON LOAD
 window.onload = () => {
 
   addMsg(`👋 හායි , මම MR.පේක්ෂ.<br>
@@ -127,31 +144,44 @@ window.onload = () => {
   setTimeout(showMovie,1200);
 };
 
-// 🎬 MOVIE DETAILS
+// 🎬 MOVIE DETAILS (FULL UPDATED)
 function showMovie(){
 
   addMsg(`
-  <div class="movie-card">
-    <h2>🎬 ${title}</h2>
+    <div class="movie-card">
 
-    ⭐ IMDb: 8.1/10<br>
-    📅 Year: 2024<br>
-    ⏱ Duration: 2h 10m<br>
-    🎭 Genre: Action / Adventure / Drama<br><br>
+      <h2>🎬 ${movie.title}</h2>
 
-    📖 Description:<br>
-    A high-quality cinematic experience with strong story, visuals and emotion.
-  </div>
+      <div style="display:flex;gap:15px;flex-wrap:wrap;">
+
+        <img class="poster" src="${movie.image}">
+
+        <div style="flex:1;min-width:200px;line-height:1.8;">
+          ⭐ IMDb: ${movie.imdb}/10<br>
+          📅 Release Date: ${movie.release_date}<br>
+          🎬 Director: ${movie.director}<br>
+          ⏳ Runtime: ${movie.runtime}<br>
+          🎭 Genre: ${movie.genre}
+        </div>
+
+      </div>
+
+      <p style="margin-top:15px;color:#ddd;line-height:1.6;">
+        ${movie.description}
+      </p>
+
+    </div>
   `,"bot");
 
   setTimeout(()=>{
     addMsg("😏 ඔයාට මේ ෆිල්ම් එක download කරන්න ඕනෙද?","bot");
     step = 1;
-  },1000);
+  },1200);
 }
 
-// 💬 INPUT HANDLER
+// 💬 INPUT
 function send(){
+
   let input = document.getElementById("input");
   let text = input.value.trim();
   input.value = "";
@@ -161,27 +191,31 @@ function send(){
   addMsg(text,"user");
   let msg = text.toLowerCase();
 
-  // 🔒 WHO MADE YOU
-  if(msg.includes("who made you") || msg.includes("who created you")){
+  // WHO MADE YOU
+  if(msg.includes("who made you") || msg.includes("ඔයාව හැදුවේ කවුද")){
     addMsg("😞 මාව හැදුවේ පේක්ශ රසාංජන","bot");
     return;
   }
 
-  // ❌ BLOCK OTHER QUESTIONS
+  // BLOCK ALL OTHER QUESTIONS
   if(step === 0){
     addMsg("🤐 මට මේ ප්‍රශ්න වලට උත්තර සපයන්න අවසර දීලා නෑ යාලුවා 🤐","bot");
     return;
   }
 
-  // 🚀 DOWNLOAD TRIGGER
-  if(msg.includes("download") || msg.includes("yes") || msg.includes("ඔව්") || msg.includes("ok") || msg.includes("හා")){
+  // DOWNLOAD TRIGGER
+  if(
+    msg.includes("download") ||
+    msg.includes("yes") ||
+    msg.includes("ඔව්") ||
+    msg.includes("ok") ||
+    msg.includes("හා")
+  ){
     showBots();
     return;
   }
 
-  if(step === 1){
-    addMsg("🤐 මට මේ ප්‍රශ්න වලට උත්තර සපයන්න අවසර දීලා නෑ යාලුවා 🤐","bot");
-  }
+  addMsg("🤐 මට මේ ප්‍රශ්න වලට උත්තර සපයන්න අවසර දීලා නෑ යාලුවා 🤐","bot");
 }
 
 // 🤖 BOT SELECTION
@@ -190,24 +224,26 @@ function showBots(){
   step = 2;
 
   addMsg(`
-  🤖 Bot එකක් තෝරන්න:<br><br>
+    🤖 Bot එකක් තෝරන්න:<br><br>
 
-  <div class="download-btn" onclick="download(1)">🚀 Bot 1</div>
-  <div class="download-btn" onclick="download(2)">⚡ Bot 2</div>
-  <div class="download-btn" onclick="download(3)">🔥 Bot 3</div>
+    <div class="download-btn" onclick="download(1)">🚀 Bot 1</div>
+    <div class="download-btn" onclick="download(2)">⚡ Bot 2</div>
+    <div class="download-btn" onclick="download(3)">🔥 Bot 3</div>
   `,"bot");
 }
 
-// 📥 WHATSAPP REDIRECT
+// 📥 WHATSAPP
 function download(bot){
 
   let number = "";
 
-  if(bot==1) number="94711111111";
-  if(bot==2) number="94722222222";
+  if(bot==1) number="94740273359";
+  if(bot==2) number="94740707157";
   if(bot==3) number="94733333333";
 
-  let message = encodeURIComponent(cmd + " " + title + " " + link);
+  let message = encodeURIComponent(
+    movie.cmd + " " + movie.link
+  );
 
   window.location.href = `https://wa.me/${number}?text=${message}`;
 }
