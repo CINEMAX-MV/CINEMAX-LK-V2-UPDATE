@@ -116,14 +116,13 @@ const params = new URLSearchParams(window.location.search);
 const movie = {
   title: params.get("title") || "Unknown Movie",
   link: params.get("link") || "#",
-  cmd: params.get("cmd") || "download",
   image: params.get("image") || "https://via.placeholder.com/300x450",
-  imdb: 8.2,
-  release_date: "2024-05-10",
-  director: "Unknown Director",
-  runtime: "2h 10m",
-  genre: "Action / Adventure / Drama",
-  description: "A high-quality cinematic experience with strong story, visuals and emotion."
+  imdb: params.get("imdb") || "N/A",
+  release_date: params.get("release_date") || "N/A",
+  director: params.get("director") || "N/A",
+  runtime: params.get("runtime") || "N/A",
+  genre: params.get("genre") || "N/A",
+  description: params.get("description") || "No description available"
 };
 
 let step = 0;
