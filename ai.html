@@ -1,196 +1,209 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Movie Assistant</title>
+<title>AI Movie Assistant</title>
 
-  <style>
-    body{
-      margin:0;
-      font-family:sans-serif;
-      background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-      color:white;
-    }
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+}
 
-    .container{
-      max-width:500px;
-      margin:auto;
-      padding:10px;
-    }
+.container{
+  max-width:500px;
+  margin:auto;
+  padding:10px;
+}
 
-    .chat{
-      height:70vh;
-      overflow-y:auto;
-      padding:10px;
-    }
+.header{
+  text-align:center;
+  padding:10px;
+  font-size:18px;
+  font-weight:bold;
+}
 
-    .msg{
-      padding:12px;
-      margin:8px 0;
-      border-radius:12px;
-      max-width:80%;
-    }
+.chat{
+  height:65vh;
+  overflow-y:auto;
+  padding:10px;
+}
 
-    .user{
-      background:#00c6ff;
-      color:black;
-      margin-left:auto;
-    }
+.msg{
+  padding:12px;
+  margin:8px 0;
+  border-radius:12px;
+  max-width:80%;
+  word-wrap:break-word;
+}
 
-    .bot{
-      background:rgba(255,255,255,0.1);
-      backdrop-filter:blur(10px);
-    }
+.user{
+  background:#00c6ff;
+  color:black;
+  margin-left:auto;
+}
 
-    input{
-      width:75%;
-      padding:10px;
-      border:none;
-      border-radius:10px;
-    }
+.bot{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+}
 
-    button{
-      padding:10px;
-      border:none;
-      border-radius:10px;
-      background:#00c6ff;
-      font-weight:bold;
-      cursor:pointer;
-    }
+input{
+  width:75%;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  outline:none;
+}
 
-    .download-btn{
-      display:inline-block;
-      margin:6px;
-      padding:10px 15px;
-      border-radius:20px;
-      background:linear-gradient(45deg,#00ffcc,#00c6ff);
-      color:black;
-      font-weight:bold;
-      cursor:pointer;
-    }
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#00c6ff;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    img{
-      width:100%;
-      border-radius:10px;
-    }
-
-  </style>
+.download-btn{
+  display:inline-block;
+  margin:6px;
+  padding:10px 15px;
+  border-radius:20px;
+  background:linear-gradient(45deg,#00ffcc,#00c6ff);
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
+  <div class="header" id="movieTitle">🎬 Loading movie...</div>
+
   <div class="chat" id="chat"></div>
 
-  <input id="input" placeholder="Type message..." />
+  <input id="input" placeholder="Ask about movie..." onkeypress="if(event.key==='Enter')send()" />
   <button onclick="send()">Send</button>
 
 </div>
 
 <script>
 
-const API_KEY = "AIzaSyC31Uejv1qwOiLCQEGKz-5QBAnkmPeHiME";
+// ⚠️ PUT YOUR KEY HERE (NOT FRONTEND RECOMMENDED)
+const API_KEY = "AIzaSyAk9A0WqW9xTqhEbWwmzzipQ4uMl7Fz-hA";
 
 const params = new URLSearchParams(window.location.search);
-const title = params.get("title");
-const link = params.get("link");
-const cmd = params.get("cmd");
+const title = params.get("title") || "$title";
+const link = params.get("link") || "";
+const cmd = params.get("cmd") || "";
+
+document.getElementById("movieTitle").innerText = "🎬 " + title;
+
+// welcome message
+addMsg(`👋 ඔයා අහන්න පුළුවන්:
+
+• Movie story
+• IMDb rating
+• Actors / Director
+• Year details
+• Download help`, "bot");
 
 function addMsg(text,type){
-  document.getElementById("chat").innerHTML += 
+  document.getElementById("chat").innerHTML +=
     `<div class="msg ${type}">${text}</div>`;
+  scrollDown();
+}
+
+function scrollDown(){
+  let chat = document.getElementById("chat");
+  chat.scrollTop = chat.scrollHeight;
 }
 
 async function askAI(userMsg){
 
-  let prompt = `
-You are a smart movie assistant. Answer in Sinhala.
+let prompt = `
+You are a movie assistant AI.
+Answer in Sinhala.
 
-Movie: ${title}
+Movie Name: ${title}
 
-User: ${userMsg}
+User Question: ${userMsg}
 
-If user asks about movie details, give full real details like:
-- IMDb rating
-- story
-- year
-- actors
-- director
-- everything
-
-If user wants download, just say ask which bot.
+Rules:
+- Give accurate movie details if asked
+- Explain simply
+- If asked download, do NOT give piracy links
+- Instead say user can use WhatsApp bot option
 `;
 
-  let res = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`,
-    {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({
-        contents:[{parts:[{text: prompt}]}]
-      })
-    }
-  );
+let res = await fetch(
+`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`,
+{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({
+    contents:[{parts:[{text:prompt}]}]
+  })
+});
 
-  let data = await res.json();
+let data = await res.json();
 
-  return data.candidates?.[0]?.content?.parts?.[0]?.text || "Error 😢";
+return data.candidates?.[0]?.content?.parts?.[0]?.text || "Error 😢";
 }
 
 function send(){
 
-  let input = document.getElementById("input");
-  let text = input.value;
-  input.value = "";
+let input = document.getElementById("input");
+let text = input.value;
+input.value = "";
 
-  addMsg(text,"user");
+if(!text) return;
 
-  // DOWNLOAD detect
-  if(text.toLowerCase().includes("download")){
-    
-    setTimeout(()=>{
-      addMsg(`
-      🤖 ඔයාට මොන bot එකෙන්ද download කරන්න ඕනෙ?<br><br>
+addMsg(text,"user");
 
-      <div class="download-btn" onclick="download(1)">Bot 1</div>
-      <div class="download-btn" onclick="download(2)">Bot 2</div>
-      <div class="download-btn" onclick="download(3)">Bot 3</div>
-      `,"bot");
-    },500);
+// DOWNLOAD TRIGGER
+if(text.toLowerCase().includes("download")){
+  setTimeout(()=>{
+    addMsg(`
+🤖 Download option select කරන්න:
 
-    return;
-  }
+<div class="download-btn" onclick="download(1)">Bot 1</div>
+<div class="download-btn" onclick="download(2)">Bot 2</div>
+<div class="download-btn" onclick="download(3)">Bot 3</div>
+    `,"bot");
+  },500);
+  return;
+}
 
-  // DIRECT bot select
-  if(text.includes("bot 1")){
-    download(1); return;
-  }
-  if(text.includes("bot 2")){
-    download(2); return;
-  }
-  if(text.includes("bot 3")){
-    download(3); return;
-  }
+// bot shortcuts
+if(text.includes("Bot 1")) return download(1);
+if(text.includes("Bot 2")) return download(2);
+if(text.includes("Bot 3")) return download(3);
 
-  // AI response
-  askAI(text).then(reply=>{
-    addMsg(reply,"bot");
-  });
+// AI
+askAI(text).then(res=>{
+  addMsg(res,"bot");
+});
 
 }
 
-
 function download(bot){
 
-  let number;
+let number="";
 
-  if(bot==1) number="94740273359";
-  if(bot==2) number="94740707157";
-  if(bot==3) number="94";
+if(bot==1) number="94740273359";
+if(bot==2) number="94740707157";
+if(bot==3) number="94";
 
-  let message = encodeURIComponent(cmd.trim() + " " + link);
+let message = encodeURIComponent(cmd + " " + link);
 
-  window.location.href = `https://wa.me/${number}?text=${message}`;
+window.location.href =
+`https://wa.me/${number}?text=${message}`;
 }
 
 </script>
