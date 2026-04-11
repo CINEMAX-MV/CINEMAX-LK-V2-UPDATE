@@ -64,22 +64,6 @@
       font-weight:bold;
     }
 
-    .download-btn{
-      display:inline-block;
-      margin:6px;
-      padding:10px 15px;
-      border-radius:25px;
-      background:linear-gradient(45deg,#00ffcc,#00c6ff);
-      color:black;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .download-btn:hover{
-      transform:scale(1.1);
-    }
-
     .movie-card{
       background:rgba(255,255,255,0.08);
       padding:15px;
@@ -92,6 +76,17 @@
       max-width:220px;
       border-radius:12px;
       box-shadow:0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .download-btn{
+      display:inline-block;
+      margin:6px;
+      padding:10px 15px;
+      border-radius:25px;
+      background:linear-gradient(45deg,#00ffcc,#00c6ff);
+      color:black;
+      font-weight:bold;
+      cursor:pointer;
     }
   </style>
 </head>
@@ -111,52 +106,53 @@
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
-
-const movie = {
-  title: params.get("title") || "Unknown Movie",
-  link: params.get("link") || "#",
-  image: params.get("image") || "https://via.placeholder.com/300x450",
-  imdb: params.get("imdb") || "N/A",
-  release_date: params.get("release_date") || "N/A",
-  director: params.get("director") || "N/A",
-  runtime: params.get("runtime") || "N/A",
-  genre: params.get("genre") || "N/A",
-  description: params.get("description") || "No description available"
-};
-
+let movies = [];
+let movie = {};
 let step = 0;
 
+/* 📦 LOAD JSON */
+fetch("data/movies.json")
+  .then(res => res.json())
+  .then(data => {
+    movies = data;
+
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get("title");
+
+    movie = movies.find(m => m.title === title) || {};
+
+    startApp();
+  });
+
+/* 🚀 START */
+function startApp(){
+  window.onload = () => {
+    addMsg("👋 හායි, මම MR.පේක්ෂ 😎","bot");
+    setTimeout(showMovie,1000);
+  };
+}
+
+/* 💬 ADD MSG */
 function addMsg(text,type){
   document.getElementById("chat").innerHTML += 
     `<div class="msg ${type}">${text}</div>`;
   document.getElementById("chat").scrollTop = 999999;
 }
 
-// 🚀 ON LOAD
-window.onload = () => {
-
-  addMsg(`👋 හායි , මම MR.පේක්ෂ.<br>
-  මම ආවෙ මේ ෆිල්ම් එක ඔයාට වට්සැප් එකෙන්ම download කරලා බලන්න උදව් වෙන්න.<br><br>
-  මොකෝ කියන්නෙ ඔයා කැමතිද එහෙම 😍`,"bot");
-
-  setTimeout(showMovie,1200);
-};
-
-// 🎬 MOVIE DETAILS (FULL UPDATED)
+/* 🎬 SHOW MOVIE */
 function showMovie(){
 
   addMsg(`
     <div class="movie-card">
 
-      <h2>🎬 ${movie.title}</h2>
+      <h2>🎬 ${movie.title || "Movie Not Found"}</h2>
 
       <div style="display:flex;gap:15px;flex-wrap:wrap;">
 
         <img class="poster" src="${movie.image}">
 
         <div style="flex:1;min-width:200px;line-height:1.8;">
-          ⭐ IMDb: ${movie.imdb}/10<br>
+          ⭐ IMDb: ${movie.imdb}<br>
           📅 Release Date: ${movie.release_date}<br>
           🎬 Director: ${movie.director}<br>
           ⏳ Runtime: ${movie.runtime}<br>
@@ -165,7 +161,7 @@ function showMovie(){
 
       </div>
 
-      <p style="margin-top:15px;color:#ddd;line-height:1.6;">
+      <p style="margin-top:15px;color:#ddd;">
         ${movie.description}
       </p>
 
@@ -173,51 +169,18 @@ function showMovie(){
   `,"bot");
 
   setTimeout(()=>{
-    addMsg("😏 ඔයාට මේ ෆිල්ම් එක download කරන්න ඕනෙද?","bot");
+    addMsg(`
+      😏 Download කරන්න ඕනෙද?<br><br>
+
+      <div class="download-btn" onclick="showBots()">🚀 YES</div>
+      <div class="download-btn" onclick="noThanks()">❌ NO</div>
+    `,"bot");
+
     step = 1;
-  },1200);
+  },1000);
 }
 
-// 💬 INPUT
-function send(){
-
-  let input = document.getElementById("input");
-  let text = input.value.trim();
-  input.value = "";
-
-  if(!text) return;
-
-  addMsg(text,"user");
-  let msg = text.toLowerCase();
-
-  // WHO MADE YOU
-  if(msg.includes("who made you") || msg.includes("ඔයාව හැදුවේ කවුද")){
-    addMsg("😞 මාව හැදුවේ පේක්ශ රසාංජන","bot");
-    return;
-  }
-
-  // BLOCK ALL OTHER QUESTIONS
-  if(step === 0){
-    addMsg("🤐 මට මේ ප්‍රශ්න වලට උත්තර සපයන්න අවසර දීලා නෑ යාලුවා 🤐","bot");
-    return;
-  }
-
-  // DOWNLOAD TRIGGER
-  if(
-    msg.includes("download") ||
-    msg.includes("yes") ||
-    msg.includes("ඔව්") ||
-    msg.includes("ok") ||
-    msg.includes("හා")
-  ){
-    showBots();
-    return;
-  }
-
-  addMsg("🤐 මට මේ ප්‍රශ්න වලට උත්තර සපයන්න අවසර දීලා නෑ යාලුවා 🤐","bot");
-}
-
-// 🤖 BOT SELECTION
+/* 🤖 BOT SYSTEM */
 function showBots(){
 
   step = 2;
@@ -231,7 +194,13 @@ function showBots(){
   `,"bot");
 }
 
-// 📥 WHATSAPP
+/* ❌ NO THANKS */
+function noThanks(){
+  addMsg("👍 හරි එහෙනම්, enjoy movie 😎","bot");
+  step = 0;
+}
+
+/* 📥 WHATSAPP */
 function download(bot){
 
   let number = "";
@@ -240,11 +209,39 @@ function download(bot){
   if(bot==2) number="94740707157";
   if(bot==3) number="94733333333";
 
-  let message = encodeURIComponent(
-    movie.cmd + " " + movie.link
-  );
+  let message = encodeURIComponent(movie.link);
 
   window.location.href = `https://wa.me/${number}?text=${message}`;
+}
+
+/* 💬 INPUT */
+function send(){
+
+  let input = document.getElementById("input");
+  let text = input.value.trim();
+  input.value = "";
+
+  if(!text) return;
+
+  addMsg(text,"user");
+
+  let msg = text.toLowerCase();
+
+  if(step === 0){
+    addMsg("🤐 තව පියවරක් නැහැ","bot");
+    return;
+  }
+
+  if(step === 1){
+    if(msg.includes("yes") || msg.includes("ok") || msg.includes("ඔව්") || msg.includes("download")){
+      showBots();
+    } else {
+      noThanks();
+    }
+    return;
+  }
+
+  addMsg("🤖 command එක තේරුණේ නෑ","bot");
 }
 
 </script>
