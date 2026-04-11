@@ -110,7 +110,9 @@ let movies = [];
 let movie = {};
 let step = 0;
 
-/* 📦 LOAD JSON */
+/* =========================
+   📦 LOAD MOVIES JSON
+========================= */
 fetch("data/movies.json")
   .then(res => res.json())
   .then(data => {
@@ -124,7 +126,9 @@ fetch("data/movies.json")
     startApp();
   });
 
-/* 🚀 START */
+/* =========================
+   🚀 START APP
+========================= */
 function startApp(){
   window.onload = () => {
     addMsg("👋 හායි, මම MR.පේක්ෂ 😎","bot");
@@ -132,14 +136,18 @@ function startApp(){
   };
 }
 
-/* 💬 ADD MSG */
+/* =========================
+   💬 ADD MESSAGE
+========================= */
 function addMsg(text,type){
   document.getElementById("chat").innerHTML += 
     `<div class="msg ${type}">${text}</div>`;
   document.getElementById("chat").scrollTop = 999999;
 }
 
-/* 🎬 SHOW MOVIE */
+/* =========================
+   🎬 SHOW MOVIE
+========================= */
 function showMovie(){
 
   addMsg(`
@@ -168,19 +176,27 @@ function showMovie(){
     </div>
   `,"bot");
 
-  setTimeout(()=>{
-    addMsg(`
-      😏 Download කරන්න ඕනෙද?<br><br>
-
-      <div class="download-btn" onclick="showBots()">🚀 YES</div>
-      <div class="download-btn" onclick="noThanks()">❌ NO</div>
-    `,"bot");
-
-    step = 1;
-  },1000);
+  setTimeout(showDownloadOptions,1000);
 }
 
-/* 🤖 BOT SYSTEM */
+/* =========================
+   📥 DOWNLOAD ASK
+========================= */
+function showDownloadOptions(){
+
+  addMsg(`
+    😏 Download කරන්න ඕනෙද?<br><br>
+
+    <div class="download-btn" onclick="showBots()">🚀 YES</div>
+    <div class="download-btn" onclick="noThanks()">❌ NO</div>
+  `,"bot");
+
+  step = 1;
+}
+
+/* =========================
+   🤖 BOT SYSTEM
+========================= */
 function showBots(){
 
   step = 2;
@@ -194,13 +210,17 @@ function showBots(){
   `,"bot");
 }
 
-/* ❌ NO THANKS */
+/* =========================
+   ❌ NO OPTION
+========================= */
 function noThanks(){
   addMsg("👍 හරි එහෙනම්, enjoy movie 😎","bot");
   step = 0;
 }
 
-/* 📥 WHATSAPP */
+/* =========================
+   📥 WHATSAPP REDIRECT
+========================= */
 function download(bot){
 
   let number = "";
@@ -214,7 +234,9 @@ function download(bot){
   window.location.href = `https://wa.me/${number}?text=${message}`;
 }
 
-/* 💬 INPUT */
+/* =========================
+   💬 INPUT HANDLER
+========================= */
 function send(){
 
   let input = document.getElementById("input");
