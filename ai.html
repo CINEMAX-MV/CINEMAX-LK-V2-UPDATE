@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Assistant</title>
+  <style>
+    body { background:#0f0f0f; color:white; font-family:sans-serif; }
+    .chat { padding:10px; }
+    .msg { margin:10px 0; }
+    .user { text-align:right; }
+    .bot { text-align:left; color:#00ffcc; }
+    input { width:80%; padding:10px; }
+    button { padding:10px; }
+  </style>
+</head>
+<body>
+
+<div class="chat" id="chat"></div>
+
+<input id="input" placeholder="Message..." />
+<button onclick="send()">Send</button>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const title = params.get("title");
+const link = params.get("link");
+const cmd = params.get("cmd");
+
+let step = 0;
+
+function addMsg(text, type){
+  document.getElementById("chat").innerHTML += 
+    `<div class="msg ${type}">${text}</div>`;
+}
+
+function send(){
+  let input = document.getElementById("input");
+  let text = input.value;
+  input.value = "";
+
+  addMsg(text, "user");
+
+  // AI Logic
+  setTimeout(()=>{
+
+    if(step === 0){
+      addMsg(`🎬 ${title} ගැන details මෙන්න...<br>
+      - Quality: HD <br>
+      - Size: 700MB <br>
+      - Genre: Action`, "bot");
+      step = 1;
+    }
+    else if(step === 1){
+      addMsg(`ඔයාට download කරන්න ඕනෙද?`, "bot");
+      step = 2;
+    }
+    else if(step === 2){
+      addMsg(`
+        Bot එකක් තෝරන්න:<br><br>
+        <button onclick="download(1)">Bot 1</button>
+        <button onclick="download(2)">Bot 2</button>
+        <button onclick="download(3)">Bot 3</button>
+      `, "bot");
+      step = 3;
+    }
+
+  }, 800);
+}
+
+function download(bot){
+  let number;
+
+  if(bot === 1) number = "9474070157";
+  if(bot === 2) number = "94740271339";
+  if(bot === 3) number = "947ZZZZZZZZ";
+
+  let message = encodeURIComponent(cmd + link);
+
+  window.location.href = `https://wa.me/${number}?text=${message}`;
+}
+</script>
+
+</body>
+</html>
