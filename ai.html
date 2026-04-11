@@ -98,7 +98,7 @@ button{
 const API_KEY = "AIzaSyAk9A0WqW9xTqhEbWwmzzipQ4uMl7Fz-hA";
 
 const params = new URLSearchParams(window.location.search);
-const title = params.get("title") || "$title";
+const title = params.get("title") || <h2>{movie.title}</h2>";
 const link = params.get("link") || "";
 const cmd = params.get("cmd") || "";
 
