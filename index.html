@@ -9,43 +9,35 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-
 /* ===== HERO SECTION (NEW STYLE) ===== */
-
 .hero-header{
 height:400px;
-
-background:
-linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%),
-url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
-
+background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0f0f0f 100%), url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
-
 display:flex;
 align-items:center;
 padding:0 5%;
-
 position:relative;
 }
 
-.hero-content h1{
-font-size:38px;
-margin-bottom:10px;
-}
+.hero-content h1{ font-size:38px; margin-bottom:10px; }
+.hero-content p{ color:#ccc; font-size:16px; }
 
-.hero-content p{
-color:#ccc;
-font-size:16px;
+/* Pagination ඇඩ් එක සෙන්ටර් කිරීමට */
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 0;
 }
-
 </style>
-
 </head>
 
 <body>
   
-<!-- HUMAN VERIFICATION -->
 <div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
 <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
 <h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
@@ -65,106 +57,57 @@ if(user) console.log("Welcome,", user);
 });
 </script>
 
-<!-- HEADER HERO -->
 <header class="hero-header">
-
 <div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
 
-<!-- ADMIN LOGIN BUTTON FIXED TOP-RIGHT -->
 <a href="adminpanal.html" 
-   style="
-     position: fixed;        /* scroll වුණත් same place */
-     top: 20px;              /* top margin */
-     right: 20px;            /* right margin */
-     background-color: rgba(135, 206, 250, 0.9); /* light blue with slight transparency */
-     color: white;
-     padding: 12px 18px;
-     text-decoration: none;
-     border-radius: 8px;
-     font-weight: bold;
-     font-family: Arial, sans-serif;
-     z-index: 9999;          /* hero image/other content ඉහලට overlay නොවෙයි */
-     box-shadow: 0 4px 12px rgba(0,0,0,0.4);  /* slightly floating effect */
-     transition: transform 0.2s, background-color 0.2s;
-   "
+   style="position: fixed; top: 20px; right: 20px; background-color: rgba(135, 206, 250, 0.9); color: white; padding: 12px 18px; text-decoration: none; border-radius: 8px; font-weight: bold; font-family: Arial, sans-serif; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.4); transition: transform 0.2s, background-color 0.2s;"
    onmouseover="this.style.backgroundColor='rgba(100,149,237,0.95)'; this.style.transform='scale(1.05)';"
    onmouseout="this.style.backgroundColor='rgba(135,206,250,0.9)'; this.style.transform='scale(1)';"
 >
   Admin Panel
 </a>
-</div>
   
 <div class="hero-content">
-
 <h1>නවතම සිංහල චිත්‍රපට</h1>
 <p>Download Latest Movies with Sinhala dubbed</p>
-  
 <div class="sidebar-search">
-
 <span class="search-icon">🔍</span>
-
 <input type="text" id="searchInput" placeholder="Search movies..." class="sidebar-input">
-
 </div>
-  
-
 </div>
-
 </header>
 
-<!-- LATEST MOVIES -->
 <div class="latest-wrapper">
  <div style="width: 100%; display: flex; justify-content: center; margin: 20px 0; padding: 0 10px;">
     <div style="width: 100%; max-width: 970px; height: 120px; background: #000 url('https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=1000&auto=format&fit=crop') center; background-size: cover; border: 1px solid #444; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.6);">
-        
         <div style="position: absolute; top: 0; left: 0; background: #ffcc00; color: #000; padding: 2px 10px; font-size: 11px; font-family: Arial, sans-serif; font-weight: bold; border-bottom-right-radius: 5px;">AD</div>
-
         <div style="height: 100%; width: 100%; background: linear-gradient(to right, rgba(0,0,0,0.8), transparent); display: flex; flex-direction: column; justify-content: center; padding-left: 25px;">
             <h3 style="color: white; margin: 0; font-family: sans-serif; font-size: 22px; text-shadow: 2px 2px 4px #000;">GODZILLA: NEW ERA</h3>
             <p style="color: #ccc; margin: 5px 0; font-family: sans-serif; font-size: 14px;">Available for Streaming in 4K</p>
         </div>
-
         <div style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
             <a href="#" style="background: #e50914; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-family: sans-serif; font-weight: bold; font-size: 15px; box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);">WATCH NOW</a>
         </div>
     </div>
 </div>
-
- 
 <div class="latest-title">LATEST MOVIES</div>
-  <div id="floating-ad" style="position: fixed; bottom: 20px; right: 20px; width: 300px; background: #111; border: 2px solid #333; border-radius: 10px; overflow: hidden; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); font-family: Arial, sans-serif;">
-    
-    <div onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 8px; color: white; cursor: pointer; font-size: 18px; z-index: 10001; background: rgba(0,0,0,0.5); width: 25px; height: 25px; border-radius: 50%; text-align: center; line-height: 22px;">&times;</div>
-    
-    <div style="position: absolute; top: 5px; left: 8px; background: rgba(255, 204, 0, 0.9); color: black; padding: 2px 6px; font-size: 9px; font-weight: bold; border-radius: 3px; z-index: 10001;">RECOMMENDED</div>
+</div>
 
-    <video width="100%" autoplay muted loop style="display: block;">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    </video>
-
-    <div style="padding: 12px;">
-        <h4 style="color: white; margin: 0 0 5px 0; font-size: 14px;">Godzilla vs Kong: Exclusive Clip</h4>
-        <p style="color: #aaa; margin: 0 0 10px 0; font-size: 12px;">Stream the battle of the century on Cinemax.</p>
-        <a href="#" style="display: block; background: #00d4ff; color: #000; text-align: center; text-decoration: none; padding: 8px; border-radius: 5px; font-size: 13px; font-weight: bold; transition: 0.3s;">Watch Trailer</a>
-    </div>
- </div>
-
-<!-- MOVIE SLIDER -->
 <section class="slider-section">
 <div class="slider" id="movieSlider"></div>
 <div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- SIDEBAR -->
 <div id="sidebar" class="sidebar">
 <div class="close-btn" onclick="toggleMenu()">✕</div>
-
 <a href="index.html">•©• 𝐇𝐨𝐦𝐞</a>
 <a href="dashboard.html">•©• 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
 <a href="contact.html">•©• 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
 <a href="dmca.html">•©• 𝐃𝐌𝐂𝐀</a>
 <a href="films.html">•©• 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
- <div style="margin: 20px 10px; background: #111; padding: 10px; border-radius: 8px; border: 1px solid #222;">
+
+<div style="margin: 20px 10px; background: #111; padding: 10px; border-radius: 8px; border: 1px solid #222;">
     <span style="color: #555; font-size: 10px; display: block; margin-bottom: 5px;">SPONSORED VIDEO</span>
     <video width="100%" autoplay muted loop style="border-radius: 4px;">
         <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
@@ -174,7 +117,6 @@ if(user) console.log("Welcome,", user);
 </div>
  
 <a href="javascript:void(0)" onclick="toggleProblems()">•©• 𝐏𝐫𝐨𝐛𝐥𝐞𝐦𝐬</a>
-
 <div id="problemsForm" style="display:none; margin-top:5px; padding:5px; background:#211d1d; border-radius:6px;">
 <input type="text" id="pName" placeholder="Name" required>
 <input type="text" id="pUser" placeholder="User" required>
@@ -183,23 +125,13 @@ if(user) console.log("Welcome,", user);
 <textarea id="pProblem" placeholder="Problem..." rows="2" required></textarea>
 <button onclick="sendProblem()">Submit ✔️</button>
 </div>
-
 </div>
 
-<!-- MOVIE SECTION -->
 <section class="container">
-
 <div class="ticker">
 <div class="ticker-track">
-
-<span>
-සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
-</span>
-
-<span>
-සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.
-</span>
-
+<span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.</span>
+<span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.</span>
 </div>
 </div>
 
@@ -207,15 +139,33 @@ if(user) console.log("Welcome,", user);
 
 <div class="pagination-controls">
 <button id="prevBtn" onclick="changePage(-1)">👈 Previous</button>
+
+<div style="width: 320px; height: 50px; background: #1a1a1a; border: 1px dashed #444; border-radius: 5px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+    <span style="position: absolute; top: 2px; right: 5px; color: #555; font-size: 8px;">SPONSORED</span>
+    <a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+        <div style="background: #e50914; color: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: bold;">G</div>
+        <div style="text-align: left;">
+            <div style="color: white; font-size: 11px; font-weight: bold; font-family: sans-serif;">Godzilla: King of Monsters</div>
+            <div style="color: #00d4ff; font-size: 9px;">Full Movie Streaming Now</div>
+        </div>
+    </a>
+</div>
+
 <span id="pageInfo"></span>
 <button id="nextBtn" onclick="changePage(1)">Next 👉</button>
 </div>
 
 <div id="series-container"></div>
-
 </section>
 
-<!-- SOCIAL -->
+<div style="width: 100%; display: flex; justify-content: center; margin: 30px 0;">
+    <div style="width: 100%; max-width: 728px; background: #111; border: 1px solid #333; padding: 10px; border-radius: 8px; text-align: center;">
+        <span style="color: #444; font-size: 10px; display: block; margin-bottom: 5px;">ADVERTISEMENT</span>
+        <p style="color: #eee; margin: 5px 0; font-family: Arial;">Join our Premium Group for Exclusive Content!</p>
+        <button style="background: #25d366; color: white; border: none; padding: 5px 15px; border-radius: 20px; font-size: 12px; cursor: pointer;">Join WhatsApp</button>
+    </div>
+</div>
+
 <div class="social-section">
 <a href="#" class="social facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
 <a href="#" class="social twitter" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -227,29 +177,14 @@ if(user) console.log("Welcome,", user);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <footer class="site-footer">
-  <p class="footer-text">
-    © <span class="year">2026</span> <span class="brand">Cinemax Downloads</span> | Watch & Downloads
-  </p>
-
-  <p class="creator">
-    Created by <span class="name">Peksha Rasanjana</span>
-  </p>
+  <p class="footer-text">© <span class="year">2026</span> <span class="brand">Cinemax Downloads</span> | Watch & Downloads</p>
+  <p class="creator">Created by <span class="name">Peksha Rasanjana</span></p>
 </footer>
 
 <script src="js/main.js"></script>
-
 <script>
-function toggleMenu() {
-document.getElementById("sidebar").classList.toggle("active");
-}
-</script>
-
-<script>
-fetch("series-section.html")
-.then(response => response.text())
-.then(data => {
-document.getElementById("series-container").innerHTML = data;
-});
+function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
+fetch("series-section.html").then(response => response.text()).then(data => { document.getElementById("series-container").innerHTML = data; });
 </script>
 
 </body>
