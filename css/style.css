@@ -1326,3 +1326,103 @@ footer {
   0% { background-position: 200% center; }
   100% { background-position
 }
+
+/* ===== PREMIUM SUPER QUALITY FOOTER ===== */
+.site-footer {
+    background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
+    border-top: 2px solid #00d4ff; /* Neon border top */
+    padding: 60px 20px;
+    color: #ccc;
+    font-family: 'Poppins', sans-serif; /* ලස්සන font එකක් */
+    text-align: center;
+    margin-top: 50px;
+    box-shadow: 0 -10px 40px rgba(0, 212, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background gradient effect */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer Icons (ඔබේ social icons මෙතනට දාන්න පුළුවන්) */
+.footer-icons {
+    margin-bottom: 30px;
+}
+
+.footer-icons a {
+    color: #fff;
+    font-size: 24px;
+    margin: 0 15px;
+    transition: 0.3s;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.footer-icons a:hover {
+    color: #00d4ff;
+    transform: scale(1.2);
+    text-shadow: 0 0 15px rgba(0, 212, 255, 1);
+}
+
+/* Footer Main Text */
+.footer-text {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-text b {
+    color: #00d4ff; /* Neon cyan */
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
+}
+
+/* Creator Text */
+.creator {
+    font-size: 14px;
+    color: #888;
+    margin-top: 10px;
+}
+
+.creator span {
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.creator span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: #e50914; /* Red color line */
+    transition: 0.3s;
+}
+
+.creator span:hover {
+    color: #e50914;
+}
+
+.creator span:hover::after {
+    width: 100%;
+}
