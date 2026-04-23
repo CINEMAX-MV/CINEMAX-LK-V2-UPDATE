@@ -132,7 +132,22 @@ if(user) console.log("Welcome,", user);
 
  
 <div class="latest-title">LATEST MOVIES</div>
-</div>
+  <div id="floating-ad" style="position: fixed; bottom: 20px; right: 20px; width: 300px; background: #111; border: 2px solid #333; border-radius: 10px; overflow: hidden; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.8); font-family: Arial, sans-serif;">
+    
+    <div onclick="this.parentElement.style.display='none'" style="position: absolute; top: 5px; right: 8px; color: white; cursor: pointer; font-size: 18px; z-index: 10001; background: rgba(0,0,0,0.5); width: 25px; height: 25px; border-radius: 50%; text-align: center; line-height: 22px;">&times;</div>
+    
+    <div style="position: absolute; top: 5px; left: 8px; background: rgba(255, 204, 0, 0.9); color: black; padding: 2px 6px; font-size: 9px; font-weight: bold; border-radius: 3px; z-index: 10001;">RECOMMENDED</div>
+
+    <video width="100%" autoplay muted loop style="display: block;">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    </video>
+
+    <div style="padding: 12px;">
+        <h4 style="color: white; margin: 0 0 5px 0; font-size: 14px;">Godzilla vs Kong: Exclusive Clip</h4>
+        <p style="color: #aaa; margin: 0 0 10px 0; font-size: 12px;">Stream the battle of the century on Cinemax.</p>
+        <a href="#" style="display: block; background: #00d4ff; color: #000; text-align: center; text-decoration: none; padding: 8px; border-radius: 5px; font-size: 13px; font-weight: bold; transition: 0.3s;">Watch Trailer</a>
+    </div>
+ </div>
 
 <!-- MOVIE SLIDER -->
 <section class="slider-section">
