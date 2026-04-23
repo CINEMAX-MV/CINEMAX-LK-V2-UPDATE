@@ -51,7 +51,7 @@ position:relative;
     padding: 0 20px;
 }
 
-/* ===== NEW FULL WIDTH INFINITE TICKER ===== */
+/* ===== FULL WIDTH INFINITE TICKER ===== */
 .ticker-wrap {
     width: 100%;
     overflow: hidden;
@@ -72,13 +72,18 @@ position:relative;
     color: #00d4ff;
     font-size: 15px;
     font-family: Arial, sans-serif;
-    padding-right: 40px; /* 1cm gap (approx) */
+    padding-right: 40px;
     white-space: nowrap;
 }
 
 @keyframes scrollText {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+/* Movie Card Click Effect Styling */
+.movies-grid .movie-card {
+    cursor: pointer;
 }
 </style>
 </head>
@@ -93,14 +98,6 @@ Please <a href="verification.html" style="color:#00d4ff; text-decoration:underli
 </p>
 </div>
 </div>
-
-<script>
-window.addEventListener('DOMContentLoaded',()=>{
-if(localStorage.getItem("humanVerified")==="true"){
-document.getElementById("humanVerification").style.display="none";
-}
-});
-</script>
 
 <header class="hero-header">
 <div class="menu-btn" onclick="toggleMenu()" style="position:absolute; left:20px; top:20px; font-size:25px;">☰</div>
@@ -143,7 +140,6 @@ document.getElementById("humanVerification").style.display="none";
         <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.</span>
         <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.</span>
         <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.</span>
-        <span>සිංහල ෆිල්ම්ස් හා කාටූන්ස් නැරඹීමට අදම පිවිසෙන්න @cinemax-lk වෙබ් පිටුව වෙත. ඔබට මෙහිදී player 1 ඔස්සේ හෝ player 2 ඔස්සේ ෆිල්ම් නැරඹීමට හැකියාව ඇත.</span>
     </div>
 </div>
 
@@ -155,19 +151,13 @@ document.getElementById("humanVerification").style.display="none";
 <div id="sidebar" class="sidebar">
 <div class="close-btn" onclick="toggleMenu()">✕</div>
 <a href="index.html">•©• 𝐇𝐨𝐦𝐞</a>
-<a href="dashboard.html">•©• 𝐃𝐚𝐬𝐡𝐛ොාර්ඩ්</a>
-
+<a href="dashboard.html">•©• 𝐃𝐚𝐬𝐡𝐛𝐨𝐚𝐫𝐝</a>
 <div class="fake-ad-container" onclick="window.open('https://www.youtube.com', '_blank')" style="margin: 15px 10px; background: #000; padding: 10px; border: 1px solid #e50914; border-radius: 8px;">
-    <video width="100%" autoplay muted loop style="border-radius: 4px;">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    </video>
-    <p style="color: white; font-size: 12px; text-align: center; margin-top: 8px; font-weight: bold;">AD: NEW TRAILER</p>
+    <video width="100%" autoplay muted loop style="border-radius: 4px;"><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video>
 </div>
-
 <a href="contact.html">•©• 𝐂𝐨𝐧𝐭𝐚𝐜𝐭</a>
 <a href="dmca.html">•©• 𝐃𝐌𝐂𝐀</a>
-<a href="films.html">•©• 𝐍-𝐑𝐞ලීසස්</a>
-<a href="javascript:void(0)" onclick="toggleProblems()">•©• 𝐏්‍රොබල්ම්ස්</a>
+<a href="films.html">•©• 𝐍-𝐑𝐞𝐥𝐞𝐚𝐬𝐞𝐬</a>
 </div>
 
 <section class="container">
@@ -179,49 +169,36 @@ document.getElementById("humanVerification").style.display="none";
 <button id="nextBtn" onclick="changePage(1)">Next 👉</button>
 </div>
 
+<div class="fake-ad-container" onclick="window.open('https://www.disneyplus.com', '_blank')" style="width: 100%; max-width: 1100px; height: 180px; background: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200') center; background-size: cover; border: 1px solid #333; position: relative; border-radius: 12px; margin: 30px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.7);">
+    <div style="position: absolute; top: 10px; left: 10px; background: #00d4ff; color: black; padding: 3px 10px; font-size: 11px; font-weight: bold; border-radius: 4px;">RECOMMENDED</div>
+    <div style="height: 100%; background: linear-gradient(to right, rgba(0,0,30,0.9), transparent); display: flex; align-items: center; padding-left: 40px;">
+        <div>
+            <h2 style="color: white; font-family: sans-serif; font-size: 28px; margin: 0;">DISNEY+ ORIGINAL SERIES</h2>
+            <p style="color: #fff; margin-top: 5px;">Experience the magic of cinema in 4K.</p>
+            <button style="background: #00d4ff; color: #000; border: none; padding: 10px 25px; border-radius: 5px; font-weight: bold; margin-top: 10px;">START STREAMING</button>
+        </div>
+    </div>
+</div>
+
 <div id="series-container"></div>
 </section>
 
 <div style="background: #0a0a0a; padding: 50px 0; border-top: 2px solid #1a1a1a;">
-    <div style="text-align: center; margin-bottom: 30px;">
-        <span style="color: #444; font-size: 12px; letter-spacing: 2px;">SPONSORED CONTENT</span>
-    </div>
-
-    <div class="fake-ad-container" onclick="window.open('https://www.primevideo.com', '_blank')" style="width: 90%; max-width: 1000px; height: 100px; background: #00a8e1; margin: 0 auto 30px; border-radius: 10px; display: flex; align-items: center; padding: 0 30px; box-shadow: 0 0 20px rgba(0,168,225,0.3);">
+    <div class="fake-ad-container" onclick="window.open('https://www.primevideo.com', '_blank')" style="width: 90%; max-width: 1000px; height: 100px; background: #00a8e1; margin: 0 auto 30px; border-radius: 10px; display: flex; align-items: center; padding: 0 30px;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" style="height: 30px;">
-        <div style="margin-left: 40px; flex-grow: 1;">
-            <h3 style="color: white; margin: 0; font-family: sans-serif;">Try Prime Video 30-Day Free Trial</h3>
-            <p style="color: rgba(255,255,255,0.8); margin: 0; font-size: 14px;">Watch thousands of popular movies and TV shows.</p>
-        </div>
+        <div style="margin-left: 40px; flex-grow: 1;"><h3 style="color: white; margin: 0;">Try Prime Video Free</h3></div>
         <button style="background: white; color: #00a8e1; border: none; padding: 12px 25px; border-radius: 5px; font-weight: bold;">SIGN UP</button>
     </div>
 
     <div class="footer-ad-grid">
-        <div class="fake-ad-container" onclick="window.open('https://www.disneyplus.com', '_blank')" style="background: #001e4d; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #00d4ff;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney_Plus_logo.svg" style="height: 40px; margin-bottom: 15px;">
-            <p style="color: white; font-size: 14px;">The best stories in the world, all in one place.</p>
-            <div style="margin-top: 15px; color: #00d4ff; font-weight: bold;">GET DISNEY+</div>
-        </div>
         <div class="fake-ad-container" onclick="window.open('https://www.hbo.com', '_blank')" style="background: #000; padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #fff;">
-            <div style="font-size: 30px; color: white; font-weight: bold; margin-bottom: 10px;">HBO Max</div>
-            <p style="color: #aaa; font-size: 14px;">Stream groundbreaking series and blockbusters.</p>
-            <div style="margin-top: 15px; color: white; border: 1px solid white; display: inline-block; padding: 5px 15px; border-radius: 4px;">LEARN MORE</div>
+            <div style="font-size: 30px; color: white; font-weight: bold;">HBO Max</div>
         </div>
-        <div class="fake-ad-container" onclick="window.open('https://www.apple.com/apple-tv-plus/', '_blank')" style="background: linear-gradient(45deg, #111, #333); padding: 20px; border-radius: 12px; text-align: center;">
-             <i class="fab fa-apple" style="font-size: 40px; color: white; margin-bottom: 10px;"></i>
-             <div style="color: white; font-weight: bold; font-size: 18px;">Apple TV+</div>
-            <p style="color: #888; font-size: 14px;">New Apple Originals every month.</p>
+        <div class="fake-ad-container" onclick="window.open('https://www.apple.com', '_blank')" style="background: #111; padding: 20px; border-radius: 12px; text-align: center;">
+             <i class="fab fa-apple" style="font-size: 40px; color: white;"></i>
         </div>
     </div>
 </div>
-
-<div class="social-section">
-<a href="#" class="social facebook"><i class="fab fa-facebook-f"></i></a>
-<a href="https://youtube.com/@cinemax-u1s" class="social youtube"><i class="fab fa-youtube"></i></a>
-<a href="https://whatsapp.com/channel/0029VbCQwiiAzNbtleGlQS1r" class="social whatsapp"><i class="fab fa-whatsapp"></i></a>
-</div>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <footer class="site-footer">
   <p class="footer-text">© 2026 <b>Cinemax Downloads</b> | Watch & Downloads</p>
@@ -231,6 +208,22 @@ document.getElementById("humanVerification").style.display="none";
 <script src="js/main.js"></script>
 <script>
 function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
+
+// MOVIE REDIRECT LOGIC
+// චිත්‍රපටයක් උඩ ක්ලික් කළ විට මුලින් ඇඩ් එකක් ඕපන් වන පරිදි සකස් කිරීම
+document.addEventListener('click', function(e) {
+    const movieCard = e.target.closest('.movie-card');
+    if (movieCard) {
+        // ඇඩ් එකක් අලුත් ටැබ් එකක ඕපන් කරයි
+        window.open('https://www.google.com', '_blank'); // මෙතනට ඔබේ ඇඩ් ලින්ක් එක දාන්න
+    }
+}, true);
+
+window.addEventListener('DOMContentLoaded',()=>{
+    if(localStorage.getItem("humanVerified")==="true"){
+        document.getElementById("humanVerification").style.display="none";
+    }
+});
 fetch("series-section.html").then(response => response.text()).then(data => { document.getElementById("series-container").innerHTML = data; });
 </script>
 
