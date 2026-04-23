@@ -1327,102 +1327,90 @@ footer {
   100% { background-position
 }
 
-/* ===== PREMIUM SUPER QUALITY FOOTER ===== */
+/* ===== SUPER RGB NEON FOOTER ===== */
 .site-footer {
-    background: linear-gradient(135deg, #0a0a0a 0%, #151515 100%);
-    border-top: 2px solid #00d4ff; /* Neon border top */
-    padding: 60px 20px;
-    color: #ccc;
-    font-family: 'Poppins', sans-serif; /* ලස්සන font එකක් */
+    background: #050505; /* තද කළු පසුබිම */
+    padding: 50px 20px;
     text-align: center;
-    margin-top: 50px;
-    box-shadow: 0 -10px 40px rgba(0, 212, 255, 0.1);
     position: relative;
     overflow: hidden;
+    border-top: 3px solid transparent;
+    /* Border එකට RGB පාටවල් මාරු වෙන animation එක */
+    border-image: linear-gradient(90deg, #ff0000, #ff00f7, #00d4ff, #00ff0a, #ff0000);
+    border-image-slice: 1;
+    margin-top: 50px;
 }
 
-/* Background gradient effect */
-.site-footer::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 60%);
-    opacity: 0.5;
-    z-index: 0;
+/* Footer එක මැද තියෙන දිලිසෙන ලෝගෝ එක */
+.footer-logo {
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    display: inline-block;
+    /* Text එකට color gradient එකක් */
+    background: linear-gradient(90deg, #ff00d4, #00d4ff, #ff00d4);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 3s linear infinite;
 }
 
-.footer-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
+@keyframes shineText {
+    to { background-position: 200% center; }
 }
 
-/* Footer Icons (ඔබේ social icons මෙතනට දාන්න පුළුවන්) */
+/* Social Icons වලට වෙනස්ම පාටවල් */
 .footer-icons {
-    margin-bottom: 30px;
+    margin: 20px 0;
 }
 
 .footer-icons a {
-    color: #fff;
-    font-size: 24px;
+    font-size: 28px;
     margin: 0 15px;
-    transition: 0.3s;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    display: inline-block;
+    transition: 0.4s;
 }
+
+.footer-icons .fa-facebook-f { color: #1877F2; filter: drop-shadow(0 0 8px #1877F2); }
+.footer-icons .fa-youtube { color: #FF0000; filter: drop-shadow(0 0 8px #FF0000); }
+.footer-icons .fa-whatsapp { color: #25D366; filter: drop-shadow(0 0 8px #25D366); }
 
 .footer-icons a:hover {
-    color: #00d4ff;
-    transform: scale(1.2);
-    text-shadow: 0 0 15px rgba(0, 212, 255, 1);
+    transform: scale(1.3) rotate(10deg);
 }
 
-/* Footer Main Text */
+/* පහළ තියෙන අකුරු වලට Neon පෙනුමක් */
 .footer-text {
-    font-size: 16px;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-.footer-text b {
-    color: #00d4ff; /* Neon cyan */
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
-}
-
-/* Creator Text */
-.creator {
-    font-size: 14px;
-    color: #888;
-    margin-top: 10px;
-}
-
-.creator span {
     color: #fff;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.footer-text span {
+    color: #00d4ff;
     font-weight: bold;
-    position: relative;
+    text-shadow: 0 0 10px #00d4ff;
+}
+
+.creator-box {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.05);
     display: inline-block;
-    transition: 0.3s;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 212, 255, 0.3);
 }
 
-.creator span::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0%;
-    height: 1px;
-    background: #e50914; /* Red color line */
-    transition: 0.3s;
+.creator-box p {
+    margin: 0;
+    color: #eee;
+    font-size: 13px;
 }
 
-.creator span:hover {
-    color: #e50914;
-}
-
-.creator span:hover::after {
-    width: 100%;
+.creator-box b {
+    color: #ff00d4;
+    text-shadow: 0 0 8px #ff00d4;
 }
