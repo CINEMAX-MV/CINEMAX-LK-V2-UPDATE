@@ -258,6 +258,42 @@ window.addEventListener('DOMContentLoaded',()=>{
 });
 fetch("series-section.html").then(response => response.text()).then(data => { document.getElementById("series-container").innerHTML = data; });
 
+
+<div id="floatingAdBar" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); width: 95%; display: flex; justify-content: center; gap: 10px; z-index: 99999; flex-wrap: wrap;">
+    
+    <div id="miniad1" style="position: relative; width: 180px; height: 60px; background: #000; border: 1px solid #333; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        <span onclick="event.stopPropagation(); document.getElementById('miniad1').style.display='none'" style="position: absolute; top: 2px; right: 5px; color: #fff; font-size: 14px; background: rgba(0,0,0,0.7); padding: 0 5px; border-radius: 50%; z-index: 10;">×</span>
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=200&h=70&fit=crop" style="width: 100%; height: 100%; object-fit: cover;" onclick="window.open('https://www.netflix.com', '_blank')">
+    </div>
+
+    <div id="miniad2" style="position: relative; width: 180px; height: 60px; background: #000; border: 1px solid #333; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        <span onclick="event.stopPropagation(); document.getElementById('miniad2').style.display='none'" style="position: absolute; top: 2px; right: 5px; color: #fff; font-size: 14px; background: rgba(0,0,0,0.7); padding: 0 5px; border-radius: 50%; z-index: 10;">×</span>
+        <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=200&h=70&fit=crop" style="width: 100%; height: 100%; object-fit: cover;" onclick="window.open('https://www.primevideo.com', '_blank')">
+    </div>
+
+    <div id="miniad3" style="position: relative; width: 180px; height: 60px; background: #000; border: 1px solid #333; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        <span onclick="event.stopPropagation(); document.getElementById('miniad3').style.display='none'" style="position: absolute; top: 2px; right: 5px; color: #fff; font-size: 14px; background: rgba(0,0,0,0.7); padding: 0 5px; border-radius: 50%; z-index: 10;">×</span>
+        <img src="https://images.unsplash.com/photo-1585647347483-22b66260dfff?q=80&w=200&h=70&fit=crop" style="width: 100%; height: 100%; object-fit: cover;" onclick="window.open('https://www.disneyplus.com', '_blank')">
+    </div>
+
+    <div id="miniad4" style="position: relative; width: 180px; height: 60px; background: #000; border: 1px solid #333; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        <span onclick="event.stopPropagation(); document.getElementById('miniad4').style.display='none'" style="position: absolute; top: 2px; right: 5px; color: #fff; font-size: 14px; background: rgba(0,0,0,0.7); padding: 0 5px; border-radius: 50%; z-index: 10;">×</span>
+        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=200&h=70&fit=crop" style="width: 100%; height: 100%; object-fit: cover;" onclick="window.open('https://www.hbo.com', '_blank')">
+    </div>
+
+</div>
+
+<script>
+// පිටුව ලෝඩ් වෙලා තත්පර 3කින් ඇඩ් ටික පෙන්වන්න
+window.addEventListener('load', () => {
+    document.getElementById('floatingAdBar').style.display = 'none'; // මුලින්ම හංගමු
+    setTimeout(() => {
+        document.getElementById('floatingAdBar').style.display = 'flex';
+    }, 3000);
+});
+</script>
+
+    
 </script>
 
 </body>
