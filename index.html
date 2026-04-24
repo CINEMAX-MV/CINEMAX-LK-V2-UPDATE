@@ -236,29 +236,6 @@ Please <a href="verification.html" style="color:#00d4ff; text-decoration:underli
     </div>
 </footer>
 
-
-<script src="js/main.js"></script>
-<script>
-function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
-
-// MOVIE REDIRECT LOGIC
-// චිත්‍රපටයක් උඩ ක්ලික් කළ විට මුලින් ඇඩ් එකක් ඕපන් වන පරිදි සකස් කිරීම
-document.addEventListener('click', function(e) {
-    const movieCard = e.target.closest('.movie-card');
-    if (movieCard) {
-        // ඇඩ් එකක් අලුත් ටැබ් එකක ඕපන් කරයි
-        window.open('https://www.google.com', '_blank'); // මෙතනට ඔබේ ඇඩ් ලින්ක් එක දාන්න
-    }
-}, true);
-
-window.addEventListener('DOMContentLoaded',()=>{
-    if(localStorage.getItem("humanVerified")==="true"){
-        document.getElementById("humanVerification").style.display="none";
-    }
-});
-fetch("series-section.html").then(response => response.text()).then(data => { document.getElementById("series-container").innerHTML = data; });
-
-
 <div id="floatingAdBar" style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); width: 95%; display: flex; justify-content: center; gap: 10px; z-index: 99999; flex-wrap: wrap;">
     
     <div id="miniad1" style="position: relative; width: 180px; height: 60px; background: #000; border: 1px solid #333; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
@@ -293,6 +270,26 @@ window.addEventListener('load', () => {
 });
 </script>
 
+<script src="js/main.js"></script>
+<script>
+function toggleMenu() { document.getElementById("sidebar").classList.toggle("active"); }
+
+// MOVIE REDIRECT LOGIC
+// චිත්‍රපටයක් උඩ ක්ලික් කළ විට මුලින් ඇඩ් එකක් ඕපන් වන පරිදි සකස් කිරීම
+document.addEventListener('click', function(e) {
+    const movieCard = e.target.closest('.movie-card');
+    if (movieCard) {
+        // ඇඩ් එකක් අලුත් ටැබ් එකක ඕපන් කරයි
+        window.open('https://www.google.com', '_blank'); // මෙතනට ඔබේ ඇඩ් ලින්ක් එක දාන්න
+    }
+}, true);
+
+window.addEventListener('DOMContentLoaded',()=>{
+    if(localStorage.getItem("humanVerified")==="true"){
+        document.getElementById("humanVerification").style.display="none";
+    }
+});
+fetch("series-section.html").then(response => response.text()).then(data => { document.getElementById("series-container").innerHTML = data; });
     
 </script>
 
