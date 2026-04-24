@@ -90,26 +90,12 @@ position:relative;
 
 <body>
 
-<div id="popupAdContainer">
-    <div class="popup-content">
-        <div class="close-ad-btn" onclick="closePopupAd()">×</div>
-        <h2 class="popup-ad-title">Exclusive Offer! 🍿</h2>
-        <p style="color: #ccc; font-size: 14px; margin-bottom: 15px;">Watch the latest movies in 4K without limits.</p>
-        
-        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=500" class="popup-ad-img" onclick="window.open('https://www.netflix.com', '_blank')">
-        
-        <br>
-        <button class="popup-ad-btn" onclick="window.open('https://www.netflix.com', '_blank')">WATCH NOW</button>
-    </div>
-</div>
-
 <div id="humanVerification" style="position:fixed; inset:0; background:rgba(0,0,0,0.85); display:flex; justify-content:center; align-items:center; z-index:9999; color:#fff; text-align:center; font-family:Arial;">
 <div style="background:#111; padding:40px; border-radius:15px; box-shadow:0 0 25px rgba(0,0,0,0.7); max-width:400px; width:90%;">
 <h2 style="color:#00d4ff; margin-bottom:15px;">🔐 Human Verification</h2>
 <p style="color:#ccc; margin-bottom:20px;">
 Please <a href="verification.html" style="color:#00d4ff; text-decoration:underline;">verify here</a> first to enter the site.
 </p>
-</div>
 </div>
 
 <header class="hero-header">
@@ -270,22 +256,6 @@ window.addEventListener('DOMContentLoaded',()=>{
     }
 });
 fetch("series-section.html").then(response => response.text()).then(data => { document.getElementById("series-container").innerHTML = data; });
-
-    
-    // සයිට් එක ලෝඩ් වී තත්පර 5කට පසු ඇඩ් එක පෙන්වීමට
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        // පරිශීලකයා දැනටමත් Verify වී ඇත්නම් පමණක් ඇඩ් එක පෙන්වන්න
-        if(localStorage.getItem("humanVerified") === "true") {
-            document.getElementById('popupAdContainer').style.display = 'flex';
-        }
-    }, 5000); // 5000ms = තත්පර 5 (ඔබට අවශ්‍ය නම් මෙය වෙනස් කරන්න)
-});
-
-// ඇඩ් එක වසා දැමීමට
-function closePopupAd() {
-    document.getElementById('popupAdContainer').style.display = 'none';
-}
 
 </script>
 
