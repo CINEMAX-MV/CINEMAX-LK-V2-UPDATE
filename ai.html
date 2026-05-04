@@ -3,201 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cinemax AI Assistant</title>
+    <title>Cinemax Universal Search</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #25D366; --bg-dark: #020617; --chat-bg: #0f172a; --user-msg: #1e293b; --ai-msg: #059669; }
-        
-        body { 
-            margin: 0; 
-            background: var(--bg-dark); 
-            font-family: 'Poppins', sans-serif; 
-            color: white; 
-            height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            overflow: hidden; 
-        }
-
-        header { 
-            padding: 15px 20px; 
-            background: rgba(15, 23, 42, 0.95); 
-            backdrop-filter: blur(10px); 
-            border-bottom: 1px solid rgba(37, 211, 102, 0.2); 
-            display: flex; 
-            align-items: center; 
-            gap: 15px;
-            flex-shrink: 0;
-        }
-
+        body { margin: 0; background: var(--bg-dark); font-family: 'Poppins', sans-serif; color: white; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        header { padding: 15px 20px; background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid rgba(37, 211, 102, 0.2); display: flex; align-items: center; gap: 15px; }
         header h1 { font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--primary); margin: 0; }
-
-        #chat-container { 
-            flex: 1; 
-            overflow-y: auto; 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 15px;
-            padding-bottom: 90px; /* Input එකට ඉඩ තැබීමට */
-        }
-
-        .message { 
-            max-width: 85%; 
-            padding: 12px 16px; 
-            border-radius: 18px; 
-            font-size: 14px; 
-            line-height: 1.5; 
-            animation: fadeIn 0.3s ease; 
-            word-wrap: break-word; 
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .ai-msg { align-self: flex-start; background: var(--user-msg); border-bottom-left-radius: 2px; border: 1px solid rgba(255,255,255,0.1); }
+        #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 100px; }
+        .message { max-width: 85%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; word-wrap: break-word; }
+        .ai-msg { align-self: flex-start; background: var(--user-msg); border-bottom-left-radius: 2px; }
         .user-msg { align-self: flex-end; background: var(--ai-msg); border-bottom-right-radius: 2px; }
-
-        /* ටයිප් කරන තැන */
-        .input-area { 
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px; 
-            background: #0f172a; 
-            display: flex; 
-            gap: 10px; 
-            border-top: 1px solid rgba(255,255,255,0.1);
-            z-index: 1000;
-        }
-
-        input { 
-            flex: 1; 
-            background: #1e293b; 
-            border: 1px solid rgba(255,255,255,0.2); 
-            padding: 12px 20px; 
-            border-radius: 25px; 
-            color: white; 
-            outline: none; 
-            font-size: 14px;
-        }
-
-        button#send-btn { 
-            background: var(--primary); 
-            border: none; 
-            width: 45px; 
-            height: 45px; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            flex-shrink: 0;
-        }
-
-        .loader { width: 20px; height: 20px; border: 3px solid #f3f3f3; border-top: 3px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; display: none; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .bot-options { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-        .download-btn { background: rgba(37, 211, 102, 0.1); border: 1px solid var(--primary); color: white; padding: 10px; border-radius: 10px; text-align: center; text-decoration: none; font-size: 13px; transition: 0.3s; }
-        .download-btn:hover { background: var(--primary); color: #000; }
+        .input-area { position: fixed; bottom: 0; left: 0; right: 0; padding: 15px; background: #0f172a; display: flex; gap: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
+        input { flex: 1; background: #1e293b; border: 1px solid rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 25px; color: white; outline: none; }
+        button { background: var(--primary); border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; color: white; font-weight: bold; }
+        .source-link { display: block; margin-top: 5px; font-size: 11px; color: #34d399; text-decoration: underline; }
     </style>
 </head>
 <body>
 
 <header>
     <div style="width: 10px; height: 10px; background: #25D366; border-radius: 50%; box-shadow: 0 0 10px #25D366;"></div>
-    <h1>CINEMAX AI</h1>
+    <h1>CINEMAX SEARCH</h1>
 </header>
 
 <div id="chat-container"></div>
 
 <div class="input-area">
-    <input type="text" id="user-input" placeholder="ඔබට අවශ්‍ය දේ මෙතන ලියන්න..." autocomplete="off">
-    <button id="send-btn">
-        <svg id="send-icon" viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
-        <div class="loader" id="btn-loader"></div>
-    </button>
+    <input type="text" id="user-input" placeholder="ඕනෑම දෙයක් අහන්න..." autocomplete="off">
+    <button id="send-btn">➔</button>
 </div>
 
 <script>
-    const API_KEY = "AIzaSyD9DcxFtDxmjJWsdN1zD5NkNVbc9iubEY8";
-    
     const chatContainer = document.getElementById('chat-container');
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
-    const loader = document.getElementById('btn-loader');
-    const sendIcon = document.getElementById('send-icon');
-
-    const params = new URLSearchParams(window.location.search);
-    const currentMovieTitle = params.get("title") || "Jack the Giant Slayer (2013)"; 
-    const movieLink = params.get("link") || "";
-
-    // ලින්ක් එක අනුව කමාන්ඩ් එක තීරණය කිරීම
-    function getAutoCommand(link) {
-        if (link.includes("drive.google.com") || link.includes("gdrive")) {
-            return ".gdrive ";
-        }
-        return ".download ";
-    }
-
-    const finalCmd = getAutoCommand(movieLink);
 
     window.onload = () => {
-        addMessage(`හායි! මම Cinemax AI. මම දැනට ${currentMovieTitle} ගැන විස්තර දෙන්න සූදානම්. ඔයාට ඕක වට්සැප් එකෙන් ඩවුන්ලෝඩ් කරගන්නත් පුලුවන් මගෙන්. ඔබට මොනවාද දැනගන්න ඕනේ?`, "ai-msg");
+        addMessage("හායි! මම Cinemax Search. ඔබට අවශ්‍ය ඕනෑම දෙයක් මෙතන අහන්න. මම අන්තර්ජාලය පරීක්ෂා කර ඔබට පිළිතුරු දෙන්නම්.", "ai-msg");
     };
 
-    async function getMovieDataFromJSON() {
-        try {
-            const response = await fetch('data/movies.json');
-            if (!response.ok) return "No local data found.";
-            const movies = await response.json();
-            const movie = movies.find(m => m.title.toLowerCase().includes(currentMovieTitle.toLowerCase().split(' ')[0]));
-            return movie ? JSON.stringify(movie) : "Details not in DB.";
-        } catch (error) {
-            return "Local DB error.";
-        }
-    }
-
-    async function getGeminiResponse(prompt) {
-        const movieDetails = await getMovieDataFromJSON();
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
-        
-        const systemPrompt = `You are an AI for Cinemax. Current movie: ${currentMovieTitle}. Local Info: ${movieDetails}. Speak Sinhala. If user wants to download, respond only with "ඔබට මෙම චිත්‍රපටය බාගත කරගැනීමට අවශ්‍ය නම් පහතින් Server එකක් තෝරාගන්න."`;
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: systemPrompt + " User says: " + prompt }] }]
-            })
-        });
-
-        const data = await response.json();
-        return data.candidates[0].content.parts[0].text;
-    }
-
-    function addMessage(text, type) {
+    function addMessage(text, type, html = false) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${type}`;
-        msgDiv.innerText = text;
+        if(html) msgDiv.innerHTML = text;
+        else msgDiv.innerText = text;
         chatContainer.appendChild(msgDiv);
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }
 
-    function showDownloadOptions() {
-        const optionsDiv = document.createElement('div');
-        optionsDiv.className = 'message ai-msg';
-        optionsDiv.innerHTML = `
-            <div>බාගත කරගැනීමට Server එකක් තෝරාගන්න:</div>
-            <div class="bot-options">
-                <a href="https://wa.me/94774591631?text=${encodeURIComponent(finalCmd + movieLink)}" target="_blank" class="download-btn">WhatsApp Server 01</a>
-                <a href="https://wa.me/94740707157?text=${encodeURIComponent(finalCmd + movieLink)}" target="_blank" class="download-btn">WhatsApp Server 02</a>
-                <a href="https://wa.me/94740273359?text=${encodeURIComponent(finalCmd + movieLink)}" target="_blank" class="download-btn">WhatsApp Server 03</a>
-            </div>
-        `;
-        chatContainer.appendChild(optionsDiv);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+    async function searchInternet(query) {
+        // DuckDuckGo API (No Key Required)
+        const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&pretty=1`;
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data.AbstractText) {
+                return {
+                    text: data.AbstractText,
+                    source: data.AbstractSource,
+                    url: data.AbstractURL
+                };
+            } else if (data.RelatedTopics && data.RelatedTopics.length > 0) {
+                return {
+                    text: data.RelatedTopics[0].text,
+                    source: "Related Info",
+                    url: "#"
+                };
+            } else {
+                return null;
+            }
+        } catch (e) {
+            return null;
+        }
     }
 
     sendBtn.onclick = async () => {
@@ -206,31 +86,31 @@
 
         addMessage(text, "user-msg");
         userInput.value = "";
-        sendIcon.style.display = 'none';
-        loader.style.display = 'block';
 
-        const lowerT = text.toLowerCase();
-        if (lowerT.includes("download") || lowerT.includes("බාගත") || lowerT.includes("ඩවුන්ලෝඩ්")|| lowerT.includes("d")) {
-            setTimeout(() => {
-                addMessage("ඔබට මෙම චිත්‍රපටය බාගත කරගැනීමට අවශ්‍ය නම් පහතින් Server එකක් තෝරාගන්න.", "ai-msg");
-                showDownloadOptions();
-                resetBtn();
-            }, 600);
+        // සෙවුම් පණිවිඩයක් පෙන්වීම
+        const loadingId = "loading-" + Date.now();
+        addMessage("පිළිතුර සොයමින් පවතී...", "ai-msg", false);
+
+        const result = await searchInternet(text);
+
+        // අවසාන පණිවිඩය යාවත්කාලීන කිරීම (ලෝඩින් පණිවිඩය ඉවත් කර)
+        chatContainer.lastChild.remove();
+
+        if (result) {
+            let responseHTML = `
+                <div>${result.text}</div>
+                <a href="${result.url}" target="_blank" class="source-link">Source: ${result.source}</a>
+            `;
+            addMessage(responseHTML, "ai-msg", true);
         } else {
-            try {
-                const aiResponse = await getGeminiResponse(text);
-                addMessage(aiResponse, "ai-msg");
-            } catch (e) {
-                addMessage("API-KEY එකට සම්බන්ධ වීමට නොහැකි වුණා. නැවත උත්සාහ කරන්න.", "ai-msg");
-            }
-            resetBtn();
+            // තොරතුරු නැතිනම් Google වෙත යොමු කිරීම
+            let fallbackHTML = `
+                <div>මට ඒ ගැන සෘජු පිළිතුරක් හමු වුණේ නැහැ. වැඩිදුර විස්තර සඳහා Google පරීක්ෂා කරන්න:</div>
+                <a href="https://www.google.com/search?q=${encodeURIComponent(text)}" target="_blank" class="download-btn" style="display:inline-block; margin-top:10px; color:#25D366;">Google Search විවෘත කරන්න</a>
+            `;
+            addMessage(fallbackHTML, "ai-msg", true);
         }
     };
-
-    function resetBtn() {
-        sendIcon.style.display = 'block';
-        loader.style.display = 'none';
-    }
 
     userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendBtn.click(); });
 </script>
