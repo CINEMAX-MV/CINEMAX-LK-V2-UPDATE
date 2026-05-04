@@ -2,74 +2,61 @@
 <html lang="si">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Cinemax AI Pro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinemax Working AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #25D366; --bg-dark: #020617; --chat-bg: #0f172a; --user-msg: #1e293b; --ai-msg: #059669; }
-        body { margin: 0; background: var(--bg-dark); font-family: 'Poppins', sans-serif; color: white; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
-        header { padding: 15px 20px; background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid rgba(37, 211, 102, 0.2); display: flex; align-items: center; gap: 15px; }
-        header h1 { font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--primary); margin: 0; }
-        #chat-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 100px; }
-        .message { max-width: 85%; padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.6; word-wrap: break-word; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .ai-msg { align-self: flex-start; background: var(--user-msg); border-bottom-left-radius: 2px; border: 1px solid rgba(255,255,255,0.1); }
-        .user-msg { align-self: flex-end; background: var(--ai-msg); border-bottom-right-radius: 2px; }
-        .input-area { position: fixed; bottom: 0; left: 0; right: 0; padding: 15px; background: #0f172a; display: flex; gap: 10px; border-top: 1px solid rgba(255,255,255,0.1); }
-        input { flex: 1; background: #1e293b; border: 1px solid rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 25px; color: white; outline: none; }
-        button { background: var(--primary); border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-        button:active { transform: scale(0.9); }
-        .loader { width: 18px; height: 18px; border: 2px solid #ffffff; border-top: 2px solid transparent; border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        body { font-family: 'Poppins', sans-serif; background: #020617; color: white; margin: 0; display: flex; flex-direction: column; height: 100vh; }
+        header { padding: 20px; background: #0f172a; border-bottom: 2px solid #25D366; text-align: center; font-weight: bold; color: #25D366; }
+        #chat-box { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .msg { padding: 12px 18px; border-radius: 15px; max-width: 80%; line-height: 1.5; font-size: 14px; }
+        .ai { background: #1e293b; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user { background: #059669; align-self: flex-end; border-bottom-right-radius: 2px; }
+        .input-area { padding: 15px; background: #0f172a; display: flex; gap: 10px; }
+        input { flex: 1; padding: 12px; border-radius: 25px; border: none; outline: none; background: #1e293b; color: white; }
+        button { background: #25D366; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        .loading { font-size: 12px; color: #888; display: none; }
     </style>
 </head>
 <body>
 
-<header>
-    <div style="width: 10px; height: 10px; background: #25D366; border-radius: 50%; box-shadow: 0 0 10px #25D366;"></div>
-    <h1>CINEMAX AI PRO</h1>
-</header>
+<header>CINEMAX AI PRO 🤖</header>
 
-<div id="chat-container"></div>
+<div id="chat-box"></div>
+<div id="loading-text" style="padding-left: 20px; display: none; color: #25D366;">පිළිතුර සොයමින්...</div>
 
 <div class="input-area">
-    <input type="text" id="user-input" placeholder="ඕනෑම දෙයක් අහන්න..." autocomplete="off">
-    <button id="send-btn">
-        <span id="btn-icon">➔</span>
-        <div class="loader" id="btn-loader"></div>
-    </button>
+    <input type="text" id="user-input" placeholder="මෙතන ලියන්න..." autocomplete="off">
+    <button id="send-btn">Send</button>
 </div>
 
 <script>
-    // 🔴 ඔබේ API KEY එක මෙතනට දාන්න
+    // 🔴 🔴 ඔබ ලබාගත් API Key එක මෙතනට Paste කරන්න 🔴 🔴
     const API_KEY = "AIzaSyD4SlpQNUGJUHFuVgcIlZHaT9Xv2z5yurU"; 
 
-    const chatContainer = document.getElementById('chat-container');
+    const chatBox = document.getElementById('chat-box');
     const userInput = document.getElementById('user-input');
     const sendBtn = document.getElementById('send-btn');
-    const loader = document.getElementById('btn-loader');
-    const btnIcon = document.getElementById('btn-icon');
-
-    window.onload = () => {
-        addMessage("ආයුබෝවන්! මම Cinemax AI. මම දැන් සූදානම් ඕනෑම ප්‍රශ්නයකට Google Search කරලා පිළිතුරු දෙන්න. මට උදව් කළ හැකි දේ පවසන්න.", "ai-msg");
-    };
+    const loadingText = document.getElementById('loading-text');
 
     function addMessage(text, type) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${type}`;
-        msgDiv.innerText = text;
-        chatContainer.appendChild(msgDiv);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
+        const div = document.createElement('div');
+        div.className = `msg ${type}`;
+        div.innerText = text;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    async function askGemini(prompt) {
+    async function callGemini(message) {
+        // v1beta භාවිතා කරන්නේ Google Search පහසුකම සඳහායි
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
         
-        const payload = {
-            contents: [{ parts: [{ text: prompt }] }],
-            tools: [{ googleSearch: {} }], // Google Search Grounding සක්‍රිය කිරීම
+        const requestBody = {
+            contents: [{ parts: [{ text: message }] }],
+            // Google Search Grounding එකතු කිරීම
+            tools: [{ googleSearch: {} }],
             system_instruction: {
-                parts: [{ text: "You are a helpful and intelligent AI assistant. Always reply in Sinhala language unless requested otherwise. If the user asks about a movie, search for its latest details, rating, and cast. Be friendly and conversational like a real human assistant." }]
+                parts: [{ text: "You are a helpful AI. Always reply in Sinhala. Use Google Search to give latest information." }]
             }
         };
 
@@ -77,17 +64,19 @@
             const response = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(requestBody)
             });
 
             const data = await response.json();
-            if (data.candidates && data.candidates[0].content) {
-                return data.candidates[0].content.parts[0].text;
-            } else {
-                return "සමාවෙන්න, මට ඒ ගැන තොරතුරු සොයාගන්න අපහසු වුණා. නැවත උත්සාහ කරන්න.";
+            
+            // API එකේ දෝෂයක් ඇත්දැයි බැලීම
+            if (data.error) {
+                return "Error: " + data.error.message;
             }
-        } catch (error) {
-            return "දෝෂයක් සිදු වුණා. කරුණාකර ඔබගේ API Key එක නිවැරදිදැයි පරීක්ෂා කරන්න.";
+
+            return data.candidates[0].content.parts[0].text;
+        } catch (err) {
+            return "සම්බන්ධ වීමේ දෝෂයක්. කරුණාකර අන්තර්ජාලය සහ API Key එක පරීක්ෂා කරන්න.";
         }
     }
 
@@ -95,22 +84,20 @@
         const text = userInput.value.trim();
         if (!text) return;
 
-        addMessage(text, "user-msg");
+        addMessage(text, 'user');
         userInput.value = "";
+        loadingText.style.display = "block";
+
+        const aiResponse = await callGemini(text);
         
-        // ලෝඩරය පෙන්වීම
-        btnIcon.style.display = 'none';
-        loader.style.display = 'block';
-
-        const response = await askGemini(text);
-        addMessage(response, "ai-msg");
-
-        // ලෝඩරය ඉවත් කිරීම
-        btnIcon.style.display = 'block';
-        loader.style.display = 'none';
+        loadingText.style.display = "none";
+        addMessage(aiResponse, 'ai');
     };
 
     userInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendBtn.click(); });
+
+    // ආරම්භක පණිවිඩය
+    window.onload = () => addMessage("ආයුබෝවන්! මම වැඩ කරන්න සූදානම්. ඕනෑම ප්‍රශ්නයක් අහන්න.", "ai");
 </script>
 
 </body>
